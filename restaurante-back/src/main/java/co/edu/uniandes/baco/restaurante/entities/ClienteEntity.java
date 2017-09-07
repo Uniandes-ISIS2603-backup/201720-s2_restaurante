@@ -6,6 +6,8 @@
 package co.edu.uniandes.baco.restaurante.entities;
 
 import java.io.Serializable;
+import javax.persistence.Entity;
+
 
 /**
  *
