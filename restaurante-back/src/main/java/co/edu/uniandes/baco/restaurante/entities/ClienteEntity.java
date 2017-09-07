@@ -15,23 +15,23 @@ import javax.persistence.Entity;
  */
 public class ClienteEntity extends BaseEntity implements Serializable
 {
-    private boolean leal;
+    private boolean tieneTarjeta;
     private String nombre;
     private String apellido;
     private int numPuntos;
 
     /**
-     * @return the leal
+     * @return the tieneTarjeta
      */
-    public boolean isLeal() {
-        return leal;
+    public boolean isTieneTarjeta() {
+        return tieneTarjeta;
     }
 
     /**
-     * @param leal the leal to set
+     * @param tieneTarjeta the tieneTarjeta to set
      */
-    public void setLeal(boolean leal) {
-        this.leal = leal;
+    public void settieneTarjeta(boolean tieneTarjeta) {
+        this.tieneTarjeta = tieneTarjeta;
     }
 
     /**
