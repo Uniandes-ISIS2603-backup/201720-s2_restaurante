@@ -25,6 +25,7 @@ package co.edu.uniandes.baco.restaurante.entities;
 
 import co.edu.uniandes.baco.restaurante.entities.BaseEntity;
 import java.io.Serializable;
+import java.sql.Time;
 import javax.persistence.Entity;
 
 /**
@@ -33,5 +34,40 @@ import javax.persistence.Entity;
  */
 @Entity
 public class RestauranteEntity extends BaseEntity implements Serializable {
-   
+   private Time hora_inicio_maniana;
+   private Time hora_inicio_tarde;
+   private Time hora_fin_maniana;
+   private Time hora_fin_tarde;
+
+    public Time getHora_inicio_maniana() {
+        return hora_inicio_maniana;
+    }
+
+    public void setHora_inicio_maniana(Time hora_inicio_maniana) {
+        this.hora_inicio_maniana = hora_inicio_maniana;
+    }
+
+    public Time getHora_inicio_tarde() {
+        return hora_inicio_tarde;
+    }
+
+    public void setHora_inicio_tarde(Time hora_inicio_tarde) {
+        this.hora_inicio_tarde = hora_inicio_tarde;
+    }
+
+    public Time getHora_fin_maniana() {
+        return hora_fin_maniana;
+    }
+
+    public void setHora_fin_maniana(Time hora_fin_maniana) {
+        this.hora_fin_maniana = hora_fin_maniana;
+    }
+
+    public Time getHora_fin_tarde() {
+        return hora_fin_tarde;
+    }
+
+    public void setHora_fin_tarde(Time hora_fin_tarde) {
+        this.hora_fin_tarde = hora_fin_tarde;
+    }
 }
