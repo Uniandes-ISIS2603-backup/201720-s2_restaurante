@@ -21,7 +21,7 @@ import javax.persistence.TypedQuery;
 @Stateless
 public class DomicilioPersistence {
     
-    @PersistenceContext(unitName = "domicilioPU")
+    @PersistenceContext(unitName = "restaurantePU")
     protected EntityManager em;
     /**
      *

@@ -18,7 +18,7 @@ import javax.persistence.TypedQuery;
  */
 @Stateless
 public class TarjetaPuntosPersistence {
-     @PersistenceContext(unitName = "tarjetaPuntosPU")
+     @PersistenceContext(unitName = "restaurantePU")
     protected EntityManager em;
     /**
      *
