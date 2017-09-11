@@ -22,7 +22,7 @@ import javax.persistence.TypedQuery;
 public class SucursalPersistence {
     private static final Logger LOGGER = Logger.getLogger(SucursalPersistence.class.getName());
 
-    @PersistenceContext(unitName = "sucursalPU")
+    @PersistenceContext(unitName = "restaurantePU")
     protected EntityManager em;
 
     /**
