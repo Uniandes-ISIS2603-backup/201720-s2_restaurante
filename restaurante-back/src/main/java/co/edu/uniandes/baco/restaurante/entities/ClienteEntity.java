@@ -13,6 +13,7 @@ import javax.persistence.Entity;
  *
  * @author s.heim
  */
+@Entity
 public class ClienteEntity extends BaseEntity implements Serializable
 {
     private boolean tieneTarjeta;

@@ -9,6 +9,7 @@ import co.edu.uniandes.baco.restaurante.entities.PedidoEntity;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
@@ -17,11 +18,12 @@ import javax.persistence.TypedQuery;
  *
  * @author s.heim
  */
+@Stateless
 public class PedidoPersistence 
 {
   private static final Logger LOGGER = Logger.getLogger(PedidoPersistence.class.getName());
 
-    @PersistenceContext(unitName = "pedidoPU")
+    @PersistenceContext(unitName = "restaurantePU")
     protected EntityManager em;
 
     /**

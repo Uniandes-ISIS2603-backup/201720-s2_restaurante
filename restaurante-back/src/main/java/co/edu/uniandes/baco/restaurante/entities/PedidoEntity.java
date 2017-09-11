@@ -13,6 +13,7 @@ import java.util.Date;
  *
  * @author s.heim
  */
+@Entity
 public class PedidoEntity extends BaseEntity implements Serializable 
 {
     private Date fecha;
