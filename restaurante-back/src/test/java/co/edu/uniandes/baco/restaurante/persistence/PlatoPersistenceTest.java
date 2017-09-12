@@ -136,7 +136,7 @@ public class PlatoPersistenceTest {
          fail("testDelete");
     }
     @Test
-    private void clearData() {
+    public void clearData() {
         em.createQuery("delete from PlatoEntity").executeUpdate();
     }
 

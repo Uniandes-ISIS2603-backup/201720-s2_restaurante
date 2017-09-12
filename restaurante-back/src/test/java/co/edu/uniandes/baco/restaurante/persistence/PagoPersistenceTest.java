@@ -33,6 +33,7 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
  *
  * @author df.penap
  */
+@RunWith(Arquillian.class)
 public class PagoPersistenceTest {
     /**
      * Inyección de la dependencia a la clase XYZPersistence cuyos métodos
@@ -103,7 +104,7 @@ public class PagoPersistenceTest {
     }
 
     @Test
-    private void clearData() {
+    public void clearData() {
         em.createQuery("delete from PagoEntity").executeUpdate();
     }
 
