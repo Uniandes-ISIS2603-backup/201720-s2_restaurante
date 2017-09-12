@@ -27,7 +27,7 @@ public class MesaPersistence {
     
     private static final Logger LOGGER = Logger.getLogger(MesaPersistence.class.getName());
 
-    @PersistenceContext(unitName = "mesaPU")
+    @PersistenceContext(unitName = "restaurantePU")
     protected EntityManager em;
 
     /**
