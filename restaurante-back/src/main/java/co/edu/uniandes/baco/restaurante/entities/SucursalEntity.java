@@ -6,7 +6,12 @@
 package co.edu.uniandes.baco.restaurante.entities;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -17,6 +22,15 @@ public class SucursalEntity extends BaseEntity implements Serializable{
     private String calificacion;
     private boolean dosPisos;
     private String direccion;
+    @PodamExclude
+   @OneToMany
+   private List<MesaEntity> mesas;
+    @PodamExclude
+   @ManyToOne
+   private List<RestauranteEntity> restaurante;
+    @PodamExclude
+   @ManyToMany
+   private List<PlatoEntity> platos;
 
     public String getCalificacion() {
         return calificacion;
