@@ -6,7 +6,12 @@
 package co.edu.uniandes.baco.restaurante.entities;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import uk.co.jemos.podam.common.PodamExclude;
 
 
 /**
@@ -16,11 +21,31 @@ import javax.persistence.Entity;
 @Entity
 public class ClienteEntity extends BaseEntity implements Serializable
 {
+    //atributos
     private boolean tieneTarjeta;
     private String nombre;
     private String apellido;
     private int numPuntos;
 
+    //relaciones
+    @PodamExclude
+    @OneToMany
+    private List<ReservaEntity> reservas;
+    
+    @PodamExclude
+    @OneToMany
+    private List<PagoEntity> pagos;
+    
+    @PodamExclude
+    @ManyToOne
+    private RestauranteEntity restaurante;
+    
+    @OneToOne
+    private DomicilioEntity domicilio;
+    
+    @OneToOne
+    private TarjetaPuntosEntity tarjetaPuntos;
+    
     /**
      * @return the tieneTarjeta
      */

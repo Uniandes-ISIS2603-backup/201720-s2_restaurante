@@ -8,6 +8,11 @@ package co.edu.uniandes.baco.restaurante.entities;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import java.util.Date;
+import java.util.List;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -16,9 +21,22 @@ import java.util.Date;
 @Entity
 public class PedidoEntity extends BaseEntity implements Serializable 
 {
+    //atributos
     private Date fecha;
     private String direccion;
 
+    //relaciones
+    @PodamExclude
+    @ManyToOne
+    private PagoEntity pago;
+    
+    @PodamExclude
+    @OneToMany
+    private List<PlatoEntity> platos;
+    
+    @OneToOne
+    private DomicilioEntity domicilio;
+    
     /**
      * @return the fecha
      */
