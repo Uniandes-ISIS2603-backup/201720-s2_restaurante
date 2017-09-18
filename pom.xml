@@ -10,6 +10,7 @@
  
     <modules>
         <module>restaurante-back</module>
+        <module>restaurante-web</module>
     </modules>
 	
      <properties>
