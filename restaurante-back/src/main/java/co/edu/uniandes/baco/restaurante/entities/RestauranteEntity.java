@@ -26,7 +26,11 @@ package co.edu.uniandes.baco.restaurante.entities;
 import co.edu.uniandes.baco.restaurante.entities.BaseEntity;
 import java.io.Serializable;
 import java.sql.Time;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -38,6 +42,18 @@ public class RestauranteEntity extends BaseEntity implements Serializable {
    private Time hora_inicio_tarde;
    private Time hora_fin_maniana;
    private Time hora_fin_tarde;
+
+    public List<SucursalEntity> getSucursales() {
+        return sucursales;
+    }
+
+    public void setSucursales(List<SucursalEntity> sucursales) {
+        this.sucursales = sucursales;
+    }
+   @PodamExclude
+   @OneToMany
+   private List<SucursalEntity> sucursales = new ArrayList<SucursalEntity>();
+
 
     public Time getHora_inicio_maniana() {
         return hora_inicio_maniana;

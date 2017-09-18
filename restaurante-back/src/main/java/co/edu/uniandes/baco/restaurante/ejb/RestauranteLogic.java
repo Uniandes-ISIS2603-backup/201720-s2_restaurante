@@ -24,6 +24,7 @@ SOFTWARE.
 package co.edu.uniandes.baco.restaurante.ejb;
 
 import co.edu.uniandes.baco.restaurante.entities.RestauranteEntity;
+import co.edu.uniandes.baco.restaurante.entities.SucursalEntity;
 import co.edu.uniandes.baco.restaurante.exceptions.BusinessLogicException;
 import co.edu.uniandes.baco.restaurante.persistence.RestaurantePersistence;
 import java.util.List;
@@ -34,7 +35,7 @@ import javax.inject.Inject;
 
 /**
  *
- * @author ISIS2603
+ * @restaurante ISIS2603
  */
 @Stateless
 public class RestauranteLogic {
@@ -70,6 +71,51 @@ public class RestauranteLogic {
         List<RestauranteEntity> Restaurantes = persistence.findAll();
         LOGGER.info("Termina proceso de consultar todas las Restaurantees");
         return Restaurantes;
+    }
+    /**
+     * Actualiza la información de una instancia de Restaurante.
+     *
+     * @param entity Instancia de RestauranteEntity con los nuevos datos.
+     * @return Instancia de RestauranteEntity con los datos actualizados.
+     * @generated
+     */
+    public RestauranteEntity updateRestaurante(RestauranteEntity entity) {
+        LOGGER.log(Level.INFO, "Inicia proceso de actualizar un autor ");
+        return persistence.update(entity);
+    }
+
+    /**
+     * Elimina una instancia de Restaurante de la base de datos.
+     *
+     * @param id Identificador de la instancia a eliminar.
+     * @generated
+     */
+    public void deleteRestaurante(Long id) {
+        LOGGER.log(Level.INFO, "Inicia proceso de borrar un autor ");
+        persistence.delete(id);
+    }
+    public RestauranteEntity getRestaurante(Long id) {
+        LOGGER.log(Level.INFO, "Inicia proceso de consultar un autor con id = {0}", id);
+        return persistence.find(id);
+    }
+    /**
+     * Obtiene una instancia de SucursalEntity asociada a una instancia de Restaurante
+     *
+     * @param restauranteId Identificador de la instancia de Restaurante
+     * @param sucursalsId Identificador de la instancia de Sucursal
+     * @return
+     * @generated
+     */
+    public SucursalEntity getSucursal(Long restauranteId, Long sucursalsId) {
+        LOGGER.log(Level.INFO, "Inicia proceso de consultar un libro con id = {0}", sucursalsId);
+        List<SucursalEntity> list = getRestaurante(restauranteId).getSucursales();
+        SucursalEntity sucursalsEntity = new SucursalEntity();
+        sucursalsEntity.setId(sucursalsId);
+        int index = list.indexOf(sucursalsEntity);
+        if (index >= 0) {
+            return list.get(index);
+        }
+        return null;
     }
 
 
