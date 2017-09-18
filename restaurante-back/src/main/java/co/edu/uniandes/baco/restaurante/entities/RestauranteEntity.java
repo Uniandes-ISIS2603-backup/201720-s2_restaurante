@@ -26,10 +26,7 @@ package co.edu.uniandes.baco.restaurante.entities;
 import co.edu.uniandes.baco.restaurante.entities.BaseEntity;
 import java.io.Serializable;
 import java.sql.Time;
-import java.util.List;
 import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -41,24 +38,6 @@ public class RestauranteEntity extends BaseEntity implements Serializable {
    private Time hora_inicio_tarde;
    private Time hora_fin_maniana;
    private Time hora_fin_tarde;
-   @PodamExclude
-   @OneToMany
-   private List<SucursalEntity> sucursales;
-   @PodamExclude
-   @OneToMany
-   private List<PlatoEntity> platos;
-   @PodamExclude
-   @OneToMany
-   private List<DomicilioEntity> domicilios;
-   @PodamExclude
-   @OneToMany
-   private List<ReservaEntity> reservas;
-   @PodamExclude
-   @OneToMany
-   private List<ClienteEntity> clientes;
-   @PodamExclude
-   @OneToMany
-   private List<TarjetaPuntosEntity> puntos;
 
     public Time getHora_inicio_maniana() {
         return hora_inicio_maniana;
