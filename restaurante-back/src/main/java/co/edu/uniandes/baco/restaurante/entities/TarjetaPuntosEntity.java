@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.sql.Time;
 import java.util.ArrayList;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -18,6 +19,9 @@ import javax.persistence.Entity;
 public class TarjetaPuntosEntity extends BaseEntity implements Serializable{
     private int puntos;
     private ArrayList<Time> vencimientos;
+    @ManyToOne
+    private RestauranteEntity rest;
+    private ClienteEntity cliente;
 
     public int getPuntos() {
         return puntos;

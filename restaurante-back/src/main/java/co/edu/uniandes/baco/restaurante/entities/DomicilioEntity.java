@@ -7,6 +7,8 @@ package co.edu.uniandes.baco.restaurante.entities;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -15,9 +17,11 @@ import javax.persistence.Entity;
 @Entity
 public class DomicilioEntity extends BaseEntity implements Serializable{
     private int rango;
-    //private PagoEntity pago;
-    //private PedidoEntity pedido;
-    //private ClienteEntity cliente;
+    private PagoEntity pago;
+    private PedidoEntity pedido;
+    private ClienteEntity cliente;
+    @ManyToOne
+    private RestauranteEntity rest;
 
     public int getRango() {
         return rango;
