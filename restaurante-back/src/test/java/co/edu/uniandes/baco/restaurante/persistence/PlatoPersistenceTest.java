@@ -40,92 +40,48 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
  */
 @RunWith(Arquillian.class)
 public class PlatoPersistenceTest {
-   @Inject
+    /**
+     * Inyección de la dependencia a la clase XYZPersistence cuyos métodos
+     * se van a probar.
+     */
+    @javax.inject.Inject
     private PlatoPersistence persistence;
+
+    /**
+     * Contexto de Persistencia que se va a utilizar para acceder a la Base de
+     * datos por fuera de los métodos que se están probando.
+     */
     @PersistenceContext
     private EntityManager em;
-    @Inject
+
+    /**
+     * Variable para martcar las transacciones del em anterior cuando se
+     * crean/borran datos para las pruebas.
+     */
+    @javax.inject.Inject
     UserTransaction utx;
-    private List<PlatoEntity> data;
-    public PlatoPersistenceTest() {
-        this.data = new ArrayList<PlatoEntity>();
-    }
+
+     /**
+     *
+     */
+    private List<PlatoEntity> data = new ArrayList<PlatoEntity>();
+    
+     /**
+     *
+     * @return Devuelve el jar que Arquillian va a desplegar en el Glassfish
+     * embebido. El jar contiene las clases de XYZ, el descriptor de la
+     * base de datos y el archivo beans.xml para resolver la inyección de
+     * dependencias.
+     */
     @Deployment
     public static JavaArchive createDeployment() {
         return ShrinkWrap.create(JavaArchive.class)
                 .addPackage(PlatoEntity.class.getPackage())
-                .addPackage(PlatoPersistence.class.getPackage())
+                .addPackage(ClientePersistence.class.getPackage())
                 .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
                 .addAsManifestResource("META-INF/beans.xml", "beans.xml");
     }
-    private void clearData() {
-        em.createQuery("delete from PlatoEntity").executeUpdate();
-    }
     
-
-
-    private void insertData() {
-        PodamFactory factory = new PodamFactoryImpl();
-        for (int i = 0; i < 3; i++) {
-            PlatoEntity entity = factory.manufacturePojo(PlatoEntity.class);
-
-            em.persist(entity);
-            data.add(entity);
-        }
-    }
-    @Test
-    public void createPlatoEntityTest() {
-    PodamFactory factory = new PodamFactoryImpl();
-    PlatoEntity newEntity = factory.manufacturePojo(PlatoEntity.class);
-    PlatoEntity result = persistence.create(newEntity);
-
-    Assert.assertNotNull(result);
-    PlatoEntity entity = em.find(PlatoEntity.class, result.getId());
-    Assert.assertNotNull(entity);
-    Assert.assertEquals(newEntity.getName(), entity.getName());
-}
-    @Test
-public void getPlatosTest() {
-    List<PlatoEntity> list = persistence.findAll();
-    Assert.assertEquals(data.size(), list.size());
-    for (PlatoEntity ent : list) {
-        boolean found = false;
-        for (PlatoEntity entity : data) {
-            if (ent.getId().equals(entity.getId())) {
-                found = true;
-            }
-        }
-        Assert.assertTrue(found);
-    }
-}
-@Test
-public void getPlatoTest() {
-    PlatoEntity entity = data.get(0);
-    PlatoEntity newEntity = persistence.find(entity.getId());
-    Assert.assertNotNull(newEntity);
-    Assert.assertEquals(entity.getName(), newEntity.getName());
-}
-@Test
-public void updatePlatoTest() {
-    PlatoEntity entity = data.get(0);
-    PodamFactory factory = new PodamFactoryImpl();
-    PlatoEntity newEntity = factory.manufacturePojo(PlatoEntity.class);
-
-    newEntity.setId(entity.getId());
-
-    persistence.update(newEntity);
-
-    PlatoEntity resp = em.find(PlatoEntity.class, entity.getId());
-
-    Assert.assertEquals(newEntity.getName(), resp.getName());
-}
-@Test
-public void deletePlatoTest() {
-    PlatoEntity entity = data.get(0);
-    persistence.delete(entity.getId());
-    PlatoEntity deleted = em.find(PlatoEntity.class, entity.getId());
-    Assert.assertNull(deleted);
-}
     @Before
     public void setUp() {
         try {
@@ -143,16 +99,139 @@ public void deletePlatoTest() {
             }
         }
     }
-    @BeforeClass
-    public static void setUpClass() {
-    }
     
-    @AfterClass
-    public static void tearDownClass() {
+    private void clearData() {
+        em.createQuery("delete from PlatoEntity").executeUpdate();
     }
-    
-    @After
-    public void tearDown() {
-    }
-}
 
+
+    private void insertData() {
+        PodamFactory factory = new PodamFactoryImpl();
+        for (int i = 0; i < 3; i++) {
+            PlatoEntity entity = factory.manufacturePojo(PlatoEntity.class);
+
+            em.persist(entity);
+            data.add(entity);
+        }
+    }
+    
+    @Test
+    public void createClienteEntityTest() {
+        PodamFactory factory = new PodamFactoryImpl();
+        PlatoEntity newEntity = factory.manufacturePojo(PlatoEntity.class);
+        PlatoEntity result = persistence.create(newEntity);
+
+        Assert.assertNotNull(result);
+        PlatoEntity entity = em.find(PlatoEntity.class, result.getId());
+        Assert.assertNotNull(entity);
+        Assert.assertEquals(newEntity.getName(), entity.getName());
+    }
+    
+    @Test
+    public void getPlatosTest() {
+        List<PlatoEntity> list = persistence.findAll();
+        Assert.assertEquals(data.size(), list.size());
+        for (PlatoEntity ent : list) {
+            boolean found = false;
+            for (PlatoEntity entity : data) {
+                if (ent.getId().equals(entity.getId())) {
+                    found = true;
+                }
+            }
+            Assert.assertTrue(found);
+        }
+    }
+    
+    @Test
+    public void getPlatoTest() {
+        PlatoEntity entity = data.get(0);
+        PlatoEntity newEntity = persistence.find(entity.getId());
+        Assert.assertNotNull(newEntity);
+        Assert.assertEquals(entity.getName(), newEntity.getName());
+    }
+    
+    @Test
+    public void updatePlatoTest() {
+        PlatoEntity entity = data.get(0);
+        PodamFactory factory = new PodamFactoryImpl();
+        PlatoEntity newEntity = factory.manufacturePojo(PlatoEntity.class);
+
+        newEntity.setId(entity.getId());
+
+        persistence.update(newEntity);
+
+        PlatoEntity resp = em.find(PlatoEntity.class, entity.getId());
+
+        Assert.assertEquals(newEntity.getName(), resp.getName());
+    }
+    
+    @Test
+    public void deletePlatoTest() {
+        PlatoEntity entity = data.get(0);
+        persistence.delete(entity.getId());
+        PlatoEntity deleted = em.find(PlatoEntity.class, entity.getId());
+        Assert.assertNull(deleted);
+    }
+
+//    public ClientePersistenceTest() {
+//    }
+//    
+//    @BeforeClass
+//    public static void setUpClass() {
+//    }
+//    
+//    @AfterClass
+//    public static void tearDownClass() {
+//    }
+//    
+//    @After
+//    public void tearDown() {
+//    }
+//    
+//    
+//    /**
+//     * Test of create method, of class ClientePersistence.
+//     */
+//    @Test
+//    public void testCreate() 
+//    {
+//        fail("testCreate");
+//    }
+//
+//    /**
+//     * Test of update method, of class ClientePersistence.
+//     */
+//    @Test
+//    public void testUpdate() 
+//    {
+//        fail("testUpdate");
+//    }
+//
+//    /**
+//     * Test of delete method, of class ClientePersistence.
+//     */
+//    @Test
+//    public void testDelete() 
+//    {
+//        fail("testDelete");
+//    }
+//
+//    /**
+//     * Test of find method, of class ClientePersistence.
+//     */
+//    @Test
+//    public void testFind() 
+//    {
+//        fail("testFind");
+//    }
+//
+//    /**
+//     * Test of findAll method, of class ClientePersistence.
+//     */
+//    @Test
+//    public void testFindAll() 
+//    {
+//        fail("testFindAll");
+//    }
+    
+}

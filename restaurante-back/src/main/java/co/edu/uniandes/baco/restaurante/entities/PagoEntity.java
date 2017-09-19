@@ -6,11 +6,13 @@
 package co.edu.uniandes.baco.restaurante.entities;
 
 import java.io.Serializable;
+import javax.persistence.Entity;
 
 /**
  *
  * @author df.penap
  */
+@Entity
 public class PagoEntity extends BaseEntity implements Serializable {
     private boolean registrado;
     private boolean pagoAnticipado;

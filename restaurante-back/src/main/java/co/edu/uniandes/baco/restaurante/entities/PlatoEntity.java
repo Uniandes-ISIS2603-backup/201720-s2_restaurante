@@ -6,37 +6,58 @@
 package co.edu.uniandes.baco.restaurante.entities;
 
 import java.io.Serializable;
+import javax.persistence.Entity;
 
 /**
  *
  * @author df.penap
  */
+@Entity
 public class PlatoEntity extends BaseEntity implements Serializable{
     private String tipo;
     private boolean especialSucursal;
     private double precio;
-    public void setTipo(String tipo)
-    {
-        
-    }
-    public void setEspecialSucursal(boolean especialSucursal)
-    {
-        this.especialSucursal = especialSucursal;
-    }
-    public void setPrecio(double precio)
-    {
-        this.precio = precio;
-    }
-    public String getTipo()
-    {
+
+    /**
+     * @return the tipo
+     */
+    public String getTipo() {
         return tipo;
     }
-    public boolean getEspecialSucursal()
-    {
+
+    /**
+     * @param tipo the tipo to set
+     */
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    /**
+     * @return the especialSucursal
+     */
+    public boolean isEspecialSucursal() {
         return especialSucursal;
     }
-    public double getPrecio()
-    {
-        return getPrecio();
+
+    /**
+     * @param especialSucursal the especialSucursal to set
+     */
+    public void setEspecialSucursal(boolean especialSucursal) {
+        this.especialSucursal = especialSucursal;
     }
+
+    /**
+     * @return the precio
+     */
+    public double getPrecio() {
+        return precio;
+    }
+
+    /**
+     * @param precio the precio to set
+     */
+    public void setPrecio(double precio) {
+        this.precio = precio;
+    }
+    
 }
