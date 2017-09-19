@@ -35,7 +35,7 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
  */
 @RunWith(Arquillian.class)
 public class PagoPersistenceTest {
-    /**
+     /**
      * Inyección de la dependencia a la clase XYZPersistence cuyos métodos
      * se van a probar.
      */
@@ -60,6 +60,14 @@ public class PagoPersistenceTest {
      *
      */
     private List<PagoEntity> data = new ArrayList<PagoEntity>();
+    
+     /**
+     *
+     * @return Devuelve el jar que Arquillian va a desplegar en el Glassfish
+     * embebido. El jar contiene las clases de XYZ, el descriptor de la
+     * base de datos y el archivo beans.xml para resolver la inyección de
+     * dependencias.
+     */
     @Deployment
     public static JavaArchive createDeployment() {
         return ShrinkWrap.create(JavaArchive.class)
@@ -68,22 +76,10 @@ public class PagoPersistenceTest {
                 .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
                 .addAsManifestResource("META-INF/beans.xml", "beans.xml");
     }
-    public PagoPersistenceTest() {
-        
-    }
-    
-    @BeforeClass
-    public static void setUpClass() {
-       
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
     
     @Before
     public void setUp() {
-          try {
+        try {
             utx.begin();
             em.joinTransaction();
             clearData();
@@ -99,17 +95,12 @@ public class PagoPersistenceTest {
         }
     }
     
-    @After
-    public void tearDown() {
-    }
-
-    @Test
-    public void clearData() {
+    private void clearData() {
         em.createQuery("delete from PagoEntity").executeUpdate();
     }
 
 
- private void insertData() {
+    private void insertData() {
         PodamFactory factory = new PodamFactoryImpl();
         for (int i = 0; i < 3; i++) {
             PagoEntity entity = factory.manufacturePojo(PagoEntity.class);
@@ -118,53 +109,62 @@ public class PagoPersistenceTest {
             data.add(entity);
         }
     }
- @Test
-public void createPagoEntityTest() {
-    PodamFactory factory = new PodamFactoryImpl();
-    PagoEntity newEntity = factory.manufacturePojo(PagoEntity.class);
-    PagoEntity result = persistence.create(newEntity);
+    
+    @Test
+    public void createPagoEntityTest() {
+        PodamFactory factory = new PodamFactoryImpl();
+        PagoEntity newEntity = factory.manufacturePojo(PagoEntity.class);
+        PagoEntity result = persistence.create(newEntity);
 
-    Assert.assertNotNull(result);
-    PagoEntity entity = em.find(PagoEntity.class, result.getId());
-    Assert.assertNotNull(entity);
-    Assert.assertEquals(newEntity.getName(), entity.getName());
-}
-@Test
-public void getPagoTest() {
-    List<PagoEntity> list = persistence.findAll();
-    Assert.assertEquals(data.size(), list.size());
-    for (PagoEntity ent : list) {
-        boolean found = false;
-        for (PagoEntity entity : data) {
-            if (ent.getId().equals(entity.getId())) {
-                found = true;
-            }
-        }
-        Assert.assertTrue(found);
+        Assert.assertNotNull(result);
+        PagoEntity entity = em.find(PagoEntity.class, result.getId());
+        Assert.assertNotNull(entity);
+        Assert.assertEquals(newEntity.getName(), entity.getName());
     }
-}
+    
+    @Test
+    public void getPagosTest() {
+        List<PagoEntity> list = persistence.findAll();
+        Assert.assertEquals(data.size(), list.size());
+        for (PagoEntity ent : list) {
+            boolean found = false;
+            for (PagoEntity entity : data) {
+                if (ent.getId().equals(entity.getId())) {
+                    found = true;
+                }
+            }
+            Assert.assertTrue(found);
+        }
+    }
+    
+    @Test
+    public void getPagoTest() {
+        PagoEntity entity = data.get(0);
+        PagoEntity newEntity = persistence.find(entity.getId());
+        Assert.assertNotNull(newEntity);
+        Assert.assertEquals(entity.getName(), newEntity.getName());
+    }
+    
+    @Test
+    public void updatePagoTest() {
+        PagoEntity entity = data.get(0);
+        PodamFactory factory = new PodamFactoryImpl();
+        PagoEntity newEntity = factory.manufacturePojo(PagoEntity.class);
 
-   
+        newEntity.setId(entity.getId());
 
-@Test
-public void updatePagoTest() {
-    PagoEntity entity = data.get(0);
-    PodamFactory factory = new PodamFactoryImpl();
-    PagoEntity newEntity = factory.manufacturePojo(PagoEntity.class);
+        persistence.update(newEntity);
 
-    newEntity.setId(entity.getId());
+        PagoEntity resp = em.find(PagoEntity.class, entity.getId());
 
-    persistence.update(newEntity);
-
-    PagoEntity resp = em.find(PagoEntity.class, entity.getId());
-
-    Assert.assertEquals(newEntity.getName(), resp.getName());
-}
-@Test
-public void deletePagoTest() {
-    PagoEntity entity = data.get(0);
-    persistence.delete(entity.getId());
-    PagoEntity deleted = em.find(PagoEntity.class, entity.getId());
-    Assert.assertNull(deleted);
-}
+        Assert.assertEquals(newEntity.getName(), resp.getName());
+    }
+    
+    @Test
+    public void deletePagoTest() {
+        PagoEntity entity = data.get(0);
+        persistence.delete(entity.getId());
+        PagoEntity deleted = em.find(PagoEntity.class, entity.getId());
+        Assert.assertNull(deleted);
+    }
 }

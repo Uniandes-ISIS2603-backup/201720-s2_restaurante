@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import javax.transaction.UserTransaction;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.core.api.annotation.Inject;
@@ -39,31 +40,16 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
  */
 @RunWith(Arquillian.class)
 public class PlatoPersistenceTest {
-   /**
-     * Inyección de la dependencia a la clase XYZPersistence cuyos métodos
-     * se van a probar.
-     */
-    @Inject
+   @Inject
     private PlatoPersistence persistence;
-
-    /**
-     * Contexto de Persistencia que se va a utilizar para acceder a la Base de
-     * datos por fuera de los métodos que se están probando.
-     */
     @PersistenceContext
     private EntityManager em;
-
-    /**
-     * Variable para martcar las transacciones del em anterior cuando se
-     * crean/borran datos para las pruebas.
-     */
     @Inject
     UserTransaction utx;
-
-     /**
-     *
-     */
-    private List<PlatoEntity> data = new ArrayList<PlatoEntity>();
+    private List<PlatoEntity> data;
+    public PlatoPersistenceTest() {
+        this.data = new ArrayList<PlatoEntity>();
+    }
     @Deployment
     public static JavaArchive createDeployment() {
         return ShrinkWrap.create(JavaArchive.class)
@@ -72,76 +58,13 @@ public class PlatoPersistenceTest {
                 .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
                 .addAsManifestResource("META-INF/beans.xml", "beans.xml");
     }
-    public PlatoPersistenceTest() {
-        
-    }
-    
-    @BeforeClass
-    public static void setUpClass() {
-        
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
-    @Before
-    public void setUp() {
-         try {
-            utx.begin();
-            em.joinTransaction();
-            clearData();
-            insertData();
-            utx.commit();
-        } catch (Exception e) {
-            e.printStackTrace();
-            try {
-                utx.rollback();
-            } catch (Exception e1) {
-                e1.printStackTrace();
-            }
-        }
-    }
-    
-    @After
-    public void tearDown() {
-    }
-
-    @Test
-    public void testSomeMethod() throws Exception{ 
-        fail("testSomeMethod");
-    }
-    @Test
-    public void testFind() throws Exception{
-        fail("testFind");
-    }
-    @Test
-    public void testFindByName() throws Exception{
-        fail("testFindByName");
-    }
-    @Test
-    public void testFindAll() throws Exception{
-        fail("testFindAll");
-    }
-    @Test
-    public void testCreate() throws Exception{
-        fail("testCreate");
-    }
-    @Test
-    public void testUpdate() throws Exception{
-        fail("testUpdate");
-    }
-    @Test
-    public void testDelete() throws Exception {
-         fail("testDelete");
-    }
-    @Test
-    public void clearData() {
+    private void clearData() {
         em.createQuery("delete from PlatoEntity").executeUpdate();
     }
+    
 
 
- private void insertData() {
+    private void insertData() {
         PodamFactory factory = new PodamFactoryImpl();
         for (int i = 0; i < 3; i++) {
             PlatoEntity entity = factory.manufacturePojo(PlatoEntity.class);
@@ -150,8 +73,8 @@ public class PlatoPersistenceTest {
             data.add(entity);
         }
     }
- @Test
-public void createPlatoEntityTest() {
+    @Test
+    public void createPlatoEntityTest() {
     PodamFactory factory = new PodamFactoryImpl();
     PlatoEntity newEntity = factory.manufacturePojo(PlatoEntity.class);
     PlatoEntity result = persistence.create(newEntity);
@@ -161,8 +84,8 @@ public void createPlatoEntityTest() {
     Assert.assertNotNull(entity);
     Assert.assertEquals(newEntity.getName(), entity.getName());
 }
-@Test
-public void getPlatoTest() {
+    @Test
+public void getPlatosTest() {
     List<PlatoEntity> list = persistence.findAll();
     Assert.assertEquals(data.size(), list.size());
     for (PlatoEntity ent : list) {
@@ -176,13 +99,12 @@ public void getPlatoTest() {
     }
 }
 @Test
-public void gePlatoTest() {
+public void getPlatoTest() {
     PlatoEntity entity = data.get(0);
     PlatoEntity newEntity = persistence.find(entity.getId());
     Assert.assertNotNull(newEntity);
     Assert.assertEquals(entity.getName(), newEntity.getName());
 }
-
 @Test
 public void updatePlatoTest() {
     PlatoEntity entity = data.get(0);
@@ -204,4 +126,33 @@ public void deletePlatoTest() {
     PlatoEntity deleted = em.find(PlatoEntity.class, entity.getId());
     Assert.assertNull(deleted);
 }
+    @Before
+    public void setUp() {
+        try {
+            utx.begin();
+            em.joinTransaction();
+            clearData();
+            insertData();
+            utx.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            try {
+                utx.rollback();
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+        }
+    }
+    @BeforeClass
+    public static void setUpClass() {
+    }
+    
+    @AfterClass
+    public static void tearDownClass() {
+    }
+    
+    @After
+    public void tearDown() {
+    }
 }
+
