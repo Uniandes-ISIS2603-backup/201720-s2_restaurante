@@ -6,6 +6,7 @@
 package co.edu.uniandes.baco.restaurante.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
@@ -25,6 +26,28 @@ public class SucursalEntity extends BaseEntity implements Serializable{
     @PodamExclude
    @ManyToOne
    private RestauranteEntity restaurante;
+    @PodamExclude
+   @ManyToMany
+   private List<PlatoEntity> platos = new ArrayList<PlatoEntity>();
+
+    public List<PlatoEntity> getPlatos() {
+        return platos;
+    }
+
+    public void setPlatos(List<PlatoEntity> platos) {
+        this.platos = platos;
+    }
+    @PodamExclude
+   @OneToMany
+   private List<MesaEntity> mesas = new ArrayList<MesaEntity>();
+
+    public List<MesaEntity> getMesas() {
+        return mesas;
+    }
+
+    public void setMesas(List<MesaEntity> mesas) {
+        this.mesas = mesas;
+    }
 
     public RestauranteEntity getRestaurante() {
         return restaurante;

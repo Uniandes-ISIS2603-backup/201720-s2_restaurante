@@ -6,7 +6,12 @@
 package co.edu.uniandes.baco.restaurante.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -17,6 +22,39 @@ public class PlatoEntity extends BaseEntity implements Serializable{
     private String tipo;
     private boolean especialSucursal;
     private double precio;
+    @PodamExclude
+   @ManyToOne
+   private PedidoEntity pedido;
+    @PodamExclude
+   @ManyToOne
+   private RestauranteEntity restaurante;
+    @PodamExclude
+   @ManyToMany
+   private List<SucursalEntity> sucursales = new ArrayList<SucursalEntity>();
+
+    public PedidoEntity getPedido() {
+        return pedido;
+    }
+
+    public void setPedido(PedidoEntity pedido) {
+        this.pedido = pedido;
+    }
+
+    public RestauranteEntity getRestaurante() {
+        return restaurante;
+    }
+
+    public void setRestaurante(RestauranteEntity restaurante) {
+        this.restaurante = restaurante;
+    }
+
+    public List<SucursalEntity> getSucursales() {
+        return sucursales;
+    }
+
+    public void setSucursales(List<SucursalEntity> sucursales) {
+        this.sucursales = sucursales;
+    }
 
     /**
      * @return the tipo

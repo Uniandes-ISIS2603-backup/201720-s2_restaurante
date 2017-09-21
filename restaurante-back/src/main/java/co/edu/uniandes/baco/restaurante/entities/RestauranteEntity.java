@@ -53,6 +53,60 @@ public class RestauranteEntity extends BaseEntity implements Serializable {
    @PodamExclude
    @OneToMany
    private List<SucursalEntity> sucursales = new ArrayList<SucursalEntity>();
+   @PodamExclude
+   @OneToMany
+   private List<ClienteEntity> clientes = new ArrayList<ClienteEntity>();
+   @PodamExclude
+   @OneToMany
+   private List<TarjetaPuntosEntity> tarjetas = new ArrayList<TarjetaPuntosEntity>();
+   @PodamExclude
+   @OneToMany
+   private List<PlatoEntity> platos = new ArrayList<PlatoEntity>();
+   @PodamExclude
+   @OneToMany
+   private List<ReservaEntity> reservas = new ArrayList<ReservaEntity>();
+   @PodamExclude
+   @OneToMany
+   private List<DomicilioEntity> domicilios = new ArrayList<DomicilioEntity>();
+    public List<ReservaEntity> getReservas() {
+        return reservas;
+    }
+
+    public List<ClienteEntity> getClientes() {
+        return clientes;
+    }
+
+    public void setClientes(List<ClienteEntity> clientes) {
+        this.clientes = clientes;
+    }
+
+    public List<TarjetaPuntosEntity> getTarjetas() {
+        return tarjetas;
+    }
+
+    public void setTarjetas(List<TarjetaPuntosEntity> tarjetas) {
+        this.tarjetas = tarjetas;
+    }
+
+    public List<PlatoEntity> getPlatos() {
+        return platos;
+    }
+
+    public void setPlatos(List<PlatoEntity> platos) {
+        this.platos = platos;
+    }
+
+    public List<DomicilioEntity> getDomicilios() {
+        return domicilios;
+    }
+
+    public void setDomicilios(List<DomicilioEntity> domicilios) {
+        this.domicilios = domicilios;
+    }
+
+    public void setReservas(List<ReservaEntity> reservas) {
+        this.reservas = reservas;
+    }
 
 
     public Time getHora_inicio_maniana() {

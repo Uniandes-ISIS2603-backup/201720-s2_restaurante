@@ -10,6 +10,7 @@ import java.sql.Time;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -18,11 +19,13 @@ import javax.persistence.OneToOne;
 @Entity
 public class ReservaEntity extends BaseEntity implements Serializable{
     private Time fecha;
-    
+    @PodamExclude
     @ManyToOne
     private RestauranteEntity restaurante;
+    @PodamExclude
     @ManyToOne
     private ClienteEntity cliente;
+    @PodamExclude
     @OneToOne
     private MesaEntity mesa;
     

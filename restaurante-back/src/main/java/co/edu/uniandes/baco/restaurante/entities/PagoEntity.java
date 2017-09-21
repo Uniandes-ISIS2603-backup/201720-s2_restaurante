@@ -6,7 +6,13 @@
 package co.edu.uniandes.baco.restaurante.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -17,6 +23,40 @@ public class PagoEntity extends BaseEntity implements Serializable {
     private boolean registrado;
     private boolean pagoAnticipado;
     private String tipo;
+    @PodamExclude
+   @OneToMany
+   private List<PedidoEntity> pedidos = new ArrayList<PedidoEntity>();
+    @PodamExclude
+   @OneToOne
+    private DomicilioEntity domicilio;
+    @PodamExclude
+    @ManyToOne
+    private ClienteEntity cliente;
+
+    public List<PedidoEntity> getPedidos() {
+        return pedidos;
+    }
+
+    public void setPedidos(List<PedidoEntity> pedidos) {
+        this.pedidos = pedidos;
+    }
+
+    public DomicilioEntity getDomicilio() {
+        return domicilio;
+    }
+
+    public void setDomicilio(DomicilioEntity domicilio) {
+        this.domicilio = domicilio;
+    }
+
+    public ClienteEntity getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(ClienteEntity cliente) {
+        this.cliente = cliente;
+    }
+
     public void setRegistrado(boolean registrado)
     {
         this.registrado = registrado;

@@ -10,6 +10,7 @@ import java.sql.Time;
 import java.util.ArrayList;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -19,9 +20,28 @@ import javax.persistence.ManyToOne;
 public class TarjetaPuntosEntity extends BaseEntity implements Serializable{
     private int puntos;
     private ArrayList<Time> vencimientos;
+    @PodamExclude
     @ManyToOne
     private RestauranteEntity rest;
+    @PodamExclude
+    @ManyToOne
     private ClienteEntity cliente;
+
+    public RestauranteEntity getRest() {
+        return rest;
+    }
+
+    public void setRest(RestauranteEntity rest) {
+        this.rest = rest;
+    }
+
+    public ClienteEntity getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(ClienteEntity cliente) {
+        this.cliente = cliente;
+    }
 
     public int getPuntos() {
         return puntos;
