@@ -171,7 +171,7 @@ public class ReservaPersistenceTest {
      * Test of find method, of class ReservaPersistence.
      */
     @Test
-    public void getXYZTest() {
+    public void getReservaTest() {
     ReservaEntity entity = data.get(0);
     ReservaEntity newEntity = persistence.find(entity.getId());
     Assert.assertNotNull(newEntity);

@@ -172,7 +172,7 @@ public class MesaPersistenceTest {
      * Test of find method, of class MesaPersistence.
      */
     @Test
-    public void getXYZTest() {
+    public void getMesaTest() {
     MesaEntity entity = data.get(0);
     MesaEntity newEntity = persistence.find(entity.getId());
     Assert.assertNotNull(newEntity);

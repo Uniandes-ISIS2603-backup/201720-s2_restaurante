@@ -7,6 +7,8 @@ package co.edu.uniandes.baco.restaurante.entities;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -18,6 +20,29 @@ public class MesaEntity extends BaseEntity implements Serializable{
     private int piso;
     private boolean disponible; 
 
+    @ManyToOne
+    private SucursalEntity sucursal;
+    @OneToOne
+    private ReservaEntity reserva;
+
+    public SucursalEntity getSucursal() {
+        return sucursal;
+    }
+
+    public ReservaEntity getReserva() {
+        return reserva;
+    }
+
+    public void setSucursal(SucursalEntity sucursal) {
+        this.sucursal = sucursal;
+    }
+
+    public void setReserva(ReservaEntity reserva) {
+        this.reserva = reserva;
+    }
+    
+    
+    
     public int getSillasDisponibles() {
         return sillasDisponibles;
     }

@@ -8,6 +8,8 @@ package co.edu.uniandes.baco.restaurante.entities;
 import java.io.Serializable;
 import java.sql.Time;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -16,6 +18,34 @@ import javax.persistence.Entity;
 @Entity
 public class ReservaEntity extends BaseEntity implements Serializable{
     private Time fecha;
+    
+    @ManyToOne
+    private RestauranteEntity restaurante;
+    @ManyToOne
+    private ClienteEntity cliente;
+    @OneToOne
+    private MesaEntity mesa;
+    
+    public RestauranteEntity getRestaurante() {
+        return restaurante;
+    }
+
+    public ClienteEntity getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(ClienteEntity cliente) {
+        this.cliente = cliente;
+    }
+
+    public MesaEntity getMesa() {
+        return mesa;
+    }
+
+    public void setMesa(MesaEntity mesa) {
+        this.mesa = mesa;
+    }
+    
 
     public Time getFecha() {
         return fecha;
