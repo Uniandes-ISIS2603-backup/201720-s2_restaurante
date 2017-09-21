@@ -1,0 +1,66 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package co.edu.uniandes.baco.restaurante.dtos;
+
+import co.edu.uniandes.baco.restaurante.entities.ReservaEntity;
+import java.sql.Time;
+
+/**
+ *
+ * @author jf.sanchezg
+ */
+public class ReservaDTO {
+    
+    private Long id;
+    private Time fecha;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    
+    public Time getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Time fecha) {
+        this.fecha = fecha;
+    }
+    
+    /**
+     * Constructor por defecto
+     */
+    public ReservaDTO() {
+    }
+
+    /**
+     * Conviertir Entity a DTO (Crea un nuevo DTO con los valores que recibe en
+     * la entidad que viene de argumento.
+     *
+     * @param Reserva: Es la entidad que se va a convertir a DTO
+     */
+    public ReservaDTO(ReservaEntity reserva) {
+        this.id = reserva.getId();
+        this.fecha = reserva.getFecha();
+    }
+    
+    
+    /**
+     * Convertir DTO a Entity
+     *
+     * @return Un Entity con los valores del DTO
+     */
+    public ReservaEntity toEntity() {
+        ReservaEntity entity = new ReservaEntity();
+        entity.setId(this.id);
+        entity.setFecha(this.fecha);
+        return entity;
+    }
+}
