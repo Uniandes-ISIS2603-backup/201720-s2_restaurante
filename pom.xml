@@ -72,4 +72,24 @@
               <type>pom</type>
          </dependency>
     </dependencies>
+      <build>
+        <plugins>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.7.6.201602180812</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                <destFile>${sonar.jacoco.reportPath}</destFile>
+            </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
