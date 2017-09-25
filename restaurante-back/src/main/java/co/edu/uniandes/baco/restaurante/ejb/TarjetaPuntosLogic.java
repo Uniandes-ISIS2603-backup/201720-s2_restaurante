@@ -35,7 +35,7 @@ public class TarjetaPuntosLogic {
         LOGGER.info("Inicia proceso de creación de tarjetaPuntos");
         // Verifica la regla de negocio que dice que no puede haber dos tarjetaPuntoss con el mismo nombre
         if (persistence.find(entity.getId()) != null) {
-            throw new BusinessLogicException("Ya existe una TarjetaPuntos con el nombre \"" + entity.getName() + "\"");
+            throw new BusinessLogicException("Ya existe una TarjetaPuntos con el ID \"" + entity.getId() + "\"");
         }
         // Invoca la persistencia para crear la tarjetaPuntos
         persistence.create(entity);

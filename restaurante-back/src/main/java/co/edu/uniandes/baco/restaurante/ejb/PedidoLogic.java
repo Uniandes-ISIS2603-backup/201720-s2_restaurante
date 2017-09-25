@@ -34,12 +34,12 @@ public class PedidoLogic
      * @return
      * @throws BusinessLogicException
      */
-    public PedidoEntity createpedido(PedidoEntity entity) throws BusinessLogicException {
+    public PedidoEntity createPedido(PedidoEntity entity) throws BusinessLogicException {
         LOGGER.info("Inicia proceso de creación de pedido");
         // Verifica la regla de negocio que dice que no puede haber dos clientes con el mismo nombre
-//        if (persistence.findByName(entity.getName()) != null) {
-//            throw new BusinessLogicException("Ya existe un Cliente con el nombre \"" + entity.getName() + "\"");
-//        }
+        if (getPedido(entity.getId()) != null) {
+            throw new BusinessLogicException("Ya existe un Pedido \"" + entity.getId() + "\"");
+        }
         // Invoca la persistencia para crear el pedido
         persistence.create(entity);
         LOGGER.info("Termina proceso de creación de pedido");
@@ -52,7 +52,7 @@ public class PedidoLogic
      *
      * @return una lista de pedidos.
      */
-    public List<PedidoEntity> getpedido() {
+    public List<PedidoEntity> getPedidos() {
         LOGGER.info("Inicia proceso de consultar todas las pedido");
         // Note que, por medio de la inyección de dependencias se llama al método "findAll()" que se encuentra en la persistencia.
         List<PedidoEntity> pedidos = persistence.findAll();
@@ -67,7 +67,7 @@ public class PedidoLogic
      * @param id: id del pedido para ser buscada.
      * @return el pedido solicitado por medio de su id.
      */
-    public PedidoEntity gepedido(Long id) {
+    public PedidoEntity getPedido(Long id) {
         LOGGER.log(Level.INFO, "Inicia proceso de consultar pedido con id={0}", id);
         // Note que, por medio de la inyección de dependencias se llama al método "find(id)" que se encuentra en la persistencia.
         PedidoEntity pedido = persistence.find(id);
@@ -87,7 +87,7 @@ public class PedidoLogic
      * ejemplo el nombre.
      * @return el pedido con los cambios actualizados en la base de datos.
      */
-    public PedidoEntity updatepedido(Long id, PedidoEntity entity) {
+    public PedidoEntity updatePedido(Long id, PedidoEntity entity) {
         LOGGER.log(Level.INFO, "Inicia proceso de actualizar pedido con id={0}", id);
         // Note que, por medio de la inyección de dependencias se llama al método "update(entity)" que se encuentra en la persistencia.
         PedidoEntity newEntity = persistence.update(entity);
