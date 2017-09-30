@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.baco.restaurante.resources;
 
+
 import co.edu.uniandes.baco.restaurante.dtos.TarjetaPuntosDetailDTO;
 import co.edu.uniandes.baco.restaurante.ejb.TarjetaPuntosLogic;
 import co.edu.uniandes.baco.restaurante.entities.TarjetaPuntosEntity;
@@ -22,23 +23,25 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.WebApplicationException;
 
 /**
  *
- * @author s.heim
+ * @author af.bejarano
  */
-@Path("tarjeta_puntos")
+@Path("tarjetasPuntos")
 @Produces("application/json")
 @Consumes("application/json")
 @Stateless
 public class TarjetaPuntosResource {
+    TarjetaPuntosLogic tarjetaPuntosLogic;
     @Inject
     TarjetaPuntosLogic TarjetaPuntosLogic; // Variable para acceder a la lógica de la aplicación. Es una inyección de dependencias.
 
     private static final Logger LOGGER = Logger.getLogger(TarjetaPuntosResource.class.getName());
 
     /**
-     * POST http://localhost:8080/restaurante-web/api/tarjeta_puntos
+     * POST http://localhost:8080/restaurante-web/api/tarjetasPuntos
      *
      * @param TarjetaPuntos correponde a la representación java del objeto json
      * enviado en el llamado.
@@ -59,8 +62,8 @@ public class TarjetaPuntosResource {
     }
 
     /**
-     * GET para todas las Tarjeta Puntos.
-     * http://localhost:8080/restaurante-web/api/tarjeta_puntos
+     * GET para todas las TarjetaPuntoses.
+     * http://localhost:8080/restaurante-web/api/tarjetasPuntos
      *
      * @return la lista de todas las TarjetaPuntoses en objetos json DTO.
      * @throws BusinessLogicException
@@ -69,10 +72,19 @@ public class TarjetaPuntosResource {
     public List<TarjetaPuntosDetailDTO> getTarjetaPuntoss() throws BusinessLogicException {
         return listEntity2DetailDTO(TarjetaPuntosLogic.getTarjetaPuntoss());
     }
+    @GET
+    @Path("{id: \\d+}")
+    public TarjetaPuntosDetailDTO getTarjetaPuntos(@PathParam("id") Long id) throws BusinessLogicException {
+        TarjetaPuntosEntity entity = tarjetaPuntosLogic.getTarjetaPuntos(id);
+        if (entity == null) {
+            throw new WebApplicationException("El recurso /tarjetasPuntos/" + id + " no existe.", 404);
+        }
+        return new TarjetaPuntosDetailDTO(entity);
+    }
 
    
     /**
-     * PUT http://localhost:8080/restaurante-web/api/tarjeta_puntos/1 Ejemplo
+     * PUT http://localhost:8080/restaurante-web/api/tarjetasPuntos/1 Ejemplo
      * json { "id": 1, "atirbuto1": "Valor nuevo" }
      *
      * @param id corresponde a la TarjetaPuntos a actualizar.
@@ -84,15 +96,19 @@ public class TarjetaPuntosResource {
      * En caso de no existir el id de la TarjetaPuntos a actualizar se retorna un
      * 404 con el mensaje.
      */
-    @PUT 
+    @PUT
     @Path("{id: \\d+}")
-    public TarjetaPuntosDetailDTO updateTarjetaPuntos(@PathParam("id") Long id, TarjetaPuntosDetailDTO restaurante) throws BusinessLogicException, UnsupportedOperationException {
-          throw new UnsupportedOperationException("Este servicio  no está implementado");
-      
+    public TarjetaPuntosDetailDTO updateTarjetaPuntos(@PathParam("id") Long id, TarjetaPuntosDetailDTO suc) throws BusinessLogicException {
+        suc.setId(id);
+        TarjetaPuntosEntity entity = tarjetaPuntosLogic.getTarjetaPuntos(id);
+        if (entity == null) {
+            throw new WebApplicationException("El recurso /tarjetasPuntos/" + id + " no existe.", 404);
+        }
+        return new TarjetaPuntosDetailDTO(tarjetaPuntosLogic.updateTarjetaPuntos(id, suc.toEntity()));
     }
 
     /**
-     * DELETE http://localhost:8080/restaurante-web/api/tarjeta_puntos/{id}
+     * DELETE http://localhost:8080/restaurante-web/api/tarjetasPuntos/{id}
      *
      * @param id corresponde a la TarjetaPuntos a borrar.
      * @throws BusinessLogicException
@@ -103,8 +119,12 @@ public class TarjetaPuntosResource {
      */
     @DELETE 
     @Path("{id: \\d+}")
-    public void deleteTarjetaPuntos(@PathParam("id") Long id) throws BusinessLogicException {
-         throw new UnsupportedOperationException("Este servicio no está implementado");
+    public void deleteTarjetaPuntos(@PathParam("tarjetasPuntosId") Long id) throws BusinessLogicException {
+        TarjetaPuntosEntity entity = tarjetaPuntosLogic.getTarjetaPuntos(id);
+        if (entity == null) {
+            throw new WebApplicationException("El recurso /tarjetasPuntos/" + id + " no existe.", 404);
+        }
+        tarjetaPuntosLogic.deleteTarjetaPuntos(id);
     }
 
     /**
