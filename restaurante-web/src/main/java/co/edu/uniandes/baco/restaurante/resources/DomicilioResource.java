@@ -23,23 +23,25 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.WebApplicationException;
 
 /**
  *
- * @author s.heim
+ * @author af.bejarano
  */
-@Path("domicilios")
+@Path("domicilioes")
 @Produces("application/json")
 @Consumes("application/json")
 @Stateless
 public class DomicilioResource {
+    DomicilioLogic domicilioLogic;
     @Inject
     DomicilioLogic DomicilioLogic; // Variable para acceder a la lógica de la aplicación. Es una inyección de dependencias.
 
     private static final Logger LOGGER = Logger.getLogger(DomicilioResource.class.getName());
 
     /**
-     * POST http://localhost:8080/restaurante-web/api/domicilios
+     * POST http://localhost:8080/restaurante-web/api/domicilioes
      *
      * @param Domicilio correponde a la representación java del objeto json
      * enviado en el llamado.
@@ -61,7 +63,7 @@ public class DomicilioResource {
 
     /**
      * GET para todas las Domicilioes.
-     * http://localhost:8080/restaurante-web/api/domicilios
+     * http://localhost:8080/restaurante-web/api/domicilioes
      *
      * @return la lista de todas las Domicilioes en objetos json DTO.
      * @throws BusinessLogicException
@@ -70,10 +72,19 @@ public class DomicilioResource {
     public List<DomicilioDetailDTO> getDomicilios() throws BusinessLogicException {
         return listEntity2DetailDTO(DomicilioLogic.getDomicilios());
     }
+    @GET
+    @Path("{id: \\d+}")
+    public DomicilioDetailDTO getDomicilio(@PathParam("id") Long id) throws BusinessLogicException {
+        DomicilioEntity entity = domicilioLogic.getDomicilio(id);
+        if (entity == null) {
+            throw new WebApplicationException("El recurso /domicilios/" + id + " no existe.", 404);
+        }
+        return new DomicilioDetailDTO(entity);
+    }
 
    
     /**
-     * PUT http://localhost:8080/restaurante-web/api/domicilios/1 Ejemplo
+     * PUT http://localhost:8080/restaurante-web/api/domicilioes/1 Ejemplo
      * json { "id": 1, "atirbuto1": "Valor nuevo" }
      *
      * @param id corresponde a la Domicilio a actualizar.
@@ -85,15 +96,19 @@ public class DomicilioResource {
      * En caso de no existir el id de la Domicilio a actualizar se retorna un
      * 404 con el mensaje.
      */
-    @PUT 
+    @PUT
     @Path("{id: \\d+}")
-    public DomicilioDetailDTO updateDomicilio(@PathParam("id") Long id, DomicilioDetailDTO restaurante) throws BusinessLogicException, UnsupportedOperationException {
-          throw new UnsupportedOperationException("Este servicio  no está implementado");
-      
+    public DomicilioDetailDTO updateDomicilio(@PathParam("id") Long id, DomicilioDetailDTO suc) throws BusinessLogicException {
+        suc.setId(id);
+        DomicilioEntity entity = domicilioLogic.getDomicilio(id);
+        if (entity == null) {
+            throw new WebApplicationException("El recurso /domicilios/" + id + " no existe.", 404);
+        }
+        return new DomicilioDetailDTO(domicilioLogic.updateDomicilio(id, suc.toEntity()));
     }
 
     /**
-     * DELETE http://localhost:8080/restaurante-web/api/domicilios/{id}
+     * DELETE http://localhost:8080/restaurante-web/api/domicilioes/{id}
      *
      * @param id corresponde a la Domicilio a borrar.
      * @throws BusinessLogicException
@@ -104,8 +119,12 @@ public class DomicilioResource {
      */
     @DELETE 
     @Path("{id: \\d+}")
-    public void deleteDomicilio(@PathParam("id") Long id) throws BusinessLogicException {
-         throw new UnsupportedOperationException("Este servicio no está implementado");
+    public void deleteDomicilio(@PathParam("domiciliosId") Long id) throws BusinessLogicException {
+        DomicilioEntity entity = domicilioLogic.getDomicilio(id);
+        if (entity == null) {
+            throw new WebApplicationException("El recurso /domicilios/" + id + " no existe.", 404);
+        }
+        domicilioLogic.deleteDomicilio(id);
     }
 
     /**
