@@ -22,6 +22,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.WebApplicationException;
 
 /**
  *
@@ -32,6 +33,7 @@ import javax.ws.rs.Produces;
 @Consumes("application/json")
 @Stateless
 public class SucursalResource {
+    SucursalLogic sucursalLogic;
     @Inject
     SucursalLogic SucursalLogic; // Variable para acceder a la lógica de la aplicación. Es una inyección de dependencias.
 
@@ -69,6 +71,15 @@ public class SucursalResource {
     public List<SucursalDetailDTO> getSucursals() throws BusinessLogicException {
         return listEntity2DetailDTO(SucursalLogic.getSucursals());
     }
+    @GET
+    @Path("{id: \\d+}")
+    public SucursalDetailDTO getBook(@PathParam("id") Long id) throws BusinessLogicException {
+        SucursalEntity entity = sucursalLogic.getSucursal(id);
+        if (entity == null) {
+            throw new WebApplicationException("El recurso /books/" + id + " no existe.", 404);
+        }
+        return new SucursalDetailDTO(entity);
+    }
 
    
     /**
@@ -84,11 +95,15 @@ public class SucursalResource {
      * En caso de no existir el id de la Sucursal a actualizar se retorna un
      * 404 con el mensaje.
      */
-    @PUT 
+    @PUT
     @Path("{id: \\d+}")
-    public SucursalDetailDTO updateSucursal(@PathParam("id") Long id, SucursalDetailDTO restaurante) throws BusinessLogicException, UnsupportedOperationException {
-          throw new UnsupportedOperationException("Este servicio  no está implementado");
-      
+    public SucursalDetailDTO updateBook(@PathParam("id") Long id, SucursalDetailDTO suc) throws BusinessLogicException {
+        suc.setId(id);
+        SucursalEntity entity = sucursalLogic.getSucursal(id);
+        if (entity == null) {
+            throw new WebApplicationException("El recurso /books/" + id + " no existe.", 404);
+        }
+        return new SucursalDetailDTO(sucursalLogic.updateSucursal(id, suc.toEntity()));
     }
 
     /**
@@ -103,8 +118,12 @@ public class SucursalResource {
      */
     @DELETE 
     @Path("{id: \\d+}")
-    public void deleteSucursal(@PathParam("id") Long id) throws BusinessLogicException {
-         throw new UnsupportedOperationException("Este servicio no está implementado");
+    public void deleteBook(@PathParam("booksId") Long id) throws BusinessLogicException {
+        SucursalEntity entity = sucursalLogic.getSucursal(id);
+        if (entity == null) {
+            throw new WebApplicationException("El recurso /books/" + id + " no existe.", 404);
+        }
+        sucursalLogic.deleteSucursal(id);
     }
 
     /**

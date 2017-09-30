@@ -61,7 +61,7 @@ public class SucursalLogic {
      * @return Instancia de SucursalEntity con los datos actualizados.
      * @generated
      */
-    public SucursalEntity updateSucursal(SucursalEntity entity) {
+    public SucursalEntity updateSucursal(Long id, SucursalEntity entity) {
         LOGGER.log(Level.INFO, "Inicia proceso de actualizar un autor ");
         return persistence.update(entity);
     }
