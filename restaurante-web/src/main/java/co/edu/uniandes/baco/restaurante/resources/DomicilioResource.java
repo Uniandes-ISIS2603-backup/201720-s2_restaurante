@@ -76,7 +76,7 @@ public class DomicilioResource {
     @Path("{id: \\d+}")
     public DomicilioDetailDTO getDomicilio(@PathParam("id") Long id)
     {
-        if(DomicilioLogic.existe(id))
+        if(DomicilioLogic.getDomicilio(id)!=null)
         {
            
            return new DomicilioDetailDTO(DomicilioLogic.getDomicilio(id));
@@ -105,7 +105,7 @@ public class DomicilioResource {
     @Path("{id: \\d+}")
     public void updateDomicilio(@PathParam("id") Long id, DomicilioDetailDTO Domicilio) throws BusinessLogicException, UnsupportedOperationException, WebApplicationException {
         DomicilioEntity DomicilioN = Domicilio.toEntity();
-        if(DomicilioLogic.existe(id))
+        if(DomicilioLogic.getDomicilio(id)!=null)
         {
             DomicilioLogic.updateDomicilio(id,DomicilioN);
         }
@@ -130,7 +130,7 @@ public class DomicilioResource {
     @DELETE
     @Path("{id: \\d+}")
     public void deleteDomicilio(@PathParam("id") Long id) throws BusinessLogicException, WebApplicationException {
-        if(DomicilioLogic.existe(id))
+        if(DomicilioLogic.getDomicilio(id)!=null)
         {
              DomicilioLogic.deleteDomicilio(id);
         }
