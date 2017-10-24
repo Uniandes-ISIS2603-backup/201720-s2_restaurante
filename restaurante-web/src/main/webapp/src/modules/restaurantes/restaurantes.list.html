@@ -1,0 +1,19 @@
+<div class="container-fluid">
+    <div class="col-md-4">
+        <p>El Restaurante Las Delicias es un fino establecimiento basado en la comida local. <br>
+            Los esperamos en múltiples lugares a través de todo el  país para comer con ustedes.</p>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Lugares de las Sucursales</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="restaurante in restaurantesRecords">
+                    <td id="{{$index}}-name">Restaurante las delicias de: {{restaurante.direccion}}</td>                                  
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+

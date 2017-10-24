@@ -19,5 +19,19 @@
     <body>
         <h1>Restaurante</h1>
         <span>By Baco</span>
+        <div class="container-fluid"> 
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul class="nav nav-tabs">
+                        <li><a ui-sref="restaurantesList">Home</a></li>
+                        <li><a ui-sref="clientesList">Cuenta</a></li>
+                        <li><a ui-sref="domiciliosList">Domicilio</a></li>
+                        <li><a ui-sref="reservasList">Reserva</a></li>
+                    </ul>                   
+                </div>
+            </div>               
+            <div ui-view="mainView">
+            </div> 
+        </div>
     </body>
 </html>
