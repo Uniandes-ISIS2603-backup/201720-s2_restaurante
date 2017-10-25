@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<div class="container-fluid">
+    <div class="col-md-4">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Nombre</th>                      
+                    <th>Apellido</th>
+                    <th>Direccion</th>
+                    <th>Numero de puntos</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="clientes in clientesRecords">
+                    <td id="{{$index}}-name">{{cliente.name}}</td> 
+                    <td id="{{$index}}-lastname">{{cliente.apelldio}}</td>
+                    <td id="{{$index}}-address">{{cliente.direccion}}</td>
+                    <td id="{{$index}}-numPuntos">{{cliente.numPuntos}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+

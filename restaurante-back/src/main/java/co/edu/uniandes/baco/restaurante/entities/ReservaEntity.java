@@ -6,10 +6,12 @@
 package co.edu.uniandes.baco.restaurante.entities;
 
 import java.io.Serializable;
-import java.sql.Time;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import uk.co.jemos.podam.common.PodamExclude;
 
 /**
@@ -18,7 +20,8 @@ import uk.co.jemos.podam.common.PodamExclude;
  */
 @Entity
 public class ReservaEntity extends BaseEntity implements Serializable{
-    private Time fecha;
+    @Temporal(TemporalType.DATE)
+    private Date fecha;
     @PodamExclude
     @ManyToOne
     private RestauranteEntity restaurante;
@@ -50,11 +53,11 @@ public class ReservaEntity extends BaseEntity implements Serializable{
     }
     
 
-    public Time getFecha() {
+    public Date getFecha() {
         return fecha;
     }
 
-    public void setFecha(Time fecha) {
+    public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
     

@@ -25,11 +25,13 @@ package co.edu.uniandes.baco.restaurante.entities;
 
 import co.edu.uniandes.baco.restaurante.entities.BaseEntity;
 import java.io.Serializable;
-import java.sql.Time;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import uk.co.jemos.podam.common.PodamExclude;
 
 /**
@@ -38,10 +40,14 @@ import uk.co.jemos.podam.common.PodamExclude;
  */
 @Entity
 public class RestauranteEntity extends BaseEntity implements Serializable {
-   private Time hora_inicio_maniana;
-   private Time hora_inicio_tarde;
-   private Time hora_fin_maniana;
-   private Time hora_fin_tarde;
+   @Temporal(TemporalType.DATE)
+   private Date hora_inicio_maniana;
+   @Temporal(TemporalType.DATE)
+   private Date hora_inicio_tarde;
+   @Temporal(TemporalType.DATE)
+   private Date hora_fin_maniana;
+   @Temporal(TemporalType.DATE)
+   private Date hora_fin_tarde;
 
     public List<SucursalEntity> getSucursales() {
         return sucursales;
@@ -109,35 +115,35 @@ public class RestauranteEntity extends BaseEntity implements Serializable {
     }
 
 
-    public Time getHora_inicio_maniana() {
+    public Date getHora_inicio_maniana() {
         return hora_inicio_maniana;
     }
 
-    public void setHora_inicio_maniana(Time hora_inicio_maniana) {
+    public void setHora_inicio_maniana(Date hora_inicio_maniana) {
         this.hora_inicio_maniana = hora_inicio_maniana;
     }
 
-    public Time getHora_inicio_tarde() {
+    public Date getHora_inicio_tarde() {
         return hora_inicio_tarde;
     }
 
-    public void setHora_inicio_tarde(Time hora_inicio_tarde) {
+    public void setHora_inicio_tarde(Date hora_inicio_tarde) {
         this.hora_inicio_tarde = hora_inicio_tarde;
     }
 
-    public Time getHora_fin_maniana() {
+    public Date getHora_fin_maniana() {
         return hora_fin_maniana;
     }
 
-    public void setHora_fin_maniana(Time hora_fin_maniana) {
+    public void setHora_fin_maniana(Date hora_fin_maniana) {
         this.hora_fin_maniana = hora_fin_maniana;
     }
 
-    public Time getHora_fin_tarde() {
+    public Date getHora_fin_tarde() {
         return hora_fin_tarde;
     }
 
-    public void setHora_fin_tarde(Time hora_fin_tarde) {
+    public void setHora_fin_tarde(Date hora_fin_tarde) {
         this.hora_fin_tarde = hora_fin_tarde;
     }
 }

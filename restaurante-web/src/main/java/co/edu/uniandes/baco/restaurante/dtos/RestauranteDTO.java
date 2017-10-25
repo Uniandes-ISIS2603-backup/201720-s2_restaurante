@@ -25,6 +25,7 @@ package co.edu.uniandes.baco.restaurante.dtos;
 
 import co.edu.uniandes.baco.restaurante.entities.RestauranteEntity;
 import java.sql.Time;
+import java.util.Date;
 
 /**
  * RestauranteDTO Objeto de transferencia de datos de Restaurantees. Los DTO
@@ -36,40 +37,40 @@ import java.sql.Time;
 public class RestauranteDTO {
 
     private Long id;
-    private Time hora_inicio_maniana;
-   private Time hora_inicio_tarde;
-   private Time hora_fin_maniana;
-   private Time hora_fin_tarde;
+    private Date hora_inicio_maniana;
+   private Date hora_inicio_tarde;
+   private Date hora_fin_maniana;
+   private Date hora_fin_tarde;
 
-    public Time getHora_inicio_maniana() {
+    public Date getHora_inicio_maniana() {
         return hora_inicio_maniana;
     }
 
-    public void setHora_inicio_maniana(Time hora_inicio_maniana) {
+    public void setHora_inicio_maniana(Date hora_inicio_maniana) {
         this.hora_inicio_maniana = hora_inicio_maniana;
     }
 
-    public Time getHora_inicio_tarde() {
+    public Date getHora_inicio_tarde() {
         return hora_inicio_tarde;
     }
 
-    public void setHora_inicio_tarde(Time hora_inicio_tarde) {
+    public void setHora_inicio_tarde(Date hora_inicio_tarde) {
         this.hora_inicio_tarde = hora_inicio_tarde;
     }
 
-    public Time getHora_fin_maniana() {
+    public Date getHora_fin_maniana() {
         return hora_fin_maniana;
     }
 
-    public void setHora_fin_maniana(Time hora_fin_maniana) {
+    public void setHora_fin_maniana(Date hora_fin_maniana) {
         this.hora_fin_maniana = hora_fin_maniana;
     }
 
-    public Time getHora_fin_tarde() {
+    public Date getHora_fin_tarde() {
         return hora_fin_tarde;
     }
 
-    public void setHora_fin_tarde(Time hora_fin_tarde) {
+    public void setHora_fin_tarde(Date hora_fin_tarde) {
         this.hora_fin_tarde = hora_fin_tarde;
     }
 

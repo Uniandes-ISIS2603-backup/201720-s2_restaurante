@@ -6,7 +6,7 @@
 package co.edu.uniandes.baco.restaurante.dtos;
 
 import co.edu.uniandes.baco.restaurante.entities.ReservaEntity;
-import java.sql.Time;
+import java.util.Date;
 
 /**
  *
@@ -15,7 +15,7 @@ import java.sql.Time;
 public class ReservaDTO {
     
     private Long id;
-    private Time fecha;
+    private Date fecha;
 
     public Long getId() {
         return id;
@@ -26,11 +26,11 @@ public class ReservaDTO {
     }
 
     
-    public Time getFecha() {
+    public Date getFecha() {
         return fecha;
     }
 
-    public void setFecha(Time fecha) {
+    public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
     
