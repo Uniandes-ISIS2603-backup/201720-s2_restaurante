@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<div class="panel panel-default"> 
+    <div class="panel-body">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="thumb">
+                <img class="img-responsive" ng-src="{{currentCliente.image}}"/>
+            </div>
+
+        </div>
+        <div class="col-md-3">
+            <dl>     
+                <dt>Name</dt>
+                <dd>{{currentCliente.nombre}}</dd>
+                
+                <hr>
+                <dt>LastName</dt>
+                <dd>{{currentCliente.apellido}}</dd>
+                
+                <hr>
+                <dt>Address</dt>
+                <dd>{{currentCliente.direccion}}</dd>
+                
+                <hr>
+                <dt>numPuntos</dt>
+                <dd>{{currentCliente.numPuntos}}</dd>
+
+            </dl>
+        </div>
+    </div>
+        </div>
+</div>

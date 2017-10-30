@@ -26,7 +26,8 @@ and open the template in the editor.
                     <td id="{{$index}}-name">{{cliente.name}}</td> 
                     <td id="{{$index}}-lastname">{{cliente.apelldio}}</td>
                     <td id="{{$index}}-address">{{cliente.direccion}}</td>
-                    <td id="{{$index}}-numPuntos">{{cliente.numPuntos}}</td>
+                    <!--<td id="{{$index}}-numPuntos">{{cliente.numPuntos}}</td>-->
+                    <td id="{{$index}}-numPuntos"><a ui-sref="tarjetaPuntosDetail({TarjetaPuntosId:tarjetaPuntos.id})">{{cliente.numPuntos}}</a></td>
                 </tr>
             </tbody>
         </table>
