@@ -6,6 +6,11 @@
             $http.get('data/editorials.json').then(function (response) {
                 $scope.restaurantesRecords = response.data;
             });
+       if ($state.params.authorId !== undefined) {
+                $http.get(restaurantesContext + '/' + $state.params.authorId).then(function (response) {
+                    $scope.currentRestaurante = response.data;
+                });
+            }
         }
     ]);
 }

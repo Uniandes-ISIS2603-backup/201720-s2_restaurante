@@ -10,7 +10,8 @@
             </thead>
             <tbody>
                 <tr ng-repeat="restaurante in restaurantesRecords">
-                    <td id="{{$index}}-name">Restaurante las delicias de: {{restaurante.direccion}}</td>                                  
+                    <td id="{{$index}}-direccion"><a ui-sref="sucursalDetail({restauranteId: restaurante.id})">{{restaurante.direccion}}</a></td>
+                    <td id="{{$index}}-calificacion">{{restaurante.calificacion}}</td>                                
                 </tr>
             </tbody>
         </table>
