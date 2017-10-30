@@ -5,7 +5,7 @@
  */
 (function (ng){
     var mod=ng.module("restauranteModule",['ui.router']);
-    mod.config(['$stateProvider','urlRouterProvider',
+    mod.config(['$stateProvider','$urlRouterProvider',
     function($stateProvider,$urlRouterProvider){
         var basePath='src/modules/restaurantes/';
         $urlRouterProvider.otherwise("/restaurantesList");
@@ -18,25 +18,12 @@
                         controllerAs: 'ctrl'
                      }
                 }
-            }).state('restaurantesList', {
-                url: '/list',
+            }).state('restaurantesDetail', {
+                url: '/detail',
                 parent: 'restaurantes',
                 views: {
                     'listView': {
                         templateUrl: basePath + 'restaurantes.list.html'
-                    }
-                }
-            }).state('restaurantesDetail', {
-                url: '/{restauranteId:int}/detail',
-                parent: 'restaurantes',
-                param: {
-                    restauranteId: null
-                },
-                views: {
-                    'detailView': {
-                        templateUrl: basePath + 'restaurantes.detail.html',
-                        controller: 'restauranteCtrl',
-                        controllerAs: 'ctrl'
                     }
                 }
             });
