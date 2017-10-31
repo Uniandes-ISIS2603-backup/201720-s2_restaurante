@@ -6,10 +6,16 @@
             $http.get('data/reservas.json').then(function (response) { 
                 $scope.reservasRecords = response.data;
             });
+            
+            if ($state.params.reservaId !== undefined) {
+                $http.get(reservasContext + '/' + $state.params.reservaId).then(function (response) {
+                    $scope.currentreserva = response.data;
+                });
+            }
         }
     ]);
 }
-)(angular);
+)(window.angular);
  
 
 
