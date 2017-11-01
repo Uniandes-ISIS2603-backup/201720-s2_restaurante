@@ -7,7 +7,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="reservas in reservasRecords">
+                <tr ng-repeat="reserva in reservasRecords">
                     <td id="{{$index}}-fecha">
                         <a ui-sref="reservaDetail({reservaId: reserva.id})" class="thumb">{{reserva.fecha| date:'yyyy-MM-dd'}}</a>
                     </td> 

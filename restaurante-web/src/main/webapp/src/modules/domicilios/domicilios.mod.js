@@ -1,5 +1,5 @@
 (function (ng){
-   var mod=ng.module("domicilioModule",['ui.router']);
+   var mod=ng.module("domiciliosModule",['ui.router']);
    
    mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             var basePath = 'src/modules/domicilios/';

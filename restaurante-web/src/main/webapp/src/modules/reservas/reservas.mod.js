@@ -11,7 +11,7 @@
                 views: {
                     'mainView': {
                         templateUrl: basePath + 'reservas.list.html',
-                        controller: 'reservaCtrl',
+                        controller: 'reservasCtrl',
                         controllerAs: 'ctrl'
                     }
                 }
@@ -35,7 +35,7 @@
                     },
                     'detailView': {
                         templateUrl: basePath + 'reservas.detail.html',
-                        controller: 'reservaCtrl',
+                        controller: 'reservasCtrl',
                         controllerAs: 'ctrl'
                     }
 
