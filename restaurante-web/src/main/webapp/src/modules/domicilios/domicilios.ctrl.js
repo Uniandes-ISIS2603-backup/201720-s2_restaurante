@@ -1,5 +1,5 @@
 (function (ng) {
-    var mod = ng.module("domiciliosModule");
+    var mod = ng.module("domicilioModule");
     mod.constant("domiciliosContext", "api/domicilios");
     mod.controller('domiciliosCtrl', ['$scope', '$http', 'editorialContext',
         function ($scope, $http, domiciliosContext) {
