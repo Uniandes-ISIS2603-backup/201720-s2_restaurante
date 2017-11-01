@@ -9,7 +9,7 @@
 
             if ($state.params.restauranteId !== undefined) {
                 $http.get(restaurantesContext + '/' + $state.params.restauranteId).then(function (response) {
-                    $scope.currentAuthor = response.data;
+                    $scope.currentRestaurante = response.data;
                 });
             }
         }

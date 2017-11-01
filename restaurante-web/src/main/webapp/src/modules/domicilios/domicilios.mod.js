@@ -9,7 +9,7 @@
                 views: {
                     'mainView': {
                         templateUrl: basePath + 'domicilios.list.html',
-                        controller: 'domicilioCtrl',
+                        controller: 'domiciliosCtrl',
                         controllerAs: 'ctrl'
                     }
                 }

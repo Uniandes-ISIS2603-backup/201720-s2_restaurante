@@ -10,7 +10,7 @@
                 abstract: true,
                 views: {
                     'mainView': {
-                        templateUrl: basePath + 'reservas.list.html',
+                        templateUrl: basePath + 'reservas.html',
                         controller: 'reservasCtrl',
                         controllerAs: 'ctrl'
                     }
