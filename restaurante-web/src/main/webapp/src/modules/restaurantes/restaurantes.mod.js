@@ -3,20 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-(function (ng){
-    var mod=ng.module("restauranteModule",['ui.router']);
-    mod.config(['$stateProvider','urlRouterProvider',
-    function($stateProvider,$urlRouterProvider){
-        var basePath='src/modules/restaurantes/';
-        $urlRouterProvider.otherwise("/restaurantesList");
-        $stateProvider.state('restaurantesList',{
-            url:'/restaurantes/list',
-            views:{
-                'mainView': {
-                        templateUrl: basePath + 'restaurantes.list.html',
+(function (ng) {
+    var mod = ng.module("restauranteModule", ['ui.router']);
+    mod.constant("restaurantesContext", "api/restaurantes");
+    mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
+            var basePath = 'src/modules/restaurantes/';
+            $urlRouterProvider.otherwise("/restaurantesList");
+
+            $stateProvider.state('restaurantes', {
+                url: '/restaurantes',
+                abstract: true,
+                views: {
+                    'mainView': {
+                        templateUrl: basePath + 'restaurantes.html',
                         controller: 'restauranteCtrl',
                         controllerAs: 'ctrl'
-                     }
+                    }
                 }
             }).state('restaurantesList', {
                 url: '/list',
@@ -26,17 +28,42 @@
                         templateUrl: basePath + 'restaurantes.list.html'
                     }
                 }
-            }).state('restaurantesDetail', {
+            }).state('restauranteDetail', {
                 url: '/{restauranteId:int}/detail',
                 parent: 'restaurantes',
                 param: {
                     restauranteId: null
                 },
                 views: {
+                    'listView': {
+                        controller: 'restauranteCtrl',
+                        controllerAs: 'ctrl'
+                    },
                     'detailView': {
                         templateUrl: basePath + 'restaurantes.detail.html',
                         controller: 'restauranteCtrl',
                         controllerAs: 'ctrl'
+                    }
+                }
+            }).state('restaurantesCreate', {
+                url: '/create',
+                parent: 'restaurantes',
+                views: {
+                    'detailView': {
+                        templateUrl: basePath + '/new/restaurantes.new.html',
+                        controller: 'restauranteNewCtrl'
+                    }
+                }
+            }).state('restauranteDelete', {
+                url: '/delete/{restauranteId:int}',
+                parent: 'restaurantes',
+                param: {
+                    restauranteId: null
+                },
+                views: {
+                    'detailView': {
+                        templateUrl: basePath + '/delete/restaurante.delete.html',
+                        controller: 'restauranteDeleteCtrl'
                     }
                 }
             });
