@@ -3,15 +3,17 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>Fecha</th>                      
+                    <th>Sucursal</th>  
+                    <th>Fecha</th>
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="reserva in reservasRecords">
+                    <td id="{{$index}}-sucursal">{{reserva.mesa.sucursal.id}}</td>
                     <td id="{{$index}}-fecha">
                         <a ui-sref="reservaDetail({reservaId: reserva.id})" class="thumb">{{reserva.fecha| date:'yyyy-MM-dd'}}</a>
                     </td> 
-                    
+                          
                 </tr>
             </tbody>
         </table>

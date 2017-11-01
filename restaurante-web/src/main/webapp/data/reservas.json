@@ -1,0 +1,91 @@
+[{
+        "id": 1,
+        "fecha": "2017/01/06",
+        "mesa": {
+            "id": 1,
+            "sillasDisponibles": 2,
+            "piso": 2,
+            "disponible": false,
+            "sucursal": {
+                "id":5,
+                "calificacion": "malo",
+                "dosPisos": true,
+                "direccion": "Cra Ejemplo1 # Ejemplo1"
+            }
+        }
+    },{
+        "id": 2,
+        "fecha": "2017/01/06",
+        "mesa": {
+            "id": 2,
+            "sillasDisponibles": 2,
+            "piso": 1,
+            "disponible": false,
+            "sucursal": {
+                "id":1,
+                "calificacion": "malo",
+                "dosPisos": false,
+                "direccion": "Cra Ejemplo2 # Ejemplo2"
+            }
+        }
+    },{
+        "id": 3,
+        "fecha": "2017/01/08",
+        "mesa": {
+            "id": 3,
+            "sillasDisponibles": 1,
+            "piso": 2,
+            "disponible": false,
+            "sucursal": {
+                "id":9,
+                "calificacion": "malo",
+                "dosPisos": true,
+                "direccion": "Cra Ejemplo3 # Ejemplo3"
+            }
+        }
+    }, {
+        "id": 4,
+        "fecha": "2017/01/06",
+        "mesa": {
+            "id": 1,
+            "sillasDisponibles": 0,
+            "piso": 2,
+            "disponible": false,
+            "sucursal": {
+                "id":40,
+                "calificacion": "malo",
+                "dosPisos": true,
+                "direccion": "Cra Ejemplo4 # Ejemplo4"
+            }
+        }
+    }, {
+        "id": 5,
+        "fecha": "2017/02/06",
+        "mesa": {
+            "id": 1,
+            "sillasDisponibles": 2,
+            "piso": 2,
+            "disponible": false,
+            "sucursal": {
+                "id":12,
+                "calificacion": "malo",
+                "dosPisos": true,
+                "direccion": "Cra Ejemplo5 # Ejemplo5"
+            }
+        }
+    }, {
+        "id": 6,
+        "fecha": "2017/01/07",
+        "mesa": {
+            "id": 1,
+            "sillasDisponibles": 2,
+            "piso": 2,
+            "disponible": false,
+            "sucursal": {
+                "id":11,
+                "calificacion": "Bueno",
+                "dosPisos": true,
+                "direccion": "Cra Ejemplo6 # Ejemplo6"
+            }
+        }
+    }]
