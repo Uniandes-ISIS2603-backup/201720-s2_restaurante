@@ -20,8 +20,8 @@
                         controllerAs: 'ctrl'
                     }
                 }
-            }).state('restaurantesList', {
-                url: '/list',
+            }).state('restaurantesDetail', {
+                url: '/detail',
                 parent: 'restaurantes',
                 views: {
                     'listView': {
