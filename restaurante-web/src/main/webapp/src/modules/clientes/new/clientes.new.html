@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<div class="container-fluid">
+    <div class="panel-group">
+        <div class="panel panel-primary">
+            <div class="panel-heading"><label ng-if="!edit" id="createCliente">Create new Cliente</label>
+                <label ng-if="edit" id="editCliente">Edit Cliente</label></div>
+            <div class="panel-body">
+                <form ng-submit="createCliente()" name="cliente">
+                    <div class="form-group row">
+                        <div class="form-group col-md-6">
+                            <label for="clienteName" class="col-sm-2">Name:</label>
+                            <input id="clienteName" required ng-model="clienteName" class="col-sm-6"/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="form-group col-md-6">
+                            <label for="clienteBirthDate" class="col-sm-2">Birth Date:</label>
+                            <input type="date" id="clienteBirthDate" placeholder="DD/MM/YYYY" required ng-model="clienteBirthDate" class="col-sm-6"/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="form-group col-md-6">
+                            <label for="clienteDescription" class="col-sm-2">Biography:</label>
+                            <textarea id="clienteDescription" required ng-model="clienteDescription" class="col-sm-6"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="form-group col-md-6">
+                            <label for="clienteImage" class="col-sm-2">Image:</label>
+                            <input id="clienteImage" required ng-model="clienteImage" class="col-sm-6"/>
+                        </div>
+                    </div>
+                    <div ng-if="edit" class="panel-group" id="thePedidos">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">Associated pedidos</div>
+                            <div class="panel-body">
+                                <div id="div2" ondrop="angular.element(document.getElementById('thePedidos')).scope().dropAdd(event)" ondragover="angular.element(document.getElementById('thePedidos')).scope().allowDrop(event)">
+                                    <label></label>
+                                    <div ng-show="edit" ng-repeat="pedido in allPedidosCliente">
+                                        <p draggable="true" ondragstart="angular.element(document.getElementById('thePedidos')).scope().drag(event)" id="{{pedido.id}}">{{pedido.name}}</p>                                 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-success">
+                            <div class="panel-heading">All pedidos</div>
+                            <div class="panel-body">
+                                <div id="div1" ondrop="angular.element(document.getElementById('thePedidos')).scope().dropDelete(event)" ondragover="angular.element(document.getElementById('thePedidos')).scope().allowDrop(event)">
+                                    <label></label>
+                                    <div ng-repeat="pedido in allPedidosShow">
+                                        <p draggable="true" ondragstart="angular.element(document.getElementById('thePedidos')).scope().drag(event)" id="{{pedido.id}}">{{pedido.name}}</p>                
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="form-group col-sm-4" ng-if="!cliente.$valid">
+
+                            <div class="alert alert-warning" >
+                                <strong>Warning!</strong><p>All inputs are required*</p>
+                            </div> 
+                        </div> 
+                    </div> 
+                    <div class="form-group row">
+                        <div class="form-group col-sm-12">
+                            <input ng-show="cliente.$valid" type="submit" value="Save" class="btn btn-success"/>
+                            <a class="btn btn-info" ui-sref="clientesList">Cancel</a>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

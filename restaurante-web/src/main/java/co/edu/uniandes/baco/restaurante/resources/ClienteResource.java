@@ -22,6 +22,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.WebApplicationException;
 
 /**
  *
@@ -87,9 +88,14 @@ public class ClienteResource {
      */
     @PUT 
     @Path("{id: \\d+}")
-    public ClienteDetailDTO updateCliente(@PathParam("id") Long id, ClienteDetailDTO restaurante) throws BusinessLogicException, UnsupportedOperationException {
-          throw new UnsupportedOperationException("Este servicio  no está implementado");
-      
+    public ClienteDetailDTO updateCliente(@PathParam("id") Long id, ClienteDetailDTO cliente) throws BusinessLogicException, UnsupportedOperationException {
+        cliente.setId(id);
+        ClienteEntity entity = ClienteLogic.getCliente(id);
+        if (entity == null) {
+            throw new WebApplicationException("El recurso /clientes/" + id + " no existe.", 404);
+        }
+        return new ClienteDetailDTO(ClienteLogic.updateCliente(id, entity)); 
+        
     }
 
     /**
@@ -105,7 +111,11 @@ public class ClienteResource {
     @DELETE 
     @Path("{id: \\d+}")
     public void deleteCliente(@PathParam("id") Long id) throws BusinessLogicException {
-         throw new UnsupportedOperationException("Este servicio no está implementado");
+         ClienteEntity entity = ClienteLogic.getCliente(id);
+        if (entity == null) {
+            throw new WebApplicationException("El recurso /clientes/" + id + " no existe.", 404);
+        }
+        ClienteLogic.deleteCliente(id);
     }
 
     /**

@@ -23,6 +23,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.WebApplicationException;
 
 /**
  *
@@ -88,8 +89,13 @@ public class PedidoResource {
      */
     @PUT 
     @Path("{id: \\d+}")
-    public PedidoDetailDTO updatePedido(@PathParam("id") Long id, PedidoDetailDTO restaurante) throws BusinessLogicException, UnsupportedOperationException {
-          throw new UnsupportedOperationException("Este servicio  no está implementado");
+    public PedidoDetailDTO updatePedido(@PathParam("id") Long id, PedidoDetailDTO pedido) throws BusinessLogicException, UnsupportedOperationException {
+          pedido.setId(id);
+        PedidoEntity entity = PedidoLogic.getPedido(id);
+        if (entity == null) {
+            throw new WebApplicationException("El recurso /pedidos/" + id + " no existe.", 404);
+        }
+        return new PedidoDetailDTO(PedidoLogic.updatePedido(id, entity)); 
       
     }
 
