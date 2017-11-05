@@ -5,7 +5,7 @@
  */
 (function (ng) {
     var mod = ng.module("restauranteModule", ['ui.router']);
-    mod.constant("restaurantesContext", "api/restaurantes");
+    mod.constant("restaurantesContext", "api/sucursales");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             var basePath = 'src/modules/restaurantes/';
             $urlRouterProvider.otherwise("/restaurantesList");
@@ -52,6 +52,18 @@
                     'detailView': {
                         templateUrl: basePath + '/new/restaurantes.new.html',
                         controller: 'restauranteNewCtrl'
+                    }
+                }
+            }).state('restauranteUpdate', {
+                url: '/update/{restauranteId:int}',
+                parent: 'restaurantes',
+                param: {
+                    authorId: null
+                },
+                views: {
+                    'detailView': {
+                        templateUrl: basePath + '/new/restaurantes.new.html',
+                        controller: 'restauranteUpdateCtrl'
                     }
                 }
             }).state('restauranteDelete', {

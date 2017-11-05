@@ -5,16 +5,15 @@
  */
 (function (ng) {
     var mod = ng.module("restauranteModule");
-    mod.constant("restaurantesContext", "api/restaurantes");
-    mod.controller('restauranteNewCtrl', ['$scope', '$http', 'restaurantesContext', '$state', 'booksContext', '$rootScope',
+    mod.constant("restaurantesContext", "api/sucursales");
+    mod.controller('restauranteNewCtrl', ['$scope', '$http', 'restaurantesContext', '$state', '$rootScope',
         function ($scope, $http, restaurantesContext, $state, $rootScope) {
             $rootScope.edit = false;
             $scope.createRestaurante = function () {
                 $http.post(restaurantesContext, {
-                    name: $scope.restauranteDireccion,
-                    birthDate: $scope.restauranteDosPisos,
-                    description: $scope.restauranteCalificacion,
-                    image: $scope.restauranteImage
+                    direccion: $scope.restauranteDireccion,
+                    dosPisos: $scope.restauranteDosPisos,
+                    calificacion: $scope.restauranteCalificacion
                 }).then(function (response) {
                     //restaurante created successfully
                     $state.go('restaurantesList', {restauranteId: response.data.id}, {reload: true});
