@@ -10,7 +10,7 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-<div class="container-fluid">
+<!--<div class="container-fluid">
     <div class="col-md-4">
         <table class="table table-striped">
             <thead>
@@ -26,8 +26,33 @@ and open the template in the editor.
                     <td id="{{$index}}-name">{{cliente.name}}</td> 
                     <td id="{{$index}}-lastname">{{cliente.apelldio}}</td>
                     <td id="{{$index}}-address">{{cliente.direccion}}</td>
-                    <!--<td id="{{$index}}-numPuntos">{{cliente.numPuntos}}</td>-->
+                    <td id="{{$index}}-numPuntos">{{cliente.numPuntos}}</td>
                     <td id="{{$index}}-numPuntos"><a ui-sref="tarjetaPuntosDetail({TarjetaPuntosId:tarjetaPuntos.id})">{{cliente.numPuntos}}</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>-->
+<div class="container-fluid">
+    <div class="col-md-4">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Nombre</th>  
+                    <th>Apellido</th>
+                    <th>Direccion</th>
+                    <th>numPuntos</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="cliente in clientesRecords">
+                    <td id="{{$index}}-Nombre">{{cliente.nombre}}
+<!--                        <a ui-sref="clientesDetail({clienteId: cliente.id})" class="thumb">{{cliente.nombre}}</a>-->
+                    </td> 
+                    <td id="{{$index}}-Apellido">{{cliente.apellido}}</td>
+                    <td id="{{$index}}-Apellido">{{cliente.direccion}}</td>
+                    <td id="{{$index}}-Apellido">{{cliente.numPuntos}}</td>
+                          
                 </tr>
             </tbody>
         </table>
