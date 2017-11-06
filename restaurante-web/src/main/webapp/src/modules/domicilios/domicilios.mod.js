@@ -29,7 +29,7 @@
                 },
                 views: {
                     'listView': {
-                        controller: 'rdomicilioCtrl',
+                        controller: 'domicilioCtrl',
                         controllerAs: 'ctrl'
                     },
                     'detailView': {
