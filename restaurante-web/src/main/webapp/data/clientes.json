@@ -1,0 +1,15 @@
+[{
+        
+        "nombre": "salomon",
+        "apellido": "heim",
+        "direccion": "dir",
+        "numPuntos": 10
+    }
+    ,{
+        
+        "nombre": "salomon2",
+        "apellido": "heim2",
+        "direccion": "dir2",
+        "numPuntos": 11
+    }
+]
