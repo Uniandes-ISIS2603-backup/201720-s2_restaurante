@@ -25,7 +25,30 @@ public class ClienteEntity extends BaseEntity implements Serializable
     private boolean tieneTarjeta;
     private String nombre;
     private String apellido;
+    private int numPuntos;
+    
+    
+    @PodamExclude
+    @OneToOne
+    private TarjetaPuntosEntity tarjeta;
+    
+    @PodamExclude
+    @OneToOne
+    private DomicilioEntity dom;
 
+    @PodamExclude
+    @ManyToOne
+    private RestauranteEntity rest;
+
+    @PodamExclude
+    @OneToMany
+    private List<PagoEntity> metodos = new ArrayList<PagoEntity>();
+
+    @PodamExclude
+    @OneToMany
+    private List<ReservaEntity> reservas = new ArrayList<ReservaEntity>();
+    
+    
     public List<ReservaEntity> getReservas() {
         return reservas;
     }
@@ -34,14 +57,6 @@ public class ClienteEntity extends BaseEntity implements Serializable
         this.reservas = reservas;
     }
     
-    private int numPuntos;
-    @PodamExclude
-   @OneToOne
-   private TarjetaPuntosEntity tarjeta;
-    @PodamExclude
-   @OneToOne
-   private DomicilioEntity dom;
-
     public TarjetaPuntosEntity getTarjeta() {
         return tarjeta;
     }
@@ -73,15 +88,7 @@ public class ClienteEntity extends BaseEntity implements Serializable
     public void setMetodos(List<PagoEntity> metodos) {
         this.metodos = metodos;
     }
-    @PodamExclude
-   @ManyToOne
-   private RestauranteEntity rest;
-    @PodamExclude
-   @OneToMany
-   private List<PagoEntity> metodos = new ArrayList<PagoEntity>();
-    @PodamExclude
-   @OneToMany
-   private List<ReservaEntity> reservas = new ArrayList<ReservaEntity>();
+   
 
     /**
      * @return the tieneTarjeta
@@ -138,4 +145,7 @@ public class ClienteEntity extends BaseEntity implements Serializable
     public void setNumPuntos(int numPuntos) {
         this.numPuntos = numPuntos;
     }
+
+    
+    
 }
