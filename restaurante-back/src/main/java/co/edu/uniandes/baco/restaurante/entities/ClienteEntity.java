@@ -33,6 +33,7 @@ public class ClienteEntity extends BaseEntity implements Serializable
     public void setReservas(List<ReservaEntity> reservas) {
         this.reservas = reservas;
     }
+    
     private int numPuntos;
     @PodamExclude
    @OneToOne

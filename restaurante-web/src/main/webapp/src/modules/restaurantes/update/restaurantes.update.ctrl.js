@@ -1,9 +1,9 @@
 (
         function (ng) {
             var mod = ng.module("restauranteModule");
-            mod.constant("authorsContext", "api/sucursales");
-            mod.controller('authorUpdateCtrl', ['$scope', '$http', 'authorsContext', '$state', '$rootScope', '$filter',
-                function ($scope, $http, authorsContext, $state, booksContext, $rootScope, $filter) {
+            mod.constant("restaurantesContext", "api/sucursales");
+            mod.controller('restauranteUpdateCtrl', ['$scope', '$http', 'restaurantesContext', '$state', '$rootScope', '$filter',
+                function ($scope, $http, restaurantesContext, $state, $rootScope, $filter) {
                     $rootScope.edit = true;
 
                     var idRestaurante = $state.params.restauranteId;
@@ -27,7 +27,7 @@
                         ev.target.appendChild(document.getElementById(data));
                     };
                     $scope.createRestaurante = function () {
-                        $http.put(authorsContext + "/" + idRestaurante, {
+                        $http.put(restaurantesContext + "/" + idRestaurante, {
                         direccion: $scope.restauranteDireccion,
                         dosPisos: $scope.restauranteDosPisos,
                         calificacion: $scope.restauranteCalificacion
