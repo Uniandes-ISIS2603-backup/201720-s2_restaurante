@@ -5,7 +5,7 @@
  */
 (function (ng) {
     var mod = ng.module("restauranteModule");
-    mod.constant("restaurantesContext", "api/restaurantes");
+    mod.constant("restaurantesContext", "api/sucursales");
     mod.controller('restauranteDeleteCtrl', ['$scope', '$http', 'restaurantesContext', '$state',
         function ($scope, $http, restaurantesContext, $state) {
             $scope.deleteRestaurante = function () {

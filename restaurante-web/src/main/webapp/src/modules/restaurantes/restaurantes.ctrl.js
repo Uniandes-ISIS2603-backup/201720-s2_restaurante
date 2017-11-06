@@ -3,8 +3,8 @@
     mod.constant("restaurantesContext", "api/restaurantes");
     mod.controller('restauranteCtrl', ['$scope', '$http', 'restaurantesContext', '$state',
         function ($scope, $http, restaurantesContext, $state) {
-            $http.get(restaurantesContext).then(function (response) {
-                $scope.authorsRecords = response.data;
+            $http.get('data/sucursales.json').then(function (response) {
+                $scope.restaurantesRecords = response.data;
             });
 
             if ($state.params.restauranteId !== undefined) {

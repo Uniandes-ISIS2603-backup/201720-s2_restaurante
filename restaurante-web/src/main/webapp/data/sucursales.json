@@ -1,0 +1,32 @@
+[ {
+                "id":5,
+                "calificacion": "malo",
+                "dosPisos": true,
+                "direccion": "Cra Ejemplo1 # Ejemplo1"
+    },{
+                "id":1,
+                "calificacion": "malo",
+                "dosPisos": false,
+                "direccion": "Cra Ejemplo2 # Ejemplo2"
+    },{
+                "id":9,
+                "calificacion": "malo",
+                "dosPisos": true,
+                "direccion": "Cra Ejemplo3 # Ejemplo3"
+    }, {
+                "id":40,
+                "calificacion": "malo",
+                "dosPisos": true,
+                "direccion": "Cra Ejemplo4 # Ejemplo4"
+    },{
+                "id":12,
+                "calificacion": "malo",
+                "dosPisos": true,
+                "direccion": "Cra Ejemplo5 # Ejemplo5"
+    }, {
+                "id":11,
+                "calificacion": "Bueno",
+                "dosPisos": true,
+                "direccion": "Cra Ejemplo6 # Ejemplo6"
+         
+        }]
