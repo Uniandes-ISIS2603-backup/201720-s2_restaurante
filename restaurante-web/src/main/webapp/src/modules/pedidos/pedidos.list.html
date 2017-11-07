@@ -15,7 +15,8 @@ and open the template in the editor.
             </thead>
             <tbody>
                 <tr ng-repeat="pedidos in pedidosRecords">
-                    <td id="{{$index}}-name">{{pedido.fecha}}</td> 
+                    <td id="{{$index}}-fecha">{{pedido.fecha}}</td> 
+                    <td id="{{$index}}-direccion">{{pedido.direccion}}</td> 
                 </tr>
             </tbody>
         </table>

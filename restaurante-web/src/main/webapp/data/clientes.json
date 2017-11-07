@@ -12,4 +12,11 @@
         "direccion": "dir2",
         "numPuntos": 11
     }
+    ,{
+        "id": 3,
+        "nombre": "salomon3",
+        "apellido": "heim3",
+        "direccion": "dir3",
+        "numPuntos": 12
+    }
 ]

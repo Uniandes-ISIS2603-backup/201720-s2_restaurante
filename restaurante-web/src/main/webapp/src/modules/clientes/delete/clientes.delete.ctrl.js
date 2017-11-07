@@ -27,6 +27,8 @@
             $scope.deleteCliente = function () {
                 $http.delete(clientesContext + '/' + idCliente, {}).then(function (response) {
                     $state.go('clientesList', {clienteId: response.data.id}, {reload: true});
+                    var index = $scope.clientesRecords.indexOf(response.data);
+                    $scope.clientesRecords.splice(index, 1);
                 });
             };
         }
