@@ -23,7 +23,7 @@
                     //Consulto el autor a editar.
                     $http.get(clientesContext + '/' + idCliente).then(function (response) {
                         var cliente = response.data;
-                        $scope.clienteName = cliente.nombre;
+                        $scope.clienteNombre = cliente.nombre;
                         $scope.clienteApellido = cliente.apellido;
                         $scope.clienteDireccion = cliente.direccion;
                         $scope.clienteNumPuntos = cliente.numPutnos;
