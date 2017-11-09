@@ -1,15 +1,22 @@
 [{
-        
+        "id": 1,
         "nombre": "salomon",
         "apellido": "heim",
         "direccion": "dir",
         "numPuntos": 10
     }
     ,{
-        
+        "id": 2,
         "nombre": "salomon2",
         "apellido": "heim2",
         "direccion": "dir2",
         "numPuntos": 11
+    }
+    ,{
+        "id": 3,
+        "nombre": "salomon3",
+        "apellido": "heim3",
+        "direccion": "dir3",
+        "numPuntos": 12
     }
 ]

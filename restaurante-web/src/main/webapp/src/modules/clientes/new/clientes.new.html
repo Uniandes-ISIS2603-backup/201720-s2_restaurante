@@ -13,29 +13,30 @@ and open the template in the editor.
                 <form ng-submit="createCliente()" name="cliente">
                     <div class="form-group row">
                         <div class="form-group col-md-6">
-                            <label for="clienteName" class="col-sm-2">Name:</label>
-                            <input id="clienteName" required ng-model="clienteName" class="col-sm-6"/>
+                            <label for="clienteName" class="col-sm-2">Nombre:</label>
+                            <input id="clienteName" required ng-model="clienteNombre" class="col-sm-6"/><br>
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="form-group col-md-6">
-                            <label for="clienteBirthDate" class="col-sm-2">Birth Date:</label>
-                            <input type="date" id="clienteBirthDate" placeholder="DD/MM/YYYY" required ng-model="clienteBirthDate" class="col-sm-6"/>
+                            <label for="clienteApellido" class="col-sm-2">Apellido:</label>
+                            <input id="clienteApellido" required ng-model="clienteApellido" class="col-sm-6"/><br>
+                        </div>
+                    </div>
+                        
+                    <div class="form-group row">
+                        <div class="form-group col-md-6">
+                            <label for="clienteDireccion" class="col-sm-2">Direccion:</label>
+                            <input id="clienteDireccion" required ng-model="clienteDireccion" class="col-sm-6"/><br>
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="form-group col-md-6">
-                            <label for="clienteDescription" class="col-sm-2">Biography:</label>
-                            <textarea id="clienteDescription" required ng-model="clienteDescription" class="col-sm-6"></textarea>
+                            <label for="clienteNumPuntos" class="col-sm-2">NumPuntos:</label>
+                            <input id="clienteNumPuntos" required ng-model="clienteNumPuntos" class="col-sm-6"/><br>
                         </div>
                     </div>
-                    <div class="form-group row">
-                        <div class="form-group col-md-6">
-                            <label for="clienteImage" class="col-sm-2">Image:</label>
-                            <input id="clienteImage" required ng-model="clienteImage" class="col-sm-6"/>
-                        </div>
-                    </div>
-                    <div ng-if="edit" class="panel-group" id="thePedidos">
+<!--                    <div ng-if="edit" class="panel-group" id="thePedidos">
                         <div class="panel panel-info">
                             <div class="panel-heading">Associated pedidos</div>
                             <div class="panel-body">
@@ -46,8 +47,8 @@ and open the template in the editor.
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="panel panel-success">
+                        </div>-->
+<!--                        <div class="panel panel-success">
                             <div class="panel-heading">All pedidos</div>
                             <div class="panel-body">
                                 <div id="div1" ondrop="angular.element(document.getElementById('thePedidos')).scope().dropDelete(event)" ondragover="angular.element(document.getElementById('thePedidos')).scope().allowDrop(event)">
@@ -57,7 +58,7 @@ and open the template in the editor.
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div>-->
                     </div>
 
                     <div class="form-group row">

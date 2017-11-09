@@ -19,16 +19,8 @@ and open the template in the editor.
                 <dd>{{currentReserva.fecha| date:'yyyy-MM-dd'}}</dd>
                 
                 <hr>
-                <dt>nombreUsuario</dt>
-                <dd>{{currentReserva.cliente.nombre}}</dd>
-                
-                <hr>
-                <dt>apellidoUsuario</dt>
-                <dd>{{currentReserva.cliente.apellido}}</dd>
-                
-                <hr>
-                <dt>DireccionSucursal</dt>
-                <dd>{{currentReserva.mesa.sucursal.direccion}}</dd>
+                <dt>Mesa Reservada</dt>
+                <dd>{{currentReserva.mesaId}}</dd>
                 
                 
             </dl>

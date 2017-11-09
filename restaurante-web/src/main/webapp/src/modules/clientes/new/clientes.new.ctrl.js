@@ -6,18 +6,20 @@
 (function (ng) {
     var mod = ng.module("clienteModule");
     mod.constant("clientesContext", "api/clientes");
-    mod.controller('clienteNewCtrl', ['$scope', '$http', 'clientesContext', '$state', 'pedidosContext', '$rootScope',
-        function ($scope, $http, clientesContext, $state, pedidosContext, $rootScope) {
+    mod.controller('clienteNewCtrl', ['$scope', '$http', 'clientesContext', '$state', '$rootScope',
+        function ($scope, $http, clientesContext, $state, $rootScope) {
             $rootScope.edit = false;
             $scope.createCliente = function () {
                 $http.post(clientesContext, {
-                    name: $scope.clienteName,
-                    birthDate: $scope.clienteBirthDate,
-                    description: $scope.clienteDescription,
-                    image: $scope.clienteImage
+                    nombre: $scope.clienteNombre,
+                    apellido: $scope.clienteApellido,
+                    direccion: $scope.clienteDireccion,
+                    numPuntos: $scope.clienteNumPuntos
                 }).then(function (response) {
                     //Cliente created successfully
                     $state.go('clientesList', {clienteId: response.data.id}, {reload: true});
+                    var index = $scope.clientesRecords.indexOf(response.data);
+                    $scope.clientesRecords.splice(index, 1);
                 });
             };
         }

@@ -41,6 +41,41 @@
 
                 }
 
-            });
-    }])
+            }).state('reservasCreate', {
+                url: '/create',
+                parent: 'reservas',
+                views: {
+                    'detailView': {
+                        templateUrl: basePath + '/new/reservas.new.html',
+                        controller: 'reservaNewCtrl'
+                    }
+                }
+            }).state('reservaUpdate', {
+                url: '/update/{reservaId:int}',
+                parent: 'reservas',
+                param: {
+                    reservaId: null
+                },
+                views: {
+                    'detailView': {
+                        templateUrl: basePath + '/new/reservas.new.html',
+                        controller: 'reservaUpdateCtrl'
+                    }
+                }
+            })
+                    .state('reservaDelete', {
+                url: '/delete/{reservaId:int}',
+                parent: 'reservas',
+                param: {
+                    reservaId: null
+                },
+                views: {
+                    'detailView': {
+                       templateUrl: basePath + '/delete/reserva.delete.html',
+                        controller: 'reservaDeleteCtrl'
+                    }
+                }
+            })
+            ;
+    }]);
 })(window.angular);

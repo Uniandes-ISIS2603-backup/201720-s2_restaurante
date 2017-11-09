@@ -84,6 +84,40 @@ var mod = ng.module("clienteModule", ['ui.router']); //declaracion del modulo, l
                     }
 
                 }
+            
+            }).state('clienteCreate', {
+                url: '/create',
+                parent: 'clientes',
+                views: {
+                    'detailView': {
+                        templateUrl: basePath + '/new/clientes.new.html',
+                        controller: 'clienteNewCtrl'
+                    }
+                }
+            }).state('clienteUpdate', {
+                url: '/update/{clienteId:int}',
+                parent: 'clientes',
+                param: {
+                    clienteId: null
+                },
+                views: {
+                    'detailView': {
+                        templateUrl: basePath + '/new/clientes.new.html',
+                        controller: 'clienteUpdateCtrl'
+                    }
+                }
+            }).state('clienteDelete', {
+                url: '/delete/{clienteId:int}',
+                parent: 'clientes',
+                param: {
+                    clienteId: null
+                },
+                views: {
+                    'detailView': {
+                        templateUrl: basePath + '/delete/clientes.delete.html',
+                        controller: 'clienteDeleteCtrl'
+                    }
+                }
             });
         }]);
 

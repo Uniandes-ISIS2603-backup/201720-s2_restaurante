@@ -34,7 +34,11 @@ and open the template in the editor.
     </div>
 </div>-->
 <div class="container-fluid">
+    
     <div class="col-md-4">
+        <div class="panel panel-primary">
+            <div class="panel-heading"><label>Clientes list</label></div>
+            <div class="panel-body">
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -42,6 +46,7 @@ and open the template in the editor.
                     <th>Apellido</th>
                     <th>Direccion</th>
                     <th>numPuntos</th>
+                    <th>acciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -50,12 +55,21 @@ and open the template in the editor.
 <!--                        <a ui-sref="clientesDetail({clienteId: cliente.id})" class="thumb">{{cliente.nombre}}</a>-->
                     </td> 
                     <td id="{{$index}}-Apellido">{{cliente.apellido}}</td>
-                    <td id="{{$index}}-Apellido">{{cliente.direccion}}</td>
-                    <td id="{{$index}}-Apellido">{{cliente.numPuntos}}</td>
+                    <td id="{{$index}}-Direccion">{{cliente.direccion}}</td>
+                    <td id="{{$index}}-NumPuntos">{{cliente.numPuntos}}</td>
+                    <td id="{{$index}}-actions">
+                        <a class="btn btn-default btn-sm" ui-sref="clienteUpdate({clienteId: cliente.id})"><span class="glyphicon glyphicon-edit"></span></a>
+                        <a class="btn btn-danger btn-sm" ui-sref="clienteDelete({clienteId: cliente.id})"><span class="glyphicon glyphicon-trash"></span></a>
+                    </td>
                           
                 </tr>
             </tbody>
         </table>
+        <div class="btn-group mr-2" role="group" aria-label="First group">
+            <a class="btn btn-info" ui-sref="clienteCreate"><span class="glyphicon glyphicon-plus-sign"></span> Add new cliente</a>
+        </div>
+    </div>
+    </div>
     </div>
 </div>
 

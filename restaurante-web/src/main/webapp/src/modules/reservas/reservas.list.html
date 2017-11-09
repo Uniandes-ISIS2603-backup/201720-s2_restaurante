@@ -1,23 +1,41 @@
 <div class="container-fluid">
-    <div class="col-md-4">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Sucursal</th>  
-                    <th>Fecha</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="reserva in reservasRecords">
-                    <td id="{{$index}}-sucursal">{{reserva.mesa.sucursal.id}}</td>
-                    <td id="{{$index}}-fecha">
-                        <a ui-sref="reservaDetail({reservaId: reserva.id})" class="thumb">{{reserva.fecha| date:'yyyy-MM-dd'}}</a>
-                    </td> 
-                          
-                </tr>
-            </tbody>
-        </table>
-    </div>
+    <hr>
+     <div class="panel-group">
+         <div class="panel panel-primary">
+            <div class="panel-heading"><label>Lista de Reservas</label></div>
+            <div class="panel-body">
+                <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                                <div class="btn-group mr-2" role="group" aria-label="First group">
+                                    <a class="btn btn-info" ui-sref="reservasCreate"><span class="glyphicon glyphicon-plus-sign"></span> Añadir reserva</a>
+                                </div>
+                            </div>
+                <div class="col-md-4">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+
+                                <th>Fecha</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="reserva in reservasRecords">
+
+                                <td id="{{$index}}-fecha">
+                                    <a ui-sref="reservaDetail({reservaId: reserva.id})" class="thumb">{{reserva.fecha| date:'yyyy-MM-dd'}}</a>
+                                </td> 
+                                <td id="{{$index}}-actions">
+                                    <a class="btn btn-default btn-sm" ui-sref="reservaUpdate({reservaId: reserva.id})"><span class="glyphicon glyphicon-edit"></span></a>
+                                    <a class="btn btn-danger btn-sm" ui-sref="reservaDelete({reservaId: reserva.id})"><span class="glyphicon glyphicon-trash"></span></a>
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+              </div>
+           </div>
+     </div>
 </div>
 
 
