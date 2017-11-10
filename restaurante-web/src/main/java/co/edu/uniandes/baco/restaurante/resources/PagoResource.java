@@ -22,6 +22,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.WebApplicationException;
 
 /**
  *
@@ -70,6 +71,15 @@ public class PagoResource {
         return listEntity2DetailDTO(PagoLogic.getPagos());
     }
 
+    @GET
+    @Path("{id: \\d+}")
+    public PagoDetailDTO getPago(@PathParam("id") Long id) throws BusinessLogicException {
+        PagoEntity entity = PagoLogic.gePago(id);
+        if (entity == null) {
+            throw new WebApplicationException("El recurso /Pago/" + id + " no existe.", 404);
+        }
+        return new PagoDetailDTO(entity);
+    }
    
     /**
      * PUT http://localhost:8080/restaurante-web/api/pagos/1 Ejemplo
@@ -86,8 +96,13 @@ public class PagoResource {
      */
     @PUT 
     @Path("{id: \\d+}")
-    public PagoDetailDTO updatePago(@PathParam("id") Long id, PagoDetailDTO restaurante) throws BusinessLogicException, UnsupportedOperationException {
-          throw new UnsupportedOperationException("Este servicio  no está implementado");
+    public PagoDetailDTO updatePago(@PathParam("id") Long id, PagoDetailDTO pago) throws BusinessLogicException, UnsupportedOperationException {
+         pago.setId(id);
+        PagoEntity entity = PagoLogic.gePago(id);
+        if (entity == null) {
+            throw new WebApplicationException("El recurso /Pagoes/" + id + " no existe.", 404);
+        }
+        return new PagoDetailDTO(PagoLogic.updatePago(id, pago.toEntity()));
       
     }
 
@@ -104,7 +119,11 @@ public class PagoResource {
     @DELETE 
     @Path("{id: \\d+}")
     public void deletePago(@PathParam("id") Long id) throws BusinessLogicException {
-         throw new UnsupportedOperationException("Este servicio no está implementado");
+         PagoEntity entity = PagoLogic.gePago(id);
+        if (entity == null) {
+            throw new WebApplicationException("El recurso /Pago/" + id + " no existe.", 404);
+        }
+        PagoLogic.deletePago(id);
     }
 
     /**

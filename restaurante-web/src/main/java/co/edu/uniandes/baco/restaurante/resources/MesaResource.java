@@ -22,6 +22,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.WebApplicationException;
 
 /**
  *
@@ -69,7 +70,15 @@ public class MesaResource {
     public List<MesaDetailDTO> getMesas() throws BusinessLogicException {
         return listEntity2DetailDTO(MesaLogic.getMesas());
     }
-
+@GET
+    @Path("{id: \\d+}")
+    public MesaDetailDTO getMesa(@PathParam("id") Long id) throws BusinessLogicException {
+        MesaEntity entity = MesaLogic.getMesa(id);
+        if (entity == null) {
+            throw new WebApplicationException("El recurso /Mesa/" + id + " no existe.", 404);
+        }
+        return new MesaDetailDTO(entity);
+    }
    
     /**
      * PUT http://localhost:8080/restaurante-web/api/mesas/1 Ejemplo
@@ -86,8 +95,13 @@ public class MesaResource {
      */
     @PUT 
     @Path("{id: \\d+}")
-    public MesaDetailDTO updateMesa(@PathParam("id") Long id, MesaDetailDTO restaurante) throws BusinessLogicException, UnsupportedOperationException {
-          throw new UnsupportedOperationException("Este servicio  no está implementado");
+    public MesaDetailDTO updateMesa(@PathParam("id") Long id, MesaDetailDTO mesa) throws BusinessLogicException, UnsupportedOperationException {
+          mesa.setId(id);
+        MesaEntity entity = MesaLogic.getMesa(id);
+        if (entity == null) {
+            throw new WebApplicationException("El recurso /Mesaes/" + id + " no existe.", 404);
+        }
+        return new MesaDetailDTO(MesaLogic.updateMesa( mesa.toEntity()));
       
     }
 

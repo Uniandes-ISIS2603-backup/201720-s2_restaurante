@@ -72,7 +72,15 @@ public class PedidoResource {
     public List<PedidoDetailDTO> getPedidos() throws BusinessLogicException {
         return listEntity2DetailDTO(PedidoLogic.getPedidos());
     }
-
+@GET
+    @Path("{id: \\d+}")
+    public PedidoDetailDTO getPedido(@PathParam("id") Long id) throws BusinessLogicException {
+        PedidoEntity entity = PedidoLogic.getPedido(id);
+        if (entity == null) {
+            throw new WebApplicationException("El recurso /Pedido/" + id + " no existe.", 404);
+        }
+        return new PedidoDetailDTO(entity);
+    }
    
     /**
      * PUT http://localhost:8080/restaurante-web/api/pedidos/1 Ejemplo
@@ -112,7 +120,11 @@ public class PedidoResource {
     @DELETE 
     @Path("{id: \\d+}")
     public void deletePedido(@PathParam("id") Long id) throws BusinessLogicException {
-         throw new UnsupportedOperationException("Este servicio no está implementado");
+         PedidoEntity entity = PedidoLogic.getPedido(id);
+        if (entity == null) {
+            throw new WebApplicationException("El recurso /Pedido/" + id + " no existe.", 404);
+        }
+        PedidoLogic.deletePedido(id);
     }
 
     /**

@@ -22,6 +22,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.WebApplicationException;
 
 /**
  *
@@ -69,6 +70,40 @@ public class PlatoResource {
     public List<PlatoDetailDTO> getPlatos() throws BusinessLogicException {
         return listEntity2DetailDTO(PlatoLogic.getPlatos());
     }
+@GET
+    @Path("{id: \\d+}")
+    public PlatoDetailDTO getPlato(@PathParam("id") Long id) throws BusinessLogicException {
+        PlatoEntity entity = PlatoLogic.gePlato(id);
+        if (entity == null) {
+            throw new WebApplicationException("El recurso /Platoes/" + id + " no existe.", 404);
+        }
+        return new PlatoDetailDTO(entity);
+    }
+
+   
+    /**
+     * PUT http://localhost:8080/restaurante-web/api/Platoes/1 Ejemplo
+     * json { "id": 1, "atirbuto1": "Valor nuevo" }
+     *
+     * @param id corresponde a la Plato a actualizar.
+     * @param restaurante corresponde  al objeto con los cambios que se van a
+     * realizar.
+     * @return La Plato actualizada.
+     * @throws BusinessLogicException
+     *
+     * En caso de no existir el id de la Plato a actualizar se retorna un
+     * 404 con el mensaje.
+     */
+    @PUT
+    @Path("{id: \\d+}")
+    public PlatoDetailDTO updatePlato(@PathParam("id") Long id, PlatoDetailDTO suc) throws BusinessLogicException {
+        suc.setId(id);
+        PlatoEntity entity = PlatoLogic.gePlato(id);
+        if (entity == null) {
+            throw new WebApplicationException("El recurso /Plato/" + id + " no existe.", 404);
+        }
+        return new PlatoDetailDTO(PlatoLogic.updatePlato(id, suc.toEntity()));
+    }
 
    
     /**
@@ -84,12 +119,7 @@ public class PlatoResource {
      * En caso de no existir el id de la Plato a actualizar se retorna un
      * 404 con el mensaje.
      */
-    @PUT 
-    @Path("{id: \\d+}")
-    public PlatoDetailDTO updatePlato(@PathParam("id") Long id, PlatoDetailDTO restaurante) throws BusinessLogicException, UnsupportedOperationException {
-          throw new UnsupportedOperationException("Este servicio  no está implementado");
-      
-    }
+
 
     /**
      * DELETE http://localhost:8080/restaurante-web/api/platos/{id}
@@ -104,7 +134,11 @@ public class PlatoResource {
     @DELETE 
     @Path("{id: \\d+}")
     public void deletePlato(@PathParam("id") Long id) throws BusinessLogicException {
-         throw new UnsupportedOperationException("Este servicio no está implementado");
+          PlatoEntity entity = PlatoLogic.gePlato(id);
+        if (entity == null) {
+            throw new WebApplicationException("El recurso /Plato/" + id + " no existe.", 404);
+        }
+        PlatoLogic.deletePlato(id);
     }
 
     /**

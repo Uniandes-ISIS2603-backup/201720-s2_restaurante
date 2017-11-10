@@ -29,7 +29,7 @@ import javax.ws.rs.WebApplicationException;
  *
  * @author af.bejarano
  */
-@Path("tarjetasPuntos")
+@Path("tarjeta_puntos")
 @Produces("application/json")
 @Consumes("application/json")
 @Stateless

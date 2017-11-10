@@ -33,7 +33,7 @@ import javax.ws.rs.WebApplicationException;
 @Consumes("application/json")
 @Stateless
 public class SucursalResource {
-    SucursalLogic sucursalLogic;
+   
     @Inject
     SucursalLogic SucursalLogic; // Variable para acceder a la lógica de la aplicación. Es una inyección de dependencias.
 
@@ -74,7 +74,7 @@ public class SucursalResource {
     @GET
     @Path("{id: \\d+}")
     public SucursalDetailDTO getSucursal(@PathParam("id") Long id) throws BusinessLogicException {
-        SucursalEntity entity = sucursalLogic.getSucursal(id);
+        SucursalEntity entity = SucursalLogic.getSucursal(id);
         if (entity == null) {
             throw new WebApplicationException("El recurso /sucursales/" + id + " no existe.", 404);
         }
@@ -99,11 +99,11 @@ public class SucursalResource {
     @Path("{id: \\d+}")
     public SucursalDetailDTO updateSucursal(@PathParam("id") Long id, SucursalDetailDTO suc) throws BusinessLogicException {
         suc.setId(id);
-        SucursalEntity entity = sucursalLogic.getSucursal(id);
+        SucursalEntity entity = SucursalLogic.getSucursal(id);
         if (entity == null) {
             throw new WebApplicationException("El recurso /sucursales/" + id + " no existe.", 404);
         }
-        return new SucursalDetailDTO(sucursalLogic.updateSucursal(id, suc.toEntity()));
+        return new SucursalDetailDTO(SucursalLogic.updateSucursal(id, suc.toEntity()));
     }
 
     /**
@@ -118,12 +118,12 @@ public class SucursalResource {
      */
     @DELETE 
     @Path("{id: \\d+}")
-    public void deleteSucursal(@PathParam("sucursalesId") Long id) throws BusinessLogicException {
-        SucursalEntity entity = sucursalLogic.getSucursal(id);
+    public void deleteSucursal(@PathParam("id") Long id) throws BusinessLogicException {
+        SucursalEntity entity = SucursalLogic.getSucursal(id);
         if (entity == null) {
             throw new WebApplicationException("El recurso /sucursales/" + id + " no existe.", 404);
         }
-        sucursalLogic.deleteSucursal(id);
+        SucursalLogic.deleteSucursal(id);
     }
 
     /**

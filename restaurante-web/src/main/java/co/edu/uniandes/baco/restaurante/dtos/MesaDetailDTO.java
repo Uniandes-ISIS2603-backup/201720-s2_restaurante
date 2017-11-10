@@ -25,6 +25,7 @@ public class MesaDetailDTO extends MesaDTO {
      */
     public MesaDetailDTO(MesaEntity entity) {
         super(entity);
+        
     }
 
     /**

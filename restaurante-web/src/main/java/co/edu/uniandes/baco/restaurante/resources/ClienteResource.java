@@ -71,7 +71,15 @@ public class ClienteResource {
     public List<ClienteDetailDTO> getClientes() throws BusinessLogicException {
         return listEntity2DetailDTO(ClienteLogic.getClientes());
     }
-
+@GET
+    @Path("{id: \\d+}")
+    public ClienteDetailDTO getCliente(@PathParam("id") Long id) throws BusinessLogicException {
+        ClienteEntity entity = ClienteLogic.getCliente(id);
+        if (entity == null) {
+            throw new WebApplicationException("El recurso /Cliente/" + id + " no existe.", 404);
+        }
+        return new ClienteDetailDTO(entity);
+    }
    
     /**
      * PUT http://localhost:8080/restaurante-web/api/clientes/1 Ejemplo
