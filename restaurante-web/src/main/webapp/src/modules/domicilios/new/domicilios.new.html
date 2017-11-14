@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<div class="container-fluid">
+    <div class="panel-group">
+        <div class="panel panel-primary">
+            <div class="panel-heading"><label ng-if="!edit" id="createdomicilio">Create new domicilio</label>
+                <label ng-if="edit" id="editdomicilio">Edit domicilio</label></div>
+            <div class="panel-body">
+                <form ng-submit="createdomicilio()">
+                    <div class="form-group row">
+                        <div class="form-group col-sm-12">
+                            <input type="submit" value="Save" class="btn btn-success"/>
+                            <a class="btn btn-info" ui-sref="domiciliosList">Cancel</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
