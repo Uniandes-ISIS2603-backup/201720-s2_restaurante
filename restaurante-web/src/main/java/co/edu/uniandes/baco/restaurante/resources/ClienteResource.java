@@ -86,7 +86,7 @@ public class ClienteResource {
      * json { "id": 1, "atirbuto1": "Valor nuevo" }
      *
      * @param id corresponde a la Cliente a actualizar.
-     * @param restaurante corresponde  al objeto con los cambios que se van a
+     * @param cliente corresponde  al objeto con los cambios que se van a
      * realizar.
      * @return La Cliente actualizada.
      * @throws BusinessLogicException

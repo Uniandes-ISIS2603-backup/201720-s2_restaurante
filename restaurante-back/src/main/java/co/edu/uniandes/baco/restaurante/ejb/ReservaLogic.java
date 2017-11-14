@@ -62,7 +62,8 @@ public class ReservaLogic {
      */
     public ReservaEntity updateReserva(ReservaEntity entity) {
         LOGGER.log(Level.INFO, "Inicia proceso de actualizar una Reserva");
-        return persistence.update(entity);
+        ReservaEntity newEntity = persistence.update(entity);
+        return newEntity;
     }
 
     /**
