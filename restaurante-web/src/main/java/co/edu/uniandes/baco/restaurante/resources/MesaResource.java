@@ -118,7 +118,11 @@ public class MesaResource {
     @DELETE 
     @Path("{id: \\d+}")
     public void deleteMesa(@PathParam("id") Long id) throws BusinessLogicException {
-         throw new UnsupportedOperationException("Este servicio no está implementado");
+         MesaEntity entity = MesaLogic.getMesa(id);
+        if (entity == null) {
+            throw new WebApplicationException("El recurso /mesa/" + id + " no existe.", 404);
+        }
+        MesaLogic.deleteMesa(id);
     }
 
     /**

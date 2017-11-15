@@ -34,7 +34,6 @@ import javax.ws.rs.WebApplicationException;
 @Consumes("application/json")
 @Stateless
 public class TarjetaPuntosResource {
-    TarjetaPuntosLogic tarjetaPuntosLogic;
     @Inject
     TarjetaPuntosLogic TarjetaPuntosLogic; // Variable para acceder a la lógica de la aplicación. Es una inyección de dependencias.
 
@@ -75,7 +74,7 @@ public class TarjetaPuntosResource {
     @GET
     @Path("{id: \\d+}")
     public TarjetaPuntosDetailDTO getTarjetaPuntos(@PathParam("id") Long id) throws BusinessLogicException {
-        TarjetaPuntosEntity entity = tarjetaPuntosLogic.getTarjetaPuntos(id);
+        TarjetaPuntosEntity entity = TarjetaPuntosLogic.getTarjetaPuntos(id);
         if (entity == null) {
             throw new WebApplicationException("El recurso /tarjetasPuntos/" + id + " no existe.", 404);
         }
@@ -100,11 +99,11 @@ public class TarjetaPuntosResource {
     @Path("{id: \\d+}")
     public TarjetaPuntosDetailDTO updateTarjetaPuntos(@PathParam("id") Long id, TarjetaPuntosDetailDTO suc) throws BusinessLogicException {
         suc.setId(id);
-        TarjetaPuntosEntity entity = tarjetaPuntosLogic.getTarjetaPuntos(id);
+        TarjetaPuntosEntity entity = TarjetaPuntosLogic.getTarjetaPuntos(id);
         if (entity == null) {
             throw new WebApplicationException("El recurso /tarjetasPuntos/" + id + " no existe.", 404);
         }
-        return new TarjetaPuntosDetailDTO(tarjetaPuntosLogic.updateTarjetaPuntos(id, suc.toEntity()));
+        return new TarjetaPuntosDetailDTO(TarjetaPuntosLogic.updateTarjetaPuntos(id, suc.toEntity()));
     }
 
     /**
@@ -119,12 +118,13 @@ public class TarjetaPuntosResource {
      */
     @DELETE 
     @Path("{id: \\d+}")
-    public void deleteTarjetaPuntos(@PathParam("tarjetasPuntosId") Long id) throws BusinessLogicException {
-        TarjetaPuntosEntity entity = tarjetaPuntosLogic.getTarjetaPuntos(id);
+    public void deleteTarjetaPuntos(@PathParam("id") Long id) throws BusinessLogicException {
+        
+        TarjetaPuntosEntity entity = TarjetaPuntosLogic.getTarjetaPuntos(id);
         if (entity == null) {
             throw new WebApplicationException("El recurso /tarjetasPuntos/" + id + " no existe.", 404);
         }
-        tarjetaPuntosLogic.deleteTarjetaPuntos(id);
+        TarjetaPuntosLogic.deleteTarjetaPuntos(id);
     }
 
     /**
