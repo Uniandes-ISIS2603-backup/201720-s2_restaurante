@@ -61,7 +61,12 @@ public class SucursalDTO {
      * @param Sucursal: Es la entidad que se va a convertir a DTO
      */
     public SucursalDTO(SucursalEntity Sucursal) {
+        if(Sucursal!=null){
         this.id = Sucursal.getId();
+        this.calificacion=Sucursal.getCalificacion();
+        this.direccion=Sucursal.getDireccion();
+        this.dosPisos=Sucursal.isDosPisos();
+        }
     }
     public SucursalEntity toEntity() {
         SucursalEntity entity = new SucursalEntity();
