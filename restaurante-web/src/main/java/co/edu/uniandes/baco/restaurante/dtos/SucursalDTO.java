@@ -66,6 +66,9 @@ public class SucursalDTO {
     public SucursalEntity toEntity() {
         SucursalEntity entity = new SucursalEntity();
         entity.setId(this.id);
+        entity.setCalificacion(this.calificacion);
+        entity.setDireccion(this.direccion);
+        entity.setDosPisos(this.dosPisos);
         return entity;
     }
 }
