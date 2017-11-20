@@ -16,6 +16,7 @@
                 }
             }).state('domiciliosList', {
                 url: '/domicilios/list',
+                parent: 'domicilios',
                 views: {
                    'listView': {
                         templateUrl: basePath + 'domicilios.list.html'
