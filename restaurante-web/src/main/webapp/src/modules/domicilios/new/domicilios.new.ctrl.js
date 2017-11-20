@@ -6,7 +6,7 @@
 (function (ng) {
     var mod = ng.module("domicilioModule");
     mod.constant("domiciliosContext", "api/domicilios");
-    mod.controller('domicilioNewCtrl', ['$scope', '$http', 'rdomiciliosContext', '$state', 'domiciliosContext', '$rootScope',
+    mod.controller('domicilioNewCtrl', ['$scope', '$http', 'domiciliosContext', '$state', 'domiciliosContext', '$rootScope',
         function ($scope, $http, domiciliosContext, $state, $rootScope) {
             $rootScope.edit = false;
             $scope.createdomicilio = function () {

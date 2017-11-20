@@ -13,8 +13,10 @@ public class DomicilioDTO {
     }
 
     public DomicilioDTO(DomicilioEntity domicilio) {
+        if(domicilio!=null){
         this.id = domicilio.getId();
         this.rango =domicilio.getRango();
+        }
     }
 
     public Long getId() {
@@ -31,5 +33,15 @@ public class DomicilioDTO {
         entity.setRango(this.rango);
         return entity;
     }
+
+    public int getRango() {
+        return rango;
+    }
+
+    public void setRango(int rango) {
+        this.rango = rango;
+    }
+    
+    
     
 }

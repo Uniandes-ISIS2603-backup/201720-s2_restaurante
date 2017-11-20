@@ -45,7 +45,7 @@
                 views: {
                     'detailView': {
                         templateUrl: basePath + '/new/domicilios.new.html',
-                        controller: 'domiclioNewCtrl'
+                        controller: 'domicilioNewCtrl'
                     }
                 }
             }).state('domicilioDelete', {
