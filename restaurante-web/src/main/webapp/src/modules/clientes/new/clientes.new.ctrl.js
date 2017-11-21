@@ -5,7 +5,7 @@
  */
 (function (ng) {
     var mod = ng.module("clienteModule");
-    mod.constant("clientesContext", "api/clientes");
+    mod.constant("clientesContext", "http://localhost:8080/restaurante-web/api/clientes");
     mod.controller('clienteNewCtrl', ['$scope', '$http', 'clientesContext', '$state', '$rootScope',
         function ($scope, $http, clientesContext, $state, $rootScope) {
             $rootScope.edit = false;

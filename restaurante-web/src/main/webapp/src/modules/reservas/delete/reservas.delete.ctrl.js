@@ -1,6 +1,6 @@
 (function (ng) {
     var mod = ng.module("reservaModule");
-    mod.constant("reservasContext", "api/reservas");
+    mod.constant("reservasContext", "http://localhost:8080/restaurante-web/api/reservas");
     mod.controller('reservaDeleteCtrl', ['$scope', '$http', 'reservasContext', '$state',
         function ($scope, $http, reservasContext, $state) {
             var idReserva = $state.params.reservaId;

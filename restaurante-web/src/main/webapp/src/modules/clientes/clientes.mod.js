@@ -5,7 +5,7 @@
  */
 (function (ng) {
 var mod = ng.module("clienteModule", ['ui.router']); //declaracion del modulo, llamo la funcion de angular ng, el nombre del modulo y las dependencias
-    mod.constant("clientesContext", "api/clientes");
+    mod.constant("clientesContext", "http://localhost:8080/restaurante-web/api/clientes");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) 
         {
             var basePath = 'src/modules/clientes/';

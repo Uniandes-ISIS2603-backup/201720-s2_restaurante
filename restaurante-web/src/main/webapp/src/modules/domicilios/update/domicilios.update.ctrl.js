@@ -1,7 +1,7 @@
 (
         function (ng) {
             var mod = ng.module("domicilioModule");
-            mod.constant("domiciliosContext", "api/sucursales");
+            mod.constant("domiciliosContext", "http://localhost:8080/restaurante-web/api/domicilios");
             mod.controller('domicilioUpdateCtrl', ['$scope', '$http', 'domiciliosContext', '$state', '$rootScope', '$filter',
                 function ($scope, $http, domiciliosContext, $state, domiciliosContext, $rootScope, $filter) {
                     $rootScope.edit = true;

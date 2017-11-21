@@ -5,7 +5,7 @@
  */
 (function (ng) {
     var mod = ng.module("domicilioModule");
-    mod.constant("domicilliosContext", "api/domicilios");
+    mod.constant("domicilliosContext", "http://localhost:8080/restaurante-web/api/domicilios");
     mod.controller('domicilioDeleteCtrl', ['$scope', '$http', 'domiciliosContext', '$state',
         function ($scope, $http, domiciliosContext, $state) {
             $scope.deleteReDomicilio = function () {
