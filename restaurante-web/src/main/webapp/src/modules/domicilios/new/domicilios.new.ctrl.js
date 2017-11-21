@@ -11,6 +11,7 @@
             $rootScope.edit = false;
             $scope.createdomicilio = function () {
                 $http.post(domiciliosContext, {
+                    rango: $scope.rango
                 }).then(function (response) {
                     //restaurante created successfully
                     $state.go('domiciliosList', {domicilioId: response.data.id}, {reload: true});

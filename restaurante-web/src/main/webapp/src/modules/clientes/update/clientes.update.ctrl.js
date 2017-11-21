@@ -6,13 +6,13 @@
 (
         function (ng) {
             var mod = ng.module("clienteModule");
-            mod.constant("clientesContext", "api/clientes");
-            mod.constant("pedidosContext", "api/pedidos");
+            mod.constant("clientesContext", "http://localhost:8080/restaurante-web/api/clientes");
+            mod.constant("pedidosContext", "http://localhost:8080/restaurante-web/api/clientes");
             mod.controller('clienteUpdateCtrl', ['$scope', '$http', 'clientesContext', '$state','$rootScope', '$filter',
                 function ($scope, $http, clientesContext, $state, $rootScope, $filter) {
                     $rootScope.edit = true;
 
-                    var idCliente = $state.params.ClienteId;
+                    var idCliente = $state.params.clienteId;
 
                     // Este arreglo guardara los ids de los clientes asociados y por asociar al autor.
 //                    var idsPedidos = [];
@@ -97,13 +97,16 @@
                         /*Se llama a la función newPedido() para buscar cada uno de los ids de los pedidos
                          en el array que tiene todos los pedidos y así saber como queda la lista final de los pedidos asociados al cliente.
                          */
-                        $scope.newCliente();
+//                        $scope.newCliente();
                         $http.put(clientesContext + "/" + idCliente, {
                             nombre: $scope.clienteNombre,
                             apellido: $scope.clienteApellido,
                             direccion: $scope.clienteDireccion,
                             numPuntos: $scope.clienteNumPuntos
-                        })
+                        }).then(function (response) {
+                    //restaurante created successfully
+                    $state.go('clientesList', {restauranteId: response.data.id}, {reload: true});
+                });
 //                                .then(function (response) {
 //                            if (idsCliente.length >= 0) {
 //                                $http.put(clientesContext + "/" + response.data.id + "/clientes", $scope.allPedidosCliente).then(function (response) {
