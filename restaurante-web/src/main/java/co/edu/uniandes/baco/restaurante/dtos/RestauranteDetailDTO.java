@@ -22,13 +22,17 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 package co.edu.uniandes.baco.restaurante.dtos;
+import co.edu.uniandes.baco.restaurante.entities.PlatoEntity;
 import co.edu.uniandes.baco.restaurante.entities.RestauranteEntity;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
  * @author ISIS2603
  */
 public class RestauranteDetailDTO extends RestauranteDTO {
+    private List<PlatoDTO> platos;
 
     /**
      * Constructor por defecto
@@ -43,6 +47,12 @@ public class RestauranteDetailDTO extends RestauranteDTO {
      */
     public RestauranteDetailDTO(RestauranteEntity entity) {
         super(entity);
+        if (entity != null) {
+            platos=new ArrayList<>();
+            for (PlatoEntity entityPlatos : entity.getPlatos()) {
+                platos.add(new PlatoDTO(entityPlatos));
+            }
+        }
     }
 
     /**
@@ -52,8 +62,15 @@ public class RestauranteDetailDTO extends RestauranteDTO {
      */
     @Override
     public RestauranteEntity toEntity() {
-        RestauranteEntity RestauranteE = super.toEntity();
-        return RestauranteE;
+        RestauranteEntity entity = super.toEntity();
+        if (platos != null) {
+            List<PlatoEntity> booksEntity = new ArrayList<>();
+            for (PlatoDTO dtoBook : platos) {
+                booksEntity.add(dtoBook.toEntity());
+            }
+            entity.setPlatos(booksEntity);
+        }
+        return entity;
     }
 
 }

@@ -116,6 +116,10 @@ public class RestauranteDTO {
     public RestauranteEntity toEntity() {
         RestauranteEntity entity = new RestauranteEntity();
         entity.setId(this.id);
+        entity.setHora_fin_maniana(hora_fin_maniana);
+        entity.setHora_fin_tarde(hora_fin_tarde);
+        entity.setHora_inicio_tarde(hora_inicio_tarde);
+        entity.setHora_inicio_maniana(hora_inicio_maniana);
         return entity;
     }
     
