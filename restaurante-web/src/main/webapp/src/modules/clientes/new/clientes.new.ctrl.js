@@ -13,7 +13,7 @@
                 $http.post(clientesContext, {
                     nombre: $scope.clienteNombre,
                     apellido: $scope.clienteApellido,
-                    direccion: $scope.clienteDireccion,
+//                    direccion: $scope.clienteDireccion,
                     numPuntos: $scope.clienteNumPuntos
                 }).then(function (response) {
                     //Cliente created successfully

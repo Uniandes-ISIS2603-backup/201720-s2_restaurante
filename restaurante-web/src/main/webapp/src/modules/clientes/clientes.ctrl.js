@@ -22,7 +22,7 @@
     mod.constant("clientesContext", "api/clientes");
     mod.controller('clientesCtrl', ['$scope', '$http', 'clientesContext','$state',
         function ($scope, $http, clientesContext, $state) {
-            $http.get('data/clientes.json').then(function (response) {
+            $http.get('http://localhost:8080/restaurante-web/api/clientes').then(function (response) {
                 $scope.clientesRecords = response.data;
             });
 //       if (($state.params.clienteId !== undefined) && ($state.params.clienteId !== null)) {
