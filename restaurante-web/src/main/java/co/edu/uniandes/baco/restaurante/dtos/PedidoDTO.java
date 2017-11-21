@@ -6,6 +6,7 @@
 package co.edu.uniandes.baco.restaurante.dtos;
 
 import co.edu.uniandes.baco.restaurante.entities.PedidoEntity;
+import java.util.Date;
 
 /**
  *
@@ -15,6 +16,10 @@ public class PedidoDTO
 {
     private Long id;
     private String name;
+    private Date fecha;
+    private String direccion;
+    
+    
 
     /**
      * Constructor por defecto
@@ -69,6 +74,36 @@ public class PedidoDTO
         PedidoEntity entity = new PedidoEntity();
         entity.setId(this.id);
         entity.setName(this.name);
+        entity.setFecha(this.fecha);
+        entity.setDireccion(this.direccion);
         return entity;
+    }
+
+    /**
+     * @return the fecha
+     */
+    public Date getFecha() {
+        return fecha;
+    }
+
+    /**
+     * @param fecha the fecha to set
+     */
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
+    }
+
+    /**
+     * @return the direccion
+     */
+    public String getDireccion() {
+        return direccion;
+    }
+
+    /**
+     * @param direccion the direccion to set
+     */
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
 }

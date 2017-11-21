@@ -3,7 +3,7 @@
     mod.constant("restaurantesContext", "api/restaurantes");
     mod.controller('restauranteCtrl', ['$scope', '$http', 'restaurantesContext', '$state',
         function ($scope, $http, restaurantesContext, $state) {
-            $http.get('data/sucursales.json').then(function (response) {
+            $http.get('http://localhost:8080/restaurante-web/api/sucursales').then(function (response) {
                 $scope.restaurantesRecords = response.data;
             });
 
