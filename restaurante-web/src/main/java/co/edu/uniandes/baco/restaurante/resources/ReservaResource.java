@@ -98,7 +98,7 @@ public class ReservaResource {
     @Path("{id: \\d+}")
     public ReservaDetailDTO updateReserva(@PathParam("id") Long id, ReservaDetailDTO reserva) throws BusinessLogicException, UnsupportedOperationException {
         reserva.setId(id);
-        ReservaEntity entity = ReservaLogic.getReserva(id);
+        ReservaEntity entity = reserva.toEntity();
         if (entity == null) {
             throw new WebApplicationException("El recurso /reservas/" + id + " no existe.", 404);
         }

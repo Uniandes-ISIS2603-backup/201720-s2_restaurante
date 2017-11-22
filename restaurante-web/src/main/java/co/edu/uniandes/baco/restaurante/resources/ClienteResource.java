@@ -98,7 +98,7 @@ public class ClienteResource {
     @Path("{id: \\d+}")
     public ClienteDetailDTO updateCliente(@PathParam("id") Long id, ClienteDetailDTO cliente) throws BusinessLogicException, UnsupportedOperationException {
         cliente.setId(id);
-        ClienteEntity entity = ClienteLogic.getCliente(id);
+        ClienteEntity entity = cliente.toEntity();
         if (entity == null) {
             throw new WebApplicationException("El recurso /clientes/" + id + " no existe.", 404);
         }
