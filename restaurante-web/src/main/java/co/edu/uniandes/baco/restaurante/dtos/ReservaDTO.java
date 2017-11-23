@@ -47,8 +47,11 @@ public class ReservaDTO {
      * @param Reserva: Es la entidad que se va a convertir a DTO
      */
     public ReservaDTO(ReservaEntity reserva) {
+        if(reserva != null)
+        {
         this.id = reserva.getId();
         this.fecha = reserva.getFecha();
+        }
     }
     
     

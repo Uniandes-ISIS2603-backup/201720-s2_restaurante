@@ -15,9 +15,12 @@ public class TarjetaPuntosDTO {
     }
 
     public TarjetaPuntosDTO(TarjetaPuntosEntity tarjetaPuntos) {
+        if(tarjetaPuntos != null)
+        {
         this.id = tarjetaPuntos.getId();
         this.puntos=tarjetaPuntos.getPuntos();
         this.vencimientos= tarjetaPuntos.getVencimientos();
+        }
     }
 
     public Long getId() {

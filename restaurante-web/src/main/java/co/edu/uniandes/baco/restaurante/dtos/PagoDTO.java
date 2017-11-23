@@ -27,8 +27,11 @@ public class PagoDTO {
      * @param Pago: Es la entidad que se va a convertir a DTO 
      */
     public PagoDTO(PagoEntity Pago) {
+        if(Pago != null)
+        {
         this.id = Pago.getId();
         this.name = Pago.getName();
+        }
     }
 
     /**

@@ -63,10 +63,13 @@ public class MesaDTO {
      * @param Mesa: Es la entidad que se va a convertir a DTO
      */
     public MesaDTO(MesaEntity Mesa) {
+        if(Mesa != null)
+        {
         this.id = Mesa.getId();
         this.disponible=Mesa.isDisponible();
         this.piso=Mesa.getPiso();
         this.sillasDisponibles=Mesa.getSillasDisponibles();
+        }
     }
     
     

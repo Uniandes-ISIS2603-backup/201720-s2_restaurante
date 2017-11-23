@@ -37,9 +37,9 @@ public class ClienteLogic
     public ClienteEntity createCliente(ClienteEntity entity) throws BusinessLogicException {
         LOGGER.info("Inicia proceso de creación de cliente");
         // Verifica la regla de negocio que dice que no puede haber dos clientes con el mismo nombre
-        if (getCliente(entity.getId()) != null) {
-            throw new BusinessLogicException("Ya existe este Cliente \"" + entity.getId() + "\"");
-        }
+//        if (getCliente(entity.getId()) != null) {
+//            throw new BusinessLogicException("Ya existe este Cliente \"" + entity.getId() + "\"");
+//        }
         // Invoca la persistencia para crear el cliente
         persistence.create(entity);
         LOGGER.info("Termina proceso de creación de cliente");
@@ -71,10 +71,10 @@ public class ClienteLogic
         LOGGER.log(Level.INFO, "Inicia proceso de consultar cliente con id={0}", id);
         // Note que, por medio de la inyección de dependencias se llama al método "find(id)" que se encuentra en la persistencia.
         ClienteEntity cliente = persistence.find(id);
-        if ( cliente == null) 
-        {
-            LOGGER.log(Level.SEVERE, "El cliente con el id {0} no existe", id);
-        }
+//        if ( cliente == null) 
+//        {
+//            LOGGER.log(Level.SEVERE, "El cliente con el id {0} no existe", id);
+//        }
         LOGGER.log(Level.INFO, "Termina proceso de consultar cliente con id={0}", id);
         return cliente ;
     }

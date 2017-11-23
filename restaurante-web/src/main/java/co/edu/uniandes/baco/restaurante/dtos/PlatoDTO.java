@@ -27,8 +27,11 @@ public class PlatoDTO {
      * @param Plato: Es la entidad que se va a convertir a DTO 
      */
     public PlatoDTO(PlatoEntity Plato) {
+        if(Plato != null)
+        {
         this.id = Plato.getId();
         this.name = Plato.getName();
+        }
     }
 
     /**

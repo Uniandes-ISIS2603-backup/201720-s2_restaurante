@@ -33,8 +33,11 @@ public class PedidoDTO
      * @param pedido: Es la entidad que se va a convertir a DTO 
      */
     public PedidoDTO(PedidoEntity pedido) {
+        if(pedido != null)
+        {
         this.id = pedido.getId();
         this.name = pedido.getName();
+        }
     }
 
     /**
