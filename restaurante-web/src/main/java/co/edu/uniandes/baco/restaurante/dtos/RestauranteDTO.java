@@ -38,9 +38,9 @@ public class RestauranteDTO {
 
     private Long id;
     private Date hora_inicio_maniana;
-   private Date hora_inicio_tarde;
-   private Date hora_fin_maniana;
-   private Date hora_fin_tarde;
+    private Date hora_inicio_tarde;
+    private Date hora_fin_maniana;
+    private Date hora_fin_tarde;
 
     public Date getHora_inicio_maniana() {
         return hora_inicio_maniana;
@@ -86,12 +86,14 @@ public class RestauranteDTO {
      *
      * @param Restaurante: Es la entidad que se va a convertir a DTO
      */
-    public RestauranteDTO(RestauranteEntity Restaurante) {
-        this.id = Restaurante.getId();
-        this.hora_fin_maniana=Restaurante.getHora_fin_maniana();
-        this.hora_fin_tarde=Restaurante.getHora_fin_tarde();
-        this.hora_inicio_maniana=Restaurante.getHora_inicio_maniana();
-        this.hora_inicio_tarde=Restaurante.getHora_inicio_tarde();
+    public RestauranteDTO(RestauranteEntity restaurante) {
+        if (restaurante != null) {
+            this.hora_fin_maniana = restaurante.getHora_fin_maniana();
+            this.hora_fin_tarde = restaurante.getHora_fin_tarde();
+            this.hora_inicio_maniana = restaurante.getHora_inicio_maniana();
+            this.hora_inicio_tarde = restaurante.getHora_inicio_tarde();
+            this.id = restaurante.getId();
+        }
     }
 
     /**
@@ -122,5 +124,5 @@ public class RestauranteDTO {
         entity.setHora_inicio_maniana(hora_inicio_maniana);
         return entity;
     }
-    
+
 }
