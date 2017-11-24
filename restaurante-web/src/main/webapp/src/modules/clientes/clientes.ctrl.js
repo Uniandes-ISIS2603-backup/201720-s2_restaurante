@@ -30,8 +30,10 @@
 //                    $scope.currentCliente = response.data;
 //                });
 //            }
-        if (($state.params.clientesId !== undefined) && ($state.params.clientesId !== null)) {
-                $http.get(clientesContext + '/' + $state.params.clientesId).then(function (response) {
+        if (($state.params.clienteId !== undefined) 
+//                && ($state.params.clientesId !== null)
+                ) {
+                $http.get(clientesContext + '/' + $state.params.clienteId).then(function (response) {
                     $scope.currentCliente = response.data;
                 });
             }
