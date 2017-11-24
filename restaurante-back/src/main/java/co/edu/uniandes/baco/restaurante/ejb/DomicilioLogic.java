@@ -35,7 +35,7 @@ public class DomicilioLogic {
         LOGGER.info("Inicia proceso de creación de domicilio");
         // Verifica la regla de negocio que dice que no puede haber dos domicilios con el mismo nombre
         if (persistence.find(entity.getId()) != null) {
-            throw new BusinessLogicException("Ya existe una Domicilio con el nombre \"" + entity.getName() + "\"");
+            throw new BusinessLogicException("Ya existe una Domicilio con el id \"" + entity.getId() + "\"");
         }
 //        else if(persistence.find(Integer.parseInt(entity.getRango())) <= 10)
 //        {

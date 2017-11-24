@@ -5,15 +5,18 @@
  */
 (function (ng) {
     var mod = ng.module("domicilioModule");
-    mod.constant("domicilliosContext", "http://localhost:8080/restaurante-web/api/domicilios");
+    mod.constant("domiciliosContext", "api/domicilios");
     mod.controller('domicilioDeleteCtrl', ['$scope', '$http', 'domiciliosContext', '$state',
         function ($scope, $http, domiciliosContext, $state) {
-            $scope.deleteReDomicilio = function () {
+            var idDomicilio = $state.params.domicilioId;
+            $scope.deleteDomicilio = function () {
                 $http.delete(domiciliosContext + '/' + idDomicilio, {}).then(function (response) {
                     $state.go('domiciliosList', {domicilioId: response.data.id}, {reload: true});
+                    var index = $scope.domiciliosRecords.indexOf(response.data);
+                    $scope.domiciliosRecords.splice(index, 1);
                 });
             };
         }
     ]);
 }
-)(angular);
+)(window.angular);

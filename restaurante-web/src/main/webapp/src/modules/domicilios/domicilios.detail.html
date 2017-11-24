@@ -2,9 +2,21 @@
     <div class="panel-body">
     <div class="row">
         <div class="col-md-3">
+            <div class="thumb">
+                <img class="img-responsive" ng-src="{{currentDomicilio.image}}"/>
+            </div>
+
+        </div>
+        <div class="col-md-3">
             <dl>     
-                <dt>ID:</dt>
-                <dd>{{currentDomicilio.Id}}</dd>
+                <dt>Id</dt>
+                <dd>{{currentDomicilio.id}}</dd>
+                
+                <hr>
+                <dt>Rango</dt>
+                <dd>{{currentDomicilio.rango}}</dd>
+                
+                
             </dl>
         </div>
     </div>
