@@ -45,18 +45,18 @@ and open the template in the editor.
                     <th>Nombre</th>  
                     <th>Apellido</th>
 <!--                    <th>Direccion</th>-->
-                    <th>numPuntos</th>
+<!--                    <th>numPuntos</th>-->
                     <th>acciones</th>
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="cliente in clientesRecords">
-                    <td id="{{$index}}-Nombre">{{cliente.nombre}}
+                    <td id="{{$index}}-Nombre"><a ui-sref="clientesDetail({clienteId: cliente.id})">{{cliente.nombre}}
 <!--                        <a ui-sref="clientesDetail({clienteId: cliente.id})" class="thumb">{{cliente.nombre}}</a>-->
                     </td> 
                     <td id="{{$index}}-Apellido">{{cliente.apellido}}</td>
 <!--                    <td id="{{$index}}-Direccion">{{cliente.direccion}}</td>-->
-                    <td id="{{$index}}-NumPuntos">{{cliente.numPuntos}}</td>
+<!--                    <td id="{{$index}}-NumPuntos">{{cliente.numPuntos}}</td>-->
                     <td id="{{$index}}-actions">
                         <a class="btn btn-default btn-sm" ui-sref="clienteUpdate({clienteId: cliente.id})"><span class="glyphicon glyphicon-edit"></span></a>
                         <a class="btn btn-danger btn-sm" ui-sref="clienteDelete({clienteId: cliente.id})"><span class="glyphicon glyphicon-trash"></span></a>

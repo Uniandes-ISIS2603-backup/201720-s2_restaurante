@@ -1,1 +1,21 @@
-
+body {
+		background-image: url("https://image.ibb.co/fkK7YR/p.jpg")
+	}
+        h1 {
+		color: #D54926;
+	}   
+        p {
+            color: #F6F6F6;
+            font-family: "Times New Roman", Times, serif;
+        }
+        span {
+            color: #F6F6F6;
+        }
+        li{
+            color: #F6F6F6;
+            background-color: #F6F6F6;
+        }
+        dl{
+          color: #F6F6F6;
+            background-color: #6E6A69;  
+        }

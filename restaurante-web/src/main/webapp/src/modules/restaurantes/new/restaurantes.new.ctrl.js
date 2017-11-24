@@ -14,7 +14,7 @@
                     direccion: $scope.restauranteDireccion,
                     dosPisos: $scope.restauranteDosPisos,
                     calificacion: $scope.restauranteCalificacion,
-                    image: $scope.restauranteImage
+                    image: $scope.restauranteImage1
                 }).then(function (response) {
                     //restaurante created successfully
                     $state.go('restaurantesList', {restauranteId: response.data.id}, {reload: true});
