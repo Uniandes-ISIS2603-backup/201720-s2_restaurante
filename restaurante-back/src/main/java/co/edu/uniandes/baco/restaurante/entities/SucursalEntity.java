@@ -23,6 +23,15 @@ public class SucursalEntity extends BaseEntity implements Serializable{
     private String calificacion;
     private boolean dosPisos;
     private String direccion;
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+    private String image;
     @PodamExclude
    @ManyToOne
    private RestauranteEntity restaurante;

@@ -16,6 +16,15 @@ public class SucursalDTO {
      private String calificacion;
     private boolean dosPisos;
     private String direccion;
+    private String image;
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
 
     public Long getId() {
         return id;
@@ -66,6 +75,7 @@ public class SucursalDTO {
         this.calificacion=Sucursal.getCalificacion();
         this.direccion=Sucursal.getDireccion();
         this.dosPisos=Sucursal.isDosPisos();
+        this.image=Sucursal.getImage();
         }
     }
     public SucursalEntity toEntity() {
@@ -74,6 +84,7 @@ public class SucursalDTO {
         entity.setCalificacion(this.calificacion);
         entity.setDireccion(this.direccion);
         entity.setDosPisos(this.dosPisos);
+        entity.setImage(this.image);
         return entity;
     }
 }

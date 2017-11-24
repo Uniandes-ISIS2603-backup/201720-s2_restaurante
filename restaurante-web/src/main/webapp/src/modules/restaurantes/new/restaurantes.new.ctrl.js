@@ -13,7 +13,8 @@
                 $http.post(restaurantesContext, {
                     direccion: $scope.restauranteDireccion,
                     dosPisos: $scope.restauranteDosPisos,
-                    calificacion: $scope.restauranteCalificacion
+                    calificacion: $scope.restauranteCalificacion,
+                    image: $scope.restauranteImage
                 }).then(function (response) {
                     //restaurante created successfully
                     $state.go('restaurantesList', {restauranteId: response.data.id}, {reload: true});
