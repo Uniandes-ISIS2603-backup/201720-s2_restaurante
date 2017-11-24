@@ -1,1 +1,16 @@
-
+body {
+		background-color: #6E6A69;
+	}
+        h1 {
+		color: #D54926;
+	}   
+        p {
+            color: #F6F6F6;
+        }
+        span {
+            color: #F6F6F6;
+        }
+        li{
+            color: #F6F6F6;
+            background-color: #F6F6F6;
+        }
