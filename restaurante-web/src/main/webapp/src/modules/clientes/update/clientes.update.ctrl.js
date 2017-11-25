@@ -9,7 +9,7 @@
             mod.constant("clientesContext", "http://localhost:8080/restaurante-web/api/clientes");
             mod.constant("pedidosContext", "http://localhost:8080/restaurante-web/api/clientes");
             mod.controller('clienteUpdateCtrl', ['$scope', '$http', 'clientesContext', '$state','$rootScope', '$filter',
-                function ($scope, $http, clientesContext, $state, $rootScope, $filter) {
+                function ($scope, $http, clientesContext, $state, $rootScope) {
                     $rootScope.edit = true;
 
                     var idCliente = $state.params.clienteId;

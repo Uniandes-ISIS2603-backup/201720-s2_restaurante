@@ -3,7 +3,7 @@
             var mod = ng.module("reservaModule");
             mod.constant("reservasContext", "http://localhost:8080/restaurante-web/api/reservas");
             mod.controller('reservaUpdateCtrl', ['$scope', '$http', 'reservasContext', '$state', '$rootScope', '$filter',
-                function ($scope, $http, reservasContext, $state, $rootScope, $filter) {
+                function ($scope, $http, reservasContext, $state, $rootScope) {
                     $rootScope.edit = true;
 
                     var idreserva = $state.params.reservaId;

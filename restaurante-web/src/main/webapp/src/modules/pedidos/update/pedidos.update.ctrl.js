@@ -9,7 +9,7 @@
             mod.constant("pedidosContext", "api/pedidos");
             mod.constant("pedidosContext", "api/pedidos");
             mod.controller('pedidoUpdateCtrl', ['$scope', '$http', 'pedidosContext', '$state','$rootScope', '$filter',
-                function ($scope, $http, pedidosContext, $state, $rootScope, $filter) {
+                function ($scope, $http, pedidosContext, $state, $rootScope) {
                     $rootScope.edit = true;
 
                     var idPedido = $state.params.PedidoId;

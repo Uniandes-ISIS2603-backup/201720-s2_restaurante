@@ -11,44 +11,6 @@ var mod = ng.module("clienteModule", ['ui.router']); //declaracion del modulo, l
             var basePath = 'src/modules/clientes/';
             $urlRouterProvider.otherwise("/clientesList");
 
-//            $stateProvider.state('clientesList', 
-//            {
-//                url: '/clientes/list',
-//                views: {
-//                    'mainView': {
-//                        controller: 'clientesCtrl',
-//                        controllerAs: 'ctrl',
-//                        templateUrl: basePath + 'clientes.list.html'
-//                    }
-//                }
-//            }
-//                    ).state('clientesCreate', 
-//            {
-//                url: '/clientes/create',
-//                views: {
-//                    'mainView': {
-//                        controller: 'clientesCtrl',
-//                        controllerAs: 'ctrl',
-//                        templateUrl: basePath + 'clientes.create.html'
-//                    }
-//                }
-//
-//            }
-//                    ).state('clientesEdit', 
-//            {
-//                url: '/clientes/:clientesId',
-//                param: 
-//                        {
-//                    clientesId: null
-//                },
-//                views: {
-//                    'mainView': {
-//                        controller: 'clientesCtrl',
-//                        controllerAs: 'ctrl',
-//                        templateUrl: basePath + 'clientes.create.html'
-//                    }
-//                }
-
         $stateProvider.state('clientes', {
                 url: '/clientes',
                 abstract: true,

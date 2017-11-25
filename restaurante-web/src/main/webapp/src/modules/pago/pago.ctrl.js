@@ -7,7 +7,7 @@
     var mod = ng.module("pagoModule");
     mod.constant("editorialContext", "api/editorials");
     mod.controller('pagoCtrl', ['$scope', '$http', 'editorialContext',
-        function ($scope, $http, editorialContext) {
+        function ($scope, $http) {
             $http.get('data/pagos.json').then(function (response) {
                 $scope.editorialsRecords = response.data;
             });
