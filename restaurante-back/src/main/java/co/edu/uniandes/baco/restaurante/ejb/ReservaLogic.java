@@ -49,9 +49,9 @@ public class ReservaLogic {
     public List<ReservaEntity> getReservas() {
         LOGGER.info("Inicia proceso de consultar todas las Reservas");
         // Note que, por medio de la inyección de dependencias se llama al método "findAll()" que se encuentra en la persistencia.
-        List<ReservaEntity> Reservas = persistence.findAll();
+        List<ReservaEntity> reservas = persistence.findAll();
         LOGGER.info("Termina proceso de consultar todas las Reservaes");
-        return Reservas;
+        return reservas;
     }
     /**
      * Actualiza la información de una instancia de Reserva.
@@ -62,8 +62,7 @@ public class ReservaLogic {
      */
     public ReservaEntity updateReserva(ReservaEntity entity) {
         LOGGER.log(Level.INFO, "Inicia proceso de actualizar una Reserva");
-        ReservaEntity newEntity = persistence.update(entity);
-        return newEntity;
+        return persistence.update(entity);
     }
 
     /**
@@ -83,15 +82,15 @@ public class ReservaLogic {
     /**
      * Obtiene una instancia de RestauranteEntity asociada a una instancia de Reserva
      *
-     * @param ReservaId Identificador de la instancia de Reserva
-     * @param RestaurantesId Identificador de la instancia de Restaurante
+     * @param reservaId Identificador de la instancia de Reserva
+     * @param restauranteId Identificador de la instancia de Restaurante
      * @return
      * @generated
      */
-    public RestauranteEntity getRestaurante(Long ReservaId, Long RestauranteId) throws BusinessLogicException {
-        LOGGER.log(Level.INFO, "Inicia proceso de consultar un libro con id = {0}", RestauranteId);
-        RestauranteEntity rta = getReserva(ReservaId).getRestaurante();
-        if(rta.getId()==RestauranteId)
+    public RestauranteEntity getRestaurante(Long reservaId, Long restauranteId) throws BusinessLogicException {
+        LOGGER.log(Level.INFO, "Inicia proceso de consultar un libro con id = {0}", restauranteId);
+        RestauranteEntity rta = getReserva(reservaId).getRestaurante();
+        if(rta.getId().equals(restauranteId))
             throw new BusinessLogicException("El identificador de la Restaurante asociada a esta Reserva no coinside con el solicitado.");
         return rta;
     }
@@ -99,15 +98,15 @@ public class ReservaLogic {
     /**
      * Obtiene una instancia de ClienteEntity asociada a una instancia de Reserva
      *
-     * @param ReservaId Identificador de la instancia de Reserva
-     * @param ClientesId Identificador de la instancia de Cliente
+     * @param reservaId Identificador de la instancia de Reserva
+     * @param clienteId Identificador de la instancia de Cliente
      * @return
      * @generated
      */
-    public ClienteEntity getCliente(Long ReservaId, Long ClienteId) throws BusinessLogicException {
-        LOGGER.log(Level.INFO, "Inicia proceso de consultar un libro con id = {0}", ClienteId);
-        ClienteEntity rta = getReserva(ReservaId).getCliente();
-        if(rta.getId()==ClienteId)
+    public ClienteEntity getCliente(Long reservaId, Long clienteId) throws BusinessLogicException {
+        LOGGER.log(Level.INFO, "Inicia proceso de consultar un libro con id = {0}", clienteId);
+        ClienteEntity rta = getReserva(reservaId).getCliente();
+        if(rta.getId().equals(clienteId))
             throw new BusinessLogicException("El identificador de la Cliente asociada a esta Reserva no coinside con el solicitado.");
         return rta;
     }
@@ -115,15 +114,15 @@ public class ReservaLogic {
     /**
      * Obtiene una instancia de MesaEntity asociada a una instancia de Reserva
      *
-     * @param ReservaId Identificador de la instancia de Reserva
-     * @param MesasId Identificador de la instancia de Mesa
+     * @param reservaId Identificador de la instancia de Reserva
+     * @param mesaId Identificador de la instancia de Mesa
      * @return
      * @generated
      */
-    public MesaEntity getMesa(Long ReservaId, Long MesaId) throws BusinessLogicException {
-        LOGGER.log(Level.INFO, "Inicia proceso de consultar un libro con id = {0}", MesaId);
-        MesaEntity rta = getReserva(ReservaId).getMesa();
-        if(rta.getId()==MesaId)
+    public MesaEntity getMesa(Long reservaId, Long mesaId) throws BusinessLogicException {
+        LOGGER.log(Level.INFO, "Inicia proceso de consultar un libro con id = {0}", mesaId);
+        MesaEntity rta = getReserva(reservaId).getMesa();
+        if(rta.getId().equals(mesaId))
             throw new BusinessLogicException("El identificador de la Mesa asociada a esta Reserva no coinside con el solicitado.");
         return rta;
     }

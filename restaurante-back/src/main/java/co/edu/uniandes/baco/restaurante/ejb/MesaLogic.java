@@ -50,9 +50,9 @@ public class MesaLogic {
     public List<MesaEntity> getMesas() {
         LOGGER.info("Inicia proceso de consultar todas las Mesas");
         // Note que, por medio de la inyección de dependencias se llama al método "findAll()" que se encuentra en la persistencia.
-        List<MesaEntity> Mesas = persistence.findAll();
+        List<MesaEntity> mesas = persistence.findAll();
         LOGGER.info("Termina proceso de consultar todas las Mesaes");
-        return Mesas;
+        return mesas;
     }
     /**
      * Actualiza la información de una instancia de Mesa.
@@ -83,15 +83,15 @@ public class MesaLogic {
     /**
      * Obtiene una instancia de SucursalEntity asociada a una instancia de Mesa
      *
-     * @param MesaId Identificador de la instancia de Mesa
-     * @param sucursalsId Identificador de la instancia de Sucursal
+     * @param mesaId Identificador de la instancia de Mesa
+     * @param sucursalId Identificador de la instancia de Sucursal
      * @return
      * @generated
      */
-    public SucursalEntity getSucursal(Long MesaId, Long sucursalId) throws BusinessLogicException {
+    public SucursalEntity getSucursal(Long mesaId, Long sucursalId) throws BusinessLogicException {
         LOGGER.log(Level.INFO, "Inicia proceso de consultar un libro con id = {0}", sucursalId);
-        SucursalEntity rta = getMesa(MesaId).getSucursal();
-        if(rta.getId()==sucursalId)
+        SucursalEntity rta = getMesa(mesaId).getSucursal();
+        if(rta.getId().equals(sucursalId))
             throw new BusinessLogicException("El identificador de la sucursal asociada a esta mesa no coinside con el solicitado.");
         return rta;
     }
@@ -99,15 +99,15 @@ public class MesaLogic {
     /**
      * Obtiene una instancia de ReservaEntity asociada a una instancia de Mesa
      *
-     * @param MesaId Identificador de la instancia de Mesa
-     * @param ReservasId Identificador de la instancia de Reserva
+     * @param mesaId Identificador de la instancia de Mesa
+     * @param reservaId Identificador de la instancia de Reserva
      * @return
      * @generated
      */
-    public ReservaEntity getReserva(Long MesaId, Long ReservaId) throws BusinessLogicException {
-        LOGGER.log(Level.INFO, "Inicia proceso de consultar un libro con id = {0}", ReservaId);
-        ReservaEntity rta = getMesa(MesaId).getReserva();
-        if(rta.getId()==ReservaId)
+    public ReservaEntity getReserva(Long mesaId, Long reservaId) throws BusinessLogicException {
+        LOGGER.log(Level.INFO, "Inicia proceso de consultar un libro con id = {0}", reservaId);
+        ReservaEntity rta = getMesa(mesaId).getReserva();
+        if(rta.getId().equals(reservaId))
             throw new BusinessLogicException("El identificador de la reserva asociada a esta mesa no coinside con el solicitado.");
         return rta;
     }

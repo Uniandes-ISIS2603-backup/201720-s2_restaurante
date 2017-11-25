@@ -8,7 +8,6 @@ package co.edu.uniandes.baco.restaurante.ejb;
 import co.edu.uniandes.baco.restaurante.entities.PedidoEntity;
 import co.edu.uniandes.baco.restaurante.exceptions.BusinessLogicException;
 import co.edu.uniandes.baco.restaurante.persistence.PedidoPersistence;
-import javax.ejb.Stateless;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;

@@ -33,10 +33,6 @@ public class PlatoLogic {
      */
     public PlatoEntity createPlato(PlatoEntity entity) throws BusinessLogicException {
         LOGGER.info("Inicia proceso de creación de Plato");
-        // Verifica la regla de negocio que dice que no puede haber dos Platos con el mismo nombre
-//        if (persistence.findByName(entity.getName()) != null) {
-//            throw new BusinessLogicException("Ya existe un Plato con el nombre \"" + entity.getName() + "\"");
-//        }
         // Invoca la persistencia para crear el Plato
         persistence.create(entity);
         LOGGER.info("Termina proceso de creación de Plato");
@@ -52,9 +48,9 @@ public class PlatoLogic {
     public List<PlatoEntity> getPlatos() {
         LOGGER.info("Inicia proceso de consultar todas las Platos");
         // Note que, por medio de la inyección de dependencias se llama al método "findAll()" que se encuentra en la persistencia.
-        List<PlatoEntity> Platos = persistence.findAll();
+        List<PlatoEntity> platos = persistence.findAll();
         LOGGER.info("Termina proceso de consultar todas las Platos");
-        return Platos;
+        return platos;
     }
 
     /**
@@ -67,12 +63,12 @@ public class PlatoLogic {
     public PlatoEntity gePlato(Long id) {
         LOGGER.log(Level.INFO, "Inicia proceso de consultar Plato con id={0}", id);
         // Note que, por medio de la inyección de dependencias se llama al método "find(id)" que se encuentra en la persistencia.
-        PlatoEntity Plato = persistence.find(id);
-        if ( Plato == null) {
+        PlatoEntity plato = persistence.find(id);
+        if ( plato == null) {
             LOGGER.log(Level.SEVERE, "El Plato con el id {0} no existe", id);
         }
         LOGGER.log(Level.INFO, "Termina proceso de consultar Plato con id={0}", id);
-        return Plato ;
+        return plato ;
     }
 
     /**

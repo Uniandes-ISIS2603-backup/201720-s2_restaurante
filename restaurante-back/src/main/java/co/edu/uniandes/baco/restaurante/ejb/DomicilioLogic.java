@@ -37,10 +37,6 @@ public class DomicilioLogic {
         if (persistence.find(entity.getId()) != null) {
             throw new BusinessLogicException("Ya existe una Domicilio con el id \"" + entity.getId() + "\"");
         }
-//        else if(persistence.find(Integer.parseInt(entity.getRango())) <= 10)
-//        {
-//            throw new BusinessLogicException("El rango no es menor a 10 cuadras");
-//        }
         // Invoca la persistencia para crear la domicilio
         persistence.create(entity);
         LOGGER.info("Termina proceso de creación de domicilio");

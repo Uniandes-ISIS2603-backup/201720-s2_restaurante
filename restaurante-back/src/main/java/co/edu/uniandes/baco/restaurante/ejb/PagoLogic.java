@@ -34,10 +34,6 @@ private static final Logger LOGGER = Logger.getLogger(PagoLogic.class.getName())
      */
     public PagoEntity createPago(PagoEntity entity) throws BusinessLogicException {
         LOGGER.info("Inicia proceso de creación de Pago");
-        // Verifica la regla de negocio que dice que no puede haber dos Pagos con el mismo nombre
-//        if (persistence.findByName(entity.getName()) != null) {
-//            throw new BusinessLogicException("Ya existe un Pago con el nombre \"" + entity.getName() + "\"");
-//        }
         // Invoca la persistencia para crear el Pago
         persistence.create(entity);
         LOGGER.info("Termina proceso de creación de Pago");
@@ -53,9 +49,9 @@ private static final Logger LOGGER = Logger.getLogger(PagoLogic.class.getName())
     public List<PagoEntity> getPagos() {
         LOGGER.info("Inicia proceso de consultar todas las Pagos");
         // Note que, por medio de la inyección de dependencias se llama al método "findAll()" que se encuentra en la persistencia.
-        List<PagoEntity> Pagos = persistence.findAll();
+        List<PagoEntity> pagos = persistence.findAll();
         LOGGER.info("Termina proceso de consultar todas las Pagos");
-        return Pagos;
+        return pagos;
     }
 
     /**
@@ -68,12 +64,12 @@ private static final Logger LOGGER = Logger.getLogger(PagoLogic.class.getName())
     public PagoEntity gePago(Long id) {
         LOGGER.log(Level.INFO, "Inicia proceso de consultar Pago con id={0}", id);
         // Note que, por medio de la inyección de dependencias se llama al método "find(id)" que se encuentra en la persistencia.
-        PagoEntity Pago = persistence.find(id);
-        if ( Pago == null) {
+        PagoEntity pago = persistence.find(id);
+        if ( pago == null) {
             LOGGER.log(Level.SEVERE, "El Pago con el id {0} no existe", id);
         }
         LOGGER.log(Level.INFO, "Termina proceso de consultar Pago con id={0}", id);
-        return Pago ;
+        return pago ;
     }
 
     /**
