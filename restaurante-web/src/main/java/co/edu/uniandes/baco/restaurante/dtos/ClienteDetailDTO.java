@@ -16,6 +16,9 @@ public class ClienteDetailDTO extends ClienteDTO{
      * Constructor por defecto
      */
     public ClienteDetailDTO() {
+        /**
+         * Constructor por defecto
+         */
     }
 
     /**
@@ -34,7 +37,6 @@ public class ClienteDetailDTO extends ClienteDTO{
      */
     @Override
     public ClienteEntity toEntity() {
-        ClienteEntity ClienteC = super.toEntity();
-        return ClienteC;
+        return super.toEntity();
     }
 }

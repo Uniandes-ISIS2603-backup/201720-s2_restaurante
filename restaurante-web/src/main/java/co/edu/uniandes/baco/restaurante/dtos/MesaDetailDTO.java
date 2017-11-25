@@ -16,6 +16,9 @@ public class MesaDetailDTO extends MesaDTO {
      * Constructor por defecto
      */
     public MesaDetailDTO() {
+        /**
+         * Constructor por defecto
+         */
     }
 
     /**
@@ -35,7 +38,6 @@ public class MesaDetailDTO extends MesaDTO {
      */
     @Override
     public MesaEntity toEntity() {
-        MesaEntity mesaM = super.toEntity();
-        return mesaM;
+        return super.toEntity();
     }
 }

@@ -19,6 +19,9 @@ public class PagoDTO {
      * Constructor por defecto
      */
     public PagoDTO() {
+        /**
+         * Constructor por defecto
+         */
     }
 
     /**
@@ -26,11 +29,11 @@ public class PagoDTO {
      * (Crea un nuevo DTO con los valores que recibe en la entidad que viene de argumento.
      * @param Pago: Es la entidad que se va a convertir a DTO 
      */
-    public PagoDTO(PagoEntity Pago) {
-        if(Pago != null)
+    public PagoDTO(PagoEntity pago) {
+        if(pago != null)
         {
-        this.id = Pago.getId();
-        this.name = Pago.getName();
+        this.id = pago.getId();
+        this.name = pago.getName();
         }
     }
 

@@ -16,6 +16,9 @@ public class PagoDetailDTO extends PagoDTO{
      * Constructor por defecto
      */
     public PagoDetailDTO() {
+        /**
+         * Constructor por defecto
+         */
     }
 
     /**
@@ -34,7 +37,6 @@ public class PagoDetailDTO extends PagoDTO{
      */
     @Override
     public PagoEntity toEntity() {
-        PagoEntity PagoP = super.toEntity();
-        return PagoP;
+        return super.toEntity();
     }
 }

@@ -17,6 +17,14 @@ public class MesaDTO {
     private int sillasDisponibles;
     private int piso;
     private boolean disponible;
+     /**
+     * Constructor por defecto
+     */
+    public MesaDTO() {
+        /**
+         * Constructor por defecto
+         */
+    }
 
     public Long getId() {
         return id;
@@ -50,11 +58,7 @@ public class MesaDTO {
         this.disponible = disponible;
     }
     
-    /**
-     * Constructor por defecto
-     */
-    public MesaDTO() {
-    }
+   
 
     /**
      * Conviertir Entity a DTO (Crea un nuevo DTO con los valores que recibe en
@@ -62,13 +66,13 @@ public class MesaDTO {
      *
      * @param Mesa: Es la entidad que se va a convertir a DTO
      */
-    public MesaDTO(MesaEntity Mesa) {
-        if(Mesa != null)
+    public MesaDTO(MesaEntity mesa) {
+        if(mesa != null)
         {
-        this.id = Mesa.getId();
-        this.disponible=Mesa.isDisponible();
-        this.piso=Mesa.getPiso();
-        this.sillasDisponibles=Mesa.getSillasDisponibles();
+        this.id = mesa.getId();
+        this.disponible=mesa.isDisponible();
+        this.piso=mesa.getPiso();
+        this.sillasDisponibles=mesa.getSillasDisponibles();
         }
     }
     

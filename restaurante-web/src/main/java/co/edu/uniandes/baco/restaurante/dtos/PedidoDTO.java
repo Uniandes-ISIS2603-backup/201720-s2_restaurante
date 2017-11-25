@@ -25,6 +25,9 @@ public class PedidoDTO
      * Constructor por defecto
      */
     public PedidoDTO() {
+        /**
+         * Constructor por defecto
+         */
     }
 
     /**

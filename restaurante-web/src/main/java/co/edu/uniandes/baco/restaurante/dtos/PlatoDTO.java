@@ -19,6 +19,9 @@ public class PlatoDTO {
      * Constructor por defecto
      */
     public PlatoDTO() {
+        /**
+         * Constructor por defecto
+         */
     }
 
     /**
@@ -26,11 +29,11 @@ public class PlatoDTO {
      * (Crea un nuevo DTO con los valores que recibe en la entidad que viene de argumento.
      * @param Plato: Es la entidad que se va a convertir a DTO 
      */
-    public PlatoDTO(PlatoEntity Plato) {
-        if(Plato != null)
+    public PlatoDTO(PlatoEntity plato) {
+        if(plato != null)
         {
-        this.id = Plato.getId();
-        this.name = Plato.getName();
+        this.id = plato.getId();
+        this.name = plato.getName();
         }
     }
 

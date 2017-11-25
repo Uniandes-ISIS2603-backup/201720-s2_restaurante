@@ -23,6 +23,9 @@ public class ClienteDTO {
      * Constructor por defecto
      */
     public ClienteDTO() {
+        /**
+         * Constructor por defecto
+         */
     }
 
     /**
@@ -80,7 +83,7 @@ public class ClienteDTO {
         entity.setId(this.id);
         entity.setName(this.name);
         entity.setNombre(this.nombre);
-        entity.setApellido((this.apellido));
+        entity.setApellido(this.apellido);
         entity.setNumPuntos(this.numPuntos);
         entity.settieneTarjeta(this.tieneTarjeta);
         return entity;

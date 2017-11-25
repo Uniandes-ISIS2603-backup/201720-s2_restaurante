@@ -16,6 +16,9 @@ public class PlatoDetailDTO extends PlatoDTO{
      * Constructor por defecto
      */
     public PlatoDetailDTO() {
+        /**
+         * Constructor por defecto
+         */
     }
 
     /**
@@ -34,7 +37,6 @@ public class PlatoDetailDTO extends PlatoDTO{
      */
     @Override
     public PlatoEntity toEntity() {
-        PlatoEntity PlatoP = super.toEntity();
-        return PlatoP;
+        return super.toEntity();
     }
 }

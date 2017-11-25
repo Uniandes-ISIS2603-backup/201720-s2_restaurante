@@ -17,6 +17,9 @@ public class PedidoDetailDTO extends PedidoDTO{
      * Constructor por defecto
      */
     public PedidoDetailDTO() {
+        /**
+         * Constructor por defecto
+         */
     }
 
     /**
@@ -35,8 +38,7 @@ public class PedidoDetailDTO extends PedidoDTO{
      */
     @Override
     public PedidoEntity toEntity() {
-        PedidoEntity PedidoP = super.toEntity();
-        return PedidoP;
+        return super.toEntity();
     }
 }
 
