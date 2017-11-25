@@ -48,10 +48,10 @@ public class MesaResource {
     @POST 
     public MesaDetailDTO  createCliente(MesaDetailDTO mesa) throws BusinessLogicException {
         // Convierte el DTO (json) en un objeto Entity para ser manejado por la lógica.
-        MesaEntity MesaEntity = mesa.toEntity();
+        MesaEntity mesaEntity = mesa.toEntity();
         // Invoca la lógica para crear la Mesa nueva
         MesaEntity nuevoMesa;
-        nuevoMesa = mesaLogic.createMesa(MesaEntity);
+        nuevoMesa = mesaLogic.createMesa(mesaEntity);
         // Como debe retornar un DTO (json) se invoca el constructor del DTO con argumento el entity nuevo
         return new MesaDetailDTO(nuevoMesa);
     }

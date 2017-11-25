@@ -10,7 +10,6 @@ import co.edu.uniandes.baco.restaurante.dtos.DomicilioDetailDTO;
 import co.edu.uniandes.baco.restaurante.ejb.DomicilioLogic;
 import co.edu.uniandes.baco.restaurante.entities.DomicilioEntity;
 import co.edu.uniandes.baco.restaurante.exceptions.BusinessLogicException;
-import co.edu.uniandes.baco.restaurante.persistence.DomicilioPersistence;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -99,7 +98,7 @@ public class DomicilioResource {
      */
     @PUT
     @Path("{id: \\d+}")
-    public void updateDomicilio(@PathParam("id") Long id, DomicilioDetailDTO domicilio) throws BusinessLogicException, UnsupportedOperationException, WebApplicationException {
+    public void updateDomicilio(@PathParam("id") Long id, DomicilioDetailDTO domicilio) throws BusinessLogicException {
         DomicilioEntity domicilioN = domicilio.toEntity();
         if(domicilioLogic.getDomicilio(id)!=null)
         {
