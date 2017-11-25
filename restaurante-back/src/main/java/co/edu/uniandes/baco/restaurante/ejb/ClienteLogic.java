@@ -9,6 +9,8 @@ import co.edu.uniandes.baco.restaurante.entities.ClienteEntity;
 import co.edu.uniandes.baco.restaurante.exceptions.BusinessLogicException;
 import co.edu.uniandes.baco.restaurante.persistence.ClientePersistence;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
@@ -18,6 +20,8 @@ import javax.inject.Inject;
  */
 @Stateless
 public class ClienteLogic {
+    
+    private static final Logger LOGGER = Logger.getLogger(DomicilioLogic.class.getName());
 
     @Inject private ClientePersistence persistence; // Variable para acceder a la persistencia de la aplicación. Es una inyección de dependencias.
 
@@ -41,8 +45,7 @@ public class ClienteLogic {
      */
     public List<ClienteEntity> getClientes() {
         // Note que, por medio de la inyección de dependencias se llama al método "findAll()" que se encuentra en la persistencia.
-        List<ClienteEntity> clientes = persistence.findAll();
-        return clientes;
+        return persistence.findAll();
     }
 
     /**
@@ -54,8 +57,7 @@ public class ClienteLogic {
      */
     public ClienteEntity getCliente(Long id) {
         // Note que, por medio de la inyección de dependencias se llama al método "find(id)" que se encuentra en la persistencia.
-        ClienteEntity cliente = persistence.find(id);
-        return cliente;
+        return persistence.find(id);
     }
 
     /**
@@ -68,9 +70,9 @@ public class ClienteLogic {
      * @return el cliente con los cambios actualizados en la base de datos.
      */
     public ClienteEntity updateCliente(Long id, ClienteEntity entity) {
+        LOGGER.log(Level.INFO, "Inicia proceso de actualizar cliente con id={0}", id);
         // Note que, por medio de la inyección de dependencias se llama al método "update(entity)" que se encuentra en la persistencia.
-        ClienteEntity newEntity = persistence.update(entity);
-        return newEntity;
+        return persistence.update(entity);
     }
 
     /**
