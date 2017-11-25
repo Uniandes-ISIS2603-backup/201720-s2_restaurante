@@ -6,7 +6,6 @@
 package co.edu.uniandes.baco.restaurante.persistence;
 
 import co.edu.uniandes.baco.restaurante.entities.DomicilioEntity;
-import co.edu.uniandes.baco.restaurante.entities.DomicilioEntity;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -19,7 +18,6 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
 import org.junit.runner.RunWith;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
@@ -54,8 +52,6 @@ public class DomicilioPersistenceTest {
     private void clearData() {
         em.createQuery("delete from DomicilioEntity").executeUpdate();
     }
-    
-
 
     private void insertData() {
         PodamFactory factory = new PodamFactoryImpl();

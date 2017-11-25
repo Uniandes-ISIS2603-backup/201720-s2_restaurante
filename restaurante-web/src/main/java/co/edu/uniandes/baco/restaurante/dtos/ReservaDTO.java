@@ -67,6 +67,4 @@ public class ReservaDTO {
     public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
-    
-   
 }

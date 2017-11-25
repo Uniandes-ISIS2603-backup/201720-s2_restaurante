@@ -39,7 +39,7 @@ public class ClienteResource {
     /**
      * POST http://localhost:8080/restaurante-web/api/clientes
      *
-     * @param Cliente correponde a la representación java del objeto json
+     * @param cliente correponde a la representación java del objeto json
      * enviado en el llamado.
      * @return Devuelve el objeto json de entrada que contiene el id creado por
      * la base de datos y el tipo del objeto java. Ejemplo: { "type":
@@ -49,10 +49,10 @@ public class ClienteResource {
     @POST 
     public ClienteDetailDTO  createCliente(ClienteDetailDTO cliente) throws BusinessLogicException {
         // Convierte el DTO (json) en un objeto Entity para ser manejado por la lógica.
-        ClienteEntity ClienteEntity = cliente.toEntity();
+        ClienteEntity clienteEntity = cliente.toEntity();
         // Invoca la lógica para crear la Cliente nueva
         ClienteEntity nuevoCliente;
-        nuevoCliente = clienteLogic.createCliente(ClienteEntity);
+        nuevoCliente = clienteLogic.createCliente(clienteEntity);
         // Como debe retornar un DTO (json) se invoca el constructor del DTO con argumento el entity nuevo
         return new ClienteDetailDTO(nuevoCliente);
     }
