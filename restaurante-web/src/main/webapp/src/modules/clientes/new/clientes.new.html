@@ -5,7 +5,8 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <div class="container-fluid">
-    <div class="panel-group">
+<!--    <div ng-if="isAuthenticated() && hasPermissions()" class="panel-group">-->
+    <!--<div class="panel-group">-->
         <div class="panel panel-primary">
             <div class="panel-heading"><label ng-if="!edit" id="createCliente">Create new Cliente</label>
                 <label ng-if="edit" id="editCliente">Edit Cliente</label></div>
@@ -79,8 +80,15 @@ and open the template in the editor.
 
             </div>
         </div>
+<!--    <div class="center-block well text-center" ng-if="isAuthenticated() && !hasPermissions()">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-12">
+                    <h1 class="float-left display-3 mr-4">403 Acceso no permitido</h1>
+                    <h4 >No tienes permiso para Realizar esta accion, por favor contacto al administrados si tienes dudas.</h4>
+                </div>
+            </div>
+        </div>
+    </div>-->
+    
     </div>
-</div>
-
-
-

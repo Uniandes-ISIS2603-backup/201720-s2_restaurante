@@ -93,6 +93,10 @@ var mod = ng.module("clienteModule", ['ui.router']); //declaracion del modulo, l
                         templateUrl: basePath + '/new/clientes.new.html',
                         controller: 'clienteNewCtrl'
                     }
+                },
+                data: {
+                    requireLogin: true,
+                    roles: ['admin']
                 }
             }).state('clienteUpdate', {
                 url: '/update/{clienteId:int}',
@@ -105,6 +109,10 @@ var mod = ng.module("clienteModule", ['ui.router']); //declaracion del modulo, l
                         templateUrl: basePath + '/new/clientes.new.html',
                         controller: 'clienteUpdateCtrl'
                     }
+                },
+                data: {
+                    requireLogin: true,
+                    roles: ['admin', 'assistant']
                 }
             }).state('clienteDelete', {
                 url: '/delete/{clienteId:int}',
@@ -117,11 +125,12 @@ var mod = ng.module("clienteModule", ['ui.router']); //declaracion del modulo, l
                         templateUrl: basePath + '/delete/clientes.delete.html',
                         controller: 'clienteDeleteCtrl'
                     }
+                },
+                data: {
+                    requireLogin: true,
+                    roles: ['admin']
                 }
             });
         }]);
 
 })(window.angular);
-
-
-

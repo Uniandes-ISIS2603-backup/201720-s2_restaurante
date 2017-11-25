@@ -7,10 +7,60 @@
         'clienteModule',
         'restauranteModule',
         'domicilioModule',
-        'reservaModule'
+        'reservaModule',
+        'loginModule'
     ]);
     // Resuelve problemas de las promesas
     app.config(['$qProvider', function ($qProvider) {
             $qProvider.errorOnUnhandledRejections(false);
+        }]);
+    
+    //Parte del run para el login y el logout
+    app.run(['$rootScope', '$transitions', function ($rootScope, $transitions) {
+
+            $transitions.onSuccess({to: '*'}, function (trans) {
+
+                var $state = trans.router.stateService;
+                console.log($state);
+                console.log($rootScope);
+                //Inicamos la variable en false
+                var requireLogin = false;
+                
+//                console.log($rootScope);
+                //verificamos que el token del login este no definido, en ese caso requerimos login
+                if(sessionStorage.token !== undefined)
+                {
+                    requireLogin = true;
+                }
+                var roles = [sessionStorage.rol];
+
+
+                $rootScope.isAuthenticated = function () {
+
+                    if (sessionStorage.getItem("username") != null) {
+                        console.log($rootScope);
+                        $rootScope.currentUser = sessionStorage.getItem("name");
+                        return true;
+                    } else {
+                        return false;
+                    }
+                };
+
+                $rootScope.hasPermissions = function () {
+                    if (($rootScope.isAuthenticated) && (roles.indexOf(sessionStorage.getItem("rol")) > -1)) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                };
+
+
+                if (requireLogin && (sessionStorage.getItem("username") === null)) {
+                    event.preventDefault();
+                    $state.go('login', $state.params);
+                }
+
+            });
+
         }]);
 })(window.angular);
