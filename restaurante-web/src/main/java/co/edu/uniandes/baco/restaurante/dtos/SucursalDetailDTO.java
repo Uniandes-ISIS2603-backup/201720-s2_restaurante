@@ -28,15 +28,13 @@ public class SucursalDetailDTO extends SucursalDTO{
      */
     public SucursalDetailDTO(SucursalEntity entity) {
         super(entity);
-        if (entity != null) {
+        if (entity!=null) {
             this.restaurante = new RestauranteDTO(entity.getRestaurante());
             platos=new ArrayList<>();
             for (PlatoEntity entityPlatos : entity.getPlatos()) {
                 platos.add(new PlatoDTO(entityPlatos));
             }
-        } else {
-            entity.setRestaurante(null);
-        }
+        } 
         }
      @Override
     public SucursalEntity toEntity() {
@@ -48,7 +46,8 @@ public class SucursalDetailDTO extends SucursalDTO{
             }
             entity.setPlatos(booksEntity);
         }
-        if(restaurante!=null)entity.setRestaurante(restaurante.toEntity());
+        if(restaurante!=null)
+            entity.setRestaurante(restaurante.toEntity());
         return entity;
     }
 }

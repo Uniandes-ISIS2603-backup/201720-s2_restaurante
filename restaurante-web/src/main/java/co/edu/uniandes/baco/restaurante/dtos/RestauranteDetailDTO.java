@@ -38,6 +38,9 @@ public class RestauranteDetailDTO extends RestauranteDTO {
      * Constructor por defecto
      */
     public RestauranteDetailDTO() {
+        /**
+         * Constructor por defecto
+         */
     }
 
     /**

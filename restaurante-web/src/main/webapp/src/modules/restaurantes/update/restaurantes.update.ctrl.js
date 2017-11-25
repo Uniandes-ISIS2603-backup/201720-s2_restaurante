@@ -3,7 +3,7 @@
             var mod = ng.module("restauranteModule");
             mod.constant("restaurantesContext", "http://localhost:8080/restaurante-web/api/sucursales");
             mod.controller('restauranteUpdateCtrl', ['$scope', '$http', 'restaurantesContext', '$state', '$rootScope', '$filter',
-                function ($scope, $http, restaurantesContext, $state, $rootScope, $filter) {
+                function ($scope, $http, restaurantesContext, $state, $rootScope) {
                     $rootScope.edit = true;
 
                     var idRestaurante = $state.params.restauranteId;

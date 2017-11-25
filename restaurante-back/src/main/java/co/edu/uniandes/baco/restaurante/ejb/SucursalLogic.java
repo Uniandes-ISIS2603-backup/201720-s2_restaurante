@@ -50,9 +50,9 @@ public class SucursalLogic {
     public List<SucursalEntity> getSucursals() {
         LOGGER.info("Inicia proceso de consultar todas las Sucursales");
         // Note que, por medio de la inyección de dependencias se llama al método "findAll()" que se encuentra en la persistencia.
-        List<SucursalEntity> Sucursals = persistence.findAll();
+        List<SucursalEntity> sucursals = persistence.findAll();
         LOGGER.info("Termina proceso de consultar todas las Sucursales");
-        return Sucursals;
+        return sucursals;
     }
     /**
      * Actualiza la información de una instancia de Sucursal.
@@ -61,7 +61,7 @@ public class SucursalLogic {
      * @return Instancia de SucursalEntity con los datos actualizados.
      * @generated
      */
-    public SucursalEntity updateSucursal(Long id, SucursalEntity entity) {
+    public SucursalEntity updateSucursal(SucursalEntity entity) {
         LOGGER.log(Level.INFO, "Inicia proceso de actualizar un autor ");
         return persistence.update(entity);
     }

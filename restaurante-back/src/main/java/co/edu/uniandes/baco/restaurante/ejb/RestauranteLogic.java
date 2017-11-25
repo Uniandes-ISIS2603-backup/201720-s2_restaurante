@@ -60,7 +60,7 @@ public class RestauranteLogic {
     }
 
     /**
-     * 
+     *
      * Obtener todas las Restaurantees existentes en la base de datos.
      *
      * @return una lista de Restaurantees.
@@ -68,10 +68,11 @@ public class RestauranteLogic {
     public List<RestauranteEntity> getRestaurantes() {
         LOGGER.info("Inicia proceso de consultar todas las Restaurantees");
         // Note que, por medio de la inyección de dependencias se llama al método "findAll()" que se encuentra en la persistencia.
-        List<RestauranteEntity> Restaurantes = persistence.findAll();
+        List<RestauranteEntity> restaurantes = persistence.findAll();
         LOGGER.info("Termina proceso de consultar todas las Restaurantees");
-        return Restaurantes;
+        return restaurantes;
     }
+
     /**
      * Actualiza la información de una instancia de Restaurante.
      *
@@ -94,12 +95,15 @@ public class RestauranteLogic {
         LOGGER.log(Level.INFO, "Inicia proceso de borrar un autor ");
         persistence.delete(id);
     }
+
     public RestauranteEntity getRestaurante(Long id) {
         LOGGER.log(Level.INFO, "Inicia proceso de consultar un autor con id = {0}", id);
         return persistence.find(id);
     }
+
     /**
-     * Obtiene una instancia de SucursalEntity asociada a una instancia de Restaurante
+     * Obtiene una instancia de SucursalEntity asociada a una instancia de
+     * Restaurante
      *
      * @param restauranteId Identificador de la instancia de Restaurante
      * @param sucursalsId Identificador de la instancia de Sucursal
@@ -117,6 +121,5 @@ public class RestauranteLogic {
         }
         return null;
     }
-
 
 }

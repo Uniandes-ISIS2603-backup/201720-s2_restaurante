@@ -2,18 +2,20 @@ body {
 		background-image: url("https://image.ibb.co/fkK7YR/p.jpg")
 	}
         h1 {
-		color: #D54926;
+		color: #A10202;
+                font-family: 'Allura';font-size: 60px;
 	}   
         p {
             color: #F6F6F6;
-            font-family: "Times New Roman", Times, serif;
+            font-family: 'Amethysta';font-size: 16px;
         }
         span {
             color: #F6F6F6;
+            font-family: 'Amethysta';font-size: 14px;
         }
         li{
             color: #F6F6F6;
-            background-color: #F6F6F6;
+            background-color: #898989;
         }
         dl{
           color: #F6F6F6;

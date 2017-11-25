@@ -35,9 +35,8 @@ import javax.ws.rs.WebApplicationException;
 public class SucursalResource {
    
     @Inject
-    SucursalLogic SucursalLogic; // Variable para acceder a la lógica de la aplicación. Es una inyección de dependencias.
+    SucursalLogic sucursalLogic; // Variable para acceder a la lógica de la aplicación. Es una inyección de dependencias.
 
-    private static final Logger LOGGER = Logger.getLogger(SucursalResource.class.getName());
 
     /**
      * POST http://localhost:8080/restaurante-web/api/sucursales
@@ -50,12 +49,12 @@ public class SucursalResource {
      * @throws BusinessLogicException
      */
     @POST 
-    public SucursalDetailDTO  createCliente(SucursalDetailDTO Sucursal) throws BusinessLogicException {
+    public SucursalDetailDTO  createCliente(SucursalDetailDTO sucursal) throws BusinessLogicException {
         // Convierte el DTO (json) en un objeto Entity para ser manejado por la lógica.
-        SucursalEntity SucursalEntity = Sucursal.toEntity();
+        SucursalEntity SucursalEntity = sucursal.toEntity();
         // Invoca la lógica para crear la Sucursal nueva
         SucursalEntity nuevoSucursal;
-        nuevoSucursal = SucursalLogic.createSucursal(SucursalEntity);
+        nuevoSucursal = sucursalLogic.createSucursal(SucursalEntity);
         // Como debe retornar un DTO (json) se invoca el constructor del DTO con argumento el entity nuevo
         return new SucursalDetailDTO(nuevoSucursal);
     }
@@ -69,12 +68,12 @@ public class SucursalResource {
      */
     @GET 
     public List<SucursalDetailDTO> getSucursales() throws BusinessLogicException {
-        return listEntity2DetailDTO(SucursalLogic.getSucursals());
+        return listEntity2DetailDTO(sucursalLogic.getSucursals());
     }
     @GET
     @Path("{id: \\d+}")
     public SucursalDetailDTO getSucursal(@PathParam("id") Long id) throws BusinessLogicException {
-        SucursalEntity entity = SucursalLogic.getSucursal(id);
+        SucursalEntity entity = sucursalLogic.getSucursal(id);
         if (entity == null) {
             throw new WebApplicationException("El recurso /sucursales/" + id + " no existe.", 404);
         }
@@ -99,11 +98,11 @@ public class SucursalResource {
     @Path("{id: \\d+}")
     public SucursalDetailDTO updateSucursal(@PathParam("id") Long id, SucursalDetailDTO suc) throws BusinessLogicException {
         suc.setId(id);
-        SucursalEntity entity = SucursalLogic.getSucursal(id);
+        SucursalEntity entity = sucursalLogic.getSucursal(id);
         if (entity == null) {
-            throw new WebApplicationException("El recurso /sucursales/" + id + " no existe.", 404);
+            throw new WebApplicationException("El recurso con id" + id + " no está en database.", 404);
         }
-        return new SucursalDetailDTO(SucursalLogic.updateSucursal(id, suc.toEntity()));
+        return new SucursalDetailDTO(sucursalLogic.updateSucursal( suc.toEntity()));
     }
 
     /**
@@ -119,11 +118,11 @@ public class SucursalResource {
     @DELETE 
     @Path("{id: \\d+}")
     public void deleteSucursal(@PathParam("id") Long id) throws BusinessLogicException {
-        SucursalEntity entity = SucursalLogic.getSucursal(id);
+        SucursalEntity entity = sucursalLogic.getSucursal(id);
         if (entity == null) {
-            throw new WebApplicationException("El recurso /sucursales/" + id + " no existe.", 404);
+            throw new WebApplicationException("El recurso al que se intenta acceder con la id" + id + " no se ha encontrado.", 404);
         }
-        SucursalLogic.deleteSucursal(id);
+        sucursalLogic.deleteSucursal(id);
     }
 
     /**

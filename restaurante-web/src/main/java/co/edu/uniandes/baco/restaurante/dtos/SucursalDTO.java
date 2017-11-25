@@ -13,10 +13,43 @@ import co.edu.uniandes.baco.restaurante.entities.SucursalEntity;
  */
 public class SucursalDTO {
     private Long id;
-     private String calificacion;
+    private String calificacion;
     private boolean dosPisos;
     private String direccion;
     private String image;
+    /**
+     * Constructor por defecto
+     */
+    public SucursalDTO() {
+        /**
+         * Constructor por defecto
+         */
+    }
+
+    /**
+     * Conviertir Entity a DTO (Crea un nuevo DTO con los valores que recibe en
+     * la entidad que viene de argumento.
+     *
+     * @param sucursal: Es la entidad que se va a convertir a DTO
+     */
+    public SucursalDTO(SucursalEntity sucursal) {
+        if(sucursal!=null){
+        this.id = sucursal.getId();
+        this.calificacion=sucursal.getCalificacion();
+        this.direccion=sucursal.getDireccion();
+        this.dosPisos=sucursal.isDosPisos();
+        this.image=sucursal.getImage();
+        }
+    }
+    public SucursalEntity toEntity() {
+        SucursalEntity entity = new SucursalEntity();
+        entity.setId(this.id);
+        entity.setCalificacion(this.calificacion);
+        entity.setDireccion(this.direccion);
+        entity.setDosPisos(this.dosPisos);
+        entity.setImage(this.image);
+        return entity;
+    }
 
     public String getImage() {
         return image;
@@ -32,59 +65,5 @@ public class SucursalDTO {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getCalificacion() {
-        return calificacion;
-    }
-
-    public void setCalificacion(String calificacion) {
-        this.calificacion = calificacion;
-    }
-
-    public boolean isDosPisos() {
-        return dosPisos;
-    }
-
-    public void setDosPisos(boolean dosPisos) {
-        this.dosPisos = dosPisos;
-    }
-
-    public String getDireccion() {
-        return direccion;
-    }
-
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
-     /**
-     * Constructor por defecto
-     */
-    public SucursalDTO() {
-    }
-
-    /**
-     * Conviertir Entity a DTO (Crea un nuevo DTO con los valores que recibe en
-     * la entidad que viene de argumento.
-     *
-     * @param Sucursal: Es la entidad que se va a convertir a DTO
-     */
-    public SucursalDTO(SucursalEntity Sucursal) {
-        if(Sucursal!=null){
-        this.id = Sucursal.getId();
-        this.calificacion=Sucursal.getCalificacion();
-        this.direccion=Sucursal.getDireccion();
-        this.dosPisos=Sucursal.isDosPisos();
-        this.image=Sucursal.getImage();
-        }
-    }
-    public SucursalEntity toEntity() {
-        SucursalEntity entity = new SucursalEntity();
-        entity.setId(this.id);
-        entity.setCalificacion(this.calificacion);
-        entity.setDireccion(this.direccion);
-        entity.setDosPisos(this.dosPisos);
-        entity.setImage(this.image);
-        return entity;
     }
 }
