@@ -5,16 +5,11 @@ public class TarjetaPuntosDetailDTO extends TarjetaPuntosDTO {
 
 
     public TarjetaPuntosDetailDTO() {
+        //Constructor por defecto
     }
 
     public TarjetaPuntosDetailDTO(TarjetaPuntosEntity entity) {
         super(entity);
-    }
-
-    @Override
-    public TarjetaPuntosEntity toEntity() {
-        TarjetaPuntosEntity TarjetaPuntosE = super.toEntity();
-        return TarjetaPuntosE;
     }
 
 }

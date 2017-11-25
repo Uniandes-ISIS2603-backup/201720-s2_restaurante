@@ -22,8 +22,7 @@ public class TarjetaPuntosLogic {
 
     private static final Logger LOGGER = Logger.getLogger(TarjetaPuntosLogic.class.getName());
 
-    @Inject
-    private TarjetaPuntosPersistence persistence; // Variable para acceder a la persistencia de la aplicación. Es una inyección de dependencias.
+    @Inject private TarjetaPuntosPersistence persistence; // Variable para acceder a la persistencia de la aplicación. Es una inyección de dependencias.
 
     /**
      *

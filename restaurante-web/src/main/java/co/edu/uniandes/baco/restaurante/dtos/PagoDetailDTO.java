@@ -30,13 +30,4 @@ public class PagoDetailDTO extends PagoDTO{
         super(entity);
     }
 
-    /**
-     * Transformar un DTO a un Entity
-     *
-     * @return 
-     */
-    @Override
-    public PagoEntity toEntity() {
-        return super.toEntity();
-    }
 }

@@ -24,8 +24,7 @@ public class PedidoLogic
 {
        private static final Logger LOGGER = Logger.getLogger(PedidoLogic.class.getName());
 
-    @Inject
-    private PedidoPersistence persistence; // Variable para acceder a la persistencia de la aplicación. Es una inyección de dependencias.
+    @Inject private PedidoPersistence persistence; // Variable para acceder a la persistencia de la aplicación. Es una inyección de dependencias.
 
     /**
      *

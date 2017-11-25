@@ -30,13 +30,4 @@ public class PlatoDetailDTO extends PlatoDTO{
         super(entity);
     }
 
-    /**
-     * Transformar un DTO a un Entity
-     *
-     * @return 
-     */
-    @Override
-    public PlatoEntity toEntity() {
-        return super.toEntity();
-    }
 }

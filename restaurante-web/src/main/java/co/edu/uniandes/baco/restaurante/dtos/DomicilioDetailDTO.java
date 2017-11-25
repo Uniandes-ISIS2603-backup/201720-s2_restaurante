@@ -10,10 +10,5 @@ public class DomicilioDetailDTO extends DomicilioDTO {
     public DomicilioDetailDTO(DomicilioEntity entity) {
         super(entity);
     }
-    
-    @Override
-    public DomicilioEntity toEntity() {
-        return super.toEntity();
-    }
 
 }

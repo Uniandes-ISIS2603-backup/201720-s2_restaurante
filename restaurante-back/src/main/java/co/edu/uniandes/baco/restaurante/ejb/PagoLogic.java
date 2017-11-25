@@ -23,8 +23,7 @@ public class PagoLogic {
     
 private static final Logger LOGGER = Logger.getLogger(PagoLogic.class.getName());
 
-    @Inject
-    private PagoPersistence persistence; // Variable para acceder a la persistencia de la aplicación. Es una inyección de dependencias.
+    @Inject private PagoPersistence persistence; // Variable para acceder a la persistencia de la aplicación. Es una inyección de dependencias.
 
     /**
      *

@@ -7,7 +7,6 @@ package co.edu.uniandes.baco.restaurante.entities;
 
 import java.io.Serializable;
 import java.sql.Time;
-import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -20,7 +19,7 @@ import uk.co.jemos.podam.common.PodamExclude;
 @Entity
 public class TarjetaPuntosEntity extends BaseEntity implements Serializable{
     private int puntos;
-    private ArrayList<Time> vencimientos;
+    private List<Time> vencimientos;
     @PodamExclude
     @ManyToOne
     private RestauranteEntity rest;
@@ -57,7 +56,7 @@ public class TarjetaPuntosEntity extends BaseEntity implements Serializable{
     }
 
     public void setVencimientos(List<Time> vencimientos) {
-        this.vencimientos = (ArrayList<Time>) vencimientos;
+        this.vencimientos = vencimientos;
     }
 
     @Override

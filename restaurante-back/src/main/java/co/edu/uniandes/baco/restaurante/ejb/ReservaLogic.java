@@ -23,8 +23,7 @@ import javax.inject.Inject;
 public class ReservaLogic {
     private static final Logger LOGGER = Logger.getLogger(ReservaLogic.class.getName());
 
-    @Inject
-    private ReservaPersistence persistence; // Variable para acceder a la persistencia de la aplicación. Es una inyección de dependencias.
+    @Inject private ReservaPersistence persistence; // Variable para acceder a la persistencia de la aplicación. Es una inyección de dependencias.
 
     /**
      *

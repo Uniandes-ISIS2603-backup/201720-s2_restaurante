@@ -12,11 +12,13 @@ import co.edu.uniandes.baco.restaurante.entities.SucursalEntity;
  * @author jd.correa
  */
 public class SucursalDTO {
+
     private Long id;
     private String calificacion;
     private boolean dosPisos;
     private String direccion;
     private String image;
+
     /**
      * Constructor por defecto
      */
@@ -26,31 +28,6 @@ public class SucursalDTO {
          */
     }
 
-    public String getCalificacion() {
-        return calificacion;
-    }
-
-    public void setCalificacion(String calificacion) {
-        this.calificacion = calificacion;
-    }
-
-    public boolean isDosPisos() {
-        return dosPisos;
-    }
-
-    public void setDosPisos(boolean dosPisos) {
-        this.dosPisos = dosPisos;
-    }
-
-    public String getDireccion() {
-        return direccion;
-    }
-
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
-    
-
     /**
      * Conviertir Entity a DTO (Crea un nuevo DTO con los valores que recibe en
      * la entidad que viene de argumento.
@@ -58,14 +35,39 @@ public class SucursalDTO {
      * @param sucursal: Es la entidad que se va a convertir a DTO
      */
     public SucursalDTO(SucursalEntity sucursal) {
-        if(sucursal!=null){
-        this.id = sucursal.getId();
-        this.calificacion=sucursal.getCalificacion();
-        this.direccion=sucursal.getDireccion();
-        this.dosPisos=sucursal.isDosPisos();
-        this.image=sucursal.getImage();
+        if (sucursal != null) {
+            this.id = sucursal.getId();
+            this.calificacion = sucursal.getCalificacion();
+            this.direccion = sucursal.getDireccion();
+            this.dosPisos = sucursal.isDosPisos();
+            this.image = sucursal.getImage();
         }
     }
+
+    public String getCalificacion() {
+        return calificacion;
+    }
+
+    public boolean isDosPisos() {
+        return dosPisos;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setCalificacion(String calificacion) {
+        this.calificacion = calificacion;
+    }
+
+    public void setDosPisos(boolean dosPisos) {
+        this.dosPisos = dosPisos;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
     public SucursalEntity toEntity() {
         SucursalEntity entity = new SucursalEntity();
         entity.setId(this.id);

@@ -2,14 +2,14 @@ package co.edu.uniandes.baco.restaurante.dtos;
 
 import co.edu.uniandes.baco.restaurante.entities.TarjetaPuntosEntity;
 import java.sql.Time;
-import java.util.ArrayList;
+import java.util.List;
 
 
 public class TarjetaPuntosDTO {
 
     private Long id;
     private int puntos;
-    private ArrayList<Time> vencimientos;
+    private List<Time> vencimientos;
 
     public TarjetaPuntosDTO() {
     }
@@ -19,7 +19,7 @@ public class TarjetaPuntosDTO {
         {
         this.id = tarjetaPuntos.getId();
         this.puntos=tarjetaPuntos.getPuntos();
-        this.vencimientos= (ArrayList<Time>) tarjetaPuntos.getVencimientos();
+        this.vencimientos= tarjetaPuntos.getVencimientos();
         }
     }
 
@@ -39,11 +39,11 @@ public class TarjetaPuntosDTO {
         this.puntos = puntos;
     }
 
-    public ArrayList<Time> getVencimientos() {
+    public List<Time> getVencimientos() {
         return vencimientos;
     }
 
-    public void setVencimientos(ArrayList<Time> vencimientos) {
+    public void setVencimientos(List<Time> vencimientos) {
         this.vencimientos = vencimientos;
     }
 

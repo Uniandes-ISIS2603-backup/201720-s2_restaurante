@@ -16,6 +16,7 @@ public class ReservaDetailDTO extends ReservaDTO{
      * Constructor por defecto
      */
     public ReservaDetailDTO() {
+        //constructor por defecto
     }
 
     /**
@@ -27,14 +28,4 @@ public class ReservaDetailDTO extends ReservaDTO{
         super(entity);
     }
 
-    /**
-     * Transformar un DTO a un Entity
-     *
-     * @return 
-     */
-    @Override
-    public ReservaEntity toEntity() {
-        ReservaEntity ReservaR = super.toEntity();
-        return ReservaR;
-    }
 }

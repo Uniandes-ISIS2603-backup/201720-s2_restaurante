@@ -24,8 +24,7 @@ import javax.inject.Inject;
 public class MesaLogic {
     private static final Logger LOGGER = Logger.getLogger(MesaLogic.class.getName());
 
-    @Inject
-    private MesaPersistence persistence; // Variable para acceder a la persistencia de la aplicación. Es una inyección de dependencias.
+    @Inject private MesaPersistence persistence; // Variable para acceder a la persistencia de la aplicación. Es una inyección de dependencias.
 
     /**
      *

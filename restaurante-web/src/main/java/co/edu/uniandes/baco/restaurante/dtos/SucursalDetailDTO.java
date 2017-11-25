@@ -14,9 +14,11 @@ import java.util.List;
  *
  * @author jd.correa
  */
-public class SucursalDetailDTO extends SucursalDTO{
+public class SucursalDetailDTO extends SucursalDTO {
+
     private RestauranteDTO restaurante;
     private List<PlatoDTO> platos;
+
     public SucursalDetailDTO() {
         super();
     }
@@ -28,15 +30,16 @@ public class SucursalDetailDTO extends SucursalDTO{
      */
     public SucursalDetailDTO(SucursalEntity entity) {
         super(entity);
-        if (entity!=null) {
+        if (entity != null) {
             this.restaurante = new RestauranteDTO(entity.getRestaurante());
-            platos=new ArrayList<>();
+            platos = new ArrayList<>();
             for (PlatoEntity entityPlatos : entity.getPlatos()) {
                 platos.add(new PlatoDTO(entityPlatos));
             }
-        } 
         }
-     @Override
+    }
+
+    @Override
     public SucursalEntity toEntity() {
         SucursalEntity entity = super.toEntity();
         if (platos != null) {
@@ -46,8 +49,9 @@ public class SucursalDetailDTO extends SucursalDTO{
             }
             entity.setPlatos(booksEntity);
         }
-        if(restaurante!=null)
+        if (restaurante != null) {
             entity.setRestaurante(restaurante.toEntity());
+        }
         return entity;
     }
 }

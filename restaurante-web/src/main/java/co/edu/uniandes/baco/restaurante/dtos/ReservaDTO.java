@@ -38,6 +38,7 @@ public class ReservaDTO {
      * Constructor por defecto
      */
     public ReservaDTO() {
+        //Constructor por defecto
     }
     
 

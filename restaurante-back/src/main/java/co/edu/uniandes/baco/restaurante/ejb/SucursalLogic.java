@@ -24,8 +24,7 @@ public class SucursalLogic {
 
     private static final Logger LOGGER = Logger.getLogger(SucursalLogic.class.getName());
 
-    @Inject
-    private SucursalPersistence persistence; // Variable para acceder a la persistencia de la aplicación. Es una inyección de dependencias.
+    @Inject private SucursalPersistence persistence; // Variable para acceder a la persistencia de la aplicación. Es una inyección de dependencias.
 
     /**
      *

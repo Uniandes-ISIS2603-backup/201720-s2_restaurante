@@ -20,10 +20,9 @@ import javax.inject.Inject;
  */
 @Stateless
 public class PlatoLogic {
-      private static final Logger LOGGER = Logger.getLogger(PlatoLogic.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(PlatoLogic.class.getName());
 
-    @Inject
-    private PlatoPersistence persistence; // Variable para acceder a la persistencia de la aplicación. Es una inyección de dependencias.
+    @Inject private PlatoPersistence persistence; // Variable para acceder a la persistencia de la aplicación. Es una inyección de dependencias.
 
     /**
      *

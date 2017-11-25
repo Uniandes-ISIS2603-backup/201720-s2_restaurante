@@ -31,13 +31,4 @@ public class MesaDetailDTO extends MesaDTO {
         
     }
 
-    /**
-     * Transformar un DTO a un Entity
-     *
-     * @return 
-     */
-    @Override
-    public MesaEntity toEntity() {
-        return super.toEntity();
-    }
 }

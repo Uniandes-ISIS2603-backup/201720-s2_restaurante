@@ -31,15 +31,6 @@ public class PedidoDetailDTO extends PedidoDTO{
         super(entity);
     }
 
-    /**
-     * Transformar un DTO a un Entity
-     *
-     * @return 
-     */
-    @Override
-    public PedidoEntity toEntity() {
-        return super.toEntity();
-    }
 }
 
 

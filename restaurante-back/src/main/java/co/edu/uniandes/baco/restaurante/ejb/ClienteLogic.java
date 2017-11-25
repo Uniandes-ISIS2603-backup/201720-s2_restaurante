@@ -19,12 +19,11 @@ import javax.inject.Inject;
  * @author s.heim
  */
 @Stateless
-public class ClienteLogic 
-{
-       private static final Logger LOGGER = Logger.getLogger(ClienteLogic.class.getName());
+public class ClienteLogic {
 
-    @Inject
-    private ClientePersistence persistence; // Variable para acceder a la persistencia de la aplicación. Es una inyección de dependencias.
+    private static final Logger LOGGER = Logger.getLogger(ClienteLogic.class.getName());
+
+    @Inject private ClientePersistence persistence; // Variable para acceder a la persistencia de la aplicación. Es una inyección de dependencias.
 
     /**
      *
@@ -41,7 +40,7 @@ public class ClienteLogic
     }
 
     /**
-     * 
+     *
      * Obtener todas los clientes existentes en la base de datos.
      *
      * @return una lista de clientes.
@@ -57,7 +56,7 @@ public class ClienteLogic
     /**
      *
      * Obtener un cliente por medio de su id.
-     * 
+     *
      * @param id: id del cliente para ser buscada.
      * @return el cliente solicitado por medio de su id.
      */
@@ -66,7 +65,7 @@ public class ClienteLogic
         // Note que, por medio de la inyección de dependencias se llama al método "find(id)" que se encuentra en la persistencia.
         ClienteEntity cliente = persistence.find(id);
         LOGGER.log(Level.INFO, "Termina proceso de consultar cliente con id={0}", id);
-        return cliente ;
+        return cliente;
     }
 
     /**
@@ -74,8 +73,8 @@ public class ClienteLogic
      * Actualizar una cliente.
      *
      * @param id: id del cliente para buscarla en la base de datos.
-     * @param entity: clinete con los cambios para ser actualizada, por
-     * ejemplo el nombre.
+     * @param entity: clinete con los cambios para ser actualizada, por ejemplo
+     * el nombre.
      * @return el cliente con los cambios actualizados en la base de datos.
      */
     public ClienteEntity updateCliente(Long id, ClienteEntity entity) {

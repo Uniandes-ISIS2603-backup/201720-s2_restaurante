@@ -22,8 +22,7 @@ public class DomicilioLogic {
 
     private static final Logger LOGGER = Logger.getLogger(DomicilioLogic.class.getName());
 
-    @Inject
-    private DomicilioPersistence persistence; // Variable para acceder a la persistencia de la aplicación. Es una inyección de dependencias.
+    @Inject private DomicilioPersistence persistence; // Variable para acceder a la persistencia de la aplicación. Es una inyección de dependencias.
 
     /**
      *

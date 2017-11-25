@@ -25,41 +25,7 @@ public class MesaDTO {
          * Constructor por defecto
          */
     }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public int getSillasDisponibles() {
-        return sillasDisponibles;
-    }
-
-    public void setSillasDisponibles(int sillasDisponibles) {
-        this.sillasDisponibles = sillasDisponibles;
-    }
-
-    public int getPiso() {
-        return piso;
-    }
-
-    public void setPiso(int piso) {
-        this.piso = piso;
-    }
-
-    public boolean isDisponible() {
-        return disponible;
-    }
-
-    public void setDisponible(boolean disponible) {
-        this.disponible = disponible;
-    }
     
-   
-
     /**
      * Conviertir Entity a DTO (Crea un nuevo DTO con los valores que recibe en
      * la entidad que viene de argumento.
@@ -75,7 +41,38 @@ public class MesaDTO {
         this.sillasDisponibles=mesa.getSillasDisponibles();
         }
     }
+
+    public Long getId() {
+        return id;
+    }
     
+     public int getSillasDisponibles() {
+        return sillasDisponibles;
+    }
+     
+     public int getPiso() {
+        return piso;
+    }
+     
+    public boolean isDisponible() {
+        return disponible;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setSillasDisponibles(int sillasDisponibles) {
+        this.sillasDisponibles = sillasDisponibles;
+    }  
+
+    public void setPiso(int piso) {
+        this.piso = piso;
+    }
+
+    public void setDisponible(boolean disponible) {
+        this.disponible = disponible;
+    }
     
     /**
      * Convertir DTO a Entity
@@ -90,7 +87,5 @@ public class MesaDTO {
         entity.setSillasDisponibles(this.sillasDisponibles);
         return entity;
     }
-    
-    
     
 }
