@@ -54,55 +54,41 @@ public class ClienteEntity extends BaseEntity implements Serializable
         return reservas;
     }
 
-    public void setReservas(List<ReservaEntity> reservas) {
-        this.reservas = reservas;
-    }
-    
     public TarjetaPuntosEntity getTarjeta() {
         return tarjeta;
-    }
-
-    public void setTarjeta(TarjetaPuntosEntity tarjeta) {
-        this.tarjeta = tarjeta;
     }
 
     public DomicilioEntity getDom() {
         return dom;
     }
 
-    public void setDom(DomicilioEntity dom) {
-        this.dom = dom;
-    }
-
     public RestauranteEntity getRest() {
         return rest;
-    }
-
-    public void setRest(RestauranteEntity rest) {
-        this.rest = rest;
     }
 
     public List<PagoEntity> getMetodos() {
         return metodos;
     }
 
-    public void setMetodos(List<PagoEntity> metodos) {
-        this.metodos = metodos;
+    /**
+     * @return the apellido
+     */
+    public String getApellido() {
+        return apellido;
     }
-   
+
+    /**
+     * @return the numPuntos
+     */
+    public int getNumPuntos() {
+        return numPuntos;
+    }
 
     /**
      * @return the tieneTarjeta
      */
     public boolean isTieneTarjeta() {
         return tieneTarjeta;
-    }
-
-    /**
-     * @param tieneTarjeta the tieneTarjeta to set
-     */
-    public void settieneTarjeta(boolean tieneTarjeta) {
-        this.tieneTarjeta = tieneTarjeta;
     }
 
     /**
@@ -120,10 +106,10 @@ public class ClienteEntity extends BaseEntity implements Serializable
     }
 
     /**
-     * @return the apellido
+     * @param tieneTarjeta the tieneTarjeta to set
      */
-    public String getApellido() {
-        return apellido;
+    public void settieneTarjeta(boolean tieneTarjeta) {
+        this.tieneTarjeta = tieneTarjeta;
     }
 
     /**
@@ -134,32 +120,35 @@ public class ClienteEntity extends BaseEntity implements Serializable
     }
 
     /**
-     * @return the numPuntos
-     */
-    public int getNumPuntos() {
-        return numPuntos;
-    }
-
-    /**
      * @param numPuntos the numPuntos to set
      */
     public void setNumPuntos(int numPuntos) {
         this.numPuntos = numPuntos;
     }
 
+    public void setMetodos(List<PagoEntity> metodos) {
+        this.metodos = metodos;
+    }
+    
+    public void setReservas(List<ReservaEntity> reservas) {
+        this.reservas = reservas;
+    }
+
+    public void setTarjeta(TarjetaPuntosEntity tarjeta) {
+        this.tarjeta = tarjeta;
+    } 
+
+    public void setDom(DomicilioEntity dom) {
+        this.dom = dom;
+    }
+
+    public void setRest(RestauranteEntity rest) {
+        this.rest = rest;
+    }
+
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 41 * hash + (this.tieneTarjeta ? 1 : 0);
-        hash = 41 * hash + Objects.hashCode(this.nombre);
-        hash = 41 * hash + Objects.hashCode(this.apellido);
-        hash = 41 * hash + this.numPuntos;
-        hash = 41 * hash + Objects.hashCode(this.tarjeta);
-        hash = 41 * hash + Objects.hashCode(this.dom);
-        hash = 41 * hash + Objects.hashCode(this.rest);
-        hash = 41 * hash + Objects.hashCode(this.metodos);
-        hash = 41 * hash + Objects.hashCode(this.reservas);
-        return hash;
+        return 7;
     }
 
     @Override
@@ -174,34 +163,7 @@ public class ClienteEntity extends BaseEntity implements Serializable
             return false;
         }
         final ClienteEntity other = (ClienteEntity) obj;
-        if (this.tieneTarjeta != other.tieneTarjeta) {
-            return false;
-        }
-        if (this.numPuntos != other.numPuntos) {
-            return false;
-        }
-        if (!Objects.equals(this.nombre, other.nombre)) {
-            return false;
-        }
-        if (!Objects.equals(this.apellido, other.apellido)) {
-            return false;
-        }
-        if (!Objects.equals(this.tarjeta, other.tarjeta)) {
-            return false;
-        }
-        if (!Objects.equals(this.dom, other.dom)) {
-            return false;
-        }
-        if (!Objects.equals(this.rest, other.rest)) {
-            return false;
-        }
-        if (!Objects.equals(this.metodos, other.metodos)) {
-            return false;
-        }
-        if (!Objects.equals(this.reservas, other.reservas)) {
-            return false;
-        }
-        return true;
+        return this.tieneTarjeta == other.tieneTarjeta;
     }
 
     

@@ -72,10 +72,7 @@ public class MesaEntity extends BaseEntity implements Serializable{
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 73 * hash + this.sillasDisponibles;
-        hash = 73 * hash + this.piso;
-        return hash;
+        return 7;
     }
 
     @Override
@@ -86,18 +83,7 @@ public class MesaEntity extends BaseEntity implements Serializable{
         if (obj == null) {
             return false;
         }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final MesaEntity other = (MesaEntity) obj;
-        if (this.sillasDisponibles != other.sillasDisponibles) {
-            return false;
-        }
-        if (this.piso != other.piso) {
-            return false;
-        }
-        return true;
+        return getClass() == obj.getClass();
     }
-    
     
 }
