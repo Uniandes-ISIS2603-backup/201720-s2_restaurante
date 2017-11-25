@@ -37,6 +37,10 @@ public class ReservaEntity extends BaseEntity implements Serializable{
         return restaurante;
     }
 
+    public void setRestaurante(RestauranteEntity restaurante) {
+        this.restaurante = restaurante;
+    }
+
     public ClienteEntity getCliente() {
         return cliente;
     }
@@ -83,9 +87,6 @@ public class ReservaEntity extends BaseEntity implements Serializable{
         }
         final ReservaEntity other = (ReservaEntity) obj;
         if (!Objects.equals(this.fecha, other.fecha)) {
-            return false;
-        }
-        if (!Objects.equals(this.restaurante, other.restaurante)) {
             return false;
         }
         return true;

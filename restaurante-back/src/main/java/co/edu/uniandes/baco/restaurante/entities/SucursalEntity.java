@@ -112,10 +112,7 @@ public class SucursalEntity extends BaseEntity implements Serializable {
             return false;
         }
         final SucursalEntity other = (SucursalEntity) obj;
-        if (!Objects.equals(this.calificacion, other.calificacion)) {
-            return false;
-        }
-        return true;
+        return Objects.equals(this.calificacion, other.calificacion);
     }
     
     
