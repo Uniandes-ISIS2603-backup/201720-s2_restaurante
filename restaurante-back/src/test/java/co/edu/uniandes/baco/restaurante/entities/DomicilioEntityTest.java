@@ -151,7 +151,14 @@ public class DomicilioEntityTest {
      */
     @Test
     public void testEquals() {
+        RestauranteEntity r= new RestauranteEntity();
+        DomicilioEntity dom1= new DomicilioEntity();
         assertTrue(dom.equals(dom));
+        assertFalse(dom.equals(null));
+        assertFalse(dom.equals(r));
+        dom.setRango(10);
+        dom1.setRango(11);
+        assertFalse(dom.equals(dom1));
     }
     
 }
