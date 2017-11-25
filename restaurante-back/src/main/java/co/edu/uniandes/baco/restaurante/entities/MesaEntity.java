@@ -72,7 +72,7 @@ public class MesaEntity extends BaseEntity implements Serializable{
 
     @Override
     public int hashCode() {
-        return 7;
+        return 8;
     }
 
     @Override
