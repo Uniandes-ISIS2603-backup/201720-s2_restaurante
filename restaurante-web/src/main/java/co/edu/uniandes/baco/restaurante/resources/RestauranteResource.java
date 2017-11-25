@@ -27,10 +27,8 @@ import co.edu.uniandes.baco.restaurante.ejb.RestauranteLogic;
 import co.edu.uniandes.baco.restaurante.dtos.RestauranteDetailDTO;
 import co.edu.uniandes.baco.restaurante.entities.RestauranteEntity;
 import co.edu.uniandes.baco.restaurante.exceptions.BusinessLogicException;
-import co.edu.uniandes.baco.restaurante.persistence.RestaurantePersistence;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
 
@@ -43,7 +41,6 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.WebApplicationException;
 
 /**
  * Clase que implementa el recurso REST correspondiente a "Restaurantes".
@@ -61,10 +58,7 @@ import javax.ws.rs.WebApplicationException;
 @Stateless
 public class RestauranteResource {
 
-    @Inject
-    RestauranteLogic restauranteLogic; // Variable para acceder a la lógica de la aplicación. Es una inyección de dependencias.
-
-    private static final Logger LOGGER = Logger.getLogger(RestauranteResource.class.getName());
+    @Inject RestauranteLogic restauranteLogic; // Variable para acceder a la lógica de la aplicación. Es una inyección de dependencias.
 
     /**
      * POST http://localhost:8080/restaurante-web/api/restaurantes
@@ -77,11 +71,11 @@ public class RestauranteResource {
      * @throws BusinessLogicException
      */
     @POST
-    public RestauranteDetailDTO createRestaurante(RestauranteDetailDTO Restaurante) throws BusinessLogicException {
+    public RestauranteDetailDTO createRestaurante(RestauranteDetailDTO restaurante) throws BusinessLogicException {
         // Convierte el DTO (json) en un objeto Entity para ser manejado por la lógica.
-        RestauranteEntity RestauranteEntity = Restaurante.toEntity();
+        RestauranteEntity restauranteEntity = restaurante.toEntity();
         // Invoca la lógica para crear la Restaurante nueva
-        RestauranteEntity nuevoRestaurante = restauranteLogic.createRestaurante(RestauranteEntity);
+        RestauranteEntity nuevoRestaurante = restauranteLogic.createRestaurante(restauranteEntity);
         // Como debe retornar un DTO (json) se invoca el constructor del DTO con argumento el entity nuevo
         return new RestauranteDetailDTO(nuevoRestaurante);
     }
@@ -114,7 +108,7 @@ public class RestauranteResource {
      */
     @PUT
     @Path("{id: \\d+}")
-    public RestauranteDetailDTO updateRestaurante(@PathParam("id") Long id, RestauranteDetailDTO restaurante) throws BusinessLogicException, UnsupportedOperationException {
+    public RestauranteDetailDTO updateRestaurante(@PathParam("id") Long id, RestauranteDetailDTO restaurante) throws BusinessLogicException {
           throw new UnsupportedOperationException("Este servicio  no está implementado");
       
     }

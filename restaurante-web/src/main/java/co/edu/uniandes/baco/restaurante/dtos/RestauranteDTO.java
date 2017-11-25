@@ -24,7 +24,6 @@ SOFTWARE.
 package co.edu.uniandes.baco.restaurante.dtos;
 
 import co.edu.uniandes.baco.restaurante.entities.RestauranteEntity;
-import java.sql.Time;
 import java.util.Date;
 
 /**
@@ -37,47 +36,16 @@ import java.util.Date;
 public class RestauranteDTO {
 
     private Long id;
-    private Date hora_inicio_maniana;
-    private Date hora_inicio_tarde;
-    private Date hora_fin_maniana;
-    private Date hora_fin_tarde;
-
-    public Date getHora_inicio_maniana() {
-        return hora_inicio_maniana;
-    }
-
-    public void setHora_inicio_maniana(Date hora_inicio_maniana) {
-        this.hora_inicio_maniana = hora_inicio_maniana;
-    }
-
-    public Date getHora_inicio_tarde() {
-        return hora_inicio_tarde;
-    }
-
-    public void setHora_inicio_tarde(Date hora_inicio_tarde) {
-        this.hora_inicio_tarde = hora_inicio_tarde;
-    }
-
-    public Date getHora_fin_maniana() {
-        return hora_fin_maniana;
-    }
-
-    public void setHora_fin_maniana(Date hora_fin_maniana) {
-        this.hora_fin_maniana = hora_fin_maniana;
-    }
-
-    public Date getHora_fin_tarde() {
-        return hora_fin_tarde;
-    }
-
-    public void setHora_fin_tarde(Date hora_fin_tarde) {
-        this.hora_fin_tarde = hora_fin_tarde;
-    }
+    private Date horaInicManiana;
+    private Date horaInicTarde;
+    private Date horaEndManiana;
+    private Date horaEndTarde;
 
     /**
      * Constructor por defecto
      */
     public RestauranteDTO() {
+        //constructor por defecto
     }
 
     /**
@@ -88,12 +56,44 @@ public class RestauranteDTO {
      */
     public RestauranteDTO(RestauranteEntity restaurante) {
         if (restaurante != null) {
-            this.hora_fin_maniana = restaurante.getHora_fin_maniana();
-            this.hora_fin_tarde = restaurante.getHora_fin_tarde();
-            this.hora_inicio_maniana = restaurante.getHora_inicio_maniana();
-            this.hora_inicio_tarde = restaurante.getHora_inicio_tarde();
+            this.horaEndManiana = restaurante.getHoraFinManiana();
+            this.horaEndTarde = restaurante.getHoraFinTarde();
+            this.horaInicManiana = restaurante.getHoraInicioManiana();
+            this.horaInicTarde = restaurante.getHoraInicioTarde();
             this.id = restaurante.getId();
         }
+    }
+
+    public Date getHoraInicManiana() {
+        return horaInicManiana;
+    }
+
+    public void setHoraInicManiana(Date horaInicManiana) {
+        this.horaInicManiana = horaInicManiana;
+    }
+
+    public Date getHoraInicTarde() {
+        return horaInicTarde;
+    }
+
+    public void setHoraInicTarde(Date horaInicTarde) {
+        this.horaInicTarde = horaInicTarde;
+    }
+
+    public Date getHoraEndManiana() {
+        return horaEndManiana;
+    }
+
+    public void setHoraEndManiana(Date horaEndManiana) {
+        this.horaEndManiana = horaEndManiana;
+    }
+
+    public Date getHoraEndTarde() {
+        return horaEndTarde;
+    }
+
+    public void setHoraEndTarde(Date horaEndTarde) {
+        this.horaEndTarde = horaEndTarde;
     }
 
     /**
@@ -118,10 +118,10 @@ public class RestauranteDTO {
     public RestauranteEntity toEntity() {
         RestauranteEntity entity = new RestauranteEntity();
         entity.setId(this.id);
-        entity.setHora_fin_maniana(hora_fin_maniana);
-        entity.setHora_fin_tarde(hora_fin_tarde);
-        entity.setHora_inicio_tarde(hora_inicio_tarde);
-        entity.setHora_inicio_maniana(hora_inicio_maniana);
+        entity.setHoraFinManiana(horaEndManiana);
+        entity.setHoraFinTarde(horaEndTarde);
+        entity.setHoraInicioTarde(horaInicTarde);
+        entity.setHoraInicioManiana(horaInicManiana);
         return entity;
     }
 

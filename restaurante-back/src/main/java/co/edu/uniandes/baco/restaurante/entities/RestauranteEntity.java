@@ -20,10 +20,9 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-*/
+ */
 package co.edu.uniandes.baco.restaurante.entities;
 
-import co.edu.uniandes.baco.restaurante.entities.BaseEntity;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
@@ -40,14 +39,34 @@ import uk.co.jemos.podam.common.PodamExclude;
  */
 @Entity
 public class RestauranteEntity extends BaseEntity implements Serializable {
-   @Temporal(TemporalType.DATE)
-   private Date hora_inicio_maniana;
-   @Temporal(TemporalType.DATE)
-   private Date hora_inicio_tarde;
-   @Temporal(TemporalType.DATE)
-   private Date hora_fin_maniana;
-   @Temporal(TemporalType.DATE)
-   private Date hora_fin_tarde;
+
+    @Temporal(TemporalType.DATE)
+    private Date horaInicioManiana;
+    @Temporal(TemporalType.DATE)
+    private Date horaInicioTarde;
+    @Temporal(TemporalType.DATE)
+    private Date horaFinManiana;
+    @Temporal(TemporalType.DATE)
+    private Date horaFinTarde;
+
+    @PodamExclude
+    @OneToMany
+    private List<SucursalEntity> sucursales = new ArrayList<>();
+    @PodamExclude
+    @OneToMany
+    private List<ClienteEntity> clientes = new ArrayList<>();
+    @PodamExclude
+    @OneToMany
+    private List<TarjetaPuntosEntity> tarjetas = new ArrayList<>();
+    @PodamExclude
+    @OneToMany
+    private List<PlatoEntity> platos = new ArrayList<>();
+    @PodamExclude
+    @OneToMany
+    private List<ReservaEntity> reservas = new ArrayList<>();
+    @PodamExclude
+    @OneToMany
+    private List<DomicilioEntity> domicilios = new ArrayList<>();
 
     public List<SucursalEntity> getSucursales() {
         return sucursales;
@@ -56,24 +75,7 @@ public class RestauranteEntity extends BaseEntity implements Serializable {
     public void setSucursales(List<SucursalEntity> sucursales) {
         this.sucursales = sucursales;
     }
-   @PodamExclude
-   @OneToMany
-   private List<SucursalEntity> sucursales = new ArrayList<SucursalEntity>();
-   @PodamExclude
-   @OneToMany
-   private List<ClienteEntity> clientes = new ArrayList<ClienteEntity>();
-   @PodamExclude
-   @OneToMany
-   private List<TarjetaPuntosEntity> tarjetas = new ArrayList<TarjetaPuntosEntity>();
-   @PodamExclude
-   @OneToMany
-   private List<PlatoEntity> platos = new ArrayList<PlatoEntity>();
-   @PodamExclude
-   @OneToMany
-   private List<ReservaEntity> reservas = new ArrayList<ReservaEntity>();
-   @PodamExclude
-   @OneToMany
-   private List<DomicilioEntity> domicilios = new ArrayList<DomicilioEntity>();
+
     public List<ReservaEntity> getReservas() {
         return reservas;
     }
@@ -114,36 +116,41 @@ public class RestauranteEntity extends BaseEntity implements Serializable {
         this.reservas = reservas;
     }
 
-
-    public Date getHora_inicio_maniana() {
-        return hora_inicio_maniana;
+    public Date getHoraInicioManiana() {
+        return horaInicioManiana;
     }
 
-    public void setHora_inicio_maniana(Date hora_inicio_maniana) {
-        this.hora_inicio_maniana = hora_inicio_maniana;
+    public void setHoraInicioManiana(Date horaInicioManiana) {
+        this.horaInicioManiana = horaInicioManiana;
     }
 
-    public Date getHora_inicio_tarde() {
-        return hora_inicio_tarde;
+    public Date getHoraInicioTarde() {
+        return horaInicioTarde;
     }
 
-    public void setHora_inicio_tarde(Date hora_inicio_tarde) {
-        this.hora_inicio_tarde = hora_inicio_tarde;
+    public void setHoraInicioTarde(Date horaInicioTarde) {
+        this.horaInicioTarde = horaInicioTarde;
     }
 
-    public Date getHora_fin_maniana() {
-        return hora_fin_maniana;
+    public Date getHoraFinManiana() {
+        return horaFinManiana;
     }
 
-    public void setHora_fin_maniana(Date hora_fin_maniana) {
-        this.hora_fin_maniana = hora_fin_maniana;
+    public void setHoraFinManiana(Date horaFinManiana) {
+        this.horaFinManiana = horaFinManiana;
     }
 
-    public Date getHora_fin_tarde() {
-        return hora_fin_tarde;
+    public Date getHoraFinTarde() {
+        return horaFinTarde;
     }
 
-    public void setHora_fin_tarde(Date hora_fin_tarde) {
-        this.hora_fin_tarde = hora_fin_tarde;
+    public void setHoraFinTarde(Date horaFinTarde) {
+        this.horaFinTarde = horaFinTarde;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj);
+    }
+    
 }

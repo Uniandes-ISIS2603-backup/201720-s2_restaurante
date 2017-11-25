@@ -10,6 +10,7 @@ public class DomicilioDTO {
     private int rango;
 
     public DomicilioDTO() {
+        //constructor por defecto
     }
 
     public DomicilioDTO(DomicilioEntity domicilio) {
