@@ -92,32 +92,15 @@ public class SucursalEntity extends BaseEntity implements Serializable {
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
-
+    
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final SucursalEntity other = (SucursalEntity) obj;
-        if (this.dosPisos != other.dosPisos) {
-            return false;
-        }
-        if (!Objects.equals(this.calificacion, other.calificacion)) {
-            return false;
-        }
-        if (!Objects.equals(this.direccion, other.direccion)) {
-            return false;
-        }
-        if (!Objects.equals(this.image, other.image)) {
-            return false;
-        }
-        return true;
+        return super.equals(obj);
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
     }
 
 }

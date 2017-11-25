@@ -27,6 +27,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
@@ -147,10 +148,15 @@ public class RestauranteEntity extends BaseEntity implements Serializable {
     public void setHoraFinTarde(Date horaFinTarde) {
         this.horaFinTarde = horaFinTarde;
     }
-
+    
     @Override
     public boolean equals(Object obj) {
         return super.equals(obj);
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
     }
     
 }
