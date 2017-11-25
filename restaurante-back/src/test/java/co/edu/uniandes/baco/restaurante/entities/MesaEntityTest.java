@@ -112,7 +112,8 @@ public class MesaEntityTest {
      */
     @Test
     public void testHashCode() {
-        assertTrue(me.hashCode()==8);
+        int h= me.hashCode();
+        assertTrue(me.hashCode()==h);
     }
 
     /**

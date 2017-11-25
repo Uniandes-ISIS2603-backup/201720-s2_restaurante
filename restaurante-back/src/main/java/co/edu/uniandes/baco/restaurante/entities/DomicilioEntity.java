@@ -17,16 +17,17 @@ import uk.co.jemos.podam.common.PodamExclude;
  * @author af.bejarano
  */
 @Entity
-public class DomicilioEntity extends BaseEntity implements Serializable{
+public class DomicilioEntity extends BaseEntity implements Serializable {
+
     private int rango;
     @PodamExclude
-   @OneToOne
+    @OneToOne
     private PagoEntity pago;
     @PodamExclude
-   @OneToOne
+    @OneToOne
     private PedidoEntity pedido;
     @PodamExclude
-   @OneToOne
+    @OneToOne
     private ClienteEntity cliente;
     @PodamExclude
     @ManyToOne
@@ -63,7 +64,6 @@ public class DomicilioEntity extends BaseEntity implements Serializable{
     public void setRest(RestauranteEntity rest) {
         this.rest = rest;
     }
-    
 
     public int getRango() {
         return rango;
@@ -71,11 +71,6 @@ public class DomicilioEntity extends BaseEntity implements Serializable{
 
     public void setRango(int rango) {
         this.rango = rango;
-    }
-
-    @Override
-    public int hashCode() {
-        return 3;
     }
 
     @Override
@@ -98,6 +93,13 @@ public class DomicilioEntity extends BaseEntity implements Serializable{
         }
         return true;
     }
-    
-    
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 53 * hash + this.rango;
+        hash = 53 * hash + Objects.hashCode(this.pago);
+        return hash;
+    }
+
 }

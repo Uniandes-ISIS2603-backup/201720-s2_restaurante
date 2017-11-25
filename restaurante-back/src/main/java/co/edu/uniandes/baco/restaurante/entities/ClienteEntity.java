@@ -146,11 +146,6 @@ public class ClienteEntity extends BaseEntity implements Serializable
     }
 
     @Override
-    public int hashCode() {
-        return 7;
-    }
-
-    @Override
     public boolean equals(Object obj) {
         if (this == obj) {
             return true;
@@ -165,6 +160,11 @@ public class ClienteEntity extends BaseEntity implements Serializable
         return this.tieneTarjeta == other.tieneTarjeta;
     }
 
-    
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 53 * hash + (this.tieneTarjeta ? 1 : 0);
+        return hash;
+    }   
     
 }

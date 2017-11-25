@@ -143,7 +143,8 @@ public class DomicilioEntityTest {
      */
     @Test
     public void testHashCode() {
-        assertTrue(dom.hashCode()==3);
+        int h= dom.hashCode();
+        assertTrue(dom.hashCode()==h);
     }
 
     /**

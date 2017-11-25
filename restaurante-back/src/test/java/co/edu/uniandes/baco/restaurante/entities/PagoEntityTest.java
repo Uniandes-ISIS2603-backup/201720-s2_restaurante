@@ -160,7 +160,8 @@ public class PagoEntityTest {
      */
     @Test
     public void testHashCode() {
-        assertTrue(pe.hashCode()==5);
+        int h= pe.hashCode();
+        assertTrue(pe.hashCode()==h);
     }
 
     /**

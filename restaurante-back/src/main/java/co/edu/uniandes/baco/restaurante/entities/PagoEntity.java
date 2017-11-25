@@ -20,14 +20,15 @@ import uk.co.jemos.podam.common.PodamExclude;
  */
 @Entity
 public class PagoEntity extends BaseEntity implements Serializable {
+
     private boolean registrado;
     private boolean pagoAnticipado;
     private String tipo;
     @PodamExclude
-   @OneToMany
-   private List<PedidoEntity> pedidos = new ArrayList<>();
+    @OneToMany
+    private List<PedidoEntity> pedidos = new ArrayList<>();
     @PodamExclude
-   @OneToOne
+    @OneToOne
     private DomicilioEntity domicilio;
     @PodamExclude
     @ManyToOne
@@ -57,34 +58,28 @@ public class PagoEntity extends BaseEntity implements Serializable {
         this.cliente = cliente;
     }
 
-    public void setRegistrado(boolean registrado)
-    {
+    public void setRegistrado(boolean registrado) {
         this.registrado = registrado;
     }
-    public void setPagoAnticipado(boolean pagoAnticipado)
-    {
+
+    public void setPagoAnticipado(boolean pagoAnticipado) {
         this.pagoAnticipado = pagoAnticipado;
     }
-    public void setTipo(String tipo)
-    {
+
+    public void setTipo(String tipo) {
         this.tipo = tipo;
     }
-    public boolean getRegistrado()
-    {
+
+    public boolean getRegistrado() {
         return registrado;
     }
-    public boolean getPagoAnticipado()
-    {
+
+    public boolean getPagoAnticipado() {
         return pagoAnticipado;
     }
-    public String getTipo()
-    {
-        return tipo;
-    }
 
-    @Override
-    public int hashCode() {
-        return 5;
+    public String getTipo() {
+        return tipo;
     }
 
     @Override
@@ -97,5 +92,12 @@ public class PagoEntity extends BaseEntity implements Serializable {
         }
         return getClass() == obj.getClass();
     }
-    
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 29 * hash + (this.registrado ? 1 : 0);
+        return hash;
+    }
+
 }

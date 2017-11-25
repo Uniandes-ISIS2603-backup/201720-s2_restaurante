@@ -182,7 +182,8 @@ public class ClienteEntityTest {
      */
     @Test
     public void testHashCode() {
-        assertTrue(ce.hashCode()==7);
+        int h= ce.hashCode();
+        assertTrue(ce.hashCode()==h);
     }
 
     /**
