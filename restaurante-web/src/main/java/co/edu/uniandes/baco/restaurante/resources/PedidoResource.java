@@ -12,7 +12,6 @@ import co.edu.uniandes.baco.restaurante.entities.PedidoEntity;
 import co.edu.uniandes.baco.restaurante.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -35,15 +34,13 @@ import javax.ws.rs.WebApplicationException;
 @Stateless
 public class PedidoResource {
      
-    @Inject
-    PedidoLogic PedidoLogic; // Variable para acceder a la lógica de la aplicación. Es una inyección de dependencias.
+    @Inject PedidoLogic pedidoLogic; // Variable para acceder a la lógica de la aplicación. Es una inyección de dependencias.
 
-    private static final Logger LOGGER = Logger.getLogger(PedidoResource.class.getName());
 
     /**
      * POST http://localhost:8080/restaurante-web/api/pedidos
      *
-     * @param Pedido correponde a la representación java del objeto json
+     * @param pedido correponde a la representación java del objeto json
      * enviado en el llamado.
      * @return Devuelve el objeto json de entrada que contiene el id creado por
      * la base de datos y el tipo del objeto java. Ejemplo: { "type":
@@ -51,12 +48,12 @@ public class PedidoResource {
      * @throws BusinessLogicException
      */
     @POST 
-    public PedidoDetailDTO  createPedido(PedidoDetailDTO Pedido) throws BusinessLogicException {
+    public PedidoDetailDTO  createPedido(PedidoDetailDTO pedido) throws BusinessLogicException {
         // Convierte el DTO (json) en un objeto Entity para ser manejado por la lógica.
-        PedidoEntity PedidoEntity = Pedido.toEntity();
+        PedidoEntity pedidoEntity = pedido.toEntity();
         // Invoca la lógica para crear la Pedido nueva
         PedidoEntity nuevoPedido;
-        nuevoPedido = PedidoLogic.createPedido(PedidoEntity);
+        nuevoPedido = pedidoLogic.createPedido(pedidoEntity);
         // Como debe retornar un DTO (json) se invoca el constructor del DTO con argumento el entity nuevo
         return new PedidoDetailDTO(nuevoPedido);
     }
@@ -70,12 +67,12 @@ public class PedidoResource {
      */
     @GET 
     public List<PedidoDetailDTO> getPedidos() throws BusinessLogicException {
-        return listEntity2DetailDTO(PedidoLogic.getPedidos());
+        return listEntity2DetailDTO(pedidoLogic.getPedidos());
     }
 @GET
     @Path("{id: \\d+}")
     public PedidoDetailDTO getPedido(@PathParam("id") Long id) throws BusinessLogicException {
-        PedidoEntity entity = PedidoLogic.getPedido(id);
+        PedidoEntity entity = pedidoLogic.getPedido(id);
         if (entity == null) {
             throw new WebApplicationException("El recurso /Pedido/" + id + " no existe.", 404);
         }
@@ -87,7 +84,7 @@ public class PedidoResource {
      * json { "id": 1, "atirbuto1": "Valor nuevo" }
      *
      * @param id corresponde a la Pedido a actualizar.
-     * @param restaurante corresponde  al objeto con los cambios que se van a
+     * @param pedido corresponde  al objeto con los cambios que se van a
      * realizar.
      * @return La Pedido actualizada.
      * @throws BusinessLogicException
@@ -97,13 +94,13 @@ public class PedidoResource {
      */
     @PUT 
     @Path("{id: \\d+}")
-    public PedidoDetailDTO updatePedido(@PathParam("id") Long id, PedidoDetailDTO pedido) throws BusinessLogicException, UnsupportedOperationException {
+    public PedidoDetailDTO updatePedido(@PathParam("id") Long id, PedidoDetailDTO pedido) throws BusinessLogicException {
           pedido.setId(id);
-        PedidoEntity entity = PedidoLogic.getPedido(id);
+        PedidoEntity entity = pedidoLogic.getPedido(id);
         if (entity == null) {
-            throw new WebApplicationException("El recurso /pedidos/" + id + " no existe.", 404);
+            throw new WebApplicationException("El recurso /pedidos/" + id + " no es existente.", 404);
         }
-        return new PedidoDetailDTO(PedidoLogic.updatePedido(id, entity)); 
+        return new PedidoDetailDTO(pedidoLogic.updatePedido(id, entity)); 
       
     }
 
@@ -120,11 +117,11 @@ public class PedidoResource {
     @DELETE 
     @Path("{id: \\d+}")
     public void deletePedido(@PathParam("id") Long id) throws BusinessLogicException {
-         PedidoEntity entity = PedidoLogic.getPedido(id);
+         PedidoEntity entity = pedidoLogic.getPedido(id);
         if (entity == null) {
-            throw new WebApplicationException("El recurso /Pedido/" + id + " no existe.", 404);
+            throw new WebApplicationException("El recurso /Pedido/" + id + " no está en la base de datos.", 404);
         }
-        PedidoLogic.deletePedido(id);
+        pedidoLogic.deletePedido(id);
     }
 
     /**

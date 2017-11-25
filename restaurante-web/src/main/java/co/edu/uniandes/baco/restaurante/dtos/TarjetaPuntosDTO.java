@@ -12,6 +12,9 @@ public class TarjetaPuntosDTO {
     private List<Time> vencimientos;
 
     public TarjetaPuntosDTO() {
+        /**
+         * Constructor por defecto
+         */
     }
 
     public TarjetaPuntosDTO(TarjetaPuntosEntity tarjetaPuntos) {

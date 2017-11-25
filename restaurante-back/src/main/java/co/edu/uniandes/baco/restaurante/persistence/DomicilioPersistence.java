@@ -6,9 +6,7 @@
 package co.edu.uniandes.baco.restaurante.persistence;
 
 import co.edu.uniandes.baco.restaurante.entities.DomicilioEntity;
-import co.edu.uniandes.baco.restaurante.entities.RestauranteEntity;
 import java.util.List;
-import java.util.logging.Level;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

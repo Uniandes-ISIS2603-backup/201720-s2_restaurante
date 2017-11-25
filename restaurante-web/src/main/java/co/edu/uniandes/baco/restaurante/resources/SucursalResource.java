@@ -11,7 +11,6 @@ import co.edu.uniandes.baco.restaurante.entities.SucursalEntity;
 import co.edu.uniandes.baco.restaurante.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -41,7 +40,7 @@ public class SucursalResource {
     /**
      * POST http://localhost:8080/restaurante-web/api/sucursales
      *
-     * @param Sucursal correponde a la representación java del objeto json
+     * @param sucursal correponde a la representación java del objeto json
      * enviado en el llamado.
      * @return Devuelve el objeto json de entrada que contiene el id creado por
      * la base de datos y el tipo del objeto java. Ejemplo: { "type":
@@ -51,10 +50,10 @@ public class SucursalResource {
     @POST 
     public SucursalDetailDTO  createCliente(SucursalDetailDTO sucursal) throws BusinessLogicException {
         // Convierte el DTO (json) en un objeto Entity para ser manejado por la lógica.
-        SucursalEntity SucursalEntity = sucursal.toEntity();
+        SucursalEntity sucursalEntity = sucursal.toEntity();
         // Invoca la lógica para crear la Sucursal nueva
         SucursalEntity nuevoSucursal;
-        nuevoSucursal = sucursalLogic.createSucursal(SucursalEntity);
+        nuevoSucursal = sucursalLogic.createSucursal(sucursalEntity);
         // Como debe retornar un DTO (json) se invoca el constructor del DTO con argumento el entity nuevo
         return new SucursalDetailDTO(nuevoSucursal);
     }

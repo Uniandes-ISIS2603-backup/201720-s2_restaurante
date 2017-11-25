@@ -11,7 +11,6 @@ import co.edu.uniandes.baco.restaurante.entities.ClienteEntity;
 import co.edu.uniandes.baco.restaurante.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -34,10 +33,8 @@ import javax.ws.rs.WebApplicationException;
 @Stateless
 public class ClienteResource {
     
-    @Inject
-    ClienteLogic ClienteLogic; // Variable para acceder a la lógica de la aplicación. Es una inyección de dependencias.
+    @Inject ClienteLogic clienteLogic; // Variable para acceder a la lógica de la aplicación. Es una inyección de dependencias.
 
-    private static final Logger LOGGER = Logger.getLogger(ClienteResource.class.getName());
 
     /**
      * POST http://localhost:8080/restaurante-web/api/clientes
@@ -50,12 +47,12 @@ public class ClienteResource {
      * @throws BusinessLogicException
      */
     @POST 
-    public ClienteDetailDTO  createCliente(ClienteDetailDTO Cliente) throws BusinessLogicException {
+    public ClienteDetailDTO  createCliente(ClienteDetailDTO cliente) throws BusinessLogicException {
         // Convierte el DTO (json) en un objeto Entity para ser manejado por la lógica.
-        ClienteEntity ClienteEntity = Cliente.toEntity();
+        ClienteEntity ClienteEntity = cliente.toEntity();
         // Invoca la lógica para crear la Cliente nueva
         ClienteEntity nuevoCliente;
-        nuevoCliente = ClienteLogic.createCliente(ClienteEntity);
+        nuevoCliente = clienteLogic.createCliente(ClienteEntity);
         // Como debe retornar un DTO (json) se invoca el constructor del DTO con argumento el entity nuevo
         return new ClienteDetailDTO(nuevoCliente);
     }
@@ -69,12 +66,12 @@ public class ClienteResource {
      */
     @GET 
     public List<ClienteDetailDTO> getClientes() throws BusinessLogicException {
-        return listEntity2DetailDTO(ClienteLogic.getClientes());
+        return listEntity2DetailDTO(clienteLogic.getClientes());
     }
 @GET
     @Path("{id: \\d+}")
     public ClienteDetailDTO getCliente(@PathParam("id") Long id) throws BusinessLogicException {
-        ClienteEntity entity = ClienteLogic.getCliente(id);
+        ClienteEntity entity = clienteLogic.getCliente(id);
         if (entity == null) {
             throw new WebApplicationException("El recurso /Cliente/" + id + " no existe.", 404);
         }
@@ -96,13 +93,13 @@ public class ClienteResource {
      */
     @PUT 
     @Path("{id: \\d+}")
-    public ClienteDetailDTO updateCliente(@PathParam("id") Long id, ClienteDetailDTO cliente) throws BusinessLogicException, UnsupportedOperationException {
+    public ClienteDetailDTO updateCliente(@PathParam("id") Long id, ClienteDetailDTO cliente) throws BusinessLogicException {
         cliente.setId(id);
         ClienteEntity entity = cliente.toEntity();
         if (entity == null) {
-            throw new WebApplicationException("El recurso /clientes/" + id + " no existe.", 404);
+            throw new WebApplicationException("El recurso /clientes/" + id + " no es existente.", 404);
         }
-        return new ClienteDetailDTO(ClienteLogic.updateCliente(id, entity)); 
+        return new ClienteDetailDTO(clienteLogic.updateCliente(id, entity)); 
         
     }
 
@@ -119,11 +116,11 @@ public class ClienteResource {
     @DELETE 
     @Path("{id: \\d+}")
     public void deleteCliente(@PathParam("id") Long id) throws BusinessLogicException {
-         ClienteEntity entity = ClienteLogic.getCliente(id);
+         ClienteEntity entity = clienteLogic.getCliente(id);
         if (entity == null) {
-            throw new WebApplicationException("El recurso /clientes/" + id + " no existe.", 404);
+            throw new WebApplicationException("El recurso /clientes/" + id + " no se encuentra en la db.", 404);
         }
-        ClienteLogic.deleteCliente(id);
+        clienteLogic.deleteCliente(id);
     }
 
     /**

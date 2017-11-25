@@ -11,7 +11,6 @@ import co.edu.uniandes.baco.restaurante.entities.PlatoEntity;
 import co.edu.uniandes.baco.restaurante.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -33,15 +32,13 @@ import javax.ws.rs.WebApplicationException;
 @Consumes("application/json")
 @Stateless
 public class PlatoResource {
-    @Inject
-    PlatoLogic PlatoLogic; // Variable para acceder a la lógica de la aplicación. Es una inyección de dependencias.
+    @Inject PlatoLogic platoLogic; // Variable para acceder a la lógica de la aplicación. Es una inyección de dependencias.
 
-    private static final Logger LOGGER = Logger.getLogger(PlatoResource.class.getName());
 
     /**
      * POST http://localhost:8080/restaurante-web/api/platos
      *
-     * @param Plato correponde a la representación java del objeto json
+     * @param plato correponde a la representación java del objeto json
      * enviado en el llamado.
      * @return Devuelve el objeto json de entrada que contiene el id creado por
      * la base de datos y el tipo del objeto java. Ejemplo: { "type":
@@ -49,12 +46,12 @@ public class PlatoResource {
      * @throws BusinessLogicException
      */
     @POST 
-    public PlatoDetailDTO  createCliente(PlatoDetailDTO Plato) throws BusinessLogicException {
+    public PlatoDetailDTO  createCliente(PlatoDetailDTO plato) throws BusinessLogicException {
         // Convierte el DTO (json) en un objeto Entity para ser manejado por la lógica.
-        PlatoEntity PlatoEntity = Plato.toEntity();
+        PlatoEntity platoEntity = plato.toEntity();
         // Invoca la lógica para crear la Plato nueva
         PlatoEntity nuevoPlato;
-        nuevoPlato = PlatoLogic.createPlato(PlatoEntity);
+        nuevoPlato = platoLogic.createPlato(platoEntity);
         // Como debe retornar un DTO (json) se invoca el constructor del DTO con argumento el entity nuevo
         return new PlatoDetailDTO(nuevoPlato);
     }
@@ -68,12 +65,12 @@ public class PlatoResource {
      */
     @GET 
     public List<PlatoDetailDTO> getPlatos() throws BusinessLogicException {
-        return listEntity2DetailDTO(PlatoLogic.getPlatos());
+        return listEntity2DetailDTO(platoLogic.getPlatos());
     }
 @GET
     @Path("{id: \\d+}")
     public PlatoDetailDTO getPlato(@PathParam("id") Long id) throws BusinessLogicException {
-        PlatoEntity entity = PlatoLogic.gePlato(id);
+        PlatoEntity entity = platoLogic.gePlato(id);
         if (entity == null) {
             throw new WebApplicationException("El recurso /Platoes/" + id + " no existe.", 404);
         }
@@ -86,7 +83,7 @@ public class PlatoResource {
      * json { "id": 1, "atirbuto1": "Valor nuevo" }
      *
      * @param id corresponde a la Plato a actualizar.
-     * @param restaurante corresponde  al objeto con los cambios que se van a
+     * @param suc corresponde  al objeto con los cambios que se van a
      * realizar.
      * @return La Plato actualizada.
      * @throws BusinessLogicException
@@ -98,27 +95,12 @@ public class PlatoResource {
     @Path("{id: \\d+}")
     public PlatoDetailDTO updatePlato(@PathParam("id") Long id, PlatoDetailDTO suc) throws BusinessLogicException {
         suc.setId(id);
-        PlatoEntity entity = PlatoLogic.gePlato(id);
+        PlatoEntity entity = platoLogic.gePlato(id);
         if (entity == null) {
-            throw new WebApplicationException("El recurso /Plato/" + id + " no existe.", 404);
+            throw new WebApplicationException("El recurso /Plato/" + id + " no está en la db.", 404);
         }
-        return new PlatoDetailDTO(PlatoLogic.updatePlato(id, suc.toEntity()));
+        return new PlatoDetailDTO(platoLogic.updatePlato(id, suc.toEntity()));
     }
-
-   
-    /**
-     * PUT http://localhost:8080/restaurante-web/api/platos/1 Ejemplo
-     * json { "id": 1, "atirbuto1": "Valor nuevo" }
-     *
-     * @param id corresponde a la Plato a actualizar.
-     * @param restaurante corresponde  al objeto con los cambios que se van a
-     * realizar.
-     * @return La Plato actualizada.
-     * @throws BusinessLogicException
-     *
-     * En caso de no existir el id de la Plato a actualizar se retorna un
-     * 404 con el mensaje.
-     */
 
 
     /**
@@ -134,11 +116,11 @@ public class PlatoResource {
     @DELETE 
     @Path("{id: \\d+}")
     public void deletePlato(@PathParam("id") Long id) throws BusinessLogicException {
-          PlatoEntity entity = PlatoLogic.gePlato(id);
+          PlatoEntity entity = platoLogic.gePlato(id);
         if (entity == null) {
-            throw new WebApplicationException("El recurso /Plato/" + id + " no existe.", 404);
+            throw new WebApplicationException("El recurso /Plato/" + id + " no ha sido creado", 404);
         }
-        PlatoLogic.deletePlato(id);
+        platoLogic.deletePlato(id);
     }
 
     /**

@@ -11,7 +11,6 @@ import co.edu.uniandes.baco.restaurante.entities.MesaEntity;
 import co.edu.uniandes.baco.restaurante.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -33,15 +32,13 @@ import javax.ws.rs.WebApplicationException;
 @Consumes("application/json")
 @Stateless
 public class MesaResource {
-    @Inject
-    MesaLogic MesaLogic; // Variable para acceder a la lógica de la aplicación. Es una inyección de dependencias.
+    @Inject MesaLogic mesaLogic; // Variable para acceder a la lógica de la aplicación. Es una inyección de dependencias.
 
-    private static final Logger LOGGER = Logger.getLogger(MesaResource.class.getName());
 
     /**
      * POST http://localhost:8080/restaurante-web/api/mesas
      *
-     * @param Mesa correponde a la representación java del objeto json
+     * @param mesa correponde a la representación java del objeto json
      * enviado en el llamado.
      * @return Devuelve el objeto json de entrada que contiene el id creado por
      * la base de datos y el tipo del objeto java. Ejemplo: { "type":
@@ -49,12 +46,12 @@ public class MesaResource {
      * @throws BusinessLogicException
      */
     @POST 
-    public MesaDetailDTO  createCliente(MesaDetailDTO Mesa) throws BusinessLogicException {
+    public MesaDetailDTO  createCliente(MesaDetailDTO mesa) throws BusinessLogicException {
         // Convierte el DTO (json) en un objeto Entity para ser manejado por la lógica.
-        MesaEntity MesaEntity = Mesa.toEntity();
+        MesaEntity MesaEntity = mesa.toEntity();
         // Invoca la lógica para crear la Mesa nueva
         MesaEntity nuevoMesa;
-        nuevoMesa = MesaLogic.createMesa(MesaEntity);
+        nuevoMesa = mesaLogic.createMesa(MesaEntity);
         // Como debe retornar un DTO (json) se invoca el constructor del DTO con argumento el entity nuevo
         return new MesaDetailDTO(nuevoMesa);
     }
@@ -68,12 +65,12 @@ public class MesaResource {
      */
     @GET 
     public List<MesaDetailDTO> getMesas() throws BusinessLogicException {
-        return listEntity2DetailDTO(MesaLogic.getMesas());
+        return listEntity2DetailDTO(mesaLogic.getMesas());
     }
 @GET
     @Path("{id: \\d+}")
     public MesaDetailDTO getMesa(@PathParam("id") Long id) throws BusinessLogicException {
-        MesaEntity entity = MesaLogic.getMesa(id);
+        MesaEntity entity = mesaLogic.getMesa(id);
         if (entity == null) {
             throw new WebApplicationException("El recurso /Mesa/" + id + " no existe.", 404);
         }
@@ -85,7 +82,7 @@ public class MesaResource {
      * json { "id": 1, "atirbuto1": "Valor nuevo" }
      *
      * @param id corresponde a la Mesa a actualizar.
-     * @param restaurante corresponde  al objeto con los cambios que se van a
+     * @param mesa corresponde  al objeto con los cambios que se van a
      * realizar.
      * @return La Mesa actualizada.
      * @throws BusinessLogicException
@@ -95,13 +92,13 @@ public class MesaResource {
      */
     @PUT 
     @Path("{id: \\d+}")
-    public MesaDetailDTO updateMesa(@PathParam("id") Long id, MesaDetailDTO mesa) throws BusinessLogicException, UnsupportedOperationException {
+    public MesaDetailDTO updateMesa(@PathParam("id") Long id, MesaDetailDTO mesa) throws BusinessLogicException {
           mesa.setId(id);
-        MesaEntity entity = MesaLogic.getMesa(id);
+        MesaEntity entity = mesaLogic.getMesa(id);
         if (entity == null) {
-            throw new WebApplicationException("El recurso /Mesaes/" + id + " no existe.", 404);
+            throw new WebApplicationException("El recurso /Mesaes/" + id + " no es accesible.", 404);
         }
-        return new MesaDetailDTO(MesaLogic.updateMesa( mesa.toEntity()));
+        return new MesaDetailDTO(mesaLogic.updateMesa( mesa.toEntity()));
       
     }
 
@@ -118,11 +115,11 @@ public class MesaResource {
     @DELETE 
     @Path("{id: \\d+}")
     public void deleteMesa(@PathParam("id") Long id) throws BusinessLogicException {
-         MesaEntity entity = MesaLogic.getMesa(id);
+         MesaEntity entity = mesaLogic.getMesa(id);
         if (entity == null) {
-            throw new WebApplicationException("El recurso /mesa/" + id + " no existe.", 404);
+            throw new WebApplicationException("El recurso /mesa/" + id + " no ha sido creado.", 404);
         }
-        MesaLogic.deleteMesa(id);
+        mesaLogic.deleteMesa(id);
     }
 
     /**

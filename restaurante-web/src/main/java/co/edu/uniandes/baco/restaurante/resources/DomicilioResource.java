@@ -13,7 +13,6 @@ import co.edu.uniandes.baco.restaurante.exceptions.BusinessLogicException;
 import co.edu.uniandes.baco.restaurante.persistence.DomicilioPersistence;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -35,16 +34,14 @@ import javax.ws.rs.WebApplicationException;
 @Consumes("application/json")
 @Stateless
 public class DomicilioResource {
-     @Inject
-    DomicilioLogic DomicilioLogic; // Variable para acceder a la lógica de la aplicación. Es una inyección de dependencias.
+     @Inject DomicilioLogic domicilioLogic; // Variable para acceder a la lógica de la aplicación. Es una inyección de dependencias.
 
-    private static final Logger LOGGER = Logger.getLogger(DomicilioPersistence.class.getName());
 
     /**
      * POST http://localhost:8080/Domicilio-web/api/Domicilios Ejemplo
      * json: { "name":"Diego", "codigo":"123"}
      *
-     * @param Domicilio correponde a la representación java del objeto json
+     * @param domicilio correponde a la representación java del objeto json
      * enviado en el llamado.
      * @return Devuelve el objeto json de entrada que contiene el id creado por
      * la base de datos y el tipo del objeto java. Ejemplo: { "type":
@@ -52,11 +49,11 @@ public class DomicilioResource {
      * @throws BusinessLogicException
      */
     @POST
-    public DomicilioDetailDTO createDomicilio(DomicilioDetailDTO Domicilio) throws BusinessLogicException {
+    public DomicilioDetailDTO createDomicilio(DomicilioDetailDTO domicilio) throws BusinessLogicException {
         // Convierte el DTO (json) en un objeto Entity para ser manejado por la lógica.
-        DomicilioEntity DomicilioEntity = Domicilio.toEntity();
+        DomicilioEntity domicilioEntity = domicilio.toEntity();
         // Invoca la lógica para crear la Domicilio nueva
-        DomicilioEntity nuevoDomicilio = DomicilioLogic.createDomicilio(DomicilioEntity);
+        DomicilioEntity nuevoDomicilio = domicilioLogic.createDomicilio(domicilioEntity);
         // Como debe retornar un DTO (json) se invoca el constructor del DTO con argumento el entity nuevo
         return new DomicilioDetailDTO(nuevoDomicilio);
     }
@@ -70,16 +67,16 @@ public class DomicilioResource {
      */
     @GET
     public List<DomicilioDetailDTO> getDomicilios() throws BusinessLogicException {
-        return listEntity2DetailDTO(DomicilioLogic.getDomicilios());
+        return listEntity2DetailDTO(domicilioLogic.getDomicilios());
     }
     @GET
     @Path("{id: \\d+}")
     public DomicilioDetailDTO getDomicilio(@PathParam("id") Long id)
     {
-        if(DomicilioLogic.getDomicilio(id)!=null)
+        if(domicilioLogic.getDomicilio(id)!=null)
         {
            
-           return new DomicilioDetailDTO(DomicilioLogic.getDomicilio(id));
+           return new DomicilioDetailDTO(domicilioLogic.getDomicilio(id));
         }
         else
         {
@@ -93,9 +90,8 @@ public class DomicilioResource {
      * json { "id": 1, "name": "cambio de nombre" }
      *
      * @param id corresponde a la Domicilio a actualizar.
-     * @param Domicilio corresponde  al objeto con los cambios que se van a
+     * @param domicilio corresponde  al objeto con los cambios que se van a
      * realizar.
-     * @return La Domicilio actualizada.
      * @throws BusinessLogicException
      *
      * En caso de no existir el id de la Domicilio a actualizar se retorna un
@@ -103,11 +99,11 @@ public class DomicilioResource {
      */
     @PUT
     @Path("{id: \\d+}")
-    public void updateDomicilio(@PathParam("id") Long id, DomicilioDetailDTO Domicilio) throws BusinessLogicException, UnsupportedOperationException, WebApplicationException {
-        DomicilioEntity DomicilioN = Domicilio.toEntity();
-        if(DomicilioLogic.getDomicilio(id)!=null)
+    public void updateDomicilio(@PathParam("id") Long id, DomicilioDetailDTO domicilio) throws BusinessLogicException, UnsupportedOperationException, WebApplicationException {
+        DomicilioEntity domicilioN = domicilio.toEntity();
+        if(domicilioLogic.getDomicilio(id)!=null)
         {
-            DomicilioLogic.updateDomicilio(id,DomicilioN);
+            domicilioLogic.updateDomicilio(id,domicilioN);
         }
         else 
         {
@@ -129,10 +125,10 @@ public class DomicilioResource {
      */
     @DELETE
     @Path("{id: \\d+}")
-    public void deleteDomicilio(@PathParam("id") Long id) throws BusinessLogicException, WebApplicationException {
-        if(DomicilioLogic.getDomicilio(id)!=null)
+    public void deleteDomicilio(@PathParam("id") Long id) throws BusinessLogicException{
+        if(domicilioLogic.getDomicilio(id)!=null)
         {
-             DomicilioLogic.deleteDomicilio(id);
+            domicilioLogic.deleteDomicilio(id);
         }
         else 
         {

@@ -21,8 +21,6 @@ import javax.inject.Inject;
 @Stateless
 public class ClienteLogic {
 
-    private static final Logger LOGGER = Logger.getLogger(ClienteLogic.class.getName());
-
     @Inject private ClientePersistence persistence; // Variable para acceder a la persistencia de la aplicación. Es una inyección de dependencias.
 
     /**

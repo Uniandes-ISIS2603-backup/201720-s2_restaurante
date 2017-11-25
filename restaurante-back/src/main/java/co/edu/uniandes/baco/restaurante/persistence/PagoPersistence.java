@@ -6,7 +6,6 @@
 package co.edu.uniandes.baco.restaurante.persistence;
 
 import co.edu.uniandes.baco.restaurante.entities.PagoEntity;
-import co.edu.uniandes.baco.restaurante.entities.SucursalEntity;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;

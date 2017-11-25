@@ -16,25 +16,7 @@ public class ReservaDTO {
     
     private Long id;
     private Date fecha;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    
-    public Date getFecha() {
-        return fecha;
-    }
-
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
-    }
-    
-    /**
+     /**
      * Constructor por defecto
      */
     public ReservaDTO() {
@@ -68,4 +50,23 @@ public class ReservaDTO {
         entity.setFecha(this.fecha);
         return entity;
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
+    }
+    
+   
 }

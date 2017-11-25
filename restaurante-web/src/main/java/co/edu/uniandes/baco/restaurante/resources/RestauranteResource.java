@@ -29,7 +29,6 @@ import co.edu.uniandes.baco.restaurante.entities.RestauranteEntity;
 import co.edu.uniandes.baco.restaurante.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
 import javax.ejb.Stateless;
 
 import javax.inject.Inject;

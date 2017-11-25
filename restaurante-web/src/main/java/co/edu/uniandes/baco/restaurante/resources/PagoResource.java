@@ -11,7 +11,6 @@ import co.edu.uniandes.baco.restaurante.entities.PagoEntity;
 import co.edu.uniandes.baco.restaurante.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -33,10 +32,8 @@ import javax.ws.rs.WebApplicationException;
 @Consumes("application/json")
 @Stateless
 public class PagoResource {
-    @Inject
-    PagoLogic PagoLogic; // Variable para acceder a la lógica de la aplicación. Es una inyección de dependencias.
+    @Inject PagoLogic pagoLogic; // Variable para acceder a la lógica de la aplicación. Es una inyección de dependencias.
 
-    private static final Logger LOGGER = Logger.getLogger(PagoResource.class.getName());
 
     /**
      * POST http://localhost:8080/restaurante-web/api/pagos
@@ -49,12 +46,12 @@ public class PagoResource {
      * @throws BusinessLogicException
      */
     @POST 
-    public PagoDetailDTO  createCliente(PagoDetailDTO Pago) throws BusinessLogicException {
+    public PagoDetailDTO  createCliente(PagoDetailDTO pago) throws BusinessLogicException {
         // Convierte el DTO (json) en un objeto Entity para ser manejado por la lógica.
-        PagoEntity PagoEntity = Pago.toEntity();
+        PagoEntity pagoEntity = pago.toEntity();
         // Invoca la lógica para crear la Pago nueva
         PagoEntity nuevoPago;
-        nuevoPago = PagoLogic.createPago(PagoEntity);
+        nuevoPago = pagoLogic.createPago(pagoEntity);
         // Como debe retornar un DTO (json) se invoca el constructor del DTO con argumento el entity nuevo
         return new PagoDetailDTO(nuevoPago);
     }
@@ -68,15 +65,15 @@ public class PagoResource {
      */
     @GET 
     public List<PagoDetailDTO> getPagos() throws BusinessLogicException {
-        return listEntity2DetailDTO(PagoLogic.getPagos());
+        return listEntity2DetailDTO(pagoLogic.getPagos());
     }
 
     @GET
     @Path("{id: \\d+}")
     public PagoDetailDTO getPago(@PathParam("id") Long id) throws BusinessLogicException {
-        PagoEntity entity = PagoLogic.gePago(id);
+        PagoEntity entity = pagoLogic.gePago(id);
         if (entity == null) {
-            throw new WebApplicationException("El recurso /Pago/" + id + " no existe.", 404);
+            throw new WebApplicationException("El recurso /Pago/" + id + " no está en la db.", 404);
         }
         return new PagoDetailDTO(entity);
     }
@@ -86,7 +83,7 @@ public class PagoResource {
      * json { "id": 1, "atirbuto1": "Valor nuevo" }
      *
      * @param id corresponde a la Pago a actualizar.
-     * @param restaurante corresponde  al objeto con los cambios que se van a
+     * @param pago corresponde  al objeto con los cambios que se van a
      * realizar.
      * @return La Pago actualizada.
      * @throws BusinessLogicException
@@ -96,13 +93,13 @@ public class PagoResource {
      */
     @PUT 
     @Path("{id: \\d+}")
-    public PagoDetailDTO updatePago(@PathParam("id") Long id, PagoDetailDTO pago) throws BusinessLogicException, UnsupportedOperationException {
+    public PagoDetailDTO updatePago(@PathParam("id") Long id, PagoDetailDTO pago) throws BusinessLogicException {
          pago.setId(id);
-        PagoEntity entity = PagoLogic.gePago(id);
+        PagoEntity entity = pagoLogic.gePago(id);
         if (entity == null) {
             throw new WebApplicationException("El recurso /Pagoes/" + id + " no existe.", 404);
         }
-        return new PagoDetailDTO(PagoLogic.updatePago(id, pago.toEntity()));
+        return new PagoDetailDTO(pagoLogic.updatePago(id, pago.toEntity()));
       
     }
 
@@ -119,11 +116,11 @@ public class PagoResource {
     @DELETE 
     @Path("{id: \\d+}")
     public void deletePago(@PathParam("id") Long id) throws BusinessLogicException {
-         PagoEntity entity = PagoLogic.gePago(id);
+         PagoEntity entity = pagoLogic.gePago(id);
         if (entity == null) {
-            throw new WebApplicationException("El recurso /Pago/" + id + " no existe.", 404);
+            throw new WebApplicationException("El recurso /Pago/" + id + " no es existente.", 404);
         }
-        PagoLogic.deletePago(id);
+        pagoLogic.deletePago(id);
     }
 
     /**

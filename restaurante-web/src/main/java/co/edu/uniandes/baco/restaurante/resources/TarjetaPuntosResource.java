@@ -12,7 +12,6 @@ import co.edu.uniandes.baco.restaurante.entities.TarjetaPuntosEntity;
 import co.edu.uniandes.baco.restaurante.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -35,14 +34,13 @@ import javax.ws.rs.WebApplicationException;
 @Stateless
 public class TarjetaPuntosResource {
     @Inject
-    TarjetaPuntosLogic TarjetaPuntosLogic; // Variable para acceder a la lógica de la aplicación. Es una inyección de dependencias.
+    TarjetaPuntosLogic tarjetaPuntosLogic; // Variable para acceder a la lógica de la aplicación. Es una inyección de dependencias.
 
-    private static final Logger LOGGER = Logger.getLogger(TarjetaPuntosResource.class.getName());
 
     /**
      * POST http://localhost:8080/restaurante-web/api/tarjetasPuntos
      *
-     * @param TarjetaPuntos correponde a la representación java del objeto json
+     * @param tarjetaPuntos correponde a la representación java del objeto json
      * enviado en el llamado.
      * @return Devuelve el objeto json de entrada que contiene el id creado por
      * la base de datos y el tipo del objeto java. Ejemplo: { "type":
@@ -50,12 +48,12 @@ public class TarjetaPuntosResource {
      * @throws BusinessLogicException
      */
     @POST 
-    public TarjetaPuntosDetailDTO  createCliente(TarjetaPuntosDetailDTO TarjetaPuntos) throws BusinessLogicException {
+    public TarjetaPuntosDetailDTO  createCliente(TarjetaPuntosDetailDTO tarjetaPuntos) throws BusinessLogicException {
         // Convierte el DTO (json) en un objeto Entity para ser manejado por la lógica.
-        TarjetaPuntosEntity TarjetaPuntosEntity = TarjetaPuntos.toEntity();
+        TarjetaPuntosEntity tarjetaPuntosEntity = tarjetaPuntos.toEntity();
         // Invoca la lógica para crear la TarjetaPuntos nueva
         TarjetaPuntosEntity nuevoTarjetaPuntos;
-        nuevoTarjetaPuntos = TarjetaPuntosLogic.createTarjetaPuntos(TarjetaPuntosEntity);
+        nuevoTarjetaPuntos = tarjetaPuntosLogic.createTarjetaPuntos(tarjetaPuntosEntity);
         // Como debe retornar un DTO (json) se invoca el constructor del DTO con argumento el entity nuevo
         return new TarjetaPuntosDetailDTO(nuevoTarjetaPuntos);
     }
@@ -69,14 +67,14 @@ public class TarjetaPuntosResource {
      */
     @GET 
     public List<TarjetaPuntosDetailDTO> getTarjetaPuntoss() throws BusinessLogicException {
-        return listEntity2DetailDTO(TarjetaPuntosLogic.getTarjetaPuntoss());
+        return listEntity2DetailDTO(tarjetaPuntosLogic.getTarjetaPuntoss());
     }
     @GET
     @Path("{id: \\d+}")
     public TarjetaPuntosDetailDTO getTarjetaPuntos(@PathParam("id") Long id) throws BusinessLogicException {
-        TarjetaPuntosEntity entity = TarjetaPuntosLogic.getTarjetaPuntos(id);
+        TarjetaPuntosEntity entity = tarjetaPuntosLogic.getTarjetaPuntos(id);
         if (entity == null) {
-            throw new WebApplicationException("El recurso /tarjetasPuntos/" + id + " no existe.", 404);
+            throw new WebApplicationException("El recurso " + id + " no existe.", 404);
         }
         return new TarjetaPuntosDetailDTO(entity);
     }
@@ -99,11 +97,11 @@ public class TarjetaPuntosResource {
     @Path("{id: \\d+}")
     public TarjetaPuntosDetailDTO updateTarjetaPuntos(@PathParam("id") Long id, TarjetaPuntosDetailDTO suc) throws BusinessLogicException {
         suc.setId(id);
-        TarjetaPuntosEntity entity = TarjetaPuntosLogic.getTarjetaPuntos(id);
+        TarjetaPuntosEntity entity = tarjetaPuntosLogic.getTarjetaPuntos(id);
         if (entity == null) {
-            throw new WebApplicationException("El recurso /tarjetasPuntos/" + id + " no existe.", 404);
+            throw new WebApplicationException("El recurso /tarjetasPuntos/" + id + " no está en la db", 404);
         }
-        return new TarjetaPuntosDetailDTO(TarjetaPuntosLogic.updateTarjetaPuntos(id, suc.toEntity()));
+        return new TarjetaPuntosDetailDTO(tarjetaPuntosLogic.updateTarjetaPuntos(id, suc.toEntity()));
     }
 
     /**
@@ -120,11 +118,11 @@ public class TarjetaPuntosResource {
     @Path("{id: \\d+}")
     public void deleteTarjetaPuntos(@PathParam("id") Long id) throws BusinessLogicException {
         
-        TarjetaPuntosEntity entity = TarjetaPuntosLogic.getTarjetaPuntos(id);
+        TarjetaPuntosEntity entity = tarjetaPuntosLogic.getTarjetaPuntos(id);
         if (entity == null) {
-            throw new WebApplicationException("El recurso /tarjetasPuntos/" + id + " no existe.", 404);
+            throw new WebApplicationException("El recurso buscado" + id + " no ha sido encontrado.", 404);
         }
-        TarjetaPuntosLogic.deleteTarjetaPuntos(id);
+        tarjetaPuntosLogic.deleteTarjetaPuntos(id);
     }
 
     /**

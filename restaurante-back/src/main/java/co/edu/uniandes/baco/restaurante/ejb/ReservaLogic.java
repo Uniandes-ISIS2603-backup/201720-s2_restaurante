@@ -75,7 +75,7 @@ public class ReservaLogic {
         persistence.delete(id);
     }
     public ReservaEntity getReserva(Long id) {
-        LOGGER.log(Level.INFO, "Inicia proceso de consultar una Reserva con id = {0}", id);
+        LOGGER.log(Level.INFO, "Inicia proceso de consultar una Reserva con ese id", id);
         return persistence.find(id);
     }
     /**
@@ -87,7 +87,7 @@ public class ReservaLogic {
      * @generated
      */
     public RestauranteEntity getRestaurante(Long reservaId, Long restauranteId) throws BusinessLogicException {
-        LOGGER.log(Level.INFO, "Inicia proceso de consultar un libro con id = {0}", restauranteId);
+        LOGGER.log(Level.INFO, "Inicia proceso de consultar una reserva con id = {0}", restauranteId);
         RestauranteEntity rta = getReserva(reservaId).getRestaurante();
         if(rta.getId().equals(restauranteId))
             throw new BusinessLogicException("El identificador de la Restaurante asociada a esta Reserva no coinside con el solicitado.");
@@ -103,7 +103,7 @@ public class ReservaLogic {
      * @generated
      */
     public ClienteEntity getCliente(Long reservaId, Long clienteId) throws BusinessLogicException {
-        LOGGER.log(Level.INFO, "Inicia proceso de consultar un libro con id = {0}", clienteId);
+        LOGGER.log(Level.INFO, "Inicia proceso de consultar una reserva con id elegida", clienteId);
         ClienteEntity rta = getReserva(reservaId).getCliente();
         if(rta.getId().equals(clienteId))
             throw new BusinessLogicException("El identificador de la Cliente asociada a esta Reserva no coinside con el solicitado.");
@@ -119,7 +119,7 @@ public class ReservaLogic {
      * @generated
      */
     public MesaEntity getMesa(Long reservaId, Long mesaId) throws BusinessLogicException {
-        LOGGER.log(Level.INFO, "Inicia proceso de consultar un libro con id = {0}", mesaId);
+        LOGGER.log(Level.INFO, "Inicia proceso de consultar la reserva", mesaId);
         MesaEntity rta = getReserva(reservaId).getMesa();
         if(rta.getId().equals(mesaId))
             throw new BusinessLogicException("El identificador de la Mesa asociada a esta Reserva no coinside con el solicitado.");

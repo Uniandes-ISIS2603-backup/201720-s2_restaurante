@@ -11,7 +11,6 @@ import co.edu.uniandes.baco.restaurante.entities.ReservaEntity;
 import co.edu.uniandes.baco.restaurante.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -34,15 +33,13 @@ import javax.ws.rs.WebApplicationException;
 @Stateless
 public class ReservaResource {
     
-    @Inject
-    ReservaLogic ReservaLogic; // Variable para acceder a la lógica de la aplicación. Es una inyección de dependencias.
+    @Inject ReservaLogic reservaLogic; // Variable para acceder a la lógica de la aplicación. Es una inyección de dependencias.
 
-    private static final Logger LOGGER = Logger.getLogger(ReservaResource.class.getName());
 
     /**
      * POST http://localhost:8080/restaurante-web/api/reservas
      *
-     * @param Reserva correponde a la representación java del objeto json
+     * @param reserva correponde a la representación java del objeto json
      * enviado en el llamado.
      * @return Devuelve el objeto json de entrada que contiene el id creado por
      * la base de datos y el tipo del objeto java. Ejemplo: { "type":
@@ -50,12 +47,12 @@ public class ReservaResource {
      * @throws BusinessLogicException
      */
     @POST 
-    public ReservaDetailDTO  createReserva(ReservaDetailDTO Reserva) throws BusinessLogicException {
+    public ReservaDetailDTO  createReserva(ReservaDetailDTO reserva) throws BusinessLogicException {
         // Convierte el DTO (json) en un objeto Entity para ser manejado por la lógica.
-        ReservaEntity ReservaEntity = Reserva.toEntity();
+        ReservaEntity reservaEntity = reserva.toEntity();
         // Invoca la lógica para crear la Reserva nueva
         ReservaEntity nuevoReserva;
-        nuevoReserva = ReservaLogic.createReserva(ReservaEntity);
+        nuevoReserva = reservaLogic.createReserva(reservaEntity);
         // Como debe retornar un DTO (json) se invoca el constructor del DTO con argumento el entity nuevo
         return new ReservaDetailDTO(nuevoReserva);
     }
@@ -69,12 +66,12 @@ public class ReservaResource {
      */
     @GET 
     public List<ReservaDetailDTO> getReservas() throws BusinessLogicException {
-        return listEntity2DetailDTO(ReservaLogic.getReservas());
+        return listEntity2DetailDTO(reservaLogic.getReservas());
     }
 @GET
     @Path("{id: \\d+}")
     public ReservaDetailDTO getReserva(@PathParam("id") Long id) throws BusinessLogicException {
-        ReservaEntity entity = ReservaLogic.getReserva(id);
+        ReservaEntity entity = reservaLogic.getReserva(id);
         if (entity == null) {
             throw new WebApplicationException("El recurso /Reserva/" + id + " no existe.", 404);
         }
@@ -96,13 +93,13 @@ public class ReservaResource {
      */
     @PUT 
     @Path("{id: \\d+}")
-    public ReservaDetailDTO updateReserva(@PathParam("id") Long id, ReservaDetailDTO reserva) throws BusinessLogicException, UnsupportedOperationException {
+    public ReservaDetailDTO updateReserva(@PathParam("id") Long id, ReservaDetailDTO reserva) throws BusinessLogicException{
         reserva.setId(id);
         ReservaEntity entity = reserva.toEntity();
         if (entity == null) {
-            throw new WebApplicationException("El recurso /reservas/" + id + " no existe.", 404);
+            throw new WebApplicationException("El recurso /reservas/" + id + " no está en la db.", 404);
         }
-        return new ReservaDetailDTO(ReservaLogic.updateReserva(entity)); 
+        return new ReservaDetailDTO(reservaLogic.updateReserva(entity)); 
         
     }
 
@@ -119,11 +116,11 @@ public class ReservaResource {
     @DELETE 
     @Path("{id: \\d+}")
     public void deleteReserva(@PathParam("id") Long id) throws BusinessLogicException {
-         ReservaEntity entity = ReservaLogic.getReserva(id);
+         ReservaEntity entity = reservaLogic.getReserva(id);
         if (entity == null) {
-            throw new WebApplicationException("El recurso /reservas/" + id + " no existe.", 404);
+            throw new WebApplicationException("El recurso /reservas/" + id + " no ha sido creado.", 404);
         }
-        ReservaLogic.deleteReserva(id);
+        reservaLogic.deleteReserva(id);
     }
 
     /**
