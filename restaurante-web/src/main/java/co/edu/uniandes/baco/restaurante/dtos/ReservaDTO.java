@@ -39,12 +39,13 @@ public class ReservaDTO {
      */
     public ReservaDTO() {
     }
+    
 
     /**
      * Conviertir Entity a DTO (Crea un nuevo DTO con los valores que recibe en
      * la entidad que viene de argumento.
      *
-     * @param Reserva: Es la entidad que se va a convertir a DTO
+     * @param reserva: Es la entidad que se va a convertir a DTO
      */
     public ReservaDTO(ReservaEntity reserva) {
         if(reserva != null)

@@ -26,6 +26,31 @@ public class SucursalDTO {
          */
     }
 
+    public String getCalificacion() {
+        return calificacion;
+    }
+
+    public void setCalificacion(String calificacion) {
+        this.calificacion = calificacion;
+    }
+
+    public boolean isDosPisos() {
+        return dosPisos;
+    }
+
+    public void setDosPisos(boolean dosPisos) {
+        this.dosPisos = dosPisos;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+    
+
     /**
      * Conviertir Entity a DTO (Crea un nuevo DTO con los valores que recibe en
      * la entidad que viene de argumento.
