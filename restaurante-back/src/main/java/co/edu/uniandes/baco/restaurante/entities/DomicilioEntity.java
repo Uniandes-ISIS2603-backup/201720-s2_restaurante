@@ -75,10 +75,7 @@ public class DomicilioEntity extends BaseEntity implements Serializable{
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 17 * hash + this.rango;
-        hash = 17 * hash + Objects.hashCode(this.pago);
-        return hash;
+        return 3;
     }
 
     @Override
