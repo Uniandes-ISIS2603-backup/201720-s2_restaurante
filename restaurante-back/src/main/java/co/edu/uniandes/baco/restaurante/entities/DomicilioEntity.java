@@ -6,6 +6,7 @@
 package co.edu.uniandes.baco.restaurante.entities;
 
 import java.io.Serializable;
+import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
@@ -27,6 +28,9 @@ public class DomicilioEntity extends BaseEntity implements Serializable{
     @PodamExclude
    @OneToOne
     private ClienteEntity cliente;
+    @PodamExclude
+    @ManyToOne
+    private RestauranteEntity rest;
 
     public PagoEntity getPago() {
         return pago;
@@ -59,9 +63,7 @@ public class DomicilioEntity extends BaseEntity implements Serializable{
     public void setRest(RestauranteEntity rest) {
         this.rest = rest;
     }
-    @PodamExclude
-    @ManyToOne
-    private RestauranteEntity rest;
+    
 
     public int getRango() {
         return rango;
@@ -69,6 +71,35 @@ public class DomicilioEntity extends BaseEntity implements Serializable{
 
     public void setRango(int rango) {
         this.rango = rango;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 17 * hash + this.rango;
+        hash = 17 * hash + Objects.hashCode(this.pago);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final DomicilioEntity other = (DomicilioEntity) obj;
+        if (this.rango != other.rango) {
+            return false;
+        }
+        if (!Objects.equals(this.pago, other.pago)) {
+            return false;
+        }
+        return true;
     }
     
     

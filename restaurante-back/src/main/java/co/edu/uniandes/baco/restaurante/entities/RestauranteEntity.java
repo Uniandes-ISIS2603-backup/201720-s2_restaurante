@@ -148,15 +148,36 @@ public class RestauranteEntity extends BaseEntity implements Serializable {
     public void setHoraFinTarde(Date horaFinTarde) {
         this.horaFinTarde = horaFinTarde;
     }
-    
-    @Override
-    public boolean equals(Object obj) {
-        return super.equals(obj);
-    }
 
     @Override
     public int hashCode() {
-        return super.hashCode();
+        int hash = 3;
+        hash = 11 * hash + Objects.hashCode(this.horaInicioManiana);
+        hash = 11 * hash + Objects.hashCode(this.horaInicioTarde);
+        return hash;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final RestauranteEntity other = (RestauranteEntity) obj;
+        if (!Objects.equals(this.horaInicioManiana, other.horaInicioManiana)) {
+            return false;
+        }
+        if (!Objects.equals(this.horaInicioTarde, other.horaInicioTarde)) {
+            return false;
+        }
+        return true;
+    }
+    
+   
     
 }

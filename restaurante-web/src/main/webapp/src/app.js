@@ -21,12 +21,9 @@
             $transitions.onSuccess({to: '*'}, function (trans) {
 
                 var $state = trans.router.stateService;
-                console.log($state);
-                console.log($rootScope);
                 //Inicamos la variable en false
                 var requireLogin = false;
                 
-//                console.log($rootScope);
                 //verificamos que el token del login este no definido, en ese caso requerimos login
                 if(sessionStorage.token !== undefined)
                 {
@@ -38,7 +35,6 @@
                 $rootScope.isAuthenticated = function () {
 
                     if (sessionStorage.getItem("username") != null) {
-                        console.log($rootScope);
                         $rootScope.currentUser = sessionStorage.getItem("name");
                         return true;
                     } else {

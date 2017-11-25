@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import javax.persistence.Entity;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -29,10 +30,10 @@ public class PedidoEntity extends BaseEntity implements Serializable
     private String direccion;
     @PodamExclude
    @OneToMany
-   private List<PlatoEntity> platos = new ArrayList<PlatoEntity>();
+   private List<PlatoEntity> platos = new ArrayList<>();
     @PodamExclude
    @OneToOne
-    private DomicilioEntity Domicilio;
+    private DomicilioEntity domicilio;
     @PodamExclude
     @ManyToOne
     private PagoEntity pago;
@@ -46,11 +47,11 @@ public class PedidoEntity extends BaseEntity implements Serializable
     }
 
     public DomicilioEntity getDomicilio() {
-        return Domicilio;
+        return domicilio;
     }
 
-    public void setDomicilio(DomicilioEntity Domicilio) {
-        this.Domicilio = Domicilio;
+    public void setDomicilio(DomicilioEntity domicilio) {
+        this.domicilio = domicilio;
     }
 
     public PagoEntity getPago() {
@@ -88,6 +89,35 @@ public class PedidoEntity extends BaseEntity implements Serializable
      */
     public void setDireccion(String direccion) {
         this.direccion = direccion;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 71 * hash + Objects.hashCode(this.fecha);
+        hash = 71 * hash + Objects.hashCode(this.direccion);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final PedidoEntity other = (PedidoEntity) obj;
+        if (!Objects.equals(this.direccion, other.direccion)) {
+            return false;
+        }
+        if (!Objects.equals(this.fecha, other.fecha)) {
+            return false;
+        }
+        return true;
     }
     
 }

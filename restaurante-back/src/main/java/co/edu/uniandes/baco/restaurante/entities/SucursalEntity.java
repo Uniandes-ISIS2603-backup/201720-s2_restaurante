@@ -8,6 +8,7 @@ package co.edu.uniandes.baco.restaurante.entities;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
@@ -91,15 +92,32 @@ public class SucursalEntity extends BaseEntity implements Serializable {
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
-    
-    @Override
-    public boolean equals(Object obj) {
-        return super.equals(obj);
-    }
 
     @Override
     public int hashCode() {
-        return super.hashCode();
+        int hash = 7;
+        hash = 67 * hash + Objects.hashCode(this.calificacion);
+        return hash;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final SucursalEntity other = (SucursalEntity) obj;
+        if (!Objects.equals(this.calificacion, other.calificacion)) {
+            return false;
+        }
+        return true;
+    }
+    
+    
 
 }

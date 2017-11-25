@@ -19,7 +19,7 @@ public class TarjetaPuntosDTO {
         {
         this.id = tarjetaPuntos.getId();
         this.puntos=tarjetaPuntos.getPuntos();
-        this.vencimientos= tarjetaPuntos.getVencimientos();
+        this.vencimientos= (ArrayList<Time>) tarjetaPuntos.getVencimientos();
         }
     }
 

@@ -25,7 +25,7 @@ public class PagoEntity extends BaseEntity implements Serializable {
     private String tipo;
     @PodamExclude
    @OneToMany
-   private List<PedidoEntity> pedidos = new ArrayList<PedidoEntity>();
+   private List<PedidoEntity> pedidos = new ArrayList<>();
     @PodamExclude
    @OneToOne
     private DomicilioEntity domicilio;
@@ -80,6 +80,35 @@ public class PagoEntity extends BaseEntity implements Serializable {
     public String getTipo()
     {
         return tipo;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 47 * hash + (this.registrado ? 1 : 0);
+        hash = 47 * hash + (this.pagoAnticipado ? 1 : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final PagoEntity other = (PagoEntity) obj;
+        if (this.registrado != other.registrado) {
+            return false;
+        }
+        if (this.pagoAnticipado != other.pagoAnticipado) {
+            return false;
+        }
+        return true;
     }
     
 }

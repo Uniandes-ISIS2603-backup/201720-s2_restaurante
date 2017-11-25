@@ -8,6 +8,7 @@ package co.edu.uniandes.baco.restaurante.entities;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
@@ -30,7 +31,7 @@ public class PlatoEntity extends BaseEntity implements Serializable{
    private RestauranteEntity restaurante;
     @PodamExclude
    @ManyToMany
-   private List<SucursalEntity> sucursales = new ArrayList<SucursalEntity>();
+   private List<SucursalEntity> sucursales = new ArrayList<>();
 
     public PedidoEntity getPedido() {
         return pedido;
@@ -96,6 +97,35 @@ public class PlatoEntity extends BaseEntity implements Serializable{
      */
     public void setPrecio(double precio) {
         this.precio = precio;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 29 * hash + Objects.hashCode(this.tipo);
+        hash = 29 * hash + (this.especialSucursal ? 1 : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final PlatoEntity other = (PlatoEntity) obj;
+        if (this.especialSucursal != other.especialSucursal) {
+            return false;
+        }
+        if (!Objects.equals(this.tipo, other.tipo)) {
+            return false;
+        }
+        return true;
     }
     
 }

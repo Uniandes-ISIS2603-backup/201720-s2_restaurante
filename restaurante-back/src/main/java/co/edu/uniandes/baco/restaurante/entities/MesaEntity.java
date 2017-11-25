@@ -69,5 +69,35 @@ public class MesaEntity extends BaseEntity implements Serializable{
     public void setDisponible(boolean disponible) {
         this.disponible = disponible;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 73 * hash + this.sillasDisponibles;
+        hash = 73 * hash + this.piso;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final MesaEntity other = (MesaEntity) obj;
+        if (this.sillasDisponibles != other.sillasDisponibles) {
+            return false;
+        }
+        if (this.piso != other.piso) {
+            return false;
+        }
+        return true;
+    }
+    
     
 }

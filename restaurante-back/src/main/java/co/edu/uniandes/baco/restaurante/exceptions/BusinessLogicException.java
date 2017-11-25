@@ -33,6 +33,9 @@ import javax.ejb.ApplicationException;
 public class BusinessLogicException extends Exception {
 
     public BusinessLogicException() {
+        /**
+         * El metal es poder. Esto no es un easter egg, sólo la verdad
+         */
     }
 
     /**
