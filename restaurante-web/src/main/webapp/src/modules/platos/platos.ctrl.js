@@ -6,7 +6,7 @@
 
 
 (function (ng) {
-    var mod = ng.module("platoModule", ['ui.router']);
+    var mod = ng.module("platoModule");
     mod.constant("platosContext", "http://localhost:8080/restaurante-web/api/platos");
     mod.controller('platosCtrl', ['$scope', '$http', 'platosContext','$state',
         function ($scope, $http, platosContext, $state) {

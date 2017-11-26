@@ -15,32 +15,11 @@ public class PlatoDTO {
            private Long id;
         private String name;
         private String tipo;
-
-    public String getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
-
-    public double getPrecio() {
-        return precio;
-    }
-
-    public void setPrecio(double precio) {
-        this.precio = precio;
-    }
-
-    public boolean isEspecialSucursal() {
-        return especialSucursal;
-    }
-
-    public void setEspecialSucursal(boolean especialSucursal) {
-        this.especialSucursal = especialSucursal;
-    }
-        private double precio;
+                private double precio;
         private boolean especialSucursal;
+
+
+
 
     /**
      * Constructor por defecto
@@ -62,6 +41,30 @@ public class PlatoDTO {
         this.id = plato.getId();
         this.name = plato.getName();
         }
+    }
+    
+        public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public double getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(double precio) {
+        this.precio = precio;
+    }
+
+    public boolean isEspecialSucursal() {
+        return especialSucursal;
+    }
+
+    public void setEspecialSucursal(boolean especialSucursal) {
+        this.especialSucursal = especialSucursal;
     }
 
     /**
