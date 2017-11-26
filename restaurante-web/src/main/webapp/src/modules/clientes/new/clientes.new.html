@@ -11,14 +11,17 @@ and open the template in the editor.
             <div class="panel-heading"><label ng-if="!edit" id="createCliente">Create new Cliente</label>
                 <label ng-if="edit" id="editCliente">Edit Cliente</label></div>
             <div class="panel-body">
+                <!--Columnas para la creacion del cliente-->
                 <form ng-submit="createCliente()" name="cliente">
                     <div class="form-group row">
+                        <!--Espacio de texto para el nombre-->
                         <div class="form-group col-md-6">
                             <label for="clienteName" class="col-sm-2">Nombre:</label>
                             <input id="clienteName" required ng-model="clienteNombre" class="col-sm-6"/><br>
                         </div>
                     </div>
                     <div class="form-group row">
+                          <!--Espacio de texto para el apellido-->
                         <div class="form-group col-md-6">
                             <label for="clienteApellido" class="col-sm-2">Apellido:</label>
                             <input id="clienteApellido" required ng-model="clienteApellido" class="col-sm-6"/><br>
@@ -32,6 +35,7 @@ and open the template in the editor.
                         </div>
                     </div>-->
                     <div class="form-group row">
+                          <!--Espacio de texto para el numero de puntos-->
                         <div class="form-group col-md-6">
                             <label for="clienteNumPuntos" class="col-sm-2">NumPuntos:</label>
                             <input id="clienteNumPuntos" required ng-model="clienteNumPuntos" class="col-sm-6"/><br>
@@ -61,7 +65,8 @@ and open the template in the editor.
                             </div>
                         </div>-->
                     </div>
-
+                    
+                    <!--Verificamos que todos los campos de texto han sido llenados correctamente-->
                     <div class="form-group row">
                         <div class="form-group col-sm-4" ng-if="!cliente.$valid">
 
@@ -71,8 +76,11 @@ and open the template in the editor.
                         </div> 
                     </div> 
                     <div class="form-group row">
+                        <!--Botones para la creacion del cliente-->
                         <div class="form-group col-sm-12">
+                            <!--Crear-->
                             <input ng-show="cliente.$valid" type="submit" value="Save" class="btn btn-success" ng-click="createCliente()"/>
+                            <!--Cancelar-->
                             <a class="btn btn-info" ui-sref="clientesList">Cancel</a>
                         </div>
                     </div>

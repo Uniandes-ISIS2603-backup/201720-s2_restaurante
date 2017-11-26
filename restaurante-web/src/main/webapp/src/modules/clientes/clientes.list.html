@@ -39,7 +39,10 @@ and open the template in the editor.
         <div class="panel panel-primary">
             <div class="panel-heading"><label>Clientes list</label></div>
             <div class="panel-body">
+       
+        <!--Tabla para el desarrollo de la vista de la lista de clientes--> 
         <table class="table table-striped">
+            <!--Columnas de la tabla-->
             <thead>
                 <tr>
                     <th>Nombre</th>  
@@ -49,23 +52,32 @@ and open the template in the editor.
                     <th>acciones</th>
                 </tr>
             </thead>
+<!--            Llamado de la ionformacion de los clientes
+            Param: clienteId-->
             <tbody>
                 <tr ng-repeat="cliente in clientesRecords">
+                    <!--Nombre del cliente-->
                     <td id="{{$index}}-Nombre"><a ui-sref="clientesDetail({clienteId: cliente.id})">{{cliente.nombre}}
 <!--                        <a ui-sref="clientesDetail({clienteId: cliente.id})" class="thumb">{{cliente.nombre}}</a>-->
                     </td> 
+                    <!--Apellido del cliente-->
                     <td id="{{$index}}-Apellido">{{cliente.apellido}}</td>
 <!--                    <td id="{{$index}}-Direccion">{{cliente.direccion}}</td>-->
 <!--                    <td id="{{$index}}-NumPuntos">{{cliente.numPuntos}}</td>-->
+                    <!--Botones para acciones CRUD-->
                     <td id="{{$index}}-actions">
+                        <!--Update-->
                         <a class="btn btn-default btn-sm" ui-sref="clienteUpdate({clienteId: cliente.id})"><span class="glyphicon glyphicon-edit"></span></a>
+                        <!--Delete-->
                         <a class="btn btn-danger btn-sm" ui-sref="clienteDelete({clienteId: cliente.id})"><span class="glyphicon glyphicon-trash"></span></a>
                     </td>
                           
                 </tr>
             </tbody>
         </table>
+        <!--Boton para accion CRUD de crear cliente-->
         <div class="btn-group mr-2" role="group" aria-label="First group">
+            <!--Create-->
             <a class="btn btn-info" ui-sref="clienteCreate"><span class="glyphicon glyphicon-plus-sign"></span> Add new cliente</a>
         </div>
     </div>

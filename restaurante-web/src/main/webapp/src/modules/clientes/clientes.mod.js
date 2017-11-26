@@ -11,6 +11,10 @@ var mod = ng.module("clienteModule", ['ui.router']); //declaracion del modulo, l
             var basePath = 'src/modules/clientes/';
             $urlRouterProvider.otherwise("/clientesList");
 
+        /*
+         * Vista principal modulo clientes
+         * Definicion estado abstracto
+         */    
         $stateProvider.state('clientes', {
                 url: '/clientes',
                 abstract: true,
@@ -21,6 +25,9 @@ var mod = ng.module("clienteModule", ['ui.router']); //declaracion del modulo, l
                         controllerAs: 'ctrl'
                     }
                 }
+                /*
+                 * Vista de la lista de clientes
+                 */
             }).state('clientesList', {
                 url: '/list',
                 parent: 'clientes',
@@ -29,6 +36,10 @@ var mod = ng.module("clienteModule", ['ui.router']); //declaracion del modulo, l
                         templateUrl: basePath + 'clientes.list.html'
                     }
                 }
+                /*
+                 * Vista del detalle de un cliente con un id especificado por parametro
+                 * Param: clienteId
+                 */
             }).state('clientesDetail', {
                 url: '/{clienteId:int}/detail',
                 parent: 'clientes',
@@ -46,7 +57,9 @@ var mod = ng.module("clienteModule", ['ui.router']); //declaracion del modulo, l
                     }
 
                 }
-            
+            /*
+             * Vista de creacion de un nuevo cliente
+             */
             }).state('clienteCreate', {
                 url: '/create',
                 parent: 'clientes',
@@ -60,6 +73,10 @@ var mod = ng.module("clienteModule", ['ui.router']); //declaracion del modulo, l
                     requireLogin: true,
                     roles: ['admin']
                 }
+                /*
+                 * Vista de modificar un cliente con un id especificado por parametro
+                 * Param: clienteId
+                 */
             }).state('clienteUpdate', {
                 url: '/update/{clienteId:int}',
                 parent: 'clientes',
@@ -76,6 +93,10 @@ var mod = ng.module("clienteModule", ['ui.router']); //declaracion del modulo, l
                     requireLogin: true,
                     roles: ['admin', 'assistant']
                 }
+                /*
+                 * Vista para eliminar un cliente con un id especificado por parametro
+                 * Param: clienteId
+                 */
             }).state('clienteDelete', {
                 url: '/delete/{clienteId:int}',
                 parent: 'clientes',

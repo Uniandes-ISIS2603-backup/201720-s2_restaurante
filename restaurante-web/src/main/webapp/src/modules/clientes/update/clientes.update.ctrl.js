@@ -5,14 +5,14 @@
  */
 (
         function (ng) {
-            var mod = ng.module("clienteModule");
+            var mod = ng.module("clienteModule");//Definicion del modulo que usaremos desde el app.js
             mod.constant("clientesContext", "http://localhost:8080/restaurante-web/api/clientes");
             mod.constant("pedidosContext", "http://localhost:8080/restaurante-web/api/clientes");
             mod.controller('clienteUpdateCtrl', ['$scope', '$http', 'clientesContext', '$state','$rootScope', '$filter',
                 function ($scope, $http, clientesContext, $state, $rootScope) {
                     $rootScope.edit = true;
 
-                    var idCliente = $state.params.clienteId;
+                    var idCliente = $state.params.clienteId; //id que usaremos para especificar un cliente, viene de un parametro
 
                     // Este arreglo guardara los ids de los clientes asociados y por asociar al autor.
 //                    var idsPedidos = [];
@@ -20,7 +20,7 @@
                     // Este arreglo mostrará los clientes una vez esten filtrados visualmente por lo que el autor ya tiene asociado.
 //                    $scope.allPedidosShow = [];
 
-                    //Consulto el autor a editar.
+                    //Consulto el cliente a editar.
                     $http.get(clientesContext + '/' + idCliente).then(function (response) {
                         var cliente = response.data;
                         $scope.clienteNombre = cliente.nombre;
@@ -94,7 +94,7 @@
                     };
 
                     $scope.createCliente = function () {
-                        /*Se llama a la función newPedido() para buscar cada uno de los ids de los pedidos
+                        /*Se llama a la función newCliente() para buscar cada uno de los ids de los clientes
                          en el array que tiene todos los pedidos y así saber como queda la lista final de los pedidos asociados al cliente.
                          */
 //                        $scope.newCliente();
@@ -104,8 +104,8 @@
                             direccion: $scope.clienteDireccion,
                             numPuntos: $scope.clienteNumPuntos
                         }).then(function (response) {
-                    //restaurante created successfully
-                    $state.go('clientesList', {restauranteId: response.data.id}, {reload: true});
+                    //cliente creado de forma exitosa
+                    $state.go('clientesList', {platoId: response.data.id}, {reload: true});
                 });
 //                                .then(function (response) {
 //                            if (idsCliente.length >= 0) {

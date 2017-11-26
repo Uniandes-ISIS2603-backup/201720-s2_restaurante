@@ -20,6 +20,11 @@
                         controllerAs: 'ctrl'
                     }
                 }
+                ,
+                data: {
+                    requireLogin: false,
+                    roles: ['admin', 'assistant']
+                }
             }).state('restaurantesList', {
                 url: '/list',
                 parent: 'restaurantes',
@@ -53,6 +58,11 @@
                         templateUrl: basePath + '/new/restaurantes.new.html',
                         controller: 'restauranteNewCtrl'
                     }
+                }
+                ,
+                data: {
+                    requireLogin: true,
+                    roles: ['admin']
                 }
             }).state('restauranteUpdate', {
                 url: '/update/{restauranteId:int}',
