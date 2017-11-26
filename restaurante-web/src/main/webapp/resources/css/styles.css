@@ -23,3 +23,17 @@ body {
         a{
             color: #F6F6F6;
         }
+        tr{
+            background-color: #6E6A69; 
+        }
+        td{
+            color: #E5C9C9;
+            background-color: #6E6A69; 
+        }
+        th{
+            color: #F6F6F6;
+        }
+        table{
+            background-color: #6E6A69; 
+        }
+        
