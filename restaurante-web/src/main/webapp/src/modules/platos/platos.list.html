@@ -14,19 +14,15 @@ and open the template in the editor.
             <thead>
                 <tr>
                     <th>Nombre</th>
-                    <th>Tipo</th>  
-                    <th>Precio</th>
+                   
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="plato in platosRecords">
-                    <td id="{{$index}}-Nombre">{{plato.name}}
+                    <td id="{{$index}}-Nombre">
+                        <a ui-sref="platosDetail({platoId: plato.id})" class="thumb">{{plato.name}}</a>                      
                     </td> 
-                    <td id="{{$index}}-Tipo">{{plato.tipo}}
-                    </td> 
-                    <td id="{{$index}}-Precio">{{plato.precio}}</td>
-                   
                     <td id="{{$index}}-actions">
                         <a class="btn btn-default btn-sm" ui-sref="platoUpdate({platoId: plato.id})"><span class="glyphicon glyphicon-edit"></span></a>
                         <a class="btn btn-danger btn-sm" ui-sref="platoDelete({platoId: plato.id})"><span class="glyphicon glyphicon-trash"></span></a>

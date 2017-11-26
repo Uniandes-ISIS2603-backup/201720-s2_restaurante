@@ -14,8 +14,8 @@
                 $scope.platosRecords = response.data;
             });
 
-        if (($state.params.platosId !== undefined) && ($state.params.platosId !== null)) {
-                $http.get(platosContext + '/' + $state.params.platosId).then(function (response) {
+        if (($state.params.platoId !== undefined) && ($state.params.platoId !== null)) {
+                $http.get(platosContext + '/' + $state.params.platoId).then(function (response) {
                     $scope.currentPlato = response.data;
                 });
             }

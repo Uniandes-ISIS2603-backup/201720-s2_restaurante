@@ -5,7 +5,7 @@
  */
 
 (function (ng) {
-var mod = ng.module("platoModule", ['ui.router']); 
+    var mod = ng.module("platoModule", ['ui.router']);
     mod.constant("platosContext", "http://localhost:8080/restaurante-web/api/platos");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             var basePath = 'src/modules/platos/';
@@ -13,77 +13,77 @@ var mod = ng.module("platoModule", ['ui.router']);
 
 
             $stateProvider.state('platos', {
-                    url: '/platos',
-                    abstract: true,
-                    views: {
-                        'mainView': {
-                            templateUrl: basePath + 'platos.html',
-                            controller: 'platosCtrl',
-                            controllerAs: 'ctrl'
-                        }
+                url: '/platos',
+                abstract: true,
+                views: {
+                    'mainView': {
+                        templateUrl: basePath + 'platos.html',
+                        controller: 'platosCtrl',
+                        controllerAs: 'ctrl'
                     }
-                }).state('platosList', {
-                    url: '/list',
-                    parent: 'platos',
-                    views: {
-                        'listView': {
-                            templateUrl: basePath + 'platos.list.html'
-                        }
+                }
+            }).state('platosList', {
+                url: '/list',
+                parent: 'platos',
+                views: {
+                    'listView': {
+                        templateUrl: basePath + 'platos.list.html'
                     }
-                }).state('platosDetail', {
-                    url: '/{platoId:int}/detail',
-                    parent: 'platos',
-                    param: {
-                        platoId: null
+                }
+            }).state('platosDetail', {
+                url: '/{platoId:int}/detail',
+                parent: 'platos',
+                param: {
+                    platoId: null
+                },
+                views: {
+                    'listView': {
+                        templateUrl: basePath + 'platos.list.html'
                     },
-                    views: {
-                        'listView': {
-                            templateUrl: basePath + 'platos.list.html'
+                    'detailView': {
+                        templateUrl: basePath + 'platos.detail.html',
+                        controller: 'platosCtrl',
+                        controllerAs: 'ctrl'
+                    }
+
+                }
+
+            }).state('platoCreate', {
+                url: '/create',
+                parent: 'platos',
+                views: {
+                    'detailView': {
+                        templateUrl: basePath + '/new/platos.new.html',
+                        controller: 'platoNewCtrl'
+                    }
+                }
+            })
+                    .state('platoUpdate', {
+                        url: '/update/{platoId:int}',
+                        parent: 'platos',
+                        param: {
+                            platoId: null
                         },
-                        'detailView': {
-                            templateUrl: basePath + 'platos.detail.html',
-                            controller: 'platosCtrl',
-                            controllerAs: 'ctrl'
+                        views: {
+                            'detailView': {
+                                templateUrl: basePath + '/new/platos.new.html',
+                                controller: 'platoUpdateCtrl'
+                            }
                         }
-
-                    }
-
-                }).state('platoCreate', {
-                    url: '/create',
-                    parent: 'platos',
-                    views: {
-                        'detailView': {
-                            templateUrl: basePath + '/new/platos.new.html',
-                            controller: 'platoNewCtrl'
+                    })
+                    .state('platoDelete', {
+                        url: '/delete/{platoId:int}',
+                        parent: 'platos',
+                        param: {
+                            platoId: null
+                        },
+                        views: {
+                            'detailView': {
+                                templateUrl: basePath + '/delete/platos.delete.html',
+                                controller: 'platoDeleteCtrl'
+                            }
                         }
-                    }
-                })
-//                        .state('platoUpdate', {
-//                    url: '/update/{platoId:int}',
-//                    parent: 'platos',
-//                    param: {
-//                        platoId: null
-//                    },
-//                    views: {
-//                        'detailView': {
-//                            templateUrl: basePath + '/new/platos.new.html',
-//                            controller: 'platoUpdateCtrl'
-//                        }
-//                    }
-//                })
-                        .state('platoDelete', {
-                    url: '/delete/{platoId:int}',
-                    parent: 'platos',
-                    param: {
-                        platoId: null
-                    },
-                    views: {
-                        'detailView': {
-                            templateUrl: basePath + '/delete/platos.delete.html',
-                            controller: 'platoDeleteCtrl'
-                        }
-                    }
-            });
+                    });
         }]);
 
 })(window.angular);

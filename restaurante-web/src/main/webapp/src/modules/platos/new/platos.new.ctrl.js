@@ -12,7 +12,6 @@
             $scope.createPlato = function () {
                 $http.post(platosContext, {
                     name: $scope.platoName,
-                    tipo: $scope.platoTipo,
                     especialSucursal: $scope.platoEspecialSucursal,
                     precio: $scope.platoPrecio
                 }).then(function (response) {

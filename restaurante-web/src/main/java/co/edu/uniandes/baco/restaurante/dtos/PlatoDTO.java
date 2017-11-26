@@ -12,10 +12,9 @@ import co.edu.uniandes.baco.restaurante.entities.PlatoEntity;
  * @author df.penap
  */
 public class PlatoDTO {
-           private Long id;
+        private Long id;
         private String name;
-        private String tipo;
-                private double precio;
+        private double precio;
         private boolean especialSucursal;
 
 
@@ -40,16 +39,12 @@ public class PlatoDTO {
         {
         this.id = plato.getId();
         this.name = plato.getName();
+        this.precio = plato.getPrecio();
+        this.especialSucursal = plato.isEspecialSucursal();
         }
     }
     
-        public String getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
+ 
 
     public double getPrecio() {
         return precio;
@@ -104,7 +99,6 @@ public class PlatoDTO {
         PlatoEntity entity = new PlatoEntity();
         entity.setId(this.id);
         entity.setName(this.name);
-        entity.setTipo(this.tipo);
         entity.setEspecialSucursal(this.especialSucursal);
         entity.setPrecio(this.precio);
         return entity;

@@ -3,42 +3,53 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-       (function (ng) {
+(function (ng) {
             var mod = ng.module("platoModule");
             mod.constant("platosContext", "http://localhost:8080/restaurante-web/api/platos");
-            mod.controller('platoUpdateCtrl', ['$scope', '$http', 'platosContext', '$state','$rootScope', '$filter',
+            mod.controller('platoUpdateCtrl', ['$scope', '$http', 'platosContext', '$state', '$rootScope', '$filter',
                 function ($scope, $http, platosContext, $state, $rootScope) {
                     $rootScope.edit = true;
 
-                    var idPlato = $state.params.platoId;
+                    var idplato = $state.params.platoId;
+
                     
-                    $http.get(platosContext + '/' + idPlato).then(function (response) {
+                    $http.get(platosContext + '/' + idplato).then(function (response) {
                         var plato = response.data;
-                        $scope.platoName= plato.name;
-                        $scope.platoTipo= plato.tipo;
+                        $scope.platoName = plato.name;
                         $scope.platoEspecialSucursal = plato.especialSucursal;
                         $scope.platoPrecio = plato.precio;
-                     });
+                        
+                    });
 
-                    $scope.createCliente = function () {
+                    
+                    $scope.allowDrop = function (ev) {
+                        ev.preventDefault();
+                    };
 
-                        $http.put(platosContext + "/" + idPlato, {
+                    $scope.drag = function (ev) {
+                        ev.dataTransfer.setData("text", ev.target.id);
+                    };
+
+                    $scope.dropAdd = function (ev) {
+                        ev.preventDefault();
+                        var data = ev.dataTransfer.getData("text");
+                        ev.target.appendChild(document.getElementById(data));
+                        
+                    };
+                    
+                    $scope.createReserva = function () {
+                        
+                        $http.put(platosContext + "/" + idplato, {
                             
-                            id: idPlato,
                             name: $scope.platoName,
-                            tipo: $scope.platoTipo,
                             especialSucursal: $scope.platoEspecialSucursal,
                             precio: $scope.platoPrecio
                             
                         }).then(function (response) {
-                            
+                    //Reserva created successfully
                     $state.go('platosList', {platoId: response.data.id}, {reload: true});
-                         });
-
-                        
+                });
                     };
-
 
                 }
             ]);
