@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<div class="container-fluid">
+    
+    <div class="col-md-4">
+        <div class="panel panel-primary">
+            <div class="panel-heading"><label>Platos list</label></div>
+            <div class="panel-body">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Tipo</th>  
+                    <th>Precio</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="plato in platosRecords">
+                    <td id="{{$index}}-Nombre">{{plato.name}}
+                    </td> 
+                    <td id="{{$index}}-Tipo">{{plato.tipo}}
+                    </td> 
+                    <td id="{{$index}}-Precio">{{plato.precio}}</td>
+                   
+                    <td id="{{$index}}-actions">
+                        <a class="btn btn-default btn-sm" ui-sref="platoUpdate({platoId: plato.id})"><span class="glyphicon glyphicon-edit"></span></a>
+                        <a class="btn btn-danger btn-sm" ui-sref="platoDelete({platoId: plato.id})"><span class="glyphicon glyphicon-trash"></span></a>
+                    </td>
+                          
+                </tr>
+            </tbody>
+        </table>
+        <div class="btn-group mr-2" role="group" aria-label="First group">
+            <a class="btn btn-info" ui-sref="platoCreate"><span class="glyphicon glyphicon-plus-sign"></span> Add new plato</a>
+        </div>
+    </div>
+    </div>
+    </div>
+</div>
