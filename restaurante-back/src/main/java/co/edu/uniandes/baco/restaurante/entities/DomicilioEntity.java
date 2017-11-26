@@ -20,6 +20,7 @@ import uk.co.jemos.podam.common.PodamExclude;
 public class DomicilioEntity extends BaseEntity implements Serializable {
 
     private int rango;
+    private String platos;
     @PodamExclude
     @OneToOne
     private PagoEntity pago;
@@ -71,6 +72,14 @@ public class DomicilioEntity extends BaseEntity implements Serializable {
 
     public void setRango(int rango) {
         this.rango = rango;
+    }
+
+    public String getPlatos() {
+        return platos;
+    }
+
+    public void setPlatos(String platos) {
+        this.platos = platos;
     }
 
     @Override

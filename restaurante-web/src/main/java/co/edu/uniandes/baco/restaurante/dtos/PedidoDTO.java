@@ -17,9 +17,7 @@ public class PedidoDTO
     private Long id;
     private String name;
     private Date fecha;
-    private String direccion;
-    
-    
+    private String direccion; 
 
     /**
      * Constructor por defecto
@@ -38,8 +36,10 @@ public class PedidoDTO
     public PedidoDTO(PedidoEntity pedido) {
         if(pedido != null)
         {
-        this.id = pedido.getId();
-        this.name = pedido.getName();
+            this.id = pedido.getId();
+            this.name = pedido.getName();
+            this.direccion= pedido.getDireccion();
+            this.fecha = pedido.getFecha();
         }
     }
 

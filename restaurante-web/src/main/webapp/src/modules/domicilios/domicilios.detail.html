@@ -2,14 +2,30 @@
     <div class="panel-body">
     <div class="row">
         <div class="col-md-3">
-            <dl>     
-                <dt>Id</dt>
-                <dd>{{currentDomicilio.id}}</dd>
+            <div class="thumb">
+                <dl>
+                    
+                <dt>Rango</dt>
+                <dd>{{currentDomicilio.rango}}</dd>
+                <hr>
+                
+                <dt>Nombre</dt>
+                <dd>{{currentPedido.name}}</dd>
                 
                 <hr>
-                <dt>Rango</dt>
-                <dd>{{currentDomicilio.rango}}</dd>       
+                <dt>Direccion</dt>
+                <dd>{{currentPedido.direccion}}</dd>
+                
             </dl>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <dl>     
+
+                <dt>Platos</dt>
+                <dd>{{currentDomicilio.platos}}</dd>  
+            </dl>
+            
         </div>
     </div>
         </div>
