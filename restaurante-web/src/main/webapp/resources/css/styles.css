@@ -14,10 +14,12 @@ body {
             font-family: 'Amethysta';font-size: 14px;
         }
         li{
-            color: #F6F6F6;
-            background-color: #898989;
+            background-color: #6E6A69;
         }
         dl{
           color: #F6F6F6;
             background-color: #6E6A69;  
+        }
+        a{
+            color: #F6F6F6;
         }
