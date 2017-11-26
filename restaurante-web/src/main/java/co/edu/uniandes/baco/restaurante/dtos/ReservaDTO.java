@@ -16,6 +16,7 @@ public class ReservaDTO {
     
     private Long id;
     private Date fecha;
+    private String dirSuc;
      /**
      * Constructor por defecto
      */
@@ -35,6 +36,7 @@ public class ReservaDTO {
         {
         this.id = reserva.getId();
         this.fecha = reserva.getFecha();
+        this.dirSuc=reserva.getDirSuc();
         }
     }
     
@@ -48,7 +50,16 @@ public class ReservaDTO {
         ReservaEntity entity = new ReservaEntity();
         entity.setId(this.id);
         entity.setFecha(this.fecha);
+        entity.setDirSuc(this.dirSuc);
         return entity;
+    }
+
+    public String getDirSuc() {
+        return dirSuc;
+    }
+
+    public void setDirSuc(String dirSuc) {
+        this.dirSuc = dirSuc;
     }
 
     public Long getId() {

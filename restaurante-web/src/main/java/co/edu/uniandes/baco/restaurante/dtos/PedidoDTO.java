@@ -18,6 +18,7 @@ public class PedidoDTO
     private String name;
     private Date fecha;
     private String direccion; 
+    private String dirSucursal;
 
     /**
      * Constructor por defecto
@@ -40,7 +41,16 @@ public class PedidoDTO
             this.name = pedido.getName();
             this.direccion= pedido.getDireccion();
             this.fecha = pedido.getFecha();
+            this.dirSucursal=pedido.getDirSucursal();
         }
+    }
+
+    public String getDirSucursal() {
+        return dirSucursal;
+    }
+
+    public void setDirSucursal(String dirSucursal) {
+        this.dirSucursal = dirSucursal;
     }
 
     /**
@@ -82,6 +92,7 @@ public class PedidoDTO
         entity.setName(this.name);
         entity.setFecha(this.fecha);
         entity.setDireccion(this.direccion);
+        entity.setDirSucursal(this.dirSucursal);
         return entity;
     }
 

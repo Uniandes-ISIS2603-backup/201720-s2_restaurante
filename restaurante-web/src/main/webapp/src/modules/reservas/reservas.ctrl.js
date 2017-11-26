@@ -6,6 +6,9 @@
             $http.get(reservasContext).then(function (response) { 
                 $scope.reservasRecords = response.data;
             });
+            $http.get("http://localhost:8080/restaurante-web/api/sucursales").then(function (response) {
+                $scope.sucursalesRecords = response.data;
+            });
             
             if (($state.params.reservaId !== undefined) && ($state.params.reservaId !== null)) {
                 $http.get(reservasContext + '/' + $state.params.reservaId).then(function (response) {

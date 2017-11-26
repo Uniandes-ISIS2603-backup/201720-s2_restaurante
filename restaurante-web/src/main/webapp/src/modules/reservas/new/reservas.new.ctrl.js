@@ -8,7 +8,8 @@
                 $http.post(reservasContext, {
                     
                     fecha: $scope.reservaFecha,
-                    mesaId: $scope.reservaMesa
+                    mesaId: $scope.reservaMesa,
+                    dirSuc: $scope.dirSucursal
                     
                 }).then(function (response) {
                     //Reserva created successfully

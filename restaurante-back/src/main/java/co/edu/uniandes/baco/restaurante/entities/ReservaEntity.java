@@ -32,6 +32,7 @@ public class ReservaEntity extends BaseEntity implements Serializable{
     @PodamExclude
     @OneToOne
     private MesaEntity mesa;
+    private String dirSuc;
     
     public RestauranteEntity getRestaurante() {
         return restaurante;
@@ -51,6 +52,14 @@ public class ReservaEntity extends BaseEntity implements Serializable{
 
     public MesaEntity getMesa() {
         return mesa;
+    }
+
+    public String getDirSuc() {
+        return dirSuc;
+    }
+
+    public void setDirSuc(String dirSuc) {
+        this.dirSuc = dirSuc;
     }
 
     public void setMesa(MesaEntity mesa) {

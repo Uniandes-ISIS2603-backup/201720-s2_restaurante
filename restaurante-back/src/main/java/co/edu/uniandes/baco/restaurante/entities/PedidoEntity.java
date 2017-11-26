@@ -28,6 +28,7 @@ public class PedidoEntity extends BaseEntity implements Serializable
     @Temporal(TemporalType.DATE)
     private Date fecha;
     private String direccion;
+    private String dirSucursal;
     @PodamExclude
    @OneToMany
    private List<PlatoEntity> platos = new ArrayList<>();
@@ -75,6 +76,14 @@ public class PedidoEntity extends BaseEntity implements Serializable
      */
     public void setFecha(Date fecha) {
         this.fecha = fecha;
+    }
+
+    public String getDirSucursal() {
+        return dirSucursal;
+    }
+
+    public void setDirSucursal(String dirSucursal) {
+        this.dirSucursal = dirSucursal;
     }
 
     /**
