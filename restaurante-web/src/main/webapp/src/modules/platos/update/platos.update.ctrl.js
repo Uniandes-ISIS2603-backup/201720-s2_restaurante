@@ -8,7 +8,7 @@
             var mod = ng.module("platoModule");
             mod.constant("platosContext", "http://localhost:8080/restaurante-web/api/platos");
             mod.controller('platoUpdateCtrl', ['$scope', '$http', 'platosContext', '$state','$rootScope', '$filter',
-                function ($scope, $http, platosContext, $state, $rootScope, $filter) {
+                function ($scope, $http, platosContext, $state, $rootScope) {
                     $rootScope.edit = true;
 
                     var idPlato = $state.params.platoId;
@@ -25,7 +25,11 @@
 
                         $http.put(platosContext + "/" + idPlato, {
                             
-                            //Completar
+                            id: idPlato,
+                            name: $scope.platoName,
+                            tipo: $scope.platoTipo,
+                            especialSucursal: $scope.platoEspecialSucursal,
+                            precio: $scope.platoPrecio
                             
                         }).then(function (response) {
                             

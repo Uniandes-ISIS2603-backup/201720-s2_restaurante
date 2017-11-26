@@ -14,6 +14,33 @@ import co.edu.uniandes.baco.restaurante.entities.PlatoEntity;
 public class PlatoDTO {
            private Long id;
         private String name;
+        private String tipo;
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public double getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(double precio) {
+        this.precio = precio;
+    }
+
+    public boolean isEspecialSucursal() {
+        return especialSucursal;
+    }
+
+    public void setEspecialSucursal(boolean especialSucursal) {
+        this.especialSucursal = especialSucursal;
+    }
+        private double precio;
+        private boolean especialSucursal;
 
     /**
      * Constructor por defecto
@@ -74,6 +101,9 @@ public class PlatoDTO {
         PlatoEntity entity = new PlatoEntity();
         entity.setId(this.id);
         entity.setName(this.name);
+        entity.setTipo(this.tipo);
+        entity.setEspecialSucursal(this.especialSucursal);
+        entity.setPrecio(this.precio);
         return entity;
     }
 }
