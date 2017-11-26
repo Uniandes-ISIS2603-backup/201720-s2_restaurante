@@ -6,7 +6,7 @@
             $rootScope.edit = false;
             $scope.createDomicilio = function () {
                 $http.post(domiciliosContext, {
-                    id: 2,
+                    id: -1,
                     rango: $scope.rango
                 }).then(function (response) {
                     $state.go('domiciliosList', {domicilioId: response.data.id}, {reload: true});

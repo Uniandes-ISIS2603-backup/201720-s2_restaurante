@@ -107,9 +107,7 @@ public class DomicilioResource {
         else 
         {
             throw new WebApplicationException();
-        }
-        
-        
+        }     
     }
 
     /**

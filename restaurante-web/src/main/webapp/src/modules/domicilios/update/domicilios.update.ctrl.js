@@ -12,9 +12,8 @@
                     });
                     
                     $scope.createDomicilio = function () {
-                        
                         $http.put(domiciliosContext + "/" + idDomicilio, {
-                            
+                            id: idDomicilio,
                             rango: $scope.rango
                         }).then(function (response) {
                     $state.go('domiciliosList', {domicilioId: response.data.id}, {reload: true});
