@@ -16,8 +16,7 @@ public class PlatoDTO {
         private String name;
         private double precio;
         private boolean especialSucursal;
-
-
+        private String image;
 
 
     /**
@@ -32,7 +31,7 @@ public class PlatoDTO {
     /**
      * Conviertir Entity a DTO
      * (Crea un nuevo DTO con los valores que recibe en la entidad que viene de argumento.
-     * @param Plato: Es la entidad que se va a convertir a DTO 
+     * @param plato: Es la entidad que se va a convertir a DTO 
      */
     public PlatoDTO(PlatoEntity plato) {
         if(plato != null)
@@ -41,11 +40,18 @@ public class PlatoDTO {
         this.name = plato.getName();
         this.precio = plato.getPrecio();
         this.especialSucursal = plato.isEspecialSucursal();
+        this.image=plato.getImage();
         }
     }
-    
- 
 
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+    
     public double getPrecio() {
         return precio;
     }
@@ -101,6 +107,7 @@ public class PlatoDTO {
         entity.setName(this.name);
         entity.setEspecialSucursal(this.especialSucursal);
         entity.setPrecio(this.precio);
+        entity.setImage(this.image);
         return entity;
     }
 }

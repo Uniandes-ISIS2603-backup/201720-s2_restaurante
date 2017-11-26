@@ -13,7 +13,8 @@
                 $http.post(platosContext, {
                     name: $scope.platoName,
                     especialSucursal: $scope.platoEspecialSucursal,
-                    precio: $scope.platoPrecio
+                    precio: $scope.platoPrecio,
+                    image: $scope.platoImage
                 }).then(function (response) {
                     
                     $state.go('platosList', {platoId: response.data.id}, {reload: true});

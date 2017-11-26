@@ -23,6 +23,7 @@ public class PlatoEntity extends BaseEntity implements Serializable{
     private String tipo;
     private boolean especialSucursal;
     private double precio;
+    private String image;
     @PodamExclude
    @ManyToOne
    private PedidoEntity pedido;
@@ -99,6 +100,13 @@ public class PlatoEntity extends BaseEntity implements Serializable{
         this.precio = precio;
     }
 
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
     @Override
     public int hashCode() {
         int hash = 5;
@@ -106,6 +114,8 @@ public class PlatoEntity extends BaseEntity implements Serializable{
         hash = 29 * hash + (this.especialSucursal ? 1 : 0);
         return hash;
     }
+
+    
 
     @Override
     public boolean equals(Object obj) {
