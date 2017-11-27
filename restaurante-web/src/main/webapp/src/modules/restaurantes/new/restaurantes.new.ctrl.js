@@ -4,9 +4,12 @@
  * and open the template in the editor.
  */
 (function (ng) {
-    var mod = ng.module("restauranteModule");
+    var mod = ng.module("restauranteModule");//Definicion del modulo que usaremos desde el app.js
     mod.constant("restaurantesContext", "api/sucursales");
     mod.controller('restauranteNewCtrl', ['$scope', '$http', 'restaurantesContext', '$state', '$rootScope',
+        /*
+        * Funcion para crear un nuevo restaurante a partir de los parametros definidos en el back
+        */
         function ($scope, $http, restaurantesContext, $state, $rootScope) {
             $rootScope.edit = false;
             $scope.createRestaurante = function () {

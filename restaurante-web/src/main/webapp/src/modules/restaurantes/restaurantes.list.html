@@ -6,23 +6,33 @@
         <div class="panel panel-primary">
             <div class="panel-heading"><label>Restaurantes list</label></div>
             <div style = "background-color: #6E6A69;" class="panel-body">
+                <!--boton para crear-->
                 <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                    <!--crear-->
                     <div class="btn-group mr-2" role="group" aria-label="First group">
                         <a class="btn btn-info" ui-sref="restaurantesCreate"><span class="glyphicon glyphicon-plus-sign"></span> Add new sucursal</a>
                     </div>
                 </div>
                 <div class="col-md-8">
+                    <!--Tabla para el desarrollo de la vista de la lista de restaurante-->
                     <table class="table table-striped">
                         <thead>
+                            <!--direccion-->
                             <tr>
                                 <th>Direccion</th>    
                             </tr>
                         </thead>
+                        <!--Llamado de la ionformacion de los restaurantes
+                        Param: stauranteId-->
                         <tbody>
                             <tr ng-repeat="restaurante in restaurantesRecords">
+                                <!--nombre-->
                                 <td id="{{$index}}-name"><a ui-sref="restauranteDetail({restauranteId: restaurante.id})">{{restaurante.direccion}}</a></td>
+                                <!--Botones para acciones CRUD-->
                                 <td id="{{$index}}-actions">
+                                    <!--update-->
                                     <a class="btn btn-default btn-sm" ui-sref="restauranteUpdate({restauranteId: restaurante.id})"><span class="glyphicon glyphicon-edit"></span></a>
+                                    <!--delete-->
                                     <a class="btn btn-danger btn-sm" ui-sref="restauranteDelete({restauranteId: restaurante.id})"><span class="glyphicon glyphicon-trash"></span></a>
                                 </td>
                             </tr>

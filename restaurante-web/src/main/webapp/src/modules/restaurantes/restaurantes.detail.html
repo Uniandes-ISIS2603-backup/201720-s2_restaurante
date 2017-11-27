@@ -1,18 +1,24 @@
+<!--Vista de detalle del restaurante-->
 <div class="panel panel-default"> 
     <div style = "background-color: #6E6A69;" class="panel-body">
     <div class="row">
         <div class="col-md-3">
+            <!--Imagen del restaurante-->
             <div class="thumb">
                 <img class="img-responsive" ng-src="{{currentRestaurante.image}}"/>
             </div>
         </div>
+        <!--Información de un restaurante especifico presenta en la vista list de restaurantes-->
         <div class="col-md-3">
             <dl>     
+                <!--direccion-->
                 <dt>{{currentRestaurante.direccion}}</dt>
                 <hr>
+                <!--boolean dos pisos-->
                 <dt>Dos Pisos</dt>
                 <dd>{{currentRestaurante.dosPisos}}</dd>
                 <hr>
+                <!--calificacion-->
                 <dt>Calificacion</dt>
                 <dd>{{currentRestaurante.calificacion}}</dd>
             </dl>
