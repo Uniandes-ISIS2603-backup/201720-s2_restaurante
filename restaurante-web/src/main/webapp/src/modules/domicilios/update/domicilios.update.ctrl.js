@@ -9,8 +9,7 @@
                     //Consulto el domicilio a editar.
                     $http.get(domiciliosContext + '/' + idDomicilio).then(function (response) {
                         var domicilio = response.data;
-                        $scope.platos = domicilio.platos;
-                        $scope.rango = domicilio.rango;             
+                        $scope.platos = domicilio.platos;             
                     });
                     $http.get("http://localhost:8080/restaurante-web/api/pedidos" + '/' + $state.params.domicilioId).then(function (response) {
                         var pedido = response.data;
@@ -26,7 +25,7 @@
                         $http.put(domiciliosContext + "/" + idDomicilio, {
                             id: idDomicilio,
                             platos: $scope.platos,
-                            rango: $scope.rango
+                            rango: 10
                         }).then(function (response) {
                         //domicilio creado de forma exitosa    
                         $state.go('domiciliosList', {domicilioId: response.data.id}, {reload: true});

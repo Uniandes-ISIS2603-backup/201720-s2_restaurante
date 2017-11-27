@@ -22,7 +22,7 @@
                     plato3:$scope.plato3,
                     plato4:$scope.plato4,
                     plato5:$scope.plato5,
-                    rango: $scope.rango
+                    rango: 10
                 }).then(function (response) {
                 //domicilio created successfully    
                 $state.go('domiciliosList', {domicilioId: response.data.id}, {reload: true});
