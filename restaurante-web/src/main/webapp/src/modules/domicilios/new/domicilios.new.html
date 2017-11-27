@@ -43,10 +43,9 @@ and open the template in the editor.
                     <div class="form-group row">
                         <!--sucursal a la que se pidio-->
                             <div class="form-group col-md-12">
-                            <label for="dirSuc" class="col-sm-2">Sucursal</label>
-                            <select name="dirSuc">
-                                 <option selected value="0"> Elige de dónde pedir </option>
-                                 <option ng-repeat="sucursal in sucursalesRecords" id="dirSuc" required ng-model="dirSuc" value ="{{sucursal.direccion}}"> {{sucursal.direccion}}</option>
+                            <label for="dirSuc" class="col-sm-2">Sucursal de la que se quiere pedir</label>
+                            <select name="dirSuc" id="dirSuc" required ng-model="dirSuc">
+                                 <option ng-repeat="sucursal in sucursalesRecords"  value ="{{sucursal.id}}"> {{sucursal.direccion}}</option>
                             </select><br>
                         </div>
                     </div>
