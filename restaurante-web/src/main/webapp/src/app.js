@@ -32,7 +32,9 @@
                 }
                 var roles = [sessionStorage.rol];
 
-
+                /*
+                 * El usuario esta identificado?
+                 */
                 $rootScope.isAuthenticated = function () {
 
                     if (sessionStorage.getItem("username") != null) {
@@ -42,7 +44,9 @@
                         return false;
                     }
                 };
-
+                /*
+                 * El usuario iene permisos para realizar x accion?
+                 */
                 $rootScope.hasPermissions = function () {
                     if (($rootScope.isAuthenticated) && (roles.indexOf(sessionStorage.getItem("rol")) > -1)) {
                         return true;
