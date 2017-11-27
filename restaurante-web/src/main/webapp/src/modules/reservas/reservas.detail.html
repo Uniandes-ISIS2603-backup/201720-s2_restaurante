@@ -4,24 +4,30 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
+<!--Vista de detalle de la reservas-->
 <div style = "background-color: #6E6A69;" class="panel panel-default"> 
     <div class="panel-body">
     <div class="row">
         <div class="col-md-3">
+            <!--imagen de la reserva-->
             <div class="thumb">
                 <img class="img-responsive" ng-src="{{currentReserva.image}}"/>
             </div>
 
         </div>
+        <!--Información de una reserva especifico presenta en la vista list de reservas-->
         <div class="col-md-3">
-            <dl>     
+            <dl>
+                <!--fecha-->
                 <dt>Fecha</dt>
                 <dd>{{currentReserva.fecha| date:'yyyy-MM-dd'}}</dd>
                 
+                <!--mesa reservada-->
                 <hr>
                 <dt>Mesa Reservada</dt>
                 <dd>{{currentReserva.mesa.id}}</dd>
 
+                <!--sucursal de la reserva-->
                 <dt>Sucursal de la reserva</dt>
                 <dd>{{currentReserva.dirSuc}}</dd>  
 

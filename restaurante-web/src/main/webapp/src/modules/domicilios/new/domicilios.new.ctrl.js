@@ -19,7 +19,7 @@
                     platos: $scope.platos,
                     rango: $scope.rango
                 }).then(function (response) {
-                //Cliente created successfully    
+                //domicilio created successfully    
                 $state.go('domiciliosList', {domicilioId: response.data.id}, {reload: true});
                     var index = $scope.domiciliosRecords.indexOf(response.data);
                     $scope.domiciliosRecords.splice(index, 1);

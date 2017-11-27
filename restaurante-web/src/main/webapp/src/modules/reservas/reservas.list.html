@@ -10,22 +10,28 @@
                                 </div>
                             </div>
                 <div class="col-md-4">
+                    <!--Tabla para el desarrollo de la vista de la lista de reservas-->
                     <table class="table table-striped">
+                        <!--columnas-->
                         <thead>
                             <tr>
-
                                 <th>Fecha</th>
                                 <th>Acciones</th>
                             </tr>
                         </thead>
+                        <!--Llamado de la informacion de los reservas
+                        Param: reservaId-->
                         <tbody>
                             <tr ng-repeat="reserva in reservasRecords">
-
+                                <!--fecha-->
                                 <td id="{{$index}}-fecha">
                                     <a ui-sref="reservaDetail({reservaId: reserva.id})" class="thumb">{{reserva.fecha| date:'yyyy-MM-dd'}}</a>
                                 </td> 
+                                <!--Botones para acciones CRUD-->
                                 <td id="{{$index}}-actions">
+                                    <!--update-->
                                     <a class="btn btn-default btn-sm" ui-sref="reservaUpdate({reservaId: reserva.id})"><span class="glyphicon glyphicon-edit"></span></a>
+                                    <!--delete-->
                                     <a class="btn btn-danger btn-sm" ui-sref="reservaDelete({reservaId: reserva.id})"><span class="glyphicon glyphicon-trash"></span></a>
                                 </td>
 
