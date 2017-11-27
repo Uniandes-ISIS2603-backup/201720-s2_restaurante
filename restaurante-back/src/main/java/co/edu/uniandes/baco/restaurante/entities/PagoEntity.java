@@ -78,6 +78,13 @@ public class PagoEntity extends BaseEntity implements Serializable {
         return pagoAnticipado;
     }
 
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 29 * hash + (this.registrado ? 1 : 0);
+        return hash;
+    }
+
     public String getTipo() {
         return tipo;
     }
@@ -90,14 +97,14 @@ public class PagoEntity extends BaseEntity implements Serializable {
         if (obj == null) {
             return false;
         }
-        return getClass() == obj.getClass();
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 3;
-        hash = 29 * hash + (this.registrado ? 1 : 0);
-        return hash;
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final PagoEntity other = (PagoEntity) obj;
+        if (this.registrado != other.registrado) {
+            return false;
+        }
+        return true;
     }
 
 }

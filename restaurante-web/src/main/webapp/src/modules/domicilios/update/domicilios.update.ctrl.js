@@ -12,8 +12,17 @@
                         $scope.platos = domicilio.platos;
                         $scope.rango = domicilio.rango;             
                     });
-                    
+                    $http.get("http://localhost:8080/restaurante-web/api/pedidos" + '/' + $state.params.domicilioId).then(function (response) {
+                        var pedido = response.data;
+                        $scope.nombre = pedido.name;
+                        $scope.direccion = pedido.direccion;
+                    });
                     $scope.createDomicilio = function () {
+                        $http.put("http://localhost:8080/restaurante-web/api/pedidos", {
+                            direccion: $scope.direccion,
+                            id: idDomicilio,
+                            name: $scope.nombre
+                        });
                         $http.put(domiciliosContext + "/" + idDomicilio, {
                             id: idDomicilio,
                             platos: $scope.platos,
