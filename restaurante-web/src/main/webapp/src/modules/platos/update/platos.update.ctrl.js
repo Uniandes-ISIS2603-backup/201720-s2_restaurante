@@ -18,6 +18,7 @@
                         $scope.platoName = plato.name;
                         $scope.platoEspecialSucursal = plato.especialSucursal;
                         $scope.platoPrecio = plato.precio;
+                        $scope.platoImage = plato.image;
                         
                     });
 
@@ -43,8 +44,8 @@
                             
                             name: $scope.platoName,
                             especialSucursal: $scope.platoEspecialSucursal,
-                            precio: $scope.platoPrecio
-                            
+                            precio: $scope.platoPrecio,
+                            image: $scope.platoImage
                         }).then(function (response) {
                     //Plato created successfully
                     $state.go('platosList', {platoId: response.data.id}, {reload: true});
