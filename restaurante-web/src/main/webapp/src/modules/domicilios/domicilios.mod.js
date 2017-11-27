@@ -5,6 +5,10 @@ var mod = ng.module("domicilioModule", ['ui.router']); //declaracion del modulo,
         {
             var basePath = 'src/modules/domicilios/';
             $urlRouterProvider.otherwise("/domiciliosList");
+         /*
+         * Vista principal modulo domicilio
+         * Definicion estado abstracto
+         */   
         $stateProvider.state('domicilios', {
                 url: '/domicilios',
                 abstract: true,
@@ -15,6 +19,9 @@ var mod = ng.module("domicilioModule", ['ui.router']); //declaracion del modulo,
                         controllerAs: 'ctrl'
                     }
                 }
+                /*
+                 * Vista de la lista de domicilio
+                 */
             }).state('domiciliosList', {
                 url: '/list',
                 parent: 'domicilios',
@@ -23,6 +30,10 @@ var mod = ng.module("domicilioModule", ['ui.router']); //declaracion del modulo,
                         templateUrl: basePath + 'domicilios.list.html'
                     }
                 }
+                 /*
+                 * Vista del detalle de un domicilio con un id especificado por parametro
+                 * Param: domicilioId
+                 */
             }).state('domicilioDetail', {
                 url: '/{domicilioId:int}/detail',
                 parent: 'domicilios',
@@ -40,7 +51,9 @@ var mod = ng.module("domicilioModule", ['ui.router']); //declaracion del modulo,
                     }
 
                 }
-            
+             /*
+             * Vista de creacion de un nuevo domicilio
+             */
             }).state('domiciliosCreate', {
                 url: '/create',
                 parent: 'domicilios',
@@ -50,6 +63,10 @@ var mod = ng.module("domicilioModule", ['ui.router']); //declaracion del modulo,
                         controller: 'domicilioNewCtrl'
                     }
                 }
+                /*
+                 * Vista de modificar un domicilio con un id especificado por parametro
+                 * Param: domicilioId
+                 */
             }).state('domicilioUpdate', {
                 url: '/update/{domicilioId:int}',
                 parent: 'domicilios',
@@ -62,6 +79,10 @@ var mod = ng.module("domicilioModule", ['ui.router']); //declaracion del modulo,
                         controller: 'domicilioUpdateCtrl'
                     }
                 }
+                /*
+                 * Vista para eliminar un domicilio con un id especificado por parametro
+                 * Param: domicilioId
+                 */
             }).state('domicilioDelete', {
                 url: '/delete/{domicilioId:int}',
                 parent: 'domicilios',

@@ -3,25 +3,35 @@
         <div style = "background-color: #6E6A69;" class="panel panel-primary">
             <div class="panel-heading"><label>Domicilios list</label></div>
             <div class="panel-body">
+                <!--boton para crear-->
                 <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                    <!--crear-->
                     <div class="btn-group mr-2" role="group" aria-label="First group">
                         <a class="btn btn-info" ui-sref="domiciliosCreate"><span class="glyphicon glyphicon-plus-sign"></span> Pedir un domicilio</a>
                     </div>
                 </div>
                 <div class="col-md-8">
+                     <!--Tabla para el desarrollo de la vista de la lista de domicilios-->
                     <table class="table table-striped">
+                        <!--Columnas de la tabla-->
                         <thead>
                             <tr>
                                 <th>Id domicilio:</th> 
                                 <th>Acciones</th>
                             </tr>
                         </thead>
+                        <!--Llamado de la ionformacion de los domicilios
+                        Param: domiciliosId-->
                         <tbody>
                             <tr ng-repeat="domicilio in domiciliosRecords">
+                                <!--id-->
                                 <td id="{{$index}}-id">
                                     <a ui-sref="domicilioDetail({domicilioId: domicilio.id})" class="thumb">{{domicilio.id}}</a></td>
+                                <!--Botones para acciones CRUD-->
                                 <td id="{{$index}}-actions">
+                                    <!--update-->
                                     <a class="btn btn-default btn-sm" ui-sref="domicilioUpdate({domicilioId: domicilio.id})"><span class="glyphicon glyphicon-edit"></span></a>
+                                    <!--delete-->
                                     <a class="btn btn-danger btn-sm" ui-sref="domicilioDelete({domicilioId: domicilio.id})"><span class="glyphicon glyphicon-trash"></span></a>
                                 </td>
                             </tr>

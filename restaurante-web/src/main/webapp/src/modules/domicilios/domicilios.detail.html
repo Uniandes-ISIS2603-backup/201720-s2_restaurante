@@ -1,17 +1,21 @@
+<!--Vista de detalle del cliente-->
 <div style = "background-color: #6E6A69;"class="panel panel-default"> 
     <div class="panel-body">
     <div class="row">
+        <!--Información de un domicilio especifico presenta en la vista list de domicilio-->
         <div class="col-md-3">
             <div class="thumb">
                 <dl>
-                    
+                <!--rango-->    
                 <dt>Rango</dt>
                 <dd>{{currentDomicilio.rango}}</dd>
                 <hr>
                 
+                <!--nombre del pedido-->
                 <dt>Nombre</dt>
                 <dd>{{currentPedido.name}}</dd>
                 
+                <!--direccion-->
                 <hr>
                 <dt>Direccion</dt>
                 <dd>{{currentPedido.direccion}}</dd>
@@ -21,12 +25,12 @@
         </div>
         <div class="col-md-3">
             <dl>     
-
+                <!--entidad de platos-->
                 <dt>Platos</dt>
                 <dd>{{currentDomicilio.platos}}</dd>  
             </dl>
             <dl>     
-
+                <!--sucurusal en la que se realizo el pedido-->
                 <dt>Sucursal de la que pidió</dt>
                 <dd>{{currentPedido.dirSucursal}}</dd>  
             </dl>
