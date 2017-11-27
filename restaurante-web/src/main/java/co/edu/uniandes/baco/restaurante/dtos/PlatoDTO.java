@@ -44,26 +44,44 @@ public class PlatoDTO {
         }
     }
 
+    /**
+     * @return imagen del plato
+     */
     public String getImage() {
         return image;
     }
 
+    /**
+     * @param image: imagen del plato
+     */
     public void setImage(String image) {
         this.image = image;
     }
     
+    /**
+     * @return precio del plato
+     */
     public double getPrecio() {
         return precio;
     }
 
+    /**
+     * @param precio: el precio del plato
+     */
     public void setPrecio(double precio) {
         this.precio = precio;
     }
 
+    /**
+     * @return el plato es especial de la sucursal?
+     */
     public boolean isEspecialSucursal() {
         return especialSucursal;
     }
 
+    /**
+     * @param especialSucursal: el plato es especial de la sucursal?
+     */
     public void setEspecialSucursal(boolean especialSucursal) {
         this.especialSucursal = especialSucursal;
     }

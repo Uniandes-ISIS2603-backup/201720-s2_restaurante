@@ -64,34 +64,59 @@ public class RestauranteDTO {
         }
     }
 
+    /**
+     * @return hora de inicio en la maniana
+     */
     public Date getHoraInicManiana() {
         return horaInicManiana;
     }
+    
 
+    /**
+     * @param horaInicManiana hora de abrir en la maniana
+     */
     public void setHoraInicManiana(Date horaInicManiana) {
         this.horaInicManiana = horaInicManiana;
     }
 
+    /**
+     * @return hora inicio tarde
+     */
     public Date getHoraInicTarde() {
         return horaInicTarde;
     }
 
+    /**
+     * @param horaInicTarde hora de abrir en la tarde
+     */
     public void setHoraInicTarde(Date horaInicTarde) {
         this.horaInicTarde = horaInicTarde;
     }
 
+    /**
+     * @return hora de cierre en la maniana
+     */
     public Date getHoraEndManiana() {
         return horaEndManiana;
     }
 
+    /**
+     * @param horaEndManiana: hora de cierre en la maniana
+     */
     public void setHoraEndManiana(Date horaEndManiana) {
         this.horaEndManiana = horaEndManiana;
     }
 
+    /**
+     * @return hora cierre tarde
+     */
     public Date getHoraEndTarde() {
         return horaEndTarde;
     }
 
+    /**
+     * @param horaEndTarde hora en la que cierra en la tarde
+     */
     public void setHoraEndTarde(Date horaEndTarde) {
         this.horaEndTarde = horaEndTarde;
     }

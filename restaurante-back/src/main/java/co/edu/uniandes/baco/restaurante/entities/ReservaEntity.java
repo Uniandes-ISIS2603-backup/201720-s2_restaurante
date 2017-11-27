@@ -21,6 +21,9 @@ import uk.co.jemos.podam.common.PodamExclude;
  */
 @Entity
 public class ReservaEntity extends BaseEntity implements Serializable{
+    /**
+    *Relaciones y atributos
+    */
     @Temporal(TemporalType.DATE)
     private Date fecha;
     @PodamExclude
@@ -34,6 +37,9 @@ public class ReservaEntity extends BaseEntity implements Serializable{
     private MesaEntity mesa;
     private String dirSuc;
     
+    /**
+     * @return the restaurante
+     */
     public RestauranteEntity getRestaurante() {
         return restaurante;
     }
@@ -42,6 +48,9 @@ public class ReservaEntity extends BaseEntity implements Serializable{
         this.restaurante = restaurante;
     }
 
+    /**
+     * @return the cliente
+     */
     public ClienteEntity getCliente() {
         return cliente;
     }
@@ -50,10 +59,16 @@ public class ReservaEntity extends BaseEntity implements Serializable{
         this.cliente = cliente;
     }
 
+    /**
+     * @return the mesa
+     */
     public MesaEntity getMesa() {
         return mesa;
     }
 
+    /**
+     * @return the direccion de la sucursal
+     */
     public String getDirSuc() {
         return dirSuc;
     }
@@ -67,6 +82,9 @@ public class ReservaEntity extends BaseEntity implements Serializable{
     }
     
 
+    /**
+     * @return the fecha
+     */
     public Date getFecha() {
         return fecha;
     }
@@ -83,6 +101,9 @@ public class ReservaEntity extends BaseEntity implements Serializable{
         return hash;
     }
 
+    /**
+     * @param Object obj
+     */
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {

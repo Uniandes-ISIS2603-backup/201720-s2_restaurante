@@ -41,6 +41,9 @@ import uk.co.jemos.podam.common.PodamExclude;
 @Entity
 public class RestauranteEntity extends BaseEntity implements Serializable {
 
+    /**
+     * relaciones y atributos
+     */
     @Temporal(TemporalType.DATE)
     private Date horaInicioManiana;
     @Temporal(TemporalType.DATE)
@@ -69,6 +72,9 @@ public class RestauranteEntity extends BaseEntity implements Serializable {
     @OneToMany
     private List<DomicilioEntity> domicilios = new ArrayList<>();
 
+    /**
+     * @return the sucursales
+     */
     public List<SucursalEntity> getSucursales() {
         return sucursales;
     }
@@ -77,10 +83,16 @@ public class RestauranteEntity extends BaseEntity implements Serializable {
         this.sucursales = sucursales;
     }
 
+    /**
+     * @return the reservas
+     */
     public List<ReservaEntity> getReservas() {
         return reservas;
     }
 
+    /**
+     * @return the clientes
+     */
     public List<ClienteEntity> getClientes() {
         return clientes;
     }
@@ -89,6 +101,9 @@ public class RestauranteEntity extends BaseEntity implements Serializable {
         this.clientes = clientes;
     }
 
+    /**
+     * @return the tarjeta puntos
+     */
     public List<TarjetaPuntosEntity> getTarjetas() {
         return tarjetas;
     }
@@ -97,6 +112,9 @@ public class RestauranteEntity extends BaseEntity implements Serializable {
         this.tarjetas = tarjetas;
     }
 
+    /**
+     * @return the platos
+     */
     public List<PlatoEntity> getPlatos() {
         return platos;
     }
@@ -105,6 +123,9 @@ public class RestauranteEntity extends BaseEntity implements Serializable {
         this.platos = platos;
     }
 
+    /**
+     * @return the domicilios
+     */
     public List<DomicilioEntity> getDomicilios() {
         return domicilios;
     }
@@ -117,6 +138,9 @@ public class RestauranteEntity extends BaseEntity implements Serializable {
         this.reservas = reservas;
     }
 
+    /**
+     * @return the hora en la que abre el restaurante
+     */
     public Date getHoraInicioManiana() {
         return horaInicioManiana;
     }
@@ -125,6 +149,9 @@ public class RestauranteEntity extends BaseEntity implements Serializable {
         this.horaInicioManiana = horaInicioManiana;
     }
 
+    /**
+     * @return the hora en la que abre por segunda vez el restaurante
+     */
     public Date getHoraInicioTarde() {
         return horaInicioTarde;
     }
@@ -133,6 +160,9 @@ public class RestauranteEntity extends BaseEntity implements Serializable {
         this.horaInicioTarde = horaInicioTarde;
     }
 
+    /**
+     * @return the hora en la que cierra en la mañana
+     */
     public Date getHoraFinManiana() {
         return horaFinManiana;
     }
@@ -141,6 +171,9 @@ public class RestauranteEntity extends BaseEntity implements Serializable {
         this.horaFinManiana = horaFinManiana;
     }
 
+    /**
+     * @return the hora en la que cierra en la tarde
+     */
     public Date getHoraFinTarde() {
         return horaFinTarde;
     }
@@ -157,6 +190,9 @@ public class RestauranteEntity extends BaseEntity implements Serializable {
         return hash;
     }
 
+    /**
+     * @param Object obj
+     */
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {

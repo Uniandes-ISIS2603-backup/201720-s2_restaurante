@@ -37,6 +37,9 @@ public class SucursalEntity extends BaseEntity implements Serializable {
     @OneToMany
     private List<MesaEntity> mesas = new ArrayList<>();
 
+    /**
+     * @return the imagen
+     */
     public String getImage() {
         return image;
     }
@@ -45,6 +48,9 @@ public class SucursalEntity extends BaseEntity implements Serializable {
         this.image = image;
     }
 
+    /**
+     * @return the platos
+     */
     public List<PlatoEntity> getPlatos() {
         return platos;
     }
@@ -53,6 +59,9 @@ public class SucursalEntity extends BaseEntity implements Serializable {
         this.platos = platos;
     }
 
+    /**
+     * @return the mesas
+     */
     public List<MesaEntity> getMesas() {
         return mesas;
     }
@@ -61,6 +70,9 @@ public class SucursalEntity extends BaseEntity implements Serializable {
         this.mesas = mesas;
     }
 
+    /**
+     * @return the restaurante
+     */
     public RestauranteEntity getRestaurante() {
         return restaurante;
     }
@@ -77,14 +89,21 @@ public class SucursalEntity extends BaseEntity implements Serializable {
         this.calificacion = calificacion;
     }
 
+    /**
+     * @return la sucursal tiene dos pisos?
+     */
     public boolean isDosPisos() {
         return dosPisos;
     }
 
+    
     public void setDosPisos(boolean dosPisos) {
         this.dosPisos = dosPisos;
     }
 
+    /**
+     * @return the direccion
+     */
     public String getDireccion() {
         return direccion;
     }

@@ -42,10 +42,16 @@ public class PedidoEntity extends BaseEntity implements Serializable
     @ManyToOne
     private PagoEntity pago;
 
+    /**
+     * @return the platos
+     */
     public List<PlatoEntity> getPlatos() {
         return platos;
     }
 
+    /**
+     * @param List platos
+     */
     public void setPlatos(List<PlatoEntity> platos) {
         this.platos = platos;
     }
@@ -54,6 +60,9 @@ public class PedidoEntity extends BaseEntity implements Serializable
         return domicilio;
     }
 
+    /**
+     * @param DomicilioEntity domicilio 
+     */
     public void setDomicilio(DomicilioEntity domicilio) {
         this.domicilio = domicilio;
     }
@@ -62,6 +71,9 @@ public class PedidoEntity extends BaseEntity implements Serializable
         return pago;
     }
 
+    /**
+     * @param PagoEntity pago a destinar
+     */
     public void setPago(PagoEntity pago) {
         this.pago = pago;
     }
@@ -85,6 +97,9 @@ public class PedidoEntity extends BaseEntity implements Serializable
         return dirSucursal;
     }
 
+    /**
+     * @param String direccion de la sucursal
+     */
     public void setDirSucursal(String dirSucursal) {
         this.dirSucursal = dirSucursal;
     }

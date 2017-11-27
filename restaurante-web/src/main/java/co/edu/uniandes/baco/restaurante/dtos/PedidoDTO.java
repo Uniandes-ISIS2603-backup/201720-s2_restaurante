@@ -45,6 +45,9 @@ public class PedidoDTO
         }
     }
 
+    /**
+     * @return direccion del pedido
+     */
     public String getDirSucursal() {
         return dirSucursal;
     }

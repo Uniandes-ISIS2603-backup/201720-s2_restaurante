@@ -54,27 +54,44 @@ public class ReservaDTO {
         return entity;
     }
 
+    /**
+     * @return direccion de la sucursal
+     */
     public String getDirSuc() {
         return dirSuc;
     }
 
+    /**
+     * @param dirSuc: direccion de la sucursal
+     */
     public void setDirSuc(String dirSuc) {
         this.dirSuc = dirSuc;
     }
 
+    /**
+     * @return id de la reserva
+     */
     public Long getId() {
         return id;
     }
 
+    /**
+     * @param id: id de la reserva
+     */
     public void setId(Long id) {
         this.id = id;
     }
 
-    
+    /**
+     * @return fecha de la reserva
+     */
     public Date getFecha() {
         return fecha;
     }
 
+    /**
+     * @param fecha: fecha en la que se realiza la reserva
+     */
     public void setFecha(Date fecha) {
         this.fecha = fecha;
     }

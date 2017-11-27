@@ -42,30 +42,51 @@ public class MesaDTO {
         }
     }
 
+    /**
+     * @return id
+     */
     public Long getId() {
         return id;
     }
     
+    /**
+     * @return sillas disponibles en la mesa
+     */
      public int getSillasDisponibles() {
         return sillasDisponibles;
     }
      
+     /**
+     * @return piso en el que esta la mesa
+     */
      public int getPiso() {
         return piso;
     }
      
+     /**
+     * @return disponibilidad de la mesa
+     */
     public boolean isDisponible() {
         return disponible;
     }
 
+    /**
+     * @param id: id de la mesa
+     */
     public void setId(Long id) {
         this.id = id;
     }
 
+    /**
+     * @param sillasDisponibles: sillas que estan libres para reservas
+     */
     public void setSillasDisponibles(int sillasDisponibles) {
         this.sillasDisponibles = sillasDisponibles;
     }  
 
+    /**
+     * @param piso: piso en el que esta la mesa
+     */
     public void setPiso(int piso) {
         this.piso = piso;
     }

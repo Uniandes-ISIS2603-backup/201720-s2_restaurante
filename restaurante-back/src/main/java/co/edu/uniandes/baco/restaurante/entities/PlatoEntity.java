@@ -20,6 +20,9 @@ import uk.co.jemos.podam.common.PodamExclude;
  */
 @Entity
 public class PlatoEntity extends BaseEntity implements Serializable{
+    /*
+    *Relaciones y atributos
+    */
     private String tipo;
     private boolean especialSucursal;
     private double precio;
@@ -34,6 +37,9 @@ public class PlatoEntity extends BaseEntity implements Serializable{
    @ManyToMany
    private List<SucursalEntity> sucursales = new ArrayList<>();
 
+    /**
+     * @return the pedido
+     */
     public PedidoEntity getPedido() {
         return pedido;
     }
@@ -42,6 +48,9 @@ public class PlatoEntity extends BaseEntity implements Serializable{
         this.pedido = pedido;
     }
 
+    /**
+     * @return the restaurante
+     */
     public RestauranteEntity getRestaurante() {
         return restaurante;
     }
@@ -50,6 +59,9 @@ public class PlatoEntity extends BaseEntity implements Serializable{
         this.restaurante = restaurante;
     }
 
+    /**
+     * @return the sucursales
+     */
     public List<SucursalEntity> getSucursales() {
         return sucursales;
     }
@@ -100,6 +112,9 @@ public class PlatoEntity extends BaseEntity implements Serializable{
         this.precio = precio;
     }
 
+    /**
+     * @return the imagen
+     */
     public String getImage() {
         return image;
     }

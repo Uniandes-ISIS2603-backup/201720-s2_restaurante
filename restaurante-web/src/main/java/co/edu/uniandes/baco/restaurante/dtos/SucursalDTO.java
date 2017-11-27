@@ -44,30 +44,52 @@ public class SucursalDTO {
         }
     }
 
+    /**
+     * @return calificacion de la sucursal
+     */
     public String getCalificacion() {
         return calificacion;
     }
 
+    /**
+     * @return la sucursal es de dos pisos?
+     */
     public boolean isDosPisos() {
         return dosPisos;
     }
 
+    /**
+     * @return direccion de la sucursal
+     */
     public String getDireccion() {
         return direccion;
     }
 
+    /**
+     * @param calificacion: calificacion de la sucursal
+     */
     public void setCalificacion(String calificacion) {
         this.calificacion = calificacion;
     }
 
+    /**
+     * @param dosPisos: la sucursal es de dos pisos?
+     */
     public void setDosPisos(boolean dosPisos) {
         this.dosPisos = dosPisos;
     }
 
+    /**
+     * @param direccion: direccion de la sucursal
+     */
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
 
+    /**
+     * Convertir DTO a Entity
+     * @return Un Entity con los valores del DTO 
+     */
     public SucursalEntity toEntity() {
         SucursalEntity entity = new SucursalEntity();
         entity.setId(this.id);
@@ -78,18 +100,30 @@ public class SucursalDTO {
         return entity;
     }
 
+    /**
+     * @return imagen de la sucursal
+     */
     public String getImage() {
         return image;
     }
 
+    /**
+     * @param image: imagen de la sucursal
+     */
     public void setImage(String image) {
         this.image = image;
     }
 
+    /**
+     * @return id de la sucursal
+     */
     public Long getId() {
         return id;
     }
 
+    /**
+     * @param id: id de la sucursal
+     */
     public void setId(Long id) {
         this.id = id;
     }
