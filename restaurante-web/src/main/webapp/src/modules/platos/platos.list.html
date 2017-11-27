@@ -10,7 +10,9 @@ and open the template in the editor.
         <div style = "background-color: #6E6A69;" class="panel panel-primary">
             <div class="panel-heading"><label>Platos list</label></div>
             <div class="panel-body">
+        <!--Tabla para el desarrollo de la vista de la lista de platos-->
         <table class="table table-striped">
+            <!--Columnas de la tabla-->
             <thead>
                 <tr>
                     <th>Nombre</th>
@@ -18,19 +20,26 @@ and open the template in the editor.
                     <th>Actions</th>
                 </tr>
             </thead>
+            <!--Llamado de la ionformacion de los platos
+            Param: platoId-->
             <tbody>
                 <tr ng-repeat="plato in platosRecords">
+                    <!--nombre-->
                     <td id="{{$index}}-Nombre">
                         <a ui-sref="platosDetail({platoId: plato.id})" class="thumb">{{plato.name}}</a>                      
                     </td> 
+                    <!--Botones para acciones CRUD-->
                     <td id="{{$index}}-actions">
+                        <!--update-->
                         <a class="btn btn-default btn-sm" ui-sref="platoUpdate({platoId: plato.id})"><span class="glyphicon glyphicon-edit"></span></a>
+                        <!--delete-->
                         <a class="btn btn-danger btn-sm" ui-sref="platoDelete({platoId: plato.id})"><span class="glyphicon glyphicon-trash"></span></a>
                     </td>
                           
                 </tr>
             </tbody>
         </table>
+        <!--crear plato-->
         <div class="btn-group mr-2" role="group" aria-label="First group">
             <a class="btn btn-info" ui-sref="platoCreate"><span class="glyphicon glyphicon-plus-sign"></span> Add new plato</a>
         </div>

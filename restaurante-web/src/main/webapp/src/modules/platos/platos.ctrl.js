@@ -6,14 +6,21 @@
 
 
 (function (ng) {
-    var mod = ng.module("platoModule");
+    var mod = ng.module("platoModule");//Definicion del modulo que usaremos desde el app.js
     mod.constant("platosContext", "http://localhost:8080/restaurante-web/api/platos");
     mod.controller('platosCtrl', ['$scope', '$http', 'platosContext','$state',
+        /*
+         * Informacion del plato obtenida desde el api de platos para representarla en los records del modulo
+         */
         function ($scope, $http, platosContext, $state) {
             $http.get(platosContext).then(function (response) {
                 $scope.platosRecords = response.data;
             });
-
+        
+            /*
+            * Manejo del plato con un id especificado por parametro
+            * Param: platoId
+            */    
         if (($state.params.platoId !== undefined) && ($state.params.platoId !== null)) {
                 $http.get(platosContext + '/' + $state.params.platoId).then(function (response) {
                     $scope.currentPlato = response.data;

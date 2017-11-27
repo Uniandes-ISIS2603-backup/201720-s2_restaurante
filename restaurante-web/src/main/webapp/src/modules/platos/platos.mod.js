@@ -5,13 +5,16 @@
  */
 
 (function (ng) {
-    var mod = ng.module("platoModule", ['ui.router']);
+    var mod = ng.module("platoModule", ['ui.router']);//declaracion del modulo, llamo la funcion de angular ng, el nombre del modulo y las dependencias
     mod.constant("platosContext", "http://localhost:8080/restaurante-web/api/platos");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             var basePath = 'src/modules/platos/';
             $urlRouterProvider.otherwise("/platosList");
 
-
+            /*
+             * Vista principal modulo plato
+            * Definicion estado abstracto
+             */ 
             $stateProvider.state('platos', {
                 url: '/platos',
                 abstract: true,
@@ -22,6 +25,9 @@
                         controllerAs: 'ctrl'
                     }
                 }
+                /*
+                 * Vista de la lista de platos
+                 */
             }).state('platosList', {
                 url: '/list',
                 parent: 'platos',
@@ -30,6 +36,10 @@
                         templateUrl: basePath + 'platos.list.html'
                     }
                 }
+                /*
+                 * Vista del detalle de un plato con un id especificado por parametro
+                 * Param: platoId
+                 */
             }).state('platosDetail', {
                 url: '/{platoId:int}/detail',
                 parent: 'platos',
@@ -47,7 +57,9 @@
                     }
 
                 }
-
+             /*
+             * Vista de creacion de un nuevo plato
+             */
             }).state('platoCreate', {
                 url: '/create',
                 parent: 'platos',
@@ -58,6 +70,10 @@
                     }
                 }
             })
+                    /*
+                 * Vista de modificar un plato con un id especificado por parametro
+                 * Param: platoId
+                 */
                     .state('platoUpdate', {
                         url: '/update/{platoId:int}',
                         parent: 'platos',
@@ -71,6 +87,10 @@
                             }
                         }
                     })
+                    /*
+                    * Vista para eliminar un plato con un id especificado por parametro
+                    * Param: platoId
+                    */
                     .state('platoDelete', {
                         url: '/delete/{platoId:int}',
                         parent: 'platos',

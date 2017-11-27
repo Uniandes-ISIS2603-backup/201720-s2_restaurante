@@ -4,22 +4,27 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
+<!--Vista de detalle del platos-->
 <div style = "background-color: #6E6A69;" class="panel panel-default"> 
     <div class="panel-body">
     <div class="row">
         <div class="col-md-3">
+            <!--imagen del plato-->
             <div class="thumb">
             <img class="img-responsive" ng-src="{{currentPlato.image}}"/>
 
             </div>
 
         </div>
+        <!--Información de un plato especifico presenta en la vista list de platos-->
         <div class="col-md-3">
             <dl>     
+                <!--id-->
                 <dt>ID</dt>
                 <dd>{{currentPlato.id}}</dd>
                 
                 <hr>
+                <!--nombre-->
                 <dt>Nombre</dt>
                 <dd>{{currentPlato.name}}</dd>
                 
@@ -28,10 +33,12 @@ and open the template in the editor.
                 <dd>{{currentPlato.tipo}}</dd>-->
                 
                 <hr>
+                <!--sucursal a la que pertenece el plato-->
                 <dt>Especial De Sucursal</dt>
                 <dd>{{currentPlato.especialSucursal}}</dd>
                 
                 <hr>
+                <!--precio-->
                 <dt>Precio</dt>
                 <dd>{{currentPlato.precio}}</dd>
 
