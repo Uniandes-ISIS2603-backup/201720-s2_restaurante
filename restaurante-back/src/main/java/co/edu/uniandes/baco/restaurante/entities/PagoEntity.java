@@ -21,6 +21,9 @@ import uk.co.jemos.podam.common.PodamExclude;
 @Entity
 public class PagoEntity extends BaseEntity implements Serializable {
 
+    /*
+    *Relaciones y atributos
+    */
     private boolean registrado;
     private boolean pagoAnticipado;
     private String tipo;
@@ -34,6 +37,13 @@ public class PagoEntity extends BaseEntity implements Serializable {
     @ManyToOne
     private ClienteEntity cliente;
 
+    /*
+    *Getters y Setters
+    */
+    
+    /**
+     * @return the pedidos
+     */
     public List<PedidoEntity> getPedidos() {
         return pedidos;
     }
@@ -41,7 +51,10 @@ public class PagoEntity extends BaseEntity implements Serializable {
     public void setPedidos(List<PedidoEntity> pedidos) {
         this.pedidos = pedidos;
     }
-
+    
+    /**
+     * @return the domicilios
+     */
     public DomicilioEntity getDomicilio() {
         return domicilio;
     }
@@ -50,6 +63,9 @@ public class PagoEntity extends BaseEntity implements Serializable {
         this.domicilio = domicilio;
     }
 
+    /**
+     * @return the cliente
+     */
     public ClienteEntity getCliente() {
         return cliente;
     }
@@ -69,11 +85,17 @@ public class PagoEntity extends BaseEntity implements Serializable {
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
-
+    
+    /**
+     * @return the esta registrado
+     */
     public boolean getRegistrado() {
         return registrado;
     }
-
+    
+    /**
+     * @return the pago anticipado
+     */
     public boolean getPagoAnticipado() {
         return pagoAnticipado;
     }

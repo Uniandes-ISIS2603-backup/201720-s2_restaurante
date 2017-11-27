@@ -56,7 +56,14 @@ public class TarjetaPuntosLogic {
         return tarjetaPuntoss;
     }
 
-
+    
+    /**
+     *
+     * Obtener una tarjeta puntos por medio de su id.
+     *
+     * @param id: id de la tarjeta para ser buscada.
+     * @return la tarjeta solicitada por medio de su id.
+     */
     public TarjetaPuntosEntity getTarjetaPuntos(Long id) {
         TarjetaPuntosEntity tarjetaPuntos = persistence.find(id);
         if (tarjetaPuntos == null) {

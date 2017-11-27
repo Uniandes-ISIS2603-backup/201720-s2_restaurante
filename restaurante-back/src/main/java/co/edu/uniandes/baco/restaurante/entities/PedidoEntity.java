@@ -25,6 +25,9 @@ import uk.co.jemos.podam.common.PodamExclude;
 @Entity
 public class PedidoEntity extends BaseEntity implements Serializable 
 {
+    /*
+    Relaciones y atributos
+    */
     @Temporal(TemporalType.DATE)
     private Date fecha;
     private String direccion;

@@ -17,6 +17,10 @@ import uk.co.jemos.podam.common.PodamExclude;
  */
 @Entity
 public class MesaEntity extends BaseEntity implements Serializable{
+    
+    /*
+    *Relaciones y atributos
+    */
     private int sillasDisponibles;
     private int piso;
     private boolean disponible; 
@@ -28,10 +32,20 @@ public class MesaEntity extends BaseEntity implements Serializable{
     @OneToOne
     private ReservaEntity reserva;
 
+    /*
+    *Getters y Setters
+    */
+    
+    /**
+     * @return the sucursal
+     */
     public SucursalEntity getSucursal() {
         return sucursal;
     }
-
+    
+    /**
+     * @return the reserva
+     */
     public ReservaEntity getReserva() {
         return reserva;
     }
@@ -45,7 +59,9 @@ public class MesaEntity extends BaseEntity implements Serializable{
     }
     
     
-    
+    /**
+     * @return the sillas disponibles
+     */
     public int getSillasDisponibles() {
         return sillasDisponibles;
     }
@@ -53,7 +69,10 @@ public class MesaEntity extends BaseEntity implements Serializable{
     public void setSillasDisponibles(int sillasDisponibles) {
         this.sillasDisponibles = sillasDisponibles;
     }
-
+    
+    /**
+     * @return the piso
+     */
     public int getPiso() {
         return piso;
     }
@@ -61,7 +80,10 @@ public class MesaEntity extends BaseEntity implements Serializable{
     public void setPiso(int piso) {
         this.piso = piso;
     }
-
+    
+    /**
+     * @return the disponibilidad
+     */
     public boolean isDisponible() {
         return disponible;
     }

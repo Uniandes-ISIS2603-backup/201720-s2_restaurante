@@ -27,7 +27,9 @@ public class ClienteEntity extends BaseEntity implements Serializable
     private String apellido;
     private int numPuntos;
     
-    
+    /*
+    *atributos y relaciones
+    */
     @PodamExclude
     @OneToOne
     private TarjetaPuntosEntity tarjeta;
@@ -48,7 +50,9 @@ public class ClienteEntity extends BaseEntity implements Serializable
     @OneToMany
     private List<ReservaEntity> reservas = new ArrayList<>();
     
-    
+    /*
+    **Getters
+    */
     public List<ReservaEntity> getReservas() {
         return reservas;
     }
@@ -97,6 +101,10 @@ public class ClienteEntity extends BaseEntity implements Serializable
         return nombre;
     }
 
+    /*
+    **Setters
+    */
+    
     /**
      * @param nombre the nombre to set
      */

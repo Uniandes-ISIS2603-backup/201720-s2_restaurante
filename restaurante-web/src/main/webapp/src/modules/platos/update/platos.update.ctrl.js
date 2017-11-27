@@ -37,7 +37,7 @@
                         
                     };
                     
-                    $scope.createReserva = function () {
+                    $scope.createPlato = function () {
                         
                         $http.put(platosContext + "/" + idplato, {
                             

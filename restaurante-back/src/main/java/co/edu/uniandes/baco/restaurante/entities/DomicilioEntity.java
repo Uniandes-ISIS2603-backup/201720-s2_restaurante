@@ -19,6 +19,9 @@ import uk.co.jemos.podam.common.PodamExclude;
 @Entity
 public class DomicilioEntity extends BaseEntity implements Serializable {
 
+    /*
+    *Relaciones y atributos
+    */
     private int rango;
     private String platos;
     @PodamExclude
@@ -34,6 +37,13 @@ public class DomicilioEntity extends BaseEntity implements Serializable {
     @ManyToOne
     private RestauranteEntity rest;
 
+    /*
+    *Getters y Setters
+    */
+    
+    /**
+     * @return the pago
+     */
     public PagoEntity getPago() {
         return pago;
     }
@@ -41,7 +51,10 @@ public class DomicilioEntity extends BaseEntity implements Serializable {
     public void setPago(PagoEntity pago) {
         this.pago = pago;
     }
-
+    
+    /**
+     * @return the pedido
+     */
     public PedidoEntity getPedido() {
         return pedido;
     }
@@ -49,7 +62,10 @@ public class DomicilioEntity extends BaseEntity implements Serializable {
     public void setPedido(PedidoEntity pedido) {
         this.pedido = pedido;
     }
-
+    
+    /**
+     * @return the cliente
+     */
     public ClienteEntity getCliente() {
         return cliente;
     }
@@ -57,23 +73,33 @@ public class DomicilioEntity extends BaseEntity implements Serializable {
     public void setCliente(ClienteEntity cliente) {
         this.cliente = cliente;
     }
-
+    
+    /**
+     * @return the rest
+     */
     public RestauranteEntity getRest() {
         return rest;
     }
-
+    
+    
     public void setRest(RestauranteEntity rest) {
         this.rest = rest;
     }
-
+    
+    /**
+     * @return the rango
+     */
     public int getRango() {
         return rango;
     }
-
+    
     public void setRango(int rango) {
         this.rango = rango;
     }
-
+    
+    /**
+     * @return the platos
+     */
     public String getPlatos() {
         return platos;
     }
