@@ -1,5 +1,5 @@
 <!--Vista de detalle del domicilio-->
-<div style = "background-color: #6E6A69;"class="panel panel-default"> 
+<div style = "background-color: #6E6A69; "class="panel panel-default"> 
     <div class="panel-body">
     <div class="row">
         <!--Información de un domicilio especifico presenta en la vista list de domicilio-->
@@ -20,6 +20,12 @@
                 <dt>Direccion</dt>
                 <dd>{{currentPedido.direccion}}</dd>
                 
+                <hr>
+                <!--sucurusal en la que se realizo el pedido-->
+                <dt>Sucursal de la que pidió</dt>
+                <dd><a href="http://localhost:8080/restaurante-web/#!/restaurantes/{{currentPedido.dirSucursal}}/detail" class="thumb">{{currentPedido.dirSucursal}}</a></dd>  
+
+                
             </dl>
             </div>
         </div>
@@ -27,12 +33,21 @@
             <dl>     
                 <!--entidad de platos-->
                 <dt>Platos</dt>
-                <dd>{{currentDomicilio.platos}}</dd>  
-            </dl>
-            <dl>     
-                <!--sucurusal en la que se realizo el pedido-->
-                <dt>Sucursal de la que pidió</dt>
-                <dd><a href="http://localhost:8080/restaurante-web/#!/restaurantes/{{currentPedido.dirSucursal}}/detail" class="thumb">{{currentPedido.dirSucursal}}</dd>  
+                <hr>
+                <dt ng-if="currentDomicilio.plato1>0">Plato1</dt>
+                <dd ng-if="currentDomicilio.plato1>0"><a href="http://localhost:8080/restaurante-web/#!/platos/{{currentDomicilio.plato1}}/detail" class="thumb">{{currentDomicilio.plato1}}</a></dd>
+                <hr ng-if="currentDomicilio.plato2>0">
+                <dt ng-if="currentDomicilio.plato2>0">Plato2</dt>
+                <dd ng-if="currentDomicilio.plato2>0"><a href="http://localhost:8080/restaurante-web/#!/platos/{{currentDomicilio.plato2}}/detail" class="thumb">{{currentDomicilio.plato2}}</a></dd>
+                <hr ng-if="currentDomicilio.plato3>0">
+                <dt ng-if="currentDomicilio.plato3>0">Plato3</dt>
+                <dd ng-if="currentDomicilio.plato3>0"><a href="http://localhost:8080/restaurante-web/#!/platos/{{currentDomicilio.plato3}}/detail" class="thumb">{{currentDomicilio.plato3}}</a></dd>
+                <hr ng-if="currentDomicilio.plato4>0">
+                <dt ng-if="currentDomicilio.plato4>0">Plato4</dt>
+                <dd ng-if="currentDomicilio.plato4>0"><a href="http://localhost:8080/restaurante-web/#!/platos/{{currentDomicilio.plato4}}/detail" class="thumb">{{currentDomicilio.plato4}}</a></dd>
+                <hr ng-if="currentDomicilio.plato5>0">
+                <dt ng-if="currentDomicilio.plato5>0">Plato5</dt>
+                <dd ng-if="currentDomicilio.plato5>0"><a href="http://localhost:8080/restaurante-web/#!/platos/{{currentDomicilio.plato5}}/detail" class="thumb">{{currentDomicilio.plato5}}</a></dd>
             </dl>
             
         </div>

@@ -23,7 +23,11 @@ public class DomicilioEntity extends BaseEntity implements Serializable {
     *Relaciones y atributos
     */
     private int rango;
-    private String platos;
+    private long plato1;
+    private long plato2;
+    private long plato3;
+    private long plato4;
+    private long plato5;
     @PodamExclude
     @OneToOne
     private PagoEntity pago;
@@ -96,17 +100,48 @@ public class DomicilioEntity extends BaseEntity implements Serializable {
     public void setRango(int rango) {
         this.rango = rango;
     }
-    
-    /**
-     * @return the platos
-     */
-    public String getPlatos() {
-        return platos;
+
+    public long getPlato1() {
+        return plato1;
     }
 
-    public void setPlatos(String platos) {
-        this.platos = platos;
+    public void setPlato1(long plato1) {
+        this.plato1 = plato1;
     }
+
+    public long getPlato2() {
+        return plato2;
+    }
+
+    public void setPlato2(long plato2) {
+        this.plato2 = plato2;
+    }
+
+    public long getPlato3() {
+        return plato3;
+    }
+
+    public void setPlato3(long plato3) {
+        this.plato3 = plato3;
+    }
+
+    public long getPlato4() {
+        return plato4;
+    }
+
+    public void setPlato4(long plato4) {
+        this.plato4 = plato4;
+    }
+
+    public long getPlato5() {
+        return plato5;
+    }
+
+    public void setPlato5(long plato5) {
+        this.plato5 = plato5;
+    }
+    
+    
 
     @Override
     public boolean equals(Object obj) {

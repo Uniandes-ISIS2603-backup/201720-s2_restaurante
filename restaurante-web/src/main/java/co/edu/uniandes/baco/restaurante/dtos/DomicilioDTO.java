@@ -8,7 +8,11 @@ public class DomicilioDTO {
 
     private Long id;
     private int rango;
-    private String platos;
+    private long plato1;
+    private long plato2;
+    private long plato3;
+    private long plato4;
+    private long plato5;
 
     /**
      * Constructor por defecto
@@ -26,7 +30,11 @@ public class DomicilioDTO {
         if(domicilio!=null){
         this.id = domicilio.getId();
         this.rango =domicilio.getRango();
-        this.platos = domicilio.getPlatos();
+        this.plato1 = domicilio.getPlato1();
+        this.plato2 = domicilio.getPlato2();
+        this.plato3 = domicilio.getPlato3();
+        this.plato4 = domicilio.getPlato4();
+        this.plato5 = domicilio.getPlato5();
         }
     }
 
@@ -52,7 +60,11 @@ public class DomicilioDTO {
         DomicilioEntity entity = new DomicilioEntity();
         entity.setId(this.id);
         entity.setRango(this.rango);
-        entity.setPlatos(this.platos);
+        entity.setPlato1(this.plato1);
+        entity.setPlato2(this.plato2);
+        entity.setPlato3(this.plato3);
+        entity.setPlato4(this.plato4);
+        entity.setPlato5(this.plato5);
         return entity;
     }
 
@@ -70,19 +82,47 @@ public class DomicilioDTO {
         this.rango = rango;
     }
 
-    /**
-     * @return the platos
-     */
-    public String getPlatos() {
-        return platos;
+    public long getPlato1() {
+        return plato1;
     }
 
-    /**
-     * @param String platos
-     */
-    public void setPlatos(String platos) {
-        this.platos = platos;
+    public void setPlato1(long plato1) {
+        this.plato1 = plato1;
     }
+
+    public long getPlato2() {
+        return plato2;
+    }
+
+    public void setPlato2(long plato2) {
+        this.plato2 = plato2;
+    }
+
+    public long getPlato3() {
+        return plato3;
+    }
+
+    public void setPlato3(long plato3) {
+        this.plato3 = plato3;
+    }
+
+    public long getPlato4() {
+        return plato4;
+    }
+
+    public void setPlato4(long plato4) {
+        this.plato4 = plato4;
+    }
+
+    public long getPlato5() {
+        return plato5;
+    }
+
+    public void setPlato5(long plato5) {
+        this.plato5 = plato5;
+    }
+
+    
     
     
     

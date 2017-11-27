@@ -7,6 +7,7 @@
             /*
              * Funcion para crear un nuevo domicilio a partir de los parametros definidos en el back
              */
+            console.log($scope);
             $scope.createDomicilio = function () {
                 $http.post("http://localhost:8080/restaurante-web/api/pedidos", {
                     direccion: $scope.direccion,
@@ -16,7 +17,11 @@
                 });
                 $http.post(domiciliosContext, {
                     id: -1,
-                    platos: $scope.platos,
+                    plato1: $scope.plato1,
+                    plato2:$scope.plato2,
+                    plato3:$scope.plato3,
+                    plato4:$scope.plato4,
+                    plato5:$scope.plato5,
                     rango: $scope.rango
                 }).then(function (response) {
                 //domicilio created successfully    

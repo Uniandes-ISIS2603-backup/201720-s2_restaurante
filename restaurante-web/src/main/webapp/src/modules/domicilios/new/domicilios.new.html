@@ -12,7 +12,7 @@ and open the template in the editor.
             <div class="panel-body">
                 <!--Columnas para la creacion del domicilio-->
                 <form ng-submit="createdomicilio()">
-                    <div class="form-group row">}
+                    <div class="form-group row">
                         <!--rango-->
                         <div class="form-group col-md-12">
                             <label for="rango" class="col-sm-2">Rango</label>
@@ -37,9 +37,40 @@ and open the template in the editor.
                             <!--platos pedidos-->
                             <div class="form-group col-md-12">
                             <label for="platos" class="col-sm-2">Platos</label>
-                            <input id="platos" required ng-model="platos" class="col-sm-6"/><br>
+                            
+                            <div class="form-group col-md-12">
+                            <label for="plato1" class="col-sm-2">Plato1:</label>
+                            
+                            <select name="plato1" id="plato1" required ng-model="plato1">
+                                 <option ng-repeat="plato in platosRecords" value ="{{plato.id}}"> {{plato.name}}</option>
+                            </select><br>
                         </div>
-                    </div>
+                            <div class="form-group col-md-12">
+                            <label for="plato2" class="col-sm-2">Plato2:</label>
+                            <select name="plato2" id="plato2" ng-model="plato2">
+                                 <option ng-repeat="plato in platosRecords" value ="{{plato.id}}"> {{plato.name}}</option>
+                            </select><br>
+                        </div>
+                            <div class="form-group col-md-12">
+                            <label for="plato3" class="col-sm-2">Plato3:</label>
+                            <select name="plato3" id="plato3" ng-model="plato3">
+                                 <option ng-repeat="plato in platosRecords" value ="{{plato.id}}"> {{plato.name}}</option>
+                            </select><br>
+                        </div>
+                            <div class="form-group col-md-12">
+                            <label for="plato4" class="col-sm-2">Plato4:</label>
+                            <select name="plato4" id="plato4" ng-model="plato4">
+                                 <option ng-repeat="plato in platosRecords" value ="{{plato.id}}"> {{plato.name}}</option>
+                            </select><br>
+                        </div>
+                            <div class="form-group col-md-12">
+                            <label for="plato5" class="col-sm-2">Plato5:</label>
+                            <select name="plato5" id="plato5" ng-model="plato5">
+                                 <option ng-repeat="plato in platosRecords" value ="{{plato.id}}"> {{plato.name}}</option>
+                            </select><br>
+                        </div>
+                        </div>
+                        </div>
                     <div class="form-group row">
                         <!--sucursal a la que se pidio-->
                             <div class="form-group col-md-12">
