@@ -52,8 +52,7 @@
                 },
                 views: {
                     'listView': {
-                        controller: 'restauranteCtrl',
-                        controllerAs: 'ctrl'
+                       templateUrl: basePath + 'restaurantes.list.html'
                     },
                     'detailView': {
                         templateUrl: basePath + 'restaurantes.detail.html',
