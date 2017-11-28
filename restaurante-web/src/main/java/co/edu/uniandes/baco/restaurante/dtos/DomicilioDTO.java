@@ -86,44 +86,40 @@ public class DomicilioDTO {
         return plato1;
     }
 
-    public void setPlato1(long plato1) {
-        this.plato1 = plato1;
-    }
-
     public long getPlato2() {
         return plato2;
-    }
-
-    public void setPlato2(long plato2) {
-        this.plato2 = plato2;
     }
 
     public long getPlato3() {
         return plato3;
     }
 
-    public void setPlato3(long plato3) {
-        this.plato3 = plato3;
-    }
-
     public long getPlato4() {
         return plato4;
-    }
-
-    public void setPlato4(long plato4) {
-        this.plato4 = plato4;
     }
 
     public long getPlato5() {
         return plato5;
     }
 
+    public void setPlato1(long plato1) {
+        this.plato1 = plato1;
+    }
+
+    public void setPlato2(long plato2) {
+        this.plato2 = plato2;
+    }
+
+    public void setPlato3(long plato3) {
+        this.plato3 = plato3;
+    }
+
+    public void setPlato4(long plato4) {
+        this.plato4 = plato4;
+    }
+
     public void setPlato5(long plato5) {
         this.plato5 = plato5;
     }
 
-    
-    
-    
-    
 }
