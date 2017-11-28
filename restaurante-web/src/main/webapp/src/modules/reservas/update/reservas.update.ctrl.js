@@ -12,7 +12,8 @@
                     $http.get(reservasContext + '/' + idreserva).then(function (response) {
                         var reserva = response.data;
                         $scope.reservaFecha = new Date(reserva.fecha);
-                        $scope.reservaMesa = reserva.mesaId;
+                        $scope.reservaMesa = reserva.idMesa;
+                        $scope.sucursal = reserva.dirSuc;
                         
                     });
 
@@ -37,7 +38,8 @@
                         $http.put(reservasContext + "/" + idreserva, {
                             
                             fecha: $scope.reservaFecha,
-                            mesaId: $scope.reservaMesa
+                            idMesa: $scope.reservaMesa,
+                            dirSuc: $scope.sucursal
                             
                         }).then(function (response) {
                     //Reserva created successfully

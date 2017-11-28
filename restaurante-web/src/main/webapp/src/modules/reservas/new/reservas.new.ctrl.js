@@ -11,8 +11,8 @@
                 $http.post(reservasContext, {
                     
                     fecha: $scope.reservaFecha,
-                    mesaId: $scope.reservaMesa,
-                    dirSuc: $scope.dirSucursal
+                    idMesa: $scope.reservaMesa,
+                    dirSuc: $scope.sucursal
                     
                 }).then(function (response) {
                     //Reserva created successfully

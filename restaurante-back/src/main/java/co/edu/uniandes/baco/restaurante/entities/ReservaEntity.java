@@ -36,6 +36,7 @@ public class ReservaEntity extends BaseEntity implements Serializable{
     @OneToOne
     private MesaEntity mesa;
     private String dirSuc;
+    private String idMesa;
     
     /**
      * @return the restaurante
@@ -121,5 +122,13 @@ public class ReservaEntity extends BaseEntity implements Serializable{
         }
         return true;
     }
+
+    public void setMesaId(String idMesa) {
+      this.idMesa = idMesa;
+    }
     
+    public String getIdMesa()
+    {
+        return idMesa;
+    }  
 }

@@ -17,6 +17,7 @@ public class ReservaDTO {
     private Long id;
     private Date fecha;
     private String dirSuc;
+    private String idMesa;
      /**
      * Constructor por defecto
      */
@@ -37,7 +38,8 @@ public class ReservaDTO {
         this.id = reserva.getId();
         this.fecha = reserva.getFecha();
         this.dirSuc=reserva.getDirSuc();
-        }
+        this.idMesa =reserva.getIdMesa();
+    }
     }
     
     
@@ -51,6 +53,7 @@ public class ReservaDTO {
         entity.setId(this.id);
         entity.setFecha(this.fecha);
         entity.setDirSuc(this.dirSuc);
+        entity.setMesaId(this.idMesa);
         return entity;
     }
 
@@ -94,5 +97,18 @@ public class ReservaDTO {
      */
     public void setFecha(Date fecha) {
         this.fecha = fecha;
+    }
+     /**
+     * @return id mesa
+     */
+    public String getIdMesa() {
+        return idMesa;
+    }
+
+    /**
+     * @param mesa: mesa a la que se le dio reserva
+     */
+    public void setIdMesa(String mesa) {
+        this.idMesa = mesa;
     }
 }

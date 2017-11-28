@@ -13,6 +13,7 @@
                         $scope.restauranteDireccion = restaurante.direccion;
                         $scope.restauranteDosPisos = restaurante.dosPisos;
                         $scope.restauranteCalificacion = restaurante.calificacion;
+                        $scope.restauranteImage1 = restaurante.image;
                     });
                     //funciones para el drag and drop de HTML5 nativo
                     $scope.allowDrop = function (ev) {
@@ -30,7 +31,8 @@
                         $http.put(restaurantesContext + "/" + idRestaurante, {
                         direccion: $scope.restauranteDireccion,
                         dosPisos: $scope.restauranteDosPisos,
-                        calificacion: $scope.restauranteCalificacion
+                        calificacion: $scope.restauranteCalificacion,
+                        image: $scope.restauranteImage1
                         }).then(function (response) {
                     //restaurante created successfully
                     $state.go('restaurantesList', {restauranteId: response.data.id}, {reload: true});
