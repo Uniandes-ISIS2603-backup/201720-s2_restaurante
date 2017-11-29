@@ -36,15 +36,6 @@
                     $scope.currentPedido = response.data;
                 });
             }
-            /*
-            * Manejo del cliente con un id del domicilio especificado por parametro
-            * Param: domicilioId
-            */
-            if (($state.params.clienteId !== undefined) && ($state.params.clienteId !== null)) {
-                $http.get("http://localhost:8080/restaurante-web/api/clientes" + '/' + $state.params.clienteId).then(function (response) {
-                    $scope.currentCliente = response.data;
-                });
-            }
         }
     ]);
 }

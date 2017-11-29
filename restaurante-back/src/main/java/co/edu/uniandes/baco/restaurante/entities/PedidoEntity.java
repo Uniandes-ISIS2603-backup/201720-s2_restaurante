@@ -32,6 +32,7 @@ public class PedidoEntity extends BaseEntity implements Serializable
     private Date fecha;
     private String direccion;
     private String dirSucursal;
+    private String nomCliente;
     @PodamExclude
    @OneToMany
    private List<PlatoEntity> platos = new ArrayList<>();
@@ -117,6 +118,20 @@ public class PedidoEntity extends BaseEntity implements Serializable
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
+    
+    /**
+     * @return the nomCliente
+     */
+    public String getNomCliente() {
+        return nomCliente;
+    }
+
+    /**
+     * @param nomCliente the nomCliente to set
+     */
+    public void setNomCliente(String nomCliente) {
+        this.nomCliente = nomCliente;
+    }
 
     @Override
     public int hashCode() {
@@ -146,5 +161,7 @@ public class PedidoEntity extends BaseEntity implements Serializable
         }
         return true;
     }
+
+    
     
 }
