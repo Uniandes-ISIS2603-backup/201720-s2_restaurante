@@ -6,6 +6,7 @@ and open the template in the editor.
 -->
 <!--Vista para eliminar a un cliente-->
 <div style = "background-color: #6E6A69;" class="center-block well text-center">
+    <div ng-if="isAuthenticated() && hasPermissions()">
     <h1>¿Esta seguro que desea borrar el cliente?</h1>
     <button id="confirm-delete" ng-click="deleteCliente()" class="btn btn-danger">Borrar</button>
     <a id="cancel-delete" ui-sref="clientesList" class="btn btn-info">Cancel</a>
@@ -15,7 +16,10 @@ and open the template in the editor.
             <div class="col-md-12">
                 <h1 class="float-left display-3 mr-4">403 Forbidden</h1>
                 <h4 >You do not have permission for this action.</h4>
-                <p >Contact the administrator to obtain permission.</p>
+                <h5 >Por favor seleccione el boton de cancelar</h5>
+                    <!--Cancelar-->
+                            <a class="btn btn-info" ui-sref="clientesList">Cancel</a>
             </div>
         </div>
     </div>
+</div>   

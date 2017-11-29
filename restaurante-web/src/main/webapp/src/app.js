@@ -48,7 +48,7 @@
                  * El usuario iene permisos para realizar x accion?
                  */
                 $rootScope.hasPermissions = function () {
-                    if (($rootScope.isAuthenticated) && (roles.indexOf(sessionStorage.getItem("rol")) > -1)) {
+                    if (($rootScope.isAuthenticated) && (roles.indexOf(sessionStorage.getItem("rol")) > -1) && sessionStorage.rol === 'admin') {
                         return true;
                     } else {
                         return false;
