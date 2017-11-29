@@ -16,8 +16,7 @@
                 <dt>{{currentRestaurante.direccion}}</dt>
                 <hr>
                 <!--boolean dos pisos-->
-                <dt>Dos Pisos</dt>
-                <dd>{{currentRestaurante.dosPisos}}</dd>
+                <dt ng-if="currentRestaurante.dosPisos===true">Tiene Dos Pisos</dt>
                 <hr>
                 <!--calificacion-->
                 <dt>Calificacion</dt>
