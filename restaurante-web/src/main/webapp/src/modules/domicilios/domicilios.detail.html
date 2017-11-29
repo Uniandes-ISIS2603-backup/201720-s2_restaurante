@@ -8,8 +8,10 @@
                 <a href="javascript:history.back(-1);" title="Ir la página anterior">Volver</a>
                 <dl>
                 <!--nombre del pedido-->
-                <dt>Nombre</dt>
-                <dd>{{currentPedido.name}}</dd>
+<!--                <dt>Nombre</dt>
+                <dd>{{currentPedido.name}}</dd>-->
+                <dt>Nombre del cliente</dt>
+                <dd><a href="http://localhost:8080/restaurante-web/#!/clientes/{{currentCliente.nombre}}/detail" class="thumb">{{currentCliente.nombre}}</a></dd> 
                 
                 <!--direccion-->
                 <hr>

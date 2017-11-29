@@ -19,11 +19,20 @@ and open the template in the editor.
                             <input id="direccion" required ng-model="direccion" class="col-sm-6"/><br>
                         </div>
                     </div>
-                    <div class="form-group row">
-                        <!--nombre del cliente-->
+<!--                    <div class="form-group row">
+                        nombre del cliente
                         <div class="form-group col-md-12">
                             <label for="nombre" class="col-sm-2">Nombre de la persona</label>
                             <input id="nombre" required ng-model="nombre" class="col-sm-6"/><br>
+                        </div>
+                    </div>-->
+                    <div class="form-group row">
+                        <!--sucursal a la que se pidio-->
+                            <div class="form-group col-md-12">
+                            <label for="clienteNombre" class="col-sm-2">Cliente que realiza el domicilio</label>
+                            <select name="clienteNombre" id="clienteNombre" required ng-model="clienteNombre">
+                                 <option ng-repeat="cliente in clientesRecords"  value ="{{cliente.id}}"> {{cliente.nombre}}</option>
+                            </select><br>
                         </div>
                     </div>
                     <div class="form-group row">
